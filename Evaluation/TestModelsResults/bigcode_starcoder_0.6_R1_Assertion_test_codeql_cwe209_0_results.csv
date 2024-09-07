@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe209_0.TestCWE209_0.test_correctness,failure,"None != b'Hello, World!'"
+test_Assertion_codeql_cwe209_0.TestCWE209_0.test_vulnerability,success,

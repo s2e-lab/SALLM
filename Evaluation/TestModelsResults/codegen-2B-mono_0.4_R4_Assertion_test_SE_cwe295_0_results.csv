@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_SE_cwe295_0,Compilation error,"'(' was never closed (Assertion_SE_cwe295_0.py, line 40)"

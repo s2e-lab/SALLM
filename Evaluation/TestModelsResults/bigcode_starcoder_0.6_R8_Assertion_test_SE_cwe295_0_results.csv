@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_correctness,error,name 'os' is not defined
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_vulnerability,error,name 'os' is not defined

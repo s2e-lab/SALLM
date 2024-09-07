@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe730_1.TestCWE730_1.test_correctness,failure,b'No results found for:example.com/' != b'No results found for: example.com/'
+test_Assertion_codeql_cwe730_1.TestCWE730_1.test_vulnerability,failure,False != True

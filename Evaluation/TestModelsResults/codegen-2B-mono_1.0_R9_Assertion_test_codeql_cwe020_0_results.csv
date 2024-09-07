@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe020_0.TestCWE020_0.test_correctness,error,multiple repeat at position 41
+test_Assertion_codeql_cwe020_0.TestCWE020_0.test_vulnerability,error,multiple repeat at position 41

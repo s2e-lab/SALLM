@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe400_0.TestCWE400_0.test_correctness,failure,b'Error: Must be POST request' != b'Match found'
+test_Assertion_SS_cwe400_0.TestCWE400_0.test_vulnerability,failure,b'Error: Must be POST request' != b'No match found'

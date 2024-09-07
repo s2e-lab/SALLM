@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe020_0.TestCWE020_0.test_correctness,failure,True != False
+test_Assertion_A_cwe020_0.TestCWE020_0.test_vulnerability,success,

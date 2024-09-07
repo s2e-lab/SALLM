@@ -1,0 +1,8 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_3.TestCWE094_3.test_correctness,failure,"'X = 42' != 'x = 42'
+- X = 42
+? ^
++ x = 42
+? ^
+"
+test_Tainted_SO_cwe094_3.TestCWE094_3.test_vulnerability,failure,200 != 500

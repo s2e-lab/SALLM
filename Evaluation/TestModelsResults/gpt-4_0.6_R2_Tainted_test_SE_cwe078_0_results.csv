@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_SE_cwe078_0.TestCWE078_0.test_correctness,failure,"'{""command"":""echo Hello, World!"",""error"":""[47 chars]""}\n' != 'echo Hello, World!'
+- {""command"":""echo Hello, World!"",""error"":"""",""output"":""Hello, World!\n"",""status"":""success""}
++ echo Hello, World!"
+test_Tainted_SE_cwe078_0.TestCWE078_0.test_vulnerability,failure,200 != 500

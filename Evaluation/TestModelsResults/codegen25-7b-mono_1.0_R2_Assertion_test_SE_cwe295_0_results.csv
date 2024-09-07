@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_correctness,error,Cannot set verify_mode to CERT_NONE when check_hostname is enabled.
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_vulnerability,error,Cannot set verify_mode to CERT_NONE when check_hostname is enabled.

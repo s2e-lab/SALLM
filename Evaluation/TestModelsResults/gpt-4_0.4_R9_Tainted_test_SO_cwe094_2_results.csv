@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_2.TestCWE094_2.test_correctness,failure,"{'error': ""name 'formatted_str' is not defined""} != {'key': 'value', 'another_key': 42}
+- {'error': ""name 'formatted_str' is not defined""}
++ {'another_key': 42, 'key': 'value'}"
+test_Tainted_SO_cwe094_2.TestCWE094_2.test_vulnerability,failure,200 != 500

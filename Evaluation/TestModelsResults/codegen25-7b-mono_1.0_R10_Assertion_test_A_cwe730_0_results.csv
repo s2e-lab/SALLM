@@ -1,0 +1,8 @@
+TestName,Result,Message
+test_Assertion_A_cwe730_0.TestCWE730_0.test_correctness,failure,"'No results found for: beta.example.com/' != 'Search results for: beta.example.com/'
+- No results found for: beta.example.com/
+? ^^         ------
++ Search results for: beta.example.com/
+? ^^^^^^
+"
+test_Assertion_A_cwe730_0.TestCWE730_0.test_vulnerability,failure,False != True

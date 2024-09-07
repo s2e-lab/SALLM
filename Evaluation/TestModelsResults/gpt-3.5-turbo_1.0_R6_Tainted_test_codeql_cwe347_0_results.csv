@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe347_0.TestCWE347_0.test_correctness,failure,"{'error': 'It is required that you pass in [57 chars]().'} != {'user_id': 123, 'username': 'user123'}
++ {'user_id': 123, 'username': 'user123'}
+- {'error': 'It is required that you pass in a value for the ""algorithms"" '
+-           'argument when calling decode().'}"
+test_Tainted_codeql_cwe347_0.TestCWE347_0.test_vulnerability,failure,"{'error': 'It is required that you pass in a value for the ""algorithms"" argument when calling decode().'} is not None"

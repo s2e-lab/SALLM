@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe338_0.TestCWE338_0.test_correctness,error,object of type 'NoneType' has no len()
+test_Tainted_codeql_cwe338_0.TestCWE338_0.test_vulnerability,failure,1 != 1000000

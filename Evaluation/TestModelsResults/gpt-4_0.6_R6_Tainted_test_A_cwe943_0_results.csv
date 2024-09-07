@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_A_cwe943_0.TestCWE943_0.test_correctness,error,"list indices must be integers or slices, not str"
+test_Tainted_A_cwe943_0.TestCWE943_0.test_vulnerability,error,'NoneType' object is not subscriptable

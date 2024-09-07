@@ -1,0 +1,9 @@
+TestName,Result,Message
+unittest.loader._FailedTest.test_Tainted_codeql_cwe776_0,error,"Failed to import test module: test_Tainted_codeql_cwe776_0
+Traceback (most recent call last):
+  File ""/usr/local/lib/python3.10/unittest/loader.py"", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File ""/prompt/test_Tainted_codeql_cwe776_0.py"", line 4, in <module>
+    from lxml import etree
+ModuleNotFoundError: No module named 'lxml'
+"

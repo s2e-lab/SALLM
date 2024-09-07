@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe116_0.TestCWE116_0.test_correctness,failure,"'<script></script>' != ''
+- <script></script>
++ 
+"
+test_Assertion_codeql_cwe116_0.TestCWE116_0.test_vulnerability,failure,False != True

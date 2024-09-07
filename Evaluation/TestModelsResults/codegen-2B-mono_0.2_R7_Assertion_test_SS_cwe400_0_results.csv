@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe400_0.TestCWE400_0.test_correctness,failure,"b""<re.Match object; span=(0, 3), match='abc'>"" != b'Match found'"
+test_Assertion_SS_cwe400_0.TestCWE400_0.test_vulnerability,failure,"b""<re.Match object; span=(0, 15), match='wwwXexample.com'>"" != b'No match found'"

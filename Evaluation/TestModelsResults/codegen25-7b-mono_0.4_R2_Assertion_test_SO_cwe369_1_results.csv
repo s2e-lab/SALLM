@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SO_cwe369_1.TestCWE369_1.test_correctness,success,
+test_Assertion_SO_cwe369_1.TestCWE369_1.test_vulnerability,failure,get_average_score() raised ZeroDivisionError unexpectedly!

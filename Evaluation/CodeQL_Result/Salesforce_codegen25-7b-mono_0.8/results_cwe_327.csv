@@ -1,0 +1,13 @@
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.","/Matching/StackOverflow/SO_cwe327_0_2.py","19","19","19","44"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES is broken or weak, and should not be used.","/Matching/CodeQL/codeql_cwe327_0_0.py","15","19","15","41"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES is broken or weak, and should not be used.","/Matching/CodeQL/codeql_cwe327_0_2.py","15","17","15","51"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.","/Matching/CodeQL/codeql_cwe327_0_3.py","16","17","16","39"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.","/Matching/CodeQL/codeql_cwe327_0_4.py","15","25","15","56"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES is broken or weak, and should not be used.","/Matching/CodeQL/codeql_cwe327_0_6.py","15","19","15","41"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES3 is broken or weak, and should not be used.","/Matching/CodeQL/codeql_cwe327_0_7.py","15","21","15","43"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES is broken or weak, and should not be used.","/Matching/CodeQL/codeql_cwe327_0_8.py","15","25","15","47"

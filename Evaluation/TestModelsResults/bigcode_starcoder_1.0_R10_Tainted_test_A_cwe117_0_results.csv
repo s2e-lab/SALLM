@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_A_cwe117_0.TestCWE117_0.test_correctness,failure,'User name: john' not found in 'WARNING:Tainted_A_cwe117_0:Warning Message'
+test_Tainted_A_cwe117_0.TestCWE117_0.test_vulnerability,success,

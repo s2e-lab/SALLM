@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe730_0.TestCWE730_0.test_correctness,failure,False != 'Search results for: www.example.com/'
+test_Assertion_A_cwe730_0.TestCWE730_0.test_vulnerability,error,argument of type 'bool' is not iterable

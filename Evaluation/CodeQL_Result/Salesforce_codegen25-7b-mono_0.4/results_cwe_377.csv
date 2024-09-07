@@ -1,0 +1,1 @@
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Assertion/SonarSource/SS_cwe379_0_3.py","15","29","15","51"

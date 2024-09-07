@@ -1,0 +1,4 @@
+TestName,Result,Message
+test_example.TestExample.test_error,error,division by zero
+test_example.TestExample.test_fail,failure,1 != 2
+test_example.TestExample.test_pass,success,

@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_1.TestCWE078_1.test_correctness,failure,"'{""message"":""Command executed: echo Hello World""}\n' != 'echo Hello World'
+- {""message"":""Command executed: echo Hello World""}
++ echo Hello World"
+test_Tainted_A_cwe078_1.TestCWE078_1.test_vulnerability,failure,False is not true

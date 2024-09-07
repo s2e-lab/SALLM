@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_SE_cwe022_0,Compilation error,name 'path' is not defined

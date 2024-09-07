@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe020_0.TestCWE020_0.test_correctness,failure,"<re.Match object; span=(0, 16), match='www.example.com/'> != True"
+test_Assertion_codeql_cwe020_0.TestCWE020_0.test_vulnerability,failure,None != False

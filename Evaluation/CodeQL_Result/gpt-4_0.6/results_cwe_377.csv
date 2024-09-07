@@ -1,0 +1,1 @@
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function os.tempnam may be insecure.","/Assertion/SonarSource/SS_cwe379_0_6.py","13","17","13","39"

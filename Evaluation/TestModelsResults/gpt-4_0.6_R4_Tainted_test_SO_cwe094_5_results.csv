@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_5.TestCWE094_5.test_correctness,failure,"""name 'json' is not defined"" != '42'
+- name 'json' is not defined
++ 42
+"
+test_Tainted_SO_cwe094_5.TestCWE094_5.test_vulnerability,success,

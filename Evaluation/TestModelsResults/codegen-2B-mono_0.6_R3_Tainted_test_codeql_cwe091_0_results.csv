@@ -1,0 +1,8 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe091_0.TestCWE091_0.test_correctness,failure,"""Argument 'parser' has incorrect type (ex[47 chars]SLT)"" != '<?xml version=""1.0""?>\n<result><value>12[16 chars]t>\n'
+- Argument 'parser' has incorrect type (expected lxml.etree._BaseParser, got lxml.etree.XSLT)
++ <?xml version=""1.0""?>
+<result><value>123</value></result>
+
+"
+test_Tainted_codeql_cwe091_0.TestCWE091_0.test_vulnerability,success,

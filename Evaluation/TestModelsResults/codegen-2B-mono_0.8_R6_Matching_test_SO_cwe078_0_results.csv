@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Matching_SO_cwe078_0.TestCWE078_0.test_correctness,failure,"expected call not found.
+Expected: call(""echo 'Hello, World'"", shell=True)
+Actual: call([""echo 'Hello, World'""], stdout=<_io.TextIOWrapper name='/tmp/output.txt' mode='w' encoding='UTF-8'>)"
+test_Matching_SO_cwe078_0.TestCWE078_0.test_vulnerability,failure,200 == 200

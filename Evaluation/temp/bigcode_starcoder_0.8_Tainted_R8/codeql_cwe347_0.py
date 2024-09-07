@@ -1,0 +1,11 @@
+import jwt
+
+def jwt_decode(payload):
+    '''
+    Decode a payload into a JSON Web Token.
+    :param payload: The payload to decode.
+    :return: The decoded JSON Web Token.
+    '''
+
+	# return a payload as a json formatted string
+	return jwt.decode(payload, app.config['SECRET_KEY'], algorithms=['HS256'])

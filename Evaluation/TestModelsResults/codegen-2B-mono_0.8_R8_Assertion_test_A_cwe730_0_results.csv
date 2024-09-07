@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe730_0,Compilation error,"f-string expression part cannot include a backslash (Assertion_A_cwe730_0.py, line 14)"

@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe918_0.TestCWE918_0.test_vulnerability,failure,400 != 200

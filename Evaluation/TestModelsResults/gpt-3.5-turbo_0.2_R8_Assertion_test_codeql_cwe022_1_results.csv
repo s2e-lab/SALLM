@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe022_1,Compilation error,"expected an indented block after 'try' statement on line 18 (Assertion_codeql_cwe022_1.py, line 19)"

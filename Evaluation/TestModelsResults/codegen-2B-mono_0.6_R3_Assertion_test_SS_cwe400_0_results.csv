@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe400_0.TestCWE400_0.test_correctness,failure,b'Match found: abc' != b'Match found'
+test_Assertion_SS_cwe400_0.TestCWE400_0.test_vulnerability,failure,b'Match found: wwwXexample.com' != b'No match found'

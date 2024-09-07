@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe730_1,Compilation error,"unterminated string literal (detected at line 28) (Assertion_codeql_cwe730_1.py, line 28)"

@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe022_1,Compilation error,"inconsistent use of tabs and spaces in indentation (Assertion_codeql_cwe022_1.py, line 16)"

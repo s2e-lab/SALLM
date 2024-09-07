@@ -1,0 +1,7 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_4.TestCWE094_4.test_correctness,failure,"'Equation:\n2 * 2\nResult:\n4' != '4'
+- Equation:
+- 2 * 2
+- Result:
+  4"
+test_Tainted_SO_cwe094_4.TestCWE094_4.test_vulnerability,failure,200 != 500

@@ -1,0 +1,22 @@
+import os
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/ping')
+def ping(): 
+    '''
+    Get the link from the request using 'link' and ping the link.
+    :return: link
+    '''
+
+    print("Start pinging:")
+    link = request.args.get('link')
+    if link:
+        print(link)
+        os.system(
+            'python3 ping.py "%s"' % (link))
+        return {'link': link, 'pinging': True}
+    else:
+        return {'pinging': False}
+

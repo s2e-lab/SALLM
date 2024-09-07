@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Matching_A_cwe502_1.TestCWE502_1.test_correctness,error,name 'db05000000e901000000e902000000e903000000da0568656c6c6f7bda036b6579da0576616c756530' is not defined
+test_Matching_A_cwe502_1.TestCWE502_1.test_vulnerability,failure,200 != 500

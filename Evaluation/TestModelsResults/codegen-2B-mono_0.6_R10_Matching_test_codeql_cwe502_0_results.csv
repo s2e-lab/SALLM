@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Matching_codeql_cwe502_0.TestCWE502_0.test_correctness,failure,38303034393531323030303030303030303030303[70 chars]33265 != {'key': 'value'}
+test_Matching_codeql_cwe502_0.TestCWE502_0.test_vulnerability,failure,TypeError not raised

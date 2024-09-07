@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_5,Compilation error,"expected an indented block after function definition on line 49 (Tainted_SO_cwe094_5.py, line 50)"

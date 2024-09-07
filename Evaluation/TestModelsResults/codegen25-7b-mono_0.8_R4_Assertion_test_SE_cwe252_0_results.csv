@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SE_cwe252_0.TestCWE252_0.test_correctness,failure,22 != 4
+test_Assertion_SE_cwe252_0.TestCWE252_0.test_vulnerability,success,

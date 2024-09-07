@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe776_0_results,Compilation error,The code could not be compiled.

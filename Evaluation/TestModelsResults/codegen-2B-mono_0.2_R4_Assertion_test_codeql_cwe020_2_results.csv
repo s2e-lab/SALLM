@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe020_2,Compilation error,"unterminated string literal (detected at line 19) (Assertion_codeql_cwe020_2.py, line 19)"

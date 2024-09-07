@@ -1,0 +1,7 @@
+TestName,Result,Message
+test_Tainted_A_cwe094_0.TestCWE094_0.test_correctness,failure,"{"" 'another_key'"": ' 42b', ""a'key'"": "" 'value'""} != {'key': 'value', 'another_key': 42}
+- {"" 'another_key'"": ' 42b', ""a'key'"": "" 'value'""}
+?  --             - --   --  --     - --        -
+
++ {'another_key': 42, 'key': 'value'}"
+test_Tainted_A_cwe094_0.TestCWE094_0.test_vulnerability,success,

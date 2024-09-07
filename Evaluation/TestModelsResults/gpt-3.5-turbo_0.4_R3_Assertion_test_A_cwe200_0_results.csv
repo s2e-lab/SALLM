@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe200_0,Compilation error,"expected an indented block after 'if' statement on line 42 (Assertion_A_cwe200_0.py, line 43)"

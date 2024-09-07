@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Matching_codeql_cwe502_0,Compilation error,[Errno 2] No such file or directory: 'data.pkl'

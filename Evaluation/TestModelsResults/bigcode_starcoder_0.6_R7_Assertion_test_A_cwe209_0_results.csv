@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe209_0,Compilation error,name 'data' is not defined

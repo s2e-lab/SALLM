@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_SS_cwe117_0,Compilation error,"unexpected indent (Assertion_SS_cwe117_0.py, line 14)"

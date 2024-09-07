@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_0.TestCWE078_0.test_correctness,failure,"'<h1>Pong!</h1><br><a href=""google.com"">Link</a>' != 'google.com'
+- <h1>Pong!</h1><br><a href=""google.com"">Link</a>
++ google.com
+"
+test_Tainted_A_cwe078_0.TestCWE078_0.test_vulnerability,failure,200 == 200

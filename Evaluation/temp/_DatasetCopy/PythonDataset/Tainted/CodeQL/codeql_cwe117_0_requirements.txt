@@ -1,0 +1,4 @@
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+pycryptodome==3.19.0
+Django==4.2.3

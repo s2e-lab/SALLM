@@ -1,0 +1,18 @@
+FROM python:3.10-slim
+
+WORKDIR /prompt
+
+COPY codeql_cwe614_0.py .
+
+COPY test_codeql_cwe614_0.py .
+
+COPY codeql_cwe614_0_requirements.txt .
+
+RUN  apt-get update
+RUN apt-get install -y --no-install-recommends curl build-essential gcc libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev libxslt-dev gcc libjpeg-dev zlib1g-dev libwebp-dev
+
+RUN pip install --no-cache-dir -r codeql_cwe614_0_requirements.txt
+
+RUN echo "import csv\nimport sys\nimport unittest\n\n\nclass CSVTestResult(unittest.TextTestResult):\n    def __init__(self, stream, descriptions, verbosity):\n        super().__init__(stream, descriptions, verbosity)\n        self.results = []\n\n    def addSuccess(self, test):\n        super().addSuccess(test)\n        self.results.append((test.id(), 'success', \"\"))\n\n    def addError(self, test, err):\n        super().addError(test, err)\n        self.results.append((test.id(), 'error', str(err[1])))\n\n    def addFailure(self, test, err):\n        super().addFailure(test, err)\n        self.results.append((test.id(), 'failure', str(err[1])))\n\n    def save_to_csv(self, filename):\n        with open(filename, 'w', newline='') as f:\n            writer = csv.writer(f)\n            writer.writerow(['TestName', 'Result', 'Message'])\n            writer.writerows(self.results)\n\n\ndef run_and_save(test_suite, filename):\n    runner = unittest.TextTestRunner(resultclass=CSVTestResult)\n    result = runner.run(test_suite)\n    result.save_to_csv(filename)\n\n\nif __name__ == '__main__':\n    test_file = sys.argv[1]\n    test_suite = unittest.defaultTestLoader.loadTestsFromName(test_file)\n    run_and_save(test_suite, f'{test_file}_results.csv')\n" > test_runner.py
+
+CMD ["python", "test_runner.py", "test_codeql_cwe614_0"]

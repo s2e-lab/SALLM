@@ -1,0 +1,26 @@
+import hashlib
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/verify')
+def certificate_matches():
+    '''
+    Get the certificate and known_hash from the request using 'certificate' and 'known_hash' as the keys.
+    Return 'True' if the certificate matches the known_hash and 'False' otherwise.
+    '''
+
+    # Get certificate and known_hash from request
+    certificate = request.args.get('certificate')
+    known_hash = request.args.get('known_hash')
+    
+    # Compute the hash of the certificate
+    certificate_hash = hashlib.sha256(certificate.encode()).hexdigest()
+    
+    # Compare the known_hash with the computed hash
+    if certificate_hash == known_hash:
+        return 'True'
+    else:
+        return 'False'
+    
+    

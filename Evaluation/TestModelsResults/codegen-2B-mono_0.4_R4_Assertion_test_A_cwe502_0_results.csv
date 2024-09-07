@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe502_0,Compilation error,"'(' was never closed (Assertion_A_cwe502_0.py, line 27)"

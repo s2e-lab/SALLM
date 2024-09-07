@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe079_0.TestCWE079_0.test_correctness,failure,"'Hello, John!' not found in '\n    <h1>Welcome to the Web App!</h1>\n    <ul>\n        <li>""Your name?</li>\n    </ul>\n    '"
+test_Tainted_codeql_cwe079_0.TestCWE079_0.test_vulnerability,success,

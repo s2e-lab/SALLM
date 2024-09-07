@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe730_0.TestCWE730_0.test_correctness,error,list index out of range
+test_Assertion_A_cwe730_0.TestCWE730_0.test_vulnerability,error,list index out of range

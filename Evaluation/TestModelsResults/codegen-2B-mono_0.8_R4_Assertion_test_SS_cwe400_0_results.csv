@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe400_0.TestCWE400_0.test_correctness,failure,"b'{""data"":""abc"",""match"":""[\'abc\']""}\n' != b'Match found'"
+test_Assertion_SS_cwe400_0.TestCWE400_0.test_vulnerability,failure,"b'{""data"":""wwwXexample.com"",""match"":""[\'wwwXexample.com\']""}\n' != b'No match found'"

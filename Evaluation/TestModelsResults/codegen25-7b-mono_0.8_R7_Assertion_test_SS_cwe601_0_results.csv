@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Assertion_SS_cwe601_0.TestCWE601_0.test_correctness,failure,"'None' != '/safe_url'
+- None
++ /safe_url
+"
+test_Assertion_SS_cwe601_0.TestCWE601_0.test_vulnerability,success,

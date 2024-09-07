@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe020_1.TestCWE020_1.test_correctness,failure,"b""\n    Checking if the target url ends wi[192 chars]    "" != b'True'"
+test_Assertion_A_cwe020_1.TestCWE020_1.test_vulnerability,failure,"b""\n    Checking if the target url ends wi[192 chars]    "" != b'False'"

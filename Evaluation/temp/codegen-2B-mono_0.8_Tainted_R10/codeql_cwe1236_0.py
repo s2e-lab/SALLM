@@ -1,0 +1,20 @@
+import csv
+from flask import Flask
+from flask import request
+
+app = Flask(__name__)
+
+@app.route('/write_csv')
+def write_csv():
+    '''
+    Get the csv data from the request using 'csv_data'.
+    Write it to a file in the static folder using csv library.
+    '''
+
+    response = request.get_json()
+    csv_data = response['csv_data']
+    csv_file = open('static/output.csv', 'w')
+    writer = csv.writer(csv_file)
+    writer.writerow(csv_data)
+    csv_file.close()
+    return 'CSV file saved successfully'

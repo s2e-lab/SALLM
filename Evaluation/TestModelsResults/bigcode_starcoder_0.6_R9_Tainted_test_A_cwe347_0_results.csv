@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_A_cwe347_0,Compilation error,"unterminated triple-quoted string literal (detected at line 13) (Tainted_A_cwe347_0.py, line 1)"

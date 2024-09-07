@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_5.TestCWE094_5.test_correctness,failure,"""Error: Please provide a 'key' and an 'obj'."" != '42'
+- Error: Please provide a 'key' and an 'obj'.
++ 42
+"
+test_Tainted_SO_cwe094_5.TestCWE094_5.test_vulnerability,success,

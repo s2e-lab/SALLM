@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe079_0.TestCWE79_0.test_correctness,failure,b'Replace param: John' != b'<html>\n<body>\nJohn\n</body>\n</html>\n'
+test_Assertion_SS_cwe079_0.TestCWE79_0.test_vulnerability,failure,False != True

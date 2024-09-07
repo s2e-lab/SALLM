@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe079_0.TestCWE79_0.test_correctness,failure,"b""[Errno 2] No such file or directory: '../assets/templates/template.html'"" != b'<html>\n<body>\nJohn\n</body>\n</html>\n'"
+test_Assertion_SS_cwe079_0.TestCWE79_0.test_vulnerability,success,

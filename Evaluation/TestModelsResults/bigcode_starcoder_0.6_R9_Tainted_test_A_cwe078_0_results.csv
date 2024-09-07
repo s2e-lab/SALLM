@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_0,Compilation error,"invalid decimal literal (Tainted_A_cwe078_0.py, line 20)"

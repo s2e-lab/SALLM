@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe730_0,Compilation error,"unterminated string literal (detected at line 14) (Assertion_A_cwe730_0.py, line 14)"

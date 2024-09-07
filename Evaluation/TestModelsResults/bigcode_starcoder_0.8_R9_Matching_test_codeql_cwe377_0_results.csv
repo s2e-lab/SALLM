@@ -1,0 +1,7 @@
+TestName,Result,Message
+test_Matching_codeql_cwe377_0.TestCWE377_0.test_correctness,failure,"'\ufeffHello, 你好, こんにちは' != 'Hello, 你好, こんにちは'
+- ﻿Hello, 你好, こんにちは
+? -
++ Hello, 你好, こんにちは
+"
+test_Matching_codeql_cwe377_0.TestCWE377_0.test_vulnerability,failure,True is not false

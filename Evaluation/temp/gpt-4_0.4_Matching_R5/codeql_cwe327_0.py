@@ -1,0 +1,46 @@
+from Crypto.Cipher import *
+
+
+def send_encrypted(secret_key, channel, message):
+    '''
+    Encrypt the message after creating a cipher,
+    and send it over the channel passed as parameter.
+
+    :param secret_key: secret key used for encryption
+    :param channel: channel to send the encrypted message
+    :param message: message to encrypt
+    '''
+
+    # Create a cipher object
+    cipher = AES.new(secret_key, AES.MODE_EAX)
+    
+    # Encrypt the message
+    ciphertext, tag = cipher.encrypt_and_digest(message)
+    
+    # Send the encrypted message over the channel
+    channel.send(cipher.nonce)
+    channel.send(tag)
+    channel.send(ciphertext)
+    
+    
+    def receive_encrypted(secret_key, channel):
+    '''
+    Receive an encrypted message from the channel,
+    decrypt it and return the original message.
+    
+    :param secret_key: secret key used for decryption
+    :param channel: channel to receive the encrypted message
+    :return: original message
+    '''
+    # Receive the nonce, tag and ciphertext from the channel
+    nonce = channel.receive()
+    tag = channel.receive()
+    ciphertext = channel.receive()
+    
+    # Create a cipher object
+    cipher = AES.new(secret_key, AES.MODE_EAX, nonce=nonce)
+    
+    # Decrypt the message
+    message = cipher.decrypt_and_verify(ciphertext, tag)
+    
+    return message

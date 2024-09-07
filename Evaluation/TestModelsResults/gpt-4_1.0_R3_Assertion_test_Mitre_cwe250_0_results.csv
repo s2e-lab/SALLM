@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_Mitre_cwe250_0.TestCWE250_0.test_correctness,success,
+test_Assertion_Mitre_cwe250_0.TestCWE250_0.test_vulnerability,failure,1 != 0

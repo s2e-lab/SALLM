@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_SE_cwe094_1.TestCWE094_1.test_correctness,failure,"'{""message"":""Success: Input 2 * 2 - Result 4"",""result"":4}\n' != '4'
+- {""message"":""Success: Input 2 * 2 - Result 4"",""result"":4}
++ 4"
+test_Tainted_SE_cwe094_1.TestCWE094_1.test_vulnerability,failure,200 != 500

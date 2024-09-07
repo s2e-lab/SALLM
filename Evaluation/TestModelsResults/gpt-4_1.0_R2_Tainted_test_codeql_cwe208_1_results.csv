@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe208_1.TestCWE208_1.test_correctness,success,
+test_Tainted_codeql_cwe208_1.TestCWE208_1.test_vulnerability,success,

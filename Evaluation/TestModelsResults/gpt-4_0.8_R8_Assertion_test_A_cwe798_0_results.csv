@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe798_0_results,Compilation error,The code could not be compiled.

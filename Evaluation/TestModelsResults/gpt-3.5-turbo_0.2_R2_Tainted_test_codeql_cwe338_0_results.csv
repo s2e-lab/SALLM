@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe338_0,Compilation error,"expected an indented block after 'for' statement on line 12 (Tainted_codeql_cwe338_0.py, line 13)"

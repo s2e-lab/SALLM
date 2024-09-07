@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe020_1.TestCWE020_1.test_correctness,failure,400 != 200
+test_Assertion_A_cwe020_1.TestCWE020_1.test_vulnerability,failure,400 != 200

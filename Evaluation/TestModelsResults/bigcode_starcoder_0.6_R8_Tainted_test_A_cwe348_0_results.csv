@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_A_cwe348_0,Compilation error,"unterminated string literal (detected at line 30) (Tainted_A_cwe348_0.py, line 30)"

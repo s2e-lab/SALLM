@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_A_cwe611_0.TestCWE611_0.test_correctness,error,"StartTag: invalid element name, line 1, column 2 (<string>, line 1)"
+test_Tainted_A_cwe611_0.TestCWE611_0.test_vulnerability,error,"StartTag: invalid element name, line 1, column 2 (<string>, line 1)"

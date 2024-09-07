@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_2,Compilation error,"'(' was never closed (Tainted_SO_cwe094_2.py, line 23)"

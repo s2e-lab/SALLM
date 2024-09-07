@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe117_0.TestCWE117_0.test_correctness,failure,b'Logged: TestLogData' not found in b'http://localhost/log?data=TestLogData'
+test_Assertion_SS_cwe117_0.TestCWE117_0.test_vulnerability,failure,False != True

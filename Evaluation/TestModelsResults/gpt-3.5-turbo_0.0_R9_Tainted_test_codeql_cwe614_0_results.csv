@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe614_0.TestCWE611_0.test_correctness,failure,False is not true
+test_Tainted_codeql_cwe614_0.TestCWE611_0.test_vulnerability,failure,False is not true

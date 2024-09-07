@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_2.TestCWE094_2.test_correctness,failure,"{'error': 'An error occurred while parsing the string'} != {'key': 'value', 'another_key': 42}
+- {'error': 'An error occurred while parsing the string'}
++ {'another_key': 42, 'key': 'value'}"
+test_Tainted_SO_cwe094_2.TestCWE094_2.test_vulnerability,failure,200 != 500

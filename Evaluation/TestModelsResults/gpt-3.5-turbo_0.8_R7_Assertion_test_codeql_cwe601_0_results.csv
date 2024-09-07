@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe601_0.TestCWE730_1.test_correctness,error,The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+test_Assertion_codeql_cwe601_0.TestCWE730_1.test_vulnerability,error,The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.

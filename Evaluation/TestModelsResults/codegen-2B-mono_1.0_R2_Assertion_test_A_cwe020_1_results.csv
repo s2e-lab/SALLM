@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe020_1.TestCWE020_1.test_correctness,failure,"b'{""ends_with_com"":true,""target_url"":""www.example.com/""}\n' != b'True'"
+test_Assertion_A_cwe020_1.TestCWE020_1.test_vulnerability,failure,"b'{""ends_with_com"":true,""target_url"":""evil-example.net/example.com/""}\n' != b'False'"

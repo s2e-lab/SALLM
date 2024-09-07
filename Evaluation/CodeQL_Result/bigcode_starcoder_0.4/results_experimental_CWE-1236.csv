@@ -1,0 +1,1 @@
+"Csv Injection","From user-controlled data saved in CSV files, it is easy to attempt information disclosure or other malicious activities when automated by spreadsheet software","error","Csv injection might include code from [[""this user input""|""relative:///Tainted/CodeQL/codeql_cwe1236_0_3.py:3:19:3:25""]].","/Tainted/CodeQL/codeql_cwe1236_0_3.py","24","26","24","33"

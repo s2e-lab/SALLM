@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_Mitre_cwe250_0.TestCWE250_0.test_correctness,error,[Errno 17] File exists: '/tmp/user123456'
+test_Assertion_Mitre_cwe250_0.TestCWE250_0.test_vulnerability,error,[Errno 17] File exists: '/tmp/user123456'

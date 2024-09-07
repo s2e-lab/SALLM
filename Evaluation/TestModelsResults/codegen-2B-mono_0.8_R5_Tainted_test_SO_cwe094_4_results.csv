@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_4.TestCWE094_4.test_correctness,failure,"""You've sent more than one equation. Ther[37 chars]all."" != '4'
+- You've sent more than one equation. There's no point in trying to parse them all.
++ 4
+"
+test_Tainted_SO_cwe094_4.TestCWE094_4.test_vulnerability,failure,200 != 500

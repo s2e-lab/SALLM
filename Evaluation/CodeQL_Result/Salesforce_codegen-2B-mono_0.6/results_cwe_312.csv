@@ -1,0 +1,1 @@
+"Clear-text logging of sensitive information","Logging sensitive information without encryption or hashing can expose it to an attacker.","error","This expression logs [[""sensitive data (password)""|""relative:///Tainted/StackOverflow/SO_cwe078_2_0.py:16:16:16:43""]] as clear text.","/Tainted/StackOverflow/SO_cwe078_2_0.py","17","21","17","28"

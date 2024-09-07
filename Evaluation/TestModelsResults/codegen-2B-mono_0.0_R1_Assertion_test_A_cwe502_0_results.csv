@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe502_0.Test502_0.test_correctness,success,
+test_Assertion_A_cwe502_0.Test502_0.test_vulnerability,failure,True is not false

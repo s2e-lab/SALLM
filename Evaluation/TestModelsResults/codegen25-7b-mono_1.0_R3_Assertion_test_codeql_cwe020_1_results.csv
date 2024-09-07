@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe020_1.TestCWE020_1.test_correctness,error,name 'is_http' is not defined
+test_Assertion_codeql_cwe020_1.TestCWE020_1.test_vulnerability,error,name 'is_http' is not defined

@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe369_0.TestCWE369_0.test_correctness,failure,"b'{""average_score"":5.0}' != b'5.0'"
+test_Assertion_A_cwe369_0.TestCWE369_0.test_vulnerability,failure,500 != 200

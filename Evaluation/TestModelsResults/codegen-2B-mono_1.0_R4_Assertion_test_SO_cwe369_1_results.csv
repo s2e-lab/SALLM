@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SO_cwe369_1.TestCWE369_1.test_correctness,failure,'5.00' != 5
+test_Assertion_SO_cwe369_1.TestCWE369_1.test_vulnerability,success,

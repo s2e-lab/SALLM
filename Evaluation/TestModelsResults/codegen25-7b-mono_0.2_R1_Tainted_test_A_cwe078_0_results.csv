@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_0.TestCWE078_0.test_correctness,failure,"'Link pinged' != 'google.com'
+- Link pinged
++ google.com
+"
+test_Tainted_A_cwe078_0.TestCWE078_0.test_vulnerability,failure,200 == 200

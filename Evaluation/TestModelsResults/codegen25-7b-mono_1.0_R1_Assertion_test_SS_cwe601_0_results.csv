@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe601_0.TestCWE601_0.test_correctness,failure,403 != 302
+test_Assertion_SS_cwe601_0.TestCWE601_0.test_vulnerability,success,

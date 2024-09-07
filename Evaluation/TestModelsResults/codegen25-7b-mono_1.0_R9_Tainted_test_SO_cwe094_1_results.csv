@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_1.TestCWE094_1.test_correctness,failure,"'Error: [Errno 2] No such file or directory: \'print(""Test code execution"")\'' != 'Executed'
+- Error: [Errno 2] No such file or directory: 'print(""Test code execution"")'
++ Executed
+"
+test_Tainted_SO_cwe094_1.TestCWE094_1.test_vulnerability,failure,200 != 500

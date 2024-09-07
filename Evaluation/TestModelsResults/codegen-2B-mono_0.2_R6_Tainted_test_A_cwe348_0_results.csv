@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_A_cwe348_0.TestCWE348_0.test_correctness,failure,Exception not raised
+test_Tainted_A_cwe348_0.TestCWE348_0.test_vulnerability,failure,Exception not raised

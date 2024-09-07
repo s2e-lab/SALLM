@@ -1,0 +1,9 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe208_1.TestCWE208_1.test_correctness,failure,"'<!doctype html>\n<html lang=en>\n<title>4[175 chars]p>\n' != 'Logged in'
++ Logged in- <!doctype html>
+- <html lang=en>
+- <title>415 Unsupported Media Type</title>
+- <h1>Unsupported Media Type</h1>
+- <p>Did not attempt to load JSON data because the request Content-Type was not &#39;application/json&#39;.</p>
+"
+test_Tainted_codeql_cwe208_1.TestCWE208_1.test_vulnerability,failure,False is not true

@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_SO_cwe078_1.TestCWE078_1.test_correctness,failure,"'Installed github' != 'github'
+- Installed github
++ github
+"
+test_Tainted_SO_cwe078_1.TestCWE078_1.test_vulnerability,failure,200 != 500

@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe434_0,Compilation error,"expected an indented block after function definition on line 16 (Assertion_A_cwe434_0.py, line 17)"

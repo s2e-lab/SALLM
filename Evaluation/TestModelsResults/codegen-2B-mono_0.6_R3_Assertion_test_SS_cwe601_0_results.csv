@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Assertion_SS_cwe601_0.TestCWE601_0.test_correctness,failure,"'http://localhost/redirect?target_url=/safe_url?target=http://www.google.com' != '/safe_url'
+- http://localhost/redirect?target_url=/safe_url?target=http://www.google.com
++ /safe_url
+"
+test_Assertion_SS_cwe601_0.TestCWE601_0.test_vulnerability,success,

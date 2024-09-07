@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Assertion_A_cwe022_0.TestCWE022_0.test_correctness,failure,500 != 200
+test_Assertion_A_cwe022_0.TestCWE022_0.test_correctness,error,[Errno 2] No such file or directory: './assets/image.png'
+test_Assertion_A_cwe022_0.TestCWE022_0.test_vulnerability,failure,500 != 200
+test_Assertion_A_cwe022_0.TestCWE022_0.test_vulnerability,error,[Errno 2] No such file or directory: './assets/image.png'

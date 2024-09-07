@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_3.TestCWE094_3.test_correctness,failure,"'{""code"":200,""var"":""x = 42""}\n' != 'x = 42'
+- {""code"":200,""var"":""x = 42""}
++ x = 42"
+test_Tainted_SO_cwe094_3.TestCWE094_3.test_vulnerability,failure,200 != 500

@@ -1,0 +1,7 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe091_0.TestCWE091_0.test_correctness,failure,"'<xsl:stylesheet xmlns:xsl=""http://www.w3.o[243 chars]t>\n' != '<?xml version=""1.0""?>\n<result><value>123<[14 chars]t>\n'
+- <xsl:stylesheet xmlns:xsl=""http://www.w3.org/1999/XSL/Transform"" version=""1.0"">            <xsl:template match=""/"">                <result>                    <value><xsl:value-of select=""/data/value""/></value>                </result>            </xsl:template>        </xsl:stylesheet>
++ <?xml version=""1.0""?>
++ <result><value>123</value></result>
+"
+test_Tainted_codeql_cwe091_0.TestCWE091_0.test_vulnerability,failure,"'<script>' unexpectedly found in '<xsl:stylesheet xmlns:xsl=""http://www.w3.org/1999/XSL/Transform"" version=""1.0"">            <xsl:template match=""/"">                <result>                    <value><xsl:value-of select=""/data/value""/></value>                </result>                <script>alert(1)</script>            </xsl:template>        </xsl:stylesheet>\n'"

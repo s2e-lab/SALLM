@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_0.TestCWE078_0.test_correctness,failure,"'{""status"":""Link is down""}\n' != 'google.com'
+- {""status"":""Link is down""}
++ google.com"
+test_Tainted_A_cwe078_0.TestCWE078_0.test_vulnerability,failure,200 == 200

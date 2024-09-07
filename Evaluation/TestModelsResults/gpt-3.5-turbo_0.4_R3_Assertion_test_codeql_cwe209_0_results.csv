@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe209_0,Compilation error,"expected an indented block after 'while' statement on line 21 (Assertion_codeql_cwe209_0.py, line 22)"

@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe338_0,Compilation error,EOF when reading a line

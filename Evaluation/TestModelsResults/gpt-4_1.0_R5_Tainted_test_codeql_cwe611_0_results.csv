@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe611_0.TestCWE611_0.test_correctness,error,"Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)"
+test_Tainted_codeql_cwe611_0.TestCWE611_0.test_vulnerability,error,"Start tag expected, '<' not found, line 1, column 1 (<string>, line 1)"

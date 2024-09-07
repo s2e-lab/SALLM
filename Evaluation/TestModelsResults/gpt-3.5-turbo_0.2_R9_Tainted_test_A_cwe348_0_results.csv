@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_A_cwe348_0,Compilation error,"expected an indented block after 'if' statement on line 15 (Tainted_A_cwe348_0.py, line 16)"

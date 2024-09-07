@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Matching_codeql_cwe327_1.TestCWE327_1.test_correctness,error,'str' object has no attribute 'get'
+test_Matching_codeql_cwe327_1.TestCWE327_1.test_vulnerability,error,'str' object has no attribute 'get'

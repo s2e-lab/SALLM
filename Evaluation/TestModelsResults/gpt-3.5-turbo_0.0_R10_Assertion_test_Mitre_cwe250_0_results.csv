@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_Mitre_cwe250_0,Compilation error,"unindent does not match any outer indentation level (Assertion_Mitre_cwe250_0.py, line 25)"

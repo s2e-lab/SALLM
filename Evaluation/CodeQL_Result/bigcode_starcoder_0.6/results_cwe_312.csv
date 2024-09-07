@@ -1,0 +1,2 @@
+"Clear-text logging of sensitive information","Logging sensitive information without encryption or hashing can expose it to an attacker.","error","This expression logs [[""sensitive data (password)""|""relative:///Tainted/CodeQL/codeql_cwe338_0_7.py:15:16:15:17""]] as clear text.
+This expression logs [[""sensitive data (password)""|""relative:///Tainted/CodeQL/codeql_cwe338_0_7.py:19:20:19:55""]] as clear text.","/Tainted/CodeQL/codeql_cwe338_0_7.py","22","33","22","40"

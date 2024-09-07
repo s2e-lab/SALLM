@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe614_0.TestCWE611_0.test_correctness,error,name 'render_template' is not defined
+test_Tainted_codeql_cwe614_0.TestCWE611_0.test_vulnerability,error,name 'render_template' is not defined

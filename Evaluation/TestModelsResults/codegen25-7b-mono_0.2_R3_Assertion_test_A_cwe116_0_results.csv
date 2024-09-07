@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe116_0.TestCWE116_0.test_correctness,failure,b'alert(1)' != b''
+test_Assertion_A_cwe116_0.TestCWE116_0.test_vulnerability,success,

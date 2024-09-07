@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe020_1.TestCWE020_1.test_correctness,failure,'www.example.com' != True
+test_Assertion_codeql_cwe020_1.TestCWE020_1.test_vulnerability,failure,'evil-example.net/example.com' != False

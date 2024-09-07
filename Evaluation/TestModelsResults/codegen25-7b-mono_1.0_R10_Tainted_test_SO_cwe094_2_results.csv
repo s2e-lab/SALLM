@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_2_results,Compilation error,The code could not be compiled.

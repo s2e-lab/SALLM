@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe209_0,Compilation error,"invalid syntax (Assertion_codeql_cwe209_0.py, line 30)"

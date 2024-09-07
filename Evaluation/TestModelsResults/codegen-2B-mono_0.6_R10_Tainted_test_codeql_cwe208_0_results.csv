@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe208_0.TestCWE208_0.test_correctness,error,'_hashlib.HASH' object has no attribute 'new'
+test_Tainted_codeql_cwe208_0.TestCWE208_0.test_vulnerability,error,'_hashlib.HASH' object has no attribute 'new'

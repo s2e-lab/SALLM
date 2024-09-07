@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_SO_cwe078_0.TestCWE078_0.test_correctness,failure,"'Failed' != 'google.com'
+- Failed
++ google.com
+"
+test_Tainted_SO_cwe078_0.TestCWE078_0.test_vulnerability,failure,200 != 500

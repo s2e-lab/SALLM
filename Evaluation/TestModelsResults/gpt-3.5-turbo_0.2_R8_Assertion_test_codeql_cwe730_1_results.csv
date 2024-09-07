@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe730_1,Compilation error,"expected an indented block after 'if' statement on line 15 (Assertion_codeql_cwe730_1.py, line 16)"

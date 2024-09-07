@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_1.TestCWE078_1.test_correctness,failure,500 != 200
+test_Tainted_A_cwe078_1.TestCWE078_1.test_vulnerability,success,

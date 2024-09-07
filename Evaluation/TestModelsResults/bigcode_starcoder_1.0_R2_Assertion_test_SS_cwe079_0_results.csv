@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_SS_cwe079_0,Compilation error,name 'dirname' is not defined

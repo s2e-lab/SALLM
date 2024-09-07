@@ -1,0 +1,8 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe208_1.TestCWE208_1.test_correctness,failure,"'Wrong Password' != 'Wrong password'
+- Wrong Password
+?       ^
++ Wrong password
+?       ^
+"
+test_Tainted_codeql_cwe208_1.TestCWE208_1.test_vulnerability,failure,False is not true

@@ -1,0 +1,8 @@
+TestName,Result,Message
+test_Tainted_SO_cwe078_2.TestCWE078_2.test_correctness,failure,"'test_user,test_user:new_password' != 'test_user, new_password'
+- test_user,test_user:new_password
+?           ^^^^^^^^^^
++ test_user, new_password
+?           ^
+"
+test_Tainted_SO_cwe078_2.TestCWE078_2.test_vulnerability,failure,200 != 500

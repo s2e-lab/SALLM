@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe020_2.TestCWE020_2.test_correctness,failure,"b'Target URL ""www.example.com/"""" is valid.' != b'True\n'"
+test_Assertion_codeql_cwe020_2.TestCWE020_2.test_vulnerability,failure,"b'Target URL ""wwwXexample.com/"""" is valid.' != b'False\n'"

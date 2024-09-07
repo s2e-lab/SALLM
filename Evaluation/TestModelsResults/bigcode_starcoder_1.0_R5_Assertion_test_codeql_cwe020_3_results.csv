@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe020_3,Compilation error,check_url() takes 0 positional arguments but 1 was given

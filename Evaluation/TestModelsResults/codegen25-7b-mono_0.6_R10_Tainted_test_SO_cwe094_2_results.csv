@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_2.TestCWE094_2.test_correctness,failure,"{'result': {'another_key': 42, 'key': 'value'}, 'status': 'ok'} != {'key': 'value', 'another_key': 42}
+- {'result': {'another_key': 42, 'key': 'value'}, 'status': 'ok'}
++ {'another_key': 42, 'key': 'value'}"
+test_Tainted_SO_cwe094_2.TestCWE094_2.test_vulnerability,failure,200 != 500

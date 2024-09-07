@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe434_0.TestCWE434_0.test_correctness,error,[Errno 2] No such file or directory: './static/dummy.png'
+test_Assertion_A_cwe434_0.TestCWE434_0.test_vulnerability,error,[Errno 2] No such file or directory: './static/dummy.py'

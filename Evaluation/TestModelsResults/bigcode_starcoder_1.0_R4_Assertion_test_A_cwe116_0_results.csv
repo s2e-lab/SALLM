@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe116_0,Compilation error,"'return' outside function (Assertion_A_cwe116_0.py, line 21)"

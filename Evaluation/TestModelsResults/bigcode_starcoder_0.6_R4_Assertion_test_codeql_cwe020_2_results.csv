@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe020_2,Compilation error,"'(' was never closed (Assertion_codeql_cwe020_2.py, line 18)"

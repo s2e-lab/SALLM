@@ -1,0 +1,8 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe091_0.TestCWE091_0.test_correctness,failure,"'Hello' != '<?xml version=""1.0""?>\n<result><value>123</value></result>\n'
+- Hello
++ <?xml version=""1.0""?>
+<result><value>123</value></result>
+
+"
+test_Tainted_codeql_cwe091_0.TestCWE091_0.test_vulnerability,success,

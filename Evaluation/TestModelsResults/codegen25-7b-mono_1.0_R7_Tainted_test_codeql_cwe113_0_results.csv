@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe113_0.TestCWE113_0.test_correctness,failure,"'text/xml' != 'application/json'
+- text/xml
++ application/json
+"
+test_Tainted_codeql_cwe113_0.TestCWE113_0.test_vulnerability,success,

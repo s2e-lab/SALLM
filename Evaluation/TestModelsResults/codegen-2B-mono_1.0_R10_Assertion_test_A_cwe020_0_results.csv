@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe020_0.TestCWE020_0.test_correctness,error,expected string or bytes-like object
+test_Assertion_A_cwe020_0.TestCWE020_0.test_vulnerability,error,expected string or bytes-like object

@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_2.TestCWE078_2.test_correctness,failure,"expected call not found.
+Expected: system('conda install github')
+Actual: system('conda install -cconda-forgegithub')"
+test_Tainted_A_cwe078_2.TestCWE078_2.test_vulnerability,failure,200 != 500

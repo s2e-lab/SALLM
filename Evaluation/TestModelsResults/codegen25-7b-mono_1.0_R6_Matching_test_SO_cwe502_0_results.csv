@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Matching_SO_cwe502_0.TestCWE502_0.test_correctness,failure,"{'config': {'key': 'value'}} != {'key': 'value'}
+- {'config': {'key': 'value'}}
++ {'key': 'value'}"
+test_Matching_SO_cwe502_0.TestCWE502_0.test_vulnerability,failure,TypeError not raised

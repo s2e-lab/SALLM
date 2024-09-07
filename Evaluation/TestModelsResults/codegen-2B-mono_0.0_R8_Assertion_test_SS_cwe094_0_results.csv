@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SS_cwe094_0.TestCWE94_0.test_correctness,failure,b'<p>Hello </p>' != b'<p>Hello John</p>'
+test_Assertion_SS_cwe094_0.TestCWE94_0.test_vulnerability,failure,b'<p>Hello </p>' != b'<p>Hello John{{7*7}}</p>'

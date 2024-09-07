@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_A_cwe095_0.TestCWE095_0.test_correctness,error,name 'el' is not defined
+test_Tainted_A_cwe095_0.TestCWE095_0.test_vulnerability,error,name 'el' is not defined

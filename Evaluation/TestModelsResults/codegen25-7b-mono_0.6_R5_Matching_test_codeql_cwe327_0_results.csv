@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Matching_codeql_cwe327_0.TestCWE327_0.test_correctness,failure,False is not true
+test_Matching_codeql_cwe327_0.TestCWE327_0.test_vulnerability,error,name 'generate_fingerprint' is not defined

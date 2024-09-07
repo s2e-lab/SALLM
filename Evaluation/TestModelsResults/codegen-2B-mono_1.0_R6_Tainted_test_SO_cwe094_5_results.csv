@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_SO_cwe094_5.TestCWE094_5.test_correctness,failure,"'{""error"":""Unable to get the value!""}\n' != '42'
+- {""error"":""Unable to get the value!""}
++ 42"
+test_Tainted_SO_cwe094_5.TestCWE094_5.test_vulnerability,success,

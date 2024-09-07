@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe208_0,Compilation error,"expected an indented block after function definition on line 18 (Tainted_codeql_cwe208_0.py, line 19)"

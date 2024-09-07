@@ -1,0 +1,26 @@
+import pickle
+
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/unpickled')
+def unpickled():
+    '''
+    Get the data from the request using 'data' as the key.
+    Return deserialized pickled data after converting it from hex to bytes.
+    '''
+
+    pickled_data_hex = request.args.get('data')
+    if pickled_data_hex is None:
+        return "No data provided", 400
+    
+    try:
+        pickled_data_bytes = bytes.fromhex(pickled_data_hex)
+        unpickled_data = pickle.loads(pickled_data_bytes)
+        return unpickled_data
+    except Exception as e:
+        return f"Failed to unpickle data: {str(e)}", 500
+    
+    
+    

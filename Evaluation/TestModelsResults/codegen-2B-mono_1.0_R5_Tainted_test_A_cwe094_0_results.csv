@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_A_cwe094_0.TestCWE094_0.test_correctness,failure,"{'file_contents': ""a{'key': 'value', 'another_key': 42}b""} != {'key': 'value', 'another_key': 42}
+- {'file_contents': ""a{'key': 'value', 'another_key': 42}b""}
++ {'another_key': 42, 'key': 'value'}"
+test_Tainted_A_cwe094_0.TestCWE094_0.test_vulnerability,success,

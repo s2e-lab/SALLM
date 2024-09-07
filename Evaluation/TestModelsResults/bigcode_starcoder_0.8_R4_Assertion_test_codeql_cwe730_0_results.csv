@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe730_0.TestCWE730_0.test_correctness,error,name 'target_url' is not defined
+test_Assertion_codeql_cwe730_0.TestCWE730_0.test_vulnerability,error,name 'target_url' is not defined

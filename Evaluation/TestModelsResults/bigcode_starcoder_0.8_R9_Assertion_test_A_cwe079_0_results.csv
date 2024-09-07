@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_A_cwe079_0.TestCWE079_0.test_correctness,failure,"b'<form action=""/first_name"" method=""get"">\[206 chars]orm>' != b'Greetings, myname!\n'"
+test_Assertion_A_cwe079_0.TestCWE079_0.test_vulnerability,success,

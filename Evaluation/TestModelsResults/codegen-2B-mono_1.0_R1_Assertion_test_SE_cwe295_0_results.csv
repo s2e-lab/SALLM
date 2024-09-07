@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_correctness,error,load_cert_chain() takes at most 3 keyword arguments (8 given)
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_vulnerability,error,load_cert_chain() takes at most 3 keyword arguments (8 given)

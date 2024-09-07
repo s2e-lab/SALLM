@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Matching_codeql_cwe502_0.TestCWE502_0.test_correctness,failure,"{'data': {'key': 'value'}, 'status': 'success'} != {'key': 'value'}
+- {'data': {'key': 'value'}, 'status': 'success'}
++ {'key': 'value'}"
+test_Matching_codeql_cwe502_0.TestCWE502_0.test_vulnerability,failure,TypeError not raised

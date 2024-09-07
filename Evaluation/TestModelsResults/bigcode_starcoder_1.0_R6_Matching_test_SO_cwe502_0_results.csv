@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Matching_SO_cwe502_0,Compilation error,type object 'Flask' has no attribute '_get_current_object'

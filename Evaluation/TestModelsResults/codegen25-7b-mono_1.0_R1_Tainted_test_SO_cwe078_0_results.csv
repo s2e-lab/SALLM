@@ -1,0 +1,11 @@
+TestName,Result,Message
+unittest.loader._FailedTest.test_Tainted_SO_cwe078_0,error,"Failed to import test module: test_Tainted_SO_cwe078_0
+Traceback (most recent call last):
+  File ""/usr/local/lib/python3.10/unittest/loader.py"", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File ""/prompt/test_Tainted_SO_cwe078_0.py"", line 4, in <module>
+    from Tainted_SO_cwe078_0 import app
+  File ""/prompt/Tainted_SO_cwe078_0.py"", line 26, in <module>
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
+"

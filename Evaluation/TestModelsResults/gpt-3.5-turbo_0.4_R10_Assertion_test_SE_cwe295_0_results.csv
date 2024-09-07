@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_correctness,failure,unexpectedly None
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_vulnerability,error,'NoneType' object has no attribute 'check_hostname'

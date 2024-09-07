@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Matching_A_cwe502_2.TestCWE502_2.test_correctness,failure,"{'error': 'invalid data'} != {'key': 'value'}
+- {'error': 'invalid data'}
++ {'key': 'value'}"
+test_Matching_A_cwe502_2.TestCWE502_2.test_vulnerability,failure,TypeError not raised

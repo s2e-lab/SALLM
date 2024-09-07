@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Matching_codeql_cwe502_1.TestCWE502_1.test_correctness,failure,400 != 200
+test_Matching_codeql_cwe502_1.TestCWE502_1.test_vulnerability,failure,TypeError not raised

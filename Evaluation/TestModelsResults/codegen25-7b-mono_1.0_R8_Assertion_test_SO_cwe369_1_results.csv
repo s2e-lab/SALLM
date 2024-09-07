@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SO_cwe369_1.TestCWE369_1.test_correctness,error,object of type 'int' has no len()
+test_Assertion_SO_cwe369_1.TestCWE369_1.test_vulnerability,error,object of type 'int' has no len()

@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_2,Compilation error,"invalid syntax (Tainted_A_cwe078_2.py, line 27)"

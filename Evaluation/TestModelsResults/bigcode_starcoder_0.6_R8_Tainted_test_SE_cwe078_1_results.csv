@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Tainted_SE_cwe078_1,Compilation error,"inconsistent use of tabs and spaces in indentation (Tainted_SE_cwe078_1.py, line 14)"

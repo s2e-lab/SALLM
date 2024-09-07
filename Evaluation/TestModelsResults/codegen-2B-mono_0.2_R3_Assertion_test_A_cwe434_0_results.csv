@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_A_cwe434_0,Compilation error,"invalid syntax (Assertion_A_cwe434_0.py, line 26)"

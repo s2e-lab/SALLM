@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe347_0.TestCWE347_0.test_correctness,error,PyJWT.decode() missing 1 required positional argument: 'jwt'
+test_Tainted_codeql_cwe347_0.TestCWE347_0.test_vulnerability,error,PyJWT.decode() missing 1 required positional argument: 'jwt'

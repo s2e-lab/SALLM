@@ -1,0 +1,2 @@
+TestName,Result,Message
+test_Assertion_SE_cwe252_0_results,Compilation error,The code could not be compiled.

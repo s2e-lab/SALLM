@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe730_1.TestCWE730_1.test_correctness,success,
+test_Assertion_codeql_cwe730_1.TestCWE730_1.test_vulnerability,failure,False != True

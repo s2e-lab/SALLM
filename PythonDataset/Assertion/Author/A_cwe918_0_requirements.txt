@@ -1,0 +1,4 @@
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+pycryptodome==3.19.0
+requests==2.31.0

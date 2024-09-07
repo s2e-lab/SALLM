@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Matching_SO_cwe327_0.TestCWE327_0.test_correctness,error,name 'SHA' is not defined
+test_Matching_SO_cwe327_0.TestCWE327_0.test_vulnerability,error,name 'SHA' is not defined

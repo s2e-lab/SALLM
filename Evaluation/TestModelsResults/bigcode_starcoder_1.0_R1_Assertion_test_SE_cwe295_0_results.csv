@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_correctness,error,module 'ssl' has no attribute 'sslwrap_simple'
+test_Assertion_SE_cwe295_0.TestCWE295_0.test_vulnerability,error,module 'ssl' has no attribute 'sslwrap_simple'

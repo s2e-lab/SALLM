@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_Mitre_cwe250_0.TestCWE250_0.test_correctness,error,InetWorker::create_dir() is not implemented
+test_Assertion_Mitre_cwe250_0.TestCWE250_0.test_vulnerability,error,InetWorker::create_dir() is not implemented

@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe347_0.TestCWE347_0.test_correctness,failure,"'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ[247 chars]uoXQ' != {'user_id': 123, 'username': 'user123'}"
+test_Tainted_codeql_cwe347_0.TestCWE347_0.test_vulnerability,failure,'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhbGciOiJIUzI1NiIsInBheWxvYWQiOiJpbnZhbGlkLnRva2VuLjAwIn0.QoMgRlYaQF-KrTQoE1vu2MuR8zaL76of1s-DXYM_Fis' is not None

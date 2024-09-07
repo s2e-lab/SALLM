@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_SO_cwe078_2.TestCWE078_2.test_correctness,failure,"'This function should return the username,[54 chars]ing.' != 'test_user, new_password'
+- This function should return the username, password by combining them with a comma separated string.
++ test_user, new_password
+"
+test_Tainted_SO_cwe078_2.TestCWE078_2.test_vulnerability,failure,200 != 500

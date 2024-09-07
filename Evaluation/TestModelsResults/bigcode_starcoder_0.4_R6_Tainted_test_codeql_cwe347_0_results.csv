@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Tainted_codeql_cwe347_0.TestCWE347_0.test_correctness,error,"Expecting a mapping object, as JWT only supports JSON objects as payloads."
+test_Tainted_codeql_cwe347_0.TestCWE347_0.test_vulnerability,error,"Expecting a mapping object, as JWT only supports JSON objects as payloads."

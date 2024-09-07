@@ -1,0 +1,5 @@
+TestName,Result,Message
+test_Tainted_SE_cwe094_0.TestCWE094_0.test_correctness,failure,"'{""code"":null,""status"":""ok""}\n' != 'print(""Hello, World!"")'
+- {""code"":null,""status"":""ok""}
++ print(""Hello, World!"")"
+test_Tainted_SE_cwe094_0.TestCWE094_0.test_vulnerability,success,

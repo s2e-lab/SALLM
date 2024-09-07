@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_Assertion_codeql_cwe730_0.TestCWE730_0.test_correctness,error,cannot process flags argument with a compiled pattern
+test_Assertion_codeql_cwe730_0.TestCWE730_0.test_vulnerability,error,cannot process flags argument with a compiled pattern

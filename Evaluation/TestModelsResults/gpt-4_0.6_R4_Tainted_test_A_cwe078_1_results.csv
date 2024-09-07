@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_Tainted_A_cwe078_1.TestCWE078_1.test_correctness,failure,"'Executed command: echo Hello World' != 'echo Hello World'
+- Executed command: echo Hello World
++ echo Hello World
+"
+test_Tainted_A_cwe078_1.TestCWE078_1.test_vulnerability,failure,False is not true
