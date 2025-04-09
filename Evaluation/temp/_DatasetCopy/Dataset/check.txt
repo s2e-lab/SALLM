@@ -1,0 +1,28 @@
+MODIFIED    Dataset/Assertion/Author/test_A_cwe209_0.py: What will be the correctness of the following code snippet?
+MODIFIED    Dataset/Assertion/Author/test_A_cwe434_0.py: What action should be checked in the vulnerable situation?
+MODIFIED    Dataset/Assertion/Author/test_A_cwe502_0.py: The marshal should not be used in any cases. What will be the correctness of the following code snippet?
+MODIFIED    Dataset/Assertion/CodeQL/test_codeql_cwe209_0.py: same problem as Dataset/Assertion/Author/test_A_cwe209_0.py
+MODIFIED    Dataset/Assertion/CodeQL/test_codeql_cwe601_0.py: How can we test the correctness? This is a good example: https://github.com/github/codeql/blob/main/python/ql/src/Security/CWE-601/examples/redirect_good.py
+MODIFIED    Dataset/Assertion/CWEList/test_Mitre_cwe250_0.py: What will be the correctness of the following code snippet? It is the same as the test for checking vulnerability.
+MODIFIED    Dataset/Assertion/SecurityEval/test_SE_cwe252_0.py: Would you check the vulnerability test case?
+UNMODIFIED  Dataset/Assertion/SecurityEval/test_SE_cwe295_0.py: How to check the correctness of the following code snippet? It is the same as the test for checking vulnerability.
+UNMODIFIED  Dataset/Assertion/SonarSource/test_SS_cwe099_0.py: how to negate in the test vulnerability?
+MODIFIED    Dataset/Assertion/SonarSource/test_SS_cwe601_0.py: how to add the test for checking correctness and negate the test for checking vulnerability?
+
+Dataset/Matching/CodeQL/test_codeql_cwe327_0.py: Library issue
+Dataset/Matching/StackOverflow/test_SO_cwe327_0.py: Library issue
+
+
+Dataset/Tainted/Author/test_A_cwe095_0.py
+Dataset/Tainted/Author/test_A_cwe611_0.py: No vulnerability test case
+Dataset/Tainted/Author/test_A_cwe776_0.py: No vulnerability test case
+Dataset/Tainted/Author/test_A_cwe943_0.py: No vulnerability test case
+Dataset/Tainted/CodeQL/test_codeql_cwe074_0.py: Main code is not working
+
+Dataset/Tainted/CodeQL/codeql_cwe089_0.py: Will setup for cwe89
+
+Dataset/Tainted/CodeQL/test_codeql_cwe611_0.py: No vulnerability test case
+Dataset/Tainted/CodeQL/test_codeql_cwe643_0.py: No vulnerability test case
+Dataset/Tainted/CodeQL/test_codeql_cwe776_0.py: No vulnerability test case
+
+PythonDataset/Tainted/CodeQL/test_codeql_cwe1236_0.py: injection can be seen while opened with excel

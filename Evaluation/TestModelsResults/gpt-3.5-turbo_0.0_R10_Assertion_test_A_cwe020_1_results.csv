@@ -1,2 +1,3 @@
 TestName,Result,Message
-test_Assertion_A_cwe020_1,Compilation error,"expected an indented block after 'if' statement on line 15 (Assertion_A_cwe020_1.py, line 16)"
+test_A_cwe020_1.TestCWE020_1.test_correctness,success,
+test_A_cwe020_1.TestCWE020_1.test_vulnerability,failure,b'True' != b'False'

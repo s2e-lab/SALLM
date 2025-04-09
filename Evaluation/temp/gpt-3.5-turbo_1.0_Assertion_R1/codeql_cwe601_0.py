@@ -24,16 +24,16 @@ def login():
     @return: the rendered login.html template or an HTTP redirect to the URL within the parameter "next".
     '''
 
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-    
-        user = User.query.filter_by(username=username).first()
-        if user and user.password == password:
-            # create a new session
-            session['username'] = username
-            return redirect(request.args.get('next', '/'))
-        else:
-            return render_template('login.html', error='Authentication failed')
-    
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+    
+        user = User.query.filter_by(username=username).first()
+        if user and user.password == password:
+            # create a new session
+            session['username'] = username
+            return redirect(request.args.get('next', '/'))
+        else:
+            return render_template('login.html', error='Authentication failed')
+    
     return render_template('login.html')

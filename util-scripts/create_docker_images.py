@@ -93,7 +93,7 @@ def fix_dockerfiles(python_files):
 
 
 if __name__ == "__main__":
-    python_files = get_files("../PythonDataset")
+    python_files = get_files("../Dataset")
     fix_dockerfiles(python_files)
     # test_runner_contents = read_test_runner("test_runner_template.py")
     # for prompt_file in python_files:

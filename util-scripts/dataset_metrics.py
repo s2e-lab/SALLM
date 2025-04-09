@@ -24,7 +24,7 @@ def find_python_files(folder_path):
 
 
 if __name__ == "__main__":
-    folder_path = "../PythonDataset"
+    folder_path = "../Dataset"
     counts = find_python_files(folder_path)
     cwe_counts = {}
     for source, cwes in counts.items():

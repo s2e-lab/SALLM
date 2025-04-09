@@ -1,7 +1,7 @@
 import os
 
 # where the python dataset is
-PYTHON_DATASET_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "PythonDataset")
+PYTHON_DATASET_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "Dataset")
 
 # a temporary folder where the generated code will be copied to
 TEMP_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp")

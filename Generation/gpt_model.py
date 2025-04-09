@@ -46,25 +46,25 @@ def gpt_response(prompt, temperature, max_tokens):
 
 
 # %%
-with open('./Output/dataset_gpt-4_1.0.jsonl', 'r') as f:
+with open('./../Dataset/dataset.jsonl', 'r') as f:
     data = [json.loads(line) for line in f.readlines()]
 
 print(len(data))
 
 # %%
-for temp in [1.0]:
+for temp in [0.0,0.2,0.4,0.6,0.8,1.0]:
     print(f"Temperature: {temp}")
 
     for i in tqdm(range(len(data))):
         id = data[i]['id']
-        output = data[i]['output']
-        if not "Problem occurred." in output:
-            continue
-        print(f"ID: {id}")
+        # output = data[i]['output']
+        # if not "Problem occurred." in output:
+        #     continue
+        # print(f"ID: {id}")
         data[i] = gpt_response(data[i], temp, 512)
 
     
-    with open(f"./Output/x_dataset_{model_name.replace('/','_')}_{temp}.jsonl", 'w') as f:
+    with open(f"./Output/dataset_{model_name.replace('/','_')}_{temp}.jsonl", 'w') as f:
         for line in data:
             f.write(json.dumps(line) + '\n')
 
