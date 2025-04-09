@@ -45,7 +45,8 @@ def create_image(python_file, test_runner_contents):
     with open(os.path.join(parent_dir, dockerfile), 'w') as f:
         f.write(f"FROM python:3.10-slim\n\n")
         f.write(f"WORKDIR /prompt\n\n")
-        f.write(f"COPY $SCRIPT_PATH .\n\n")
+        # f.write(f"COPY $SCRIPT_PATH .\n\n")
+        f.write(f"COPY filename .\n\n")
         f.write(f"COPY test_{filename} .\n\n")
         f.write(f"COPY {requirements} .\n\n")
         f.write(f"RUN pip install --no-cache-dir -r {requirements}\n\n")
@@ -94,7 +95,7 @@ def fix_dockerfiles(python_files):
 
 if __name__ == "__main__":
     python_files = get_files("../Dataset")
-    fix_dockerfiles(python_files)
-    # test_runner_contents = read_test_runner("test_runner_template.py")
-    # for prompt_file in python_files:
-    #     create_image(prompt_file, test_runner_contents)
+    # fix_dockerfiles(python_files)
+    test_runner_contents = read_test_runner("test_runner_template.py")
+    for prompt_file in python_files:
+        create_image(prompt_file, test_runner_contents)
