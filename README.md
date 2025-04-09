@@ -36,17 +36,6 @@ This folder contains the code used to generate the code snippets from the LLMs. 
 - `gpt_model.py`: This file contains the code used to generate the code snippets from the OpenAI models. The code is written in Python and uses the OpenAI API.
 
 ## Evaluation
-### Folders:
-- `CWE_Results`: 
-- CodeQL_Result/
-- Filtered_Output/
-- Results/
-- TestModelsResults/
-- Test_Results/
-- temp/
-
-### Scripts:
-
 
 - `run_tests.py`: python script to run the docker tests for a python code. 
 It can be configured to run the tests for the insecure solution on the Dataset. It can also be used to run the tests for generated code. 
