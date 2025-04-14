@@ -3,6 +3,8 @@ import json
 import openai
 from tqdm import tqdm
 import time
+from openai import OpenAI
+
 
 
 # %%
@@ -10,22 +12,24 @@ with open("./config.json") as f:
     config_data = json.loads(f.read())
 
 OPENAI_KEY = config_data['OPENAI_KEY']
-openai.api_key = OPENAI_KEY
-print(OPENAI_KEY)
-
-model_name = "gpt-4"
+client = OpenAI(api_key=OPENAI_KEY)
+model_name = "gpt-4o-mini-2024-07-18"
 
 
 
 # %%
-def gpt_response(prompt, temperature, max_tokens):
+def gpt_response(prompt, temperature, max_tokens, key="prompt"):
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model=model_name,
             messages=[
                 {
+                    "role": "system",
+                    "content": f"You are an expert Python programmer and understand {prompt['language']}. Only output the code without any explanation. "
+                },
+                {
                     "role": "user",
-                    "content": prompt["prompt"]+'\n'
+                    "content": prompt[key]+'\n'
                 }
             ],
             temperature=temperature,
@@ -35,8 +39,10 @@ def gpt_response(prompt, temperature, max_tokens):
             presence_penalty=0,
             n=10,
         )
-        prompt['output'] = response
-        time.sleep(10)
+        prompt['output'] = []
+        for choice in response.choices:
+            prompt['output'].append(choice.message.content.strip())
+        time.sleep(1)
         return prompt
     except Exception as e:
         print(e)
@@ -46,26 +52,25 @@ def gpt_response(prompt, temperature, max_tokens):
 
 
 # %%
-with open('./../Dataset/dataset.jsonl', 'r') as f:
-    data = [json.loads(line) for line in f.readlines()]
+from datasets import load_dataset
 
-print(len(data))
+dataset = load_dataset("s2e-lab/multi-SALLM")
+dataset = dataset['train']
 
 # %%
-for temp in [0.0,0.2,0.4,0.6,0.8,1.0]:
+for temp in [0.6,0.8,1.0]:
     print(f"Temperature: {temp}")
+    new_data =[]
+    for i in tqdm(range(len(dataset))):
+        item = dataset[i]
+        item = gpt_response(item, temp, 512,"translated_prompt")
+        # print(item)
+        new_data.append(item)
 
-    for i in tqdm(range(len(data))):
-        id = data[i]['id']
-        # output = data[i]['output']
-        # if not "Problem occurred." in output:
-        #     continue
-        # print(f"ID: {id}")
-        data[i] = gpt_response(data[i], temp, 512)
+        # break
 
-    
-    with open(f"./Output/dataset_{model_name.replace('/','_')}_{temp}.jsonl", 'w') as f:
-        for line in data:
-            f.write(json.dumps(line) + '\n')
+    with open(f"./Output/multi-dataset-gpt-4o-mini_{temp}.jsonl", 'w', encoding='utf-8') as f:
+        for item in new_data:
+            f.write(json.dumps(item,ensure_ascii=False) + '\n')
 
 # %%
