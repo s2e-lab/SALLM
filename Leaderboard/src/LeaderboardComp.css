@@ -1,0 +1,88 @@
+  agGridMaxWidth {
+      width: 100% !important;
+      /* Adjust this value based on your preference */
+      margin: auto;
+      overflow: auto !important;
+      /* This centers the grid horizontally */
+  }
+
+  .ag-root-wrapper {
+      width: 100% !important;
+      /* max-width: 750px; */
+      margin: auto;
+  }
+
+  .ag-theme-quartz {
+      width: 100% !important;
+      margin: auto;
+      overflow: auto !important;
+  }
+
+
+  .ag-theme-quartz .ag-cell {
+      font-size: 17px !important;
+      /* align-items: center; */
+      /* width: 100% !important;
+      margin: auto; */
+  }
+
+  .ag-theme-quartz .ag-header-cell-label {
+      font-size: 19px !important;
+      /* align-items: center; */
+      /* width: 100% !important;
+      margin: auto; */
+  }
+
+  #flexGridWrapper {
+      width: 100% !important;
+      margin: auto;
+      /* max-width: 760px; */
+
+  }
+
+  .MuiSlider-markLabel {
+      display: none;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+      agGridMaxWidth {
+          width: 100% !important;
+          /* max-width: 750px; */
+          /* Adjust this value based on your preference */
+          margin: auto !important;
+          /* This centers the grid horizontally */
+      }
+
+      .ag-root-wrapper {
+          width: 100% !important;
+          /* max-width: 750px; */
+          margin: auto;
+      }
+
+      .ag-theme-quartz {
+          width: 100% !important;
+          margin: auto;
+      }
+
+      .ag-theme-quartz .ag-cell {
+          font-size: 12px !important;
+          /* align-items: center; */
+          /* width: 100% !important;
+          margin: auto; */
+      }
+
+      .ag-theme-quartz .ag-header-cell-label {
+          font-size: 14px !important;
+          /* align-items: center; */
+          /* width: 100% !important;
+          margin: auto; */
+      }
+
+      #flexGridWrapper {
+          width: 100% !important;
+          margin: auto;
+          /* max-width: 760px; */
+
+      }
+  }

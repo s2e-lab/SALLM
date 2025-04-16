@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+.leaderboardModelLink {
+  /* color: var(--ag-data-color); */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* .leaderboardModelLink:hover {
+  color: var(--ag-data-color);
+  opacity: 0.5;
+} */
+
+.leaderboardModelContaminated {
+  background-color: rgba(227, 178, 178, 0.3);
+  /* backdrop-filter: blur(6px); */
+  color: transparent;
+  text-shadow: 0 0 0.05px #000;
+}
