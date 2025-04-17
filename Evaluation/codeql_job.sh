@@ -40,5 +40,5 @@ codeql database analyze "/tmp/msiddiq3/CodeQL_Database/gpt-4_0.8" /afs/crc.nd.ed
 codeql database analyze "/tmp/msiddiq3/CodeQL_Database/gpt-4_0.8" /afs/crc.nd.edu/user/m/msiddiq3/Public/codeql-home/codeql-repo/python/ql/src/Security/CWE-943 --format=csv --output="../../CodeQL_Result/gpt-4_0.8/results_cwe_943.csv"
 
 
-rm -rf Dataset/gpt-4_0.8
+rm -rf ./Dataset/gpt-4_0.8
 # mkdir Dataset

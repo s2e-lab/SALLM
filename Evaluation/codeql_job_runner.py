@@ -27,14 +27,12 @@ def check_tests(path):
 
 # %%
 for file in jsonl_files:
-    if not 'Salesforce_codegen-2B-mono' in file:
-        continue
-    if not 'new' in file:
+    if not 'multi' in file:
         continue
     with open('./Filtered_Output/' + file, 'r') as f:
         data = [json.loads(line) for line in f.readlines()]
 
-    model_name = '_'.join(file.split('.jsonl')[0].split('_')[1:])
+    model_name = file.split('.jsonl')[0].split('_')[0]
     print(model_name)
     for i in range(len(data)):
         id = data[i]['id']
@@ -85,7 +83,7 @@ for file in jsonl_files:
     with open(f'codeql_job_{model_name}.sh', 'w') as f:
         f.write(codeql_command)
 
-    subprocess.check_output(['bash', f'codeql_job_{model_name}.sh'])
+    # subprocess.check_output(['bash', f'codeql_job_{model_name}.sh'])
 
 
 

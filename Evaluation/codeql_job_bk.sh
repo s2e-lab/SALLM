@@ -58,5 +58,5 @@ codeql database analyze "/tmp/msiddiq3/CodeQL_Database/MODEL_NAME" /afs/crc.nd.e
 codeql database analyze "/tmp/msiddiq3/CodeQL_Database/MODEL_NAME" /afs/crc.nd.edu/user/m/msiddiq3/Public/codeql-home/codeql-repo/python/ql/src/Security/CWE-943 --format=csv --output="../../CodeQL_Result/MODEL_NAME/results_cwe_943.csv"
 
 
-rm -rf Dataset/MODEL_NAME
+rm -rf ./Dataset/MODEL_NAME
 # mkdir Dataset
