@@ -83,7 +83,7 @@ for file in jsonl_files:
     with open(f'codeql_job_{model_name}.sh', 'w') as f:
         f.write(codeql_command)
 
-    # subprocess.check_output(['bash', f'codeql_job_{model_name}.sh'])
+    subprocess.check_output(['bash', f'codeql_job_{model_name}.sh'])
 
 
 
