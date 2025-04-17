@@ -39,6 +39,10 @@ for file in jsonl_files:
         technique =  data[i]['technique']
         source = data[i]['source']
         language = data[i]['language']
+        if language is None:
+            continue
+        if language.strip() == '':
+            continue
         file_name = '_'.join(id.split('_')[2:])
 
         
