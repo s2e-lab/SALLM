@@ -32,7 +32,7 @@ for file in jsonl_files:
     with open('./Filtered_Output/' + file, 'r') as f:
         data = [json.loads(line) for line in f.readlines()]
 
-    model_name = file.split('.jsonl')[0].split('_')[0]
+    model_name = file.split('.jsonl')[0]
     print(model_name)
     for i in range(len(data)):
         id = data[i]['id']
