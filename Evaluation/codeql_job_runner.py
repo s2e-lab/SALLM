@@ -38,6 +38,7 @@ for file in jsonl_files:
         id = data[i]['id']
         technique =  data[i]['technique']
         source = data[i]['source']
+        language = data[i]['language']
         file_name = '_'.join(id.split('_')[2:])
 
         
@@ -70,7 +71,7 @@ for file in jsonl_files:
             #         os.remove(f'./Dataset/{technique}/{source}/test_{file_name}')
 
             # else:
-            current_file_name = file_name.replace('.py', f'_{j}.py')
+            current_file_name = file_name.replace('.py', f'_{j}_{language}.py')
             with open(f'./Dataset/{model_name}/{technique}/{source}/{current_file_name}', 'w') as f:
                     f.write(code)
 
