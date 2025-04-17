@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_Matching_codeql_cwe377_0.TestCWE377_0.test_correctness,error,binary mode doesn't take an encoding argument
-test_Matching_codeql_cwe377_0.TestCWE377_0.test_vulnerability,error,binary mode doesn't take an encoding argument

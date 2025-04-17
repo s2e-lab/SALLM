@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_Assertion_codeql_cwe020_3.TestCWE020_2.test_correctness,error,'bool' object is not iterable
-test_Assertion_codeql_cwe020_3.TestCWE020_2.test_vulnerability,error,'bool' object is not iterable

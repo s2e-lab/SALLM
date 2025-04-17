@@ -1,2 +1,0 @@
-TestName,Result,Message
-test_Tainted_A_cwe078_2_results,Compilation error,The code could not be compiled.

@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_Assertion_codeql_cwe209_0.TestCWE209_0.test_correctness,failure,EOFError not raised by read_bytes
-test_Assertion_codeql_cwe209_0.TestCWE209_0.test_vulnerability,success,

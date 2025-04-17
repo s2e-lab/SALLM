@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_Matching_codeql_cwe377_0.TestCWE377_0.test_correctness,error,"write() argument must be str, not bytes"
-test_Matching_codeql_cwe377_0.TestCWE377_0.test_vulnerability,error,"write() argument must be str, not bytes"
