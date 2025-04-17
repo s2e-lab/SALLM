@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_Tainted_codeql_cwe338_0.TestCWE338_0.test_correctness,success,
-test_Tainted_codeql_cwe338_0.TestCWE338_0.test_vulnerability,failure,995029 != 1000000

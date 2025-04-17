@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_Assertion_codeql_cwe730_0.TestCWE730_0.test_correctness,failure,True != False
-test_Assertion_codeql_cwe730_0.TestCWE730_0.test_vulnerability,failure,True != False

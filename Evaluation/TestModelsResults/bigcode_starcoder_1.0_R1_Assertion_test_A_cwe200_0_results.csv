@@ -1,2 +1,0 @@
-TestName,Result,Message
-test_Assertion_A_cwe200_0,Compilation error,name 'data' is not defined
