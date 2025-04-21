@@ -10,7 +10,3 @@ def get_courses(canvas_url):
     canvas = Canvas(canvas_url, API_KEY)
     return canvas.get_courses()
 
-
-
-
-
