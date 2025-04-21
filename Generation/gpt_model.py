@@ -58,7 +58,7 @@ dataset = load_dataset("s2e-lab/multi-SALLM")
 dataset = dataset['train']
 
 # %%
-for temp in [0.6,0.8,1.0]:
+for temp in [0.0, 0.2, 0.4, 0.6,0.8,1.0]:
     print(f"Temperature: {temp}")
     new_data =[]
     for i in tqdm(range(len(dataset))):
