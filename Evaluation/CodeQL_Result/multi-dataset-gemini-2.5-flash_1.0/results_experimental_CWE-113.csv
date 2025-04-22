@@ -1,0 +1,1 @@
+"HTTP Header Injection","User input should not be used in HTTP headers, otherwise a malicious user may be able to inject a value that could manipulate the response.","error","This HTTP header is constructed from a [[""user-provided value""|""relative:///Tainted/CodeQL/codeql_cwe113_0_7_Spanish.py:12:33:12:39""]].","/Tainted/CodeQL/codeql_cwe113_0_7_Spanish.py","24","40","24","51"
