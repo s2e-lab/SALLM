@@ -20,9 +20,6 @@ model_name = "Qwen/Qwen2.5-Coder-0.5B"
 generator = pipeline("text-generation", model = model_name,  trust_remote_code=True)
 
 # %%
-generator("def hello():", max_new_tokens = 28)
-
-# %%
 def model_response(generator, prompt, temperature, max_tokens, key="prompt"):
     if temperature == 0.0:
         temperature = 1e-5

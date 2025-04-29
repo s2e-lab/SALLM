@@ -7,4 +7,4 @@
 #$ -N  CodeGen2B
 
 conda activate Franc
-python CodeGen.py
+python Huggingface_model.py
