@@ -49,7 +49,7 @@ def get_output(model_name, data):
     :param data: current JSON line
     :return: a list of outputs
     """
-    if "gpt-4" in model_name or "gpt-3.5" in model_name:
+    if any(ver in model_name for ver in ["gpt-4", "gpt-3.5"]) and "gpt-4o" not in model_name:
         return data["output"]["choices"]
     return data["output"]
 
@@ -64,18 +64,23 @@ def save_generated_code(jsonl_folder_path, temp_folder_path):
     # Get list of all files in the directory
     files = os.listdir(jsonl_folder_path)
     jsonl_files = [os.path.join(jsonl_folder_path, file) for file in files if
-                   file.endswith('.jsonl')]
-
+                   (file.endswith('.jsonl') and "multi" in file)]
+                   
     for jsonl_file in jsonl_files:
         with open(jsonl_file, 'r') as f:
             model_id = os.path.basename(jsonl_file).split('.jsonl')[0].split('_')[1:]
             temperature = model_id[-1]
+            print(f"Processing {model_id}...")
+            print(f"Temperature: {temperature}")
             model_name = '_'.join(model_id[:-1]).replace("Salesforce_", "")
+            print(f"Processing {model_name} with temperature {temperature}...")
             for d in [json.loads(line) for line in f.readlines()]:
                 output_id = d['id']
                 technique = d['technique']
                 source = d['source']
                 file_name = '_'.join(output_id.split('_')[2:])
+                language = d["language"] if "language" in d else ""
+                
 
                 output_idx = 0
                 for output in get_output(model_name, d):
@@ -85,7 +90,7 @@ def save_generated_code(jsonl_folder_path, temp_folder_path):
                     # create a temporary file to write the cleared code on a temporary folder
                     temp_file = os.path.join(os.getcwd(),
                                              temp_folder_path,
-                                             f"{model_name}_{temperature}_{technique}_R{output_idx}",
+                                             f"{model_name}_{temperature}_{technique}_{language}_R{output_idx}",
                                              file_name)
                     temp_folder = os.path.dirname(temp_file)
                     if not os.path.exists(temp_folder): os.makedirs(temp_folder)

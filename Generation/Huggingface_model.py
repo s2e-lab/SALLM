@@ -65,7 +65,7 @@ for temp in [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]:
 
         new_data.append(item)
 
-    with open(f"./Output/multi-dataset-Qwen_{temp}.jsonl", 'w', encoding='utf-8') as f:
+    with open(f"./Output/multi-dataset_Qwen_{temp}.jsonl", 'w', encoding='utf-8') as f:
         for item in new_data:
             f.write(json.dumps(item,ensure_ascii=False) + '\n')
 
