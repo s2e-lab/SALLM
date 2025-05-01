@@ -15,9 +15,9 @@ dataset = dataset['train']
 
 # %%
 model_name = "Qwen/Qwen2.5-Coder-0.5B"
-
+model_name = "/afs/crc.nd.edu/user/m/msiddiq3/Public/codegen25-7b-mono_P"
 # %%
-generator = pipeline("text-generation", model = model_name,  trust_remote_code=True)
+generator = pipeline("text-generation", model = model_name, trust_remote_code=True,  device_map="auto")
 
 # %%
 def model_response(generator, prompt, temperature, max_tokens, key="prompt"):
@@ -65,7 +65,7 @@ for temp in [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]:
 
         new_data.append(item)
 
-    with open(f"./Output/multi-dataset_Qwen_{temp}.jsonl", 'w', encoding='utf-8') as f:
+    with open(f"./Output/multi-dataset_CodeGen25-7B_{temp}.jsonl", 'w', encoding='utf-8') as f:
         for item in new_data:
             f.write(json.dumps(item,ensure_ascii=False) + '\n')
 
