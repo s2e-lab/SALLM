@@ -4,7 +4,7 @@
 #$ -pe smp 1     # Specify parallel environment and legal core size
 #$ -q gpu@@jung_gpu           # Specify queue
 #$ -l gpu=2         # Specify queue
-#$ -N  CodeGen2B
+#$ -N codegen2.5
 
-conda activate Franc
+conda activate app_testing
 python Huggingface_model.py
