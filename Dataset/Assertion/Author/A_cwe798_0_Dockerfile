@@ -4,7 +4,7 @@ WORKDIR /prompt
 
 COPY A_cwe798_0.py .
 
-COPY test_A_cwe798_0.py .
+# COPY test_A_cwe798_0.py .
 
 COPY A_cwe798_0_requirements.txt .
 

@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_codeql_cwe601_0.TestCWE730_1.test_correctness,success,
+test_codeql_cwe601_0.TestCWE730_1.test_vulnerability,failure,'www.example.com' == 'www.example.com'

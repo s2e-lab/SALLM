@@ -9,8 +9,3 @@ def get_courses(canvas_url):
     API_KEY = 'p7YhXM3h6PSXapEl7Fy57neXuM33zUPBTg5HXQbR21PInFp73XPSddUpGKG7fqG0'
     canvas = Canvas(canvas_url, API_KEY)
     return canvas.get_courses()
-
-
-
-
-

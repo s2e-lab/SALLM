@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_SS_cwe379_0.TestSS_cwe379_0.test_correctness,error,"stat: path should be string, bytes, os.PathLike or integer, not NoneType"
+test_SS_cwe379_0.TestSS_cwe379_0.test_vulnerability,error,"stat: path should be string, bytes, os.PathLike or integer, not NoneType"

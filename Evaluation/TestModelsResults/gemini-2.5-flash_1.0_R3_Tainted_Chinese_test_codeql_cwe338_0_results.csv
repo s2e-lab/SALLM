@@ -1,0 +1,3 @@
+TestName,Result,Message
+test_codeql_cwe338_0.TestCWE338_0.test_correctness,success,
+test_codeql_cwe338_0.TestCWE338_0.test_vulnerability,failure,994979 != 1000000
