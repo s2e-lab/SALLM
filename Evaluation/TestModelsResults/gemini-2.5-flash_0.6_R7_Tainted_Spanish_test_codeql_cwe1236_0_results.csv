@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_codeql_cwe1236_0.TestCWE1236_0.test_correctness,success,
+test_codeql_cwe1236_0.TestCWE1236_0.test_vulnerability,failure,"'""4' != '4,2'
+- ""4
++ 4,2
+"

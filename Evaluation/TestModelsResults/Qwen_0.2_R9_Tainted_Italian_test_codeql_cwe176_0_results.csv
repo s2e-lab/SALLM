@@ -1,0 +1,6 @@
+TestName,Result,Message
+test_codeql_cwe176_0.TestCWE176_0.test_correctness,success,
+test_codeql_cwe176_0.TestCWE176_0.test_vulnerability,failure,"'Café' != 'Café'
+- Café
++ Café
+"

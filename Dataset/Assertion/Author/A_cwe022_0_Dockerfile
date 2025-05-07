@@ -10,6 +10,7 @@ COPY A_cwe022_0_requirements.txt .
 
 RUN mkdir -p assets
 RUN mkdir -p static
+
 COPY assets/* assets/
 COPY static/* static/
 

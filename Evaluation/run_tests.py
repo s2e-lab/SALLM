@@ -13,8 +13,8 @@ from config import PYTHON_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MOD
 from tqdm import tqdm
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
-DEBUG = True  # if enabled, it will print the output of the Docker commands to stdout
-RUN_SEQUENTIAL = True  # if enabled, it will run the tests sequentially
+DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
+RUN_SEQUENTIAL = False  # if enabled, it will run the tests sequentially
 # if true, it will test the LLM-generated code; otherwise, it runs the tests on the dataset's insecure code
 RUN_TESTS_ON_GENERATED_CODE = True
 # ========================== END OF FLAGS ===========================
@@ -37,7 +37,7 @@ def get_python_files(path):
         for file in files:
             if file.endswith(".py") and '_cwe' in file and 'test_' not in file:
                 python_files.append(os.path.join(root, file))
-
+    print(f"Found {len(python_files)} Python files in {path}.")
     return python_files
 
 
@@ -64,16 +64,16 @@ def save_generated_code(jsonl_folder_path, temp_folder_path):
     # Get list of all files in the directory
     files = os.listdir(jsonl_folder_path)
     jsonl_files = [os.path.join(jsonl_folder_path, file) for file in files if
-                   (file.endswith('.jsonl') and "multi" in file)]
-                   
+                   (file.endswith('.jsonl') and "multi-dataset_Qwen" in file)]
+    
+    print(f"Found {len(jsonl_files)} JSONL files in {jsonl_folder_path}.")
+
     for jsonl_file in jsonl_files:
-        with open(jsonl_file, 'r') as f:
+        with open(jsonl_file, 'r', encoding="utf-8", errors="ignore") as f:
             model_id = os.path.basename(jsonl_file).split('.jsonl')[0].split('_')[1:]
             temperature = model_id[-1]
-            print(f"Processing {model_id}...")
-            print(f"Temperature: {temperature}")
+
             model_name = '_'.join(model_id[:-1]).replace("Salesforce_", "")
-            print(f"Processing {model_name} with temperature {temperature}...")
             for d in [json.loads(line) for line in f.readlines()]:
                 output_id = d['id']
                 technique = d['technique']
@@ -140,20 +140,55 @@ def process_python_file(python_file):
     parent_dir = os.path.dirname(python_file)
     test_file_results = f'test_{filename}_results.csv'
 
-    if os.path.abspath(PYTHON_DATASET_PATH) in os.path.abspath(python_file):
-        model, temperature, technique, index = "Insecure", "Code", parent_dir.split(os.sep)[-2], "X"
-        output_folder = os.path.join(TEST_RESULTS,f"{technique}_{test_file_results}")
-    else:
-        model, temperature, technique, index = os.path.split(parent_dir)[1].rsplit("_", 3)
-        output_folder = os.path.join(TEST_MODEL_RESULTS, f"{model}_{temperature}_{index}_{technique}_{test_file_results}")
+    # print(f"Processing {python_file}...")
+    # print(f"\tParent dir: {parent_dir}")
+    # print(f"\tFilename: {filename}")
+    # print(f"\tTest file results: {test_file_results}")
 
+    if os.path.abspath(PYTHON_DATASET_PATH) in os.path.abspath(python_file):
+        basename = os.path.split(parent_dir)[1]
+        parts = basename.rsplit("_", 4)
+        parts = [None] * (5 - len(parts)) + parts  # pad missing entries
+
+        model, temperature, technique, language, index = parts
+
+        # Fallbacks if needed
+        model = model or "Insecure"
+        temperature = temperature or "Code"
+        output_folder = os.path.join(TEST_RESULTS,f"{technique}_{test_file_results}")
+        
+
+    else:
+        basename = os.path.split(parent_dir)[1]
+        parts = basename.rsplit("_", 4)  # Try to split into up to 5 parts
+
+        if len(parts) == 5:
+            model, temperature, technique, language, index = parts
+        elif len(parts) == 4:
+            model, temperature, technique, index = parts
+            language = ""
+        output_folder = os.path.join(TEST_MODEL_RESULTS, f"{model}_{temperature}_{index}_{technique}_{language}_{test_file_results}")
+
+    if os.path.exists(output_folder):
+        return
+
+    print(f"Output folder: {output_folder}")
+
+    # print(f"\tOutput folder: {output_folder}")
+    # print(f"\tModel: {model}")
+    # print(f"\tTemperature: {temperature}")
+    # print(f"\tTechnique: {technique}")
+    # print(f"\tIndex: {index}")
+    # print(f"\tLanguage: {language}")
+
+    # exit(0)  # TODO: remove this line, used for debugging only!
 
 
 
     docker_file = f'{filename}_Dockerfile'
     source = get_source(filename)
     docker_file_dir = os.path.abspath(os.path.join(PYTHON_DATASET_PATH, technique, source))
-    docker_image_id = f"{model}_{temperature}_{index}_{technique}_{filename}".lower()
+    docker_image_id = f"{model}_{temperature}_{index}_{technique}_{language}_{filename}".lower()
     docker_file = os.path.join(docker_file_dir, docker_file)
     # each command is a tuple: (command, working directory to execute the command)
     commands = [
@@ -180,7 +215,7 @@ def process_python_file(python_file):
     ]
 
     # TODO: remove line below, used for debugging only!
-    # if 'cwe020' not in filename or temperature != '0.0' or 'gpt-3.5' not in docker_image_id: return
+    # if 'cwe020' not in filename or temperature != '0.0' or 'gemini' not in docker_image_id: return
 
 
     try:
@@ -202,7 +237,7 @@ def process_python_file(python_file):
             pass
 
 
-def  run_tests(code_folder):
+def run_tests(code_folder):
     """
     Run all the tests in the specified folder.
     :param code_folder: where the generated code was saved
