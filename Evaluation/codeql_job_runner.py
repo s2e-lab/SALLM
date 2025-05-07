@@ -27,7 +27,7 @@ def check_tests(path):
 
 # %%
 for file in jsonl_files:
-    if not 'multi-dataset_gpt' in file:
+    if not 'multi-dataset_Qwen' in file:
         continue
     with open('./Filtered_Output/' + file, 'r') as f:
         data = [json.loads(line) for line in f.readlines()]
