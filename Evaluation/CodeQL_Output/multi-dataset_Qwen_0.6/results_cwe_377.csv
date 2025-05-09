@@ -1,0 +1,3 @@
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/Author/A_cwe377_0_8_Greek.py","13","8","13","24"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/Author/A_cwe377_0_8_Turkish.py","16","15","16","37"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/CodeQL/codeql_cwe377_0_4_Italian.py","24","24","24","53"

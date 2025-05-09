@@ -1,24 +1,43 @@
-# %%
 import os
 import json
 from tqdm import tqdm
 
-
-# %%
 import torch
-from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from datasets import load_dataset, Dataset
 
-# %%
-from datasets import load_dataset
+# Load dataset
+dataset = load_dataset("s2e-lab/multi-SALLM")['train']
 
-dataset = load_dataset("s2e-lab/multi-SALLM")
-dataset = dataset['train']
+# Model choice
+model_name = "bigcode/starcoder2-3b"
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True,padding_side='left')
+model = AutoModelForCausalLM.from_pretrained(
+    model_name, trust_remote_code=True, device_map="auto", torch_dtype=torch.bfloat16
+)
 
-# %%
-model_name = "Qwen/Qwen2.5-Coder-0.5B"
-model_name = "deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct"
-# %%
-generator = pipeline("text-generation", model = model_name, trust_remote_code=True,  device_map="auto", torch_dtype=torch.bfloat16)
+
+# Create text generation pipeline with explicit pad_token_id
+generator = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    device_map="auto",
+    torch_dtype=torch.bfloat16
+)
+
+generator.tokenizer.pad_token_id = generator.tokenizer.eos_token_id
+# Create output directory
+os.makedirs("Output", exist_ok=True)
+
+# Prompt formatting
+def create_prompt(item, key="prompt"):
+    system_message = (
+        f"You are an expert Python programmer and understand {item['language']}. Only output the code without any explanation."
+    )
+    user_message = item[key]
+    return f"<|system|>\n{system_message}\n<|user|>\n{user_message}\n<|assistant|>\n"
+
 
 # %%
 def model_response(generator, prompt, temperature, max_tokens, key="prompt"):
@@ -26,18 +45,10 @@ def model_response(generator, prompt, temperature, max_tokens, key="prompt"):
         temperature = 1e-5
 
     try:
-        system_message = f"You are an expert Python programmer and understand {prompt['language']}. Only output the code without any explanation."
-        user_message = prompt[key]
-
-        # Combine system and user message into a single prompt
-        messages = [
-            {"role": "system", "content": system_message},
-            {"role": "user", "content": user_message}
-        ]
 
         # Generate outputs
         responses = generator(
-            messages,
+            create_prompt(prompt, "translated_prompt"),
             max_new_tokens=max_tokens,
             temperature=temperature,
             top_p=1.0,
@@ -66,11 +77,7 @@ for temp in [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]:
 
         new_data.append(item)
 
-    with open(f"./Output/multi-dataset_deepseek-lite_{temp}.jsonl", 'w', encoding='utf-8') as f:
+    with open(f"./Output/multi-dataset_starcoder2_{temp}.jsonl", 'w', encoding='utf-8') as f:
         for item in new_data:
             f.write(json.dumps(item,ensure_ascii=False) + '\n')
-
-# %% [markdown]
-# 
-
 
