@@ -58,8 +58,9 @@ def model_response(generator, prompt, temperature, max_tokens, key="prompt"):
 
         prompt['output'] = []
         for resp in responses:
-          if 'generated_text' in resp and len(resp['generated_text']) == 3:
-            prompt['output'].append(resp['generated_text'][2]['content'].strip())
+            prompt['output'].append(resp['generated_text'])
+        #   if 'generated_text' in resp and len(resp['generated_text']) == 3:
+        #     prompt['output'].append(resp['generated_text'][2]['content'].strip())
 
         return prompt
 
@@ -70,7 +71,7 @@ def model_response(generator, prompt, temperature, max_tokens, key="prompt"):
 
 # %%
 for temp in [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]:
-    print("Temperature: {temp}")
+    print(f"Temperature: {temp}")
     new_data = []
     for item in tqdm(dataset):
         item = model_response(generator, item, temp, 512, "translated_prompt")
