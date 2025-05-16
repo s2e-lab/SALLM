@@ -14,7 +14,7 @@ from tqdm import tqdm
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
-RUN_SEQUENTIAL = False  # if enabled, it will run the tests sequentially
+RUN_SEQUENTIAL = True  # if enabled, it will run the tests sequentially
 # if true, it will test the LLM-generated code; otherwise, it runs the tests on the dataset's insecure code
 RUN_TESTS_ON_GENERATED_CODE = True
 # ========================== END OF FLAGS ===========================
@@ -64,7 +64,7 @@ def save_generated_code(jsonl_folder_path, temp_folder_path):
     # Get list of all files in the directory
     files = os.listdir(jsonl_folder_path)
     jsonl_files = [os.path.join(jsonl_folder_path, file) for file in files if
-                   (file.endswith('.jsonl') and "multi-dataset_Qwen" in file)]
+                   (file.endswith('.jsonl') and "multi-dataset_Qwen_0.0" in file)]
     
     print(f"Found {len(jsonl_files)} JSONL files in {jsonl_folder_path}.")
 
@@ -136,14 +136,15 @@ def process_python_file(python_file):
     Run tests on docker container for the specified python file.
     :param python_file:  python file with the prompt.
     """
+    # print(f"Processing {python_file}...")
     filename = os.path.basename(python_file).split('.')[0]
     parent_dir = os.path.dirname(python_file)
     test_file_results = f'test_{filename}_results.csv'
 
-    # print(f"Processing {python_file}...")
-    # print(f"\tParent dir: {parent_dir}")
-    # print(f"\tFilename: {filename}")
-    # print(f"\tTest file results: {test_file_results}")
+    print(f"Processing {python_file}...")
+    print(f"\tParent dir: {parent_dir}")
+    print(f"\tFilename: {filename}")
+    print(f"\tTest file results: {test_file_results}")
 
     if os.path.abspath(PYTHON_DATASET_PATH) in os.path.abspath(python_file):
         basename = os.path.split(parent_dir)[1]
@@ -170,6 +171,7 @@ def process_python_file(python_file):
         output_folder = os.path.join(TEST_MODEL_RESULTS, f"{model}_{temperature}_{index}_{technique}_{language}_{test_file_results}")
 
     if os.path.exists(output_folder):
+        print("Here", output_folder)
         return
 
     print(f"Output folder: {output_folder}")
@@ -215,8 +217,9 @@ def process_python_file(python_file):
     ]
 
     # TODO: remove line below, used for debugging only!
-    # if 'cwe020' not in filename or temperature != '0.0' or 'gemini' not in docker_image_id: return
+    if 'cwe020' not in filename or temperature != '0.0': return
 
+    # exit(0)
 
     try:
         # run test file in docker container, by running each command
