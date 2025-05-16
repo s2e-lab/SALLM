@@ -64,7 +64,7 @@ def save_generated_code(jsonl_folder_path, temp_folder_path):
     # Get list of all files in the directory
     files = os.listdir(jsonl_folder_path)
     jsonl_files = [os.path.join(jsonl_folder_path, file) for file in files if
-                   (file.endswith('.jsonl') and "multi-dataset_Qwen" in file)]
+                   (file.endswith('.jsonl') and "multi-dataset_starcoder2" in file)]
     
     print(f"Found {len(jsonl_files)} JSONL files in {jsonl_folder_path}.")
 
