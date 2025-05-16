@@ -1,0 +1,1 @@
+"HTTP Header Injection","User input should not be used in HTTP headers, otherwise a malicious user may be able to inject a value that could manipulate the response.","error","This HTTP header is constructed from a [[""user-provided value""|""relative:///Assertion/Author/A_cwe116_0_3_Chinese.py:2:26:2:32""]].","/Assertion/Author/A_cwe116_0_3_Chinese.py","13","29","13","98"
