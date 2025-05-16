@@ -12,6 +12,7 @@ To get these test results, we first ran the run_tests.py script and set the fold
 
 import csv
 import os
+import json
 
 
 def get_csv_files(path):
@@ -90,13 +91,12 @@ def check_test_class_name(results):
         class_name = test_id.split('.')[-2]
         if not filename.endswith(class_name.replace("Test","").lower()):
             return False
-
     return True
 
 
 if __name__ == '__main__':
     problematic_tests = dict()
-    file_results = get_csv_files("TestResults")
+    file_results = get_csv_files("./TestModelsResults")
     for file in file_results:
         results = parse_test_results(file)
         problematic_tests[file] = []
@@ -109,7 +109,13 @@ if __name__ == '__main__':
         # if not check_test_class_name(results):
         #     problematic_tests[file].append((file, "Incorrect test class name"))
 
+        if len(problematic_tests[file]) == 0:
+            del problematic_tests[file]
+
 
     for file, msgs in problematic_tests.items():
         if msgs:
             print(f"{os.path.basename(file)}\t{','.join([x[1] for x in msgs])}")
+
+    with open("problematic_tests.json", "w") as f:
+        json.dump(problematic_tests, f, indent=4)
