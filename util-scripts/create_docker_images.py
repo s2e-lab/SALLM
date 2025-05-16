@@ -45,8 +45,8 @@ def create_image(python_file, test_runner_contents):
     with open(os.path.join(parent_dir, dockerfile), 'w') as f:
         f.write(f"FROM python:3.10-slim\n\n")
         f.write(f"WORKDIR /prompt\n\n")
-        # f.write(f"COPY $SCRIPT_PATH .\n\n")
-        f.write(f"COPY filename .\n\n")
+        f.write(f"ARG SCRIPT_PATH\nCOPY $SCRIPT_PATH .\n\n")
+        # f.write(f"COPY filename .\n\n")
         f.write(f"COPY test_{filename} .\n\n")
         f.write(f"COPY {requirements} .\n\n")
         f.write(f"RUN pip install --no-cache-dir -r {requirements}\n\n")
