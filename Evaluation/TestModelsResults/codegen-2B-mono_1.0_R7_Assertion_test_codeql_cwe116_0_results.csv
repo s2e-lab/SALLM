@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_Assertion_codeql_cwe116_0.TestCWE116_0.test_correctness,failure,"('>alert(1)</script>', '<script>alert(1)'[83 chars]pt>') != ''"
-test_Assertion_codeql_cwe116_0.TestCWE116_0.test_vulnerability,success,

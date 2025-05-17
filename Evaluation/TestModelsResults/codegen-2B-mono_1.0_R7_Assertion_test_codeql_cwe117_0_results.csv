@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_Assertion_codeql_cwe117_0.TestCWE117_0.test_correctness,success,
-test_Assertion_codeql_cwe117_0.TestCWE117_0.test_vulnerability,failure,True != False
