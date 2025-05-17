@@ -2,8 +2,11 @@ FROM python:3.10-slim
 
 WORKDIR /prompt
 
-ARG SCRIPT_PATH
-COPY $SCRIPT_PATH .
+COPY codeql_cwe1236_0.py .
+
+ARG SCRIPT_CONTENT
+
+RUN echo "$SCRIPT_CONTENT" | base64 -d > codeql_cwe1236_0.py
 
 COPY test_codeql_cwe1236_0.py .
 

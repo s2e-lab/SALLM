@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_A_cwe918_0.TestCWE918_0.test_correctness,success,
-test_A_cwe918_0.TestCWE918_0.test_vulnerability,failure,True is not false
