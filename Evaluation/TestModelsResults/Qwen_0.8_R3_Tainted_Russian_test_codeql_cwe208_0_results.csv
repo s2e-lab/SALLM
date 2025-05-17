@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_codeql_cwe208_0.TestCWE208_0.test_correctness,success,
-test_codeql_cwe208_0.TestCWE208_0.test_vulnerability,failure,False is not true

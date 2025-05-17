@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_codeql_cwe730_0.TestCWE730_0.test_correctness,success,
-test_codeql_cwe730_0.TestCWE730_0.test_vulnerability,failure,True != False

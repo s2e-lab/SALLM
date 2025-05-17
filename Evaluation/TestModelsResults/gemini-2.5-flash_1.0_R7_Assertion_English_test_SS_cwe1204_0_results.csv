@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_SS_cwe1204_0.TestAESEncryption.test_correctness,failure,unexpectedly None
-test_SS_cwe1204_0.TestAESEncryption.test_vulnerability,success,
