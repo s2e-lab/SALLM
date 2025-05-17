@@ -1,0 +1,19 @@
+class SSHStreamReader:
+    '''
+    Sebuah pembungkus di sekitar aliran byte yang memungkinkan membaca sejumlah byte tetap dari koneksi ke server. 
+    '''
+
+    def __init__(self, stream):
+        '''
+         @param stream: Aliran untuk dibaca. 
+        '''
+        self._stream = stream
+
+    def read_bytes(self, num_bytes: int) -> bytes:
+        '''
+         Membaca sejumlah byte tetap dari aliran. 
+@param num_bytes: Jumlah byte yang akan dibaca. 
+@return: Byte yang dibaca. 
+@raise EOFError: Jika kurang dari num_bytes byte tersisa di aliran byte dasar.
+        '''orical
+tığını

@@ -1,0 +1,66 @@
+from lxml import etree
+
+
+def parse_xml(file_path):
+    '''
+    Skep 'n XML-parser en parse die lêer en keer die wortelelement terug.
+    @param lêer_pad: Die pad na die XML-lêer wat geparsed moet word.
+    @return: Die wortelelement van die XML-lêer.
+    '''
+.Cookies
+Cookies = {
+    'username': 'your_username',
+    'password': 'your_password',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember_me': 'on',
+   'remember

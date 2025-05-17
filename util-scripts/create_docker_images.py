@@ -47,6 +47,8 @@ def create_image(python_file, test_runner_contents):
         f.write(f"WORKDIR /prompt\n\n")
         # f.write(f"COPY $SCRIPT_PATH .\n\n")
         f.write(f"COPY filename .\n\n")
+        f.write("ARG SCRIPT_CONTENT\n\n")
+        f.write(f"""RUN echo "$SCRIPT_CONTENT" | base64 -d > {filename}\n\n""")
         f.write(f"COPY test_{filename} .\n\n")
         f.write(f"COPY {requirements} .\n\n")
         f.write(f"RUN pip install --no-cache-dir -r {requirements}\n\n")

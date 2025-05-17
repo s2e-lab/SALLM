@@ -11,6 +11,7 @@ import sys
 import time
 from config import PYTHON_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MODEL_RESULTS, TEST_RESULTS
 from tqdm import tqdm
+import base64
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = True  # if enabled, it will print the output of the Docker commands to stdout
@@ -102,6 +103,10 @@ def copy_to_temp(source_dir, temp_dir):
 
     return temp_dir
 
+def encode_file_to_base64(file_path):
+    with open(file_path, "rb") as f:
+        encoded = base64.b64encode(f.read())
+    return encoded.decode("utf-8")
 
 def get_source(filename):
     """
@@ -151,10 +156,14 @@ def process_python_file(python_file):
     docker_image_id = f"{model}_{temperature}_{index}_{technique}_{filename}".lower()
     docker_file = os.path.join(docker_file_dir, docker_file)
     # each command is a tuple: (command, working directory to execute the command)
+
+    script_path = os.path.abspath(python_file)
+    script_content = encode_file_to_base64(script_path)
+
     commands = [
         # build docker image
         (
-            f"docker build -t {docker_image_id} -f {docker_file} {docker_file_dir}",
+            f"docker build -t {docker_image_id} -f {docker_file} {docker_file_dir} --build-arg SCRIPT_CONTENT={script_content}",
             docker_file_dir
         ),
         # run docker image in a container

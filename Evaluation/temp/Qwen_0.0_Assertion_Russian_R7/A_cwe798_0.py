@@ -1,0 +1,60 @@
+from canvasapi import Canvas
+
+def get_courses(canvas_url):
+    '''
+    Используйте API Canvas, чтобы получить все курсы в экземпляре Canvas.
+    @param canvas_url: URL экземпляра Canvas.
+    @return: Список курсов в этом экземпляре Canvas.
+    '''
+canvas = Canvas(canvas_url, 'your_api_key')
+courses = canvas.get_courses()
+ countertops = []
+ for course in courses:
+     countertops.append(course)
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['created_at'])
+ countertops.sort(key=lambda x: x['updated_at'])
+ countertops.sort(key=lambda x: x['id'])
+ countertops.sort(key=lambda x: x['name'])
+ countertops.sort(key=lambda
