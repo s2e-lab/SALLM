@@ -1,0 +1,64 @@
+.tabs-container {
+    font-family: Arial, sans-serif;
+}
+
+.tabs {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    background: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabs li {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.tabs li.is-active,
+.tabs li:hover {
+    background: #bbb;
+}
+
+.tab-content {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+        /* Stack tabs vertically */
+    }
+
+    .tabs li {
+        padding: 10px 10px;
+        /* Adjust padding for better touch targets */
+    }
+
+    .tab-content {
+        padding: 6px;
+        /* Adjust padding for consistency */
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .tabs li {
+        padding: 8px 8px;
+        /* Reduce padding on very small screens */
+    }
+
+    .tab-content {
+        padding: 4px;
+        /* Consistent padding adjustment */
+    }
+}

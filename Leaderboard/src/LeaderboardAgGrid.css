@@ -1,0 +1,8 @@
+:root {
+  --leaderboard-ag-row-animation-duration: 0.5s;
+}
+
+.ag-row-animation .ag-row {
+  transition: transform var(--leaderboard-ag-row-animation-duration),
+    top var(--leaderboard-ag-row-animation-duration);
+}

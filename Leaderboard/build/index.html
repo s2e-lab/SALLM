@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="LiveCodeBench: Holistic and Contamination Free Evaluation of Large
+      Language Models for Code" />
+  <meta name="keywords" content="LiveCodeBench, Code, Large Language Models, LLM, Code LLM, Evaluation, Benchmark" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>
+    LiveCodeBench: Holistic and Contamination Free Evaluation of Large
+    Language Models for Code
+  </title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+
+      gtag("js", new Date())
+
+      gtag("config", "G-PYVRSFMDRL")
+    </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/bulma.min.css" />
+  <link rel="stylesheet" href="./css/bulma-carousel.min.css" />
+  <link rel="stylesheet" href="./css/bulma-slider.min.css" />
+  <link rel="stylesheet" href="./css/fontawesome.all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="icon" href="./images/favicon.svg" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./js/fontawesome.all.min.js"></script>
+  <script src="./js/bulma-carousel.min.js"></script>
+  <script src="./js/bulma-slider.min.js"></script>
+  <script src="./js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              LiveCodeBench: Holistic and Contamination-Free Evaluation of
+              Large Language Models for Code
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://naman-ntc.github.io/">Naman Jain</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://kinghan.info/">King Han</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://minimario.github.io/">Alex Gu</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://wending.dev/">Wen-Ding Li</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://fanjia-yan.github.io/">Fanjia Yan</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://tianjunz.github.io/">Tianjun Zhang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.sidaw.xyz/">Sida Wang</a>,</span>
+              <span class="author-block">
+                <a href="https://people.csail.mit.edu/asolar/">Armando Solar-Lezama</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://people.eecs.berkeley.edu/~ksen/">Koushik Sen</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://people.eecs.berkeley.edu/~istoica/">Ion Stoica</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>UC Berkeley</span>
+              <span class="author-block"><sup>2</sup>MIT</span>
+              <span class="author-block"><sup>3</sup>Cornell University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2403.07974" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/LiveCodeBench/LiveCodeBench"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/livecodebench/"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+                </span>
+                <!-- Leaderboard Link. -->
+                <span class="link-block">
+                  <a href="leaderboard.html" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fa fa-trophy"></i>
+                    </span>
+                    <span>Leaderboard</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="columns is-centered">
+          <!-- center the image -->
+          <img src="./images/LCB_holistic_tasks.png" alt="Teaser" class="teaser-image center" width="80%" />
+        </div>
+
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">LiveCodeBench</span> collects problems from periodic contests on <span
+            class="dnerf">LeetCode</span>, <span class="dnerf">AtCoder</span>, and <span class="dnerf">Codeforces</span>
+          platforms and uses them for constructing a holistic benchmark for evaluating Code LLMs across variety of
+          code-related scenarios continuously over time.
+        </h2>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction</h2>
+          <div class="content has-text-justified">
+            <p>
+              LiveCodeBench is a holistic and contamination-free evaluation benchmark
+              of LLMs for code that continuously collects new problems over time.
+              Particularly, LiveCodeBench also focuses on broader code-related capabilities,
+              such as self-repair, code execution, and test output prediction,
+              beyond mere code generation. Currently, LiveCodeBench hosts over
+              three hundred high-quality coding problems published between May
+              2023 and February 2024. We evaluate 29 LLMs on LiveCodeBench
+              scenarios and present novel empirical findings not revealed in
+              prior benchmarks.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Contamination</h2>
+          <div class="content has-text-justified">
+            <p>
+              <span class="dnerf">LiveCodeBench</span> annotates problems with release dates, and thus allows evaluating
+              models on problems released during a specific time period. Thus, for a newer model
+              with a training-cutoff date <span class="dnerf">D</span>, we can evaluate it on problems released after
+              <span class="dnerf">D</span> to measure its generalization on <i>unseen</i> problems.
+            </p>
+            <!-- side by side images-->
+            <div class="columns is-centered">
+              <img src="./images/contamination1.png" alt="Code Generation Live Evaluation" class="teaser-image"
+                width="48%" class="center" />
+              <img src="./images/contamination2.png" alt="Test Output Prediction Live Evaluation" class="teaser-image"
+                width="48%" class="center" />
+            </div>
+
+            <p>
+              The above plots depict the performance of models on code generation and test output prediction scenarios
+              on problems released over different months. We find that <span class="dnerf">DeepSeek</span> models
+              exhibit a stark drop in performance on LeetCode problems released since September 2023, its release date,
+              indicating that the earlier problems might be contaminated. In contrast, for
+              <span class="dnerf">GPT</span>
+              models, the performance is relatively stable across different months.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Holistic Evaluation and Open vs Closed Models</h2>
+          <div class="content has-text-justified">
+            <p>
+              <span class="dnerf">LiveCodeBench</span> evaluates models on a variety of code-related scenarios, such as
+              code generation, self-repair, test output prediction, and code execution. We find that while model
+              performances
+              are correlated across different scenarios, there relative performances and ordering can vary (left
+              figure).
+              For instance, <span class="dnerf">Claude-3-Opus</span> overtakes <span class="dnerf">GPT-4-turbo</span> in
+              the
+              test output prediction scenario, but not in the code generation scenario. Similarly,
+              <span class="dnerf">Mistral-Large</span>
+              performs considerably better on natural language reasoning tasks like test output prediction and code
+              execution.
+            </p>
+            <br />
+            <div class="columns is-centered">
+              <img src="./images/tasks_radar.png" alt="Holistic Evaluation" class="teaser-image" width="44%"
+                height="44%" class="center" />
+              <img src="./images/lc_barchart.png" alt="Open vesus Closed Models" class="teaser-image" width="48%"
+                class="center" />
+
+              <!-- <img src="./images/lcb_vs_he.png" alt="HumanEval Overfitting" class="teaser-image" width="55%"
+                height="55%" class="center" /> -->
+            </div>
+            <p>
+              We compare the performance of open access models with closed api-access models on <span
+                class="dnerf">LiveCodeBench</span> and find that generally the closed api-access models outperform the
+              open models. Particularly, the only open models that surpass the barrier are fine-tuned variants of large
+              (30+B parameter) models.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Potential Overfitting in HumanEval</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/lcb_vs_he.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              We also find that models that perform well on <span class="dnerf">HumanEval</span> might be overfitting on
+              the benchmark. Particularly, the models are separated into two clusters depicted
+              by the green and red shaded region in the right scatterplot. The models in the green region perform
+              similarly on
+              <span class="dnerf">HumanEval</span> and <span class="dnerf">LCB-Easy</span>, while the models in the red
+              region
+              perform well on <span class="dnerf">HumanEval</span> but lag behind on <span
+                class="dnerf">LCB-Easy</span>.
+              For instance, <span class="dnerf">DS-Ins-1.3B</span> model outperforms <span
+                class="dnerf">Gemini-Pro</span> and <span class="dnerf">Claude-Ins-1</span> but performs considerably
+              worse on <span class="dnerf">LCB-Easy</span>.
+              Interestingly, the models in the red region are mostly fine-tuned variants of open access models. On the
+              other hand, base models and most of the closed api-access models lie in the green region. This highlights
+              a potential lack of diverse fine-tuning data being employed by the open source community and the need for
+              optimizing models for a broader set of code-related tasks.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Model Comparisions</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/codegen_performance.png" alt="Code Generation Performance" class="teaser-image"
+                width="48%" class="center" />
+              <img src="./images/repair_performance.png" alt="Code Execution Performance" class="teaser-image"
+                width="48%" class="center" />
+            </div>
+            <div class="columns is-centered">
+              <img src="./images/testgen_performance.png" alt="Code Execution Performance" class="teaser-image"
+                width="48%" class="center" />
+              <img src="./images/execution_performance.png" alt="Code Execution Performance" class="teaser-image"
+                width="48%" class="center" />
+            </div>
+            <p>
+              The above plots depict the performance of models on different scenarios considered in <span
+                class="dnerf">LiveCodeBench</span>. We find that <span class="dnerf">GPT-4-turbo</span> and <span
+                class="dnerf">Claude-3-Opus</span> models perform best across different scenarios. Among open source
+              models, <span class="dnerf">DS-Ins-33B</span> and <span class="dnerf">Phind-34B</span> perform the best.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Submitting Custom Models</h2>
+          <div class="content has-text-justified">
+            <p>
+              To submit models you can create a pull request on our <a
+                href="https://github.com/LiveCodeBench/submissions">Github</a>. Particularly, you can copy your model
+              generations folder from `output` to the `submissions` folder and create a pull request. We will review the
+              submission and add the model to the leaderboard accordingly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{jain2024livecodebench,
+    title={LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code},
+    author={Jain, Naman and Han, King and Gu, Alex and Li, Wen-Ding and Yan, Fanjia and Zhang, Tianjun and Wang, Sida and Solar-Lezama, Armando and Sen, Koushik and Stoica, Ion},
+    journal={arXiv preprint arXiv:2403.07974},
+    year={2024}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              Please reach out to <a href="mailto:naman_jain@berkeley.edu">naman_jain@berkeley.edu</a> for questions or
+              feedback on LiveCodeBench. We are also open to collaborations and suggestions for new scenarios to add to
+              the benchmark. Finally, LiveCodeBench provides one axis of LLM coding evaluations and we recommend the
+              following leaderboards for measuring code LM ability on various coding tasks, such as
+              <a href="https://evalplus.github.io/leaderboard.html">EvalPlus Leaderboard</a>,
+              <a href="https://crux-eval.github.io/leaderboard.html">CruxEval Leaderboard</a>,
+              <a href="https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard">Chatbot Arena Leaderboard</a>,
+              <a href="https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard">BigCode Models Leaderboard</a>,
+              <a href="https://infi-coder.github.io/inficoder-eval/">InfiCoder-Eval</a>, and
+              <a href="https://leaderboard.tabbyml.com/">TabbyML Leaderboard</a>.
+            </p>
+            <p>
+              The source code from this website is borrowed from <a
+                href="https://github.com/nerfies/nerfies.github.io">this template</a>!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
