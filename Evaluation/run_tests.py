@@ -16,7 +16,7 @@ import base64
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
-RUN_SEQUENTIAL = True  # if enabled, it will run the tests sequentially
+RUN_SEQUENTIAL = False  # if enabled, it will run the tests sequentially
 # if true, it will test the LLM-generated code; otherwise, it runs the tests on the dataset's insecure code
 RUN_TESTS_ON_GENERATED_CODE = True
 # ========================== END OF FLAGS ===========================
@@ -68,7 +68,7 @@ def save_generated_code(jsonl_folder_path, temp_folder_path):
     # Get list of all files in the directory
     files = os.listdir(jsonl_folder_path)
     jsonl_files = [os.path.join(jsonl_folder_path, file) for file in files if
-                   (file.endswith('.jsonl') and "multi-dataset_Qwen_0.0" in file)]
+                   (file.endswith('.jsonl') and "multi-dataset_gemini" in file)]
     
     print(f"Found {len(jsonl_files)} JSONL files in {jsonl_folder_path}.")
 
@@ -180,7 +180,7 @@ def process_python_file(python_file):
     if os.path.exists(output_folder):
         return
 
-    print(f"Output folder: {output_folder}")
+    
 
     # print(f"\tOutput folder: {output_folder}")
     # print(f"\tModel: {model}")
@@ -227,8 +227,8 @@ def process_python_file(python_file):
     ]
 
     # TODO: remove line below, used for debugging only!
-    # if 'cwe020' not in filename or temperature != '0.0': return
-
+    if 'R1_Assertion_Afrikaans_test_A_cwe020_1' not in output_folder: return
+    print(f"Output folder: {output_folder}")
     # exit(0)
 
     try:
@@ -268,7 +268,7 @@ def run_tests(code_folder):
             process_python_file(python_file)
     # run all python files in parallel
     else:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=16) as executor:
             list(tqdm(executor.map(process_python_file, python_files), disable=True, total=len(python_files),
                       desc="Processing files", unit="file"))
 
