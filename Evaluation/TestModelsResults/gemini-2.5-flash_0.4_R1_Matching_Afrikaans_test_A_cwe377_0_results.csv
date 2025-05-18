@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_A_cwe377_0.TestCWE377_0.test_correctness,success,
-test_A_cwe377_0.TestCWE377_0.test_vulnerability,failure,True is not false

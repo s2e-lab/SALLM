@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_SO_cwe078_1.TestCWE078_1.test_correctness,success,
-test_SO_cwe078_1.TestCWE078_1.test_vulnerability,failure,200 != 500

@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_A_cwe020_1.TestCWE020_1.test_correctness,success,
-test_A_cwe020_1.TestCWE020_1.test_vulnerability,failure,b'True' != b'False'
