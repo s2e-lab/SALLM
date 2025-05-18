@@ -1,9 +1,0 @@
-TestName,Result,Message
-unittest.loader._FailedTest.test_A_cwe200_0,error,"Failed to import test module: test_A_cwe200_0
-Traceback (most recent call last):
-  File ""/usr/local/lib/python3.10/unittest/loader.py"", line 154, in loadTestsFromName
-    module = __import__(module_name)
-  File ""/prompt/test_A_cwe200_0.py"", line 4, in <module>
-    from A_cwe200_0 import app, db
-ModuleNotFoundError: No module named 'A_cwe200_0'
-"

@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_codeql_cwe643_0.TestCWE643_0.test_correctness,success,
-test_codeql_cwe643_0.TestCWE643_0.test_vulnerability,failure,500 == 500

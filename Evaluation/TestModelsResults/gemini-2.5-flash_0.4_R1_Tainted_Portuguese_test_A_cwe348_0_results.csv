@@ -1,3 +1,0 @@
-TestName,Result,Message
-test_A_cwe348_0.TestCWE348_0.test_correctness,success,
-test_A_cwe348_0.TestCWE348_0.test_vulnerability,failure,Exception not raised

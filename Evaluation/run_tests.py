@@ -11,10 +11,12 @@ import sys
 import time
 from config import PYTHON_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MODEL_RESULTS, TEST_RESULTS
 from tqdm import tqdm
+import base64
+
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
-RUN_SEQUENTIAL = False  # if enabled, it will run the tests sequentially
+RUN_SEQUENTIAL = True  # if enabled, it will run the tests sequentially
 # if true, it will test the LLM-generated code; otherwise, it runs the tests on the dataset's insecure code
 RUN_TESTS_ON_GENERATED_CODE = True
 # ========================== END OF FLAGS ===========================
@@ -34,6 +36,8 @@ def get_python_files(path):
     python_files = []
 
     for root, directories, files in os.walk(path):
+        if "Dataset" in root:
+            continue
         for file in files:
             if file.endswith(".py") and '_cwe' in file and 'test_' not in file:
                 python_files.append(os.path.join(root, file))
@@ -64,7 +68,7 @@ def save_generated_code(jsonl_folder_path, temp_folder_path):
     # Get list of all files in the directory
     files = os.listdir(jsonl_folder_path)
     jsonl_files = [os.path.join(jsonl_folder_path, file) for file in files if
-                   (file.endswith('.jsonl') and "multi-dataset_starcoder2" in file)]
+                   (file.endswith('.jsonl') and "multi-dataset_Qwen_0.0" in file)]
     
     print(f"Found {len(jsonl_files)} JSONL files in {jsonl_folder_path}.")
 
@@ -106,7 +110,10 @@ def copy_to_temp(source_dir, temp_dir):
     shutil.copytree(source_dir, to_path)
 
     return temp_dir
-
+def encode_file_to_base64(file_path):
+    with open(file_path, "rb") as f:
+        encoded = base64.b64encode(f.read())
+    return encoded.decode("utf-8")
 
 def get_source(filename):
     """
@@ -136,6 +143,7 @@ def process_python_file(python_file):
     Run tests on docker container for the specified python file.
     :param python_file:  python file with the prompt.
     """
+    # print(f"Processing {python_file}...")
     filename = os.path.basename(python_file).split('.')[0]
     parent_dir = os.path.dirname(python_file)
     test_file_results = f'test_{filename}_results.csv'
@@ -191,10 +199,14 @@ def process_python_file(python_file):
     docker_image_id = f"{model}_{temperature}_{index}_{technique}_{language}_{filename}".lower()
     docker_file = os.path.join(docker_file_dir, docker_file)
     # each command is a tuple: (command, working directory to execute the command)
+
+    script_path = os.path.abspath(python_file)
+    script_content = encode_file_to_base64(script_path)
+
     commands = [
         # build docker image
         (
-            f"docker build -t {docker_image_id} -f {docker_file} {docker_file_dir}",
+            f"docker build -t {docker_image_id} -f {docker_file} {docker_file_dir} --build-arg SCRIPT_CONTENT={script_content}",
             docker_file_dir
         ),
         # run docker image in a container
@@ -215,15 +227,16 @@ def process_python_file(python_file):
     ]
 
     # TODO: remove line below, used for debugging only!
-    # if 'cwe020' not in filename or temperature != '0.0' or 'gemini' not in docker_image_id: return
+    # if 'cwe020' not in filename or temperature != '0.0': return
 
+    # exit(0)
 
     try:
         # run test file in docker container, by running each command
         print(f"Running {docker_image_id}")
         start = time.time()
         for cmd, working_dir in commands:
-            print(f"\t{cmd}")
+            # print(f"\t{cmd}")
             subprocess.run(cmd, shell=True, check=True, cwd=working_dir, stdout=STDOUT, stderr=STDERR)
         end = time.time()
         print(f"\tFinished {docker_file} in {end - start} seconds.")

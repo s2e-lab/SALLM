@@ -1,0 +1,7 @@
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/Author/A_cwe377_0_1_Russian.py","9","12","9","57"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/Author/A_cwe377_0_2_Greek.py","13","16","13","32"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/Author/A_cwe377_0_3_Western Persian.py","5","17","5","33"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/Author/A_cwe377_0_6_German.py","13","17","13","33"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/CodeQL/codeql_cwe377_0_4_Chinese.py","15","8","15","24"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/CodeQL/codeql_cwe377_0_8_Estonian.py","13","16","13","62"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Matching/CodeQL/codeql_cwe377_0_8_Italian.py","16","6","16","58"
