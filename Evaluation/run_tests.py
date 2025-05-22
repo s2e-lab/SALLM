@@ -12,6 +12,7 @@ import time
 from config import PYTHON_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MODEL_RESULTS, TEST_RESULTS
 from tqdm import tqdm
 import base64
+import ast
 
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
@@ -44,6 +45,14 @@ def get_python_files(path):
     print(f"Found {len(python_files)} Python files in {path}.")
     return python_files
 
+def check_compilable(file_path):
+    try:
+        with open(file_path, 'r', encoding="utf-8", errors="ignore") as f:
+            data = f.read()
+        ast.parse(data)
+        return True
+    except:
+        return False
 
 def get_output(model_name, data):
     """
@@ -68,7 +77,7 @@ def save_generated_code(jsonl_folder_path, temp_folder_path):
     # Get list of all files in the directory
     files = os.listdir(jsonl_folder_path)
     jsonl_files = [os.path.join(jsonl_folder_path, file) for file in files if
-                   (file.endswith('.jsonl') and "multi-dataset_gemini" in file)]
+                   (file.endswith('.jsonl') and ("multi-dataset_gpt-4o-mini_0.6" in file or "multi-dataset_gpt-4o-mini_0.8" in file or "multi-dataset_gpt-4o-mini_1.0" in file))]
     
     print(f"Found {len(jsonl_files)} JSONL files in {jsonl_folder_path}.")
 
@@ -110,6 +119,7 @@ def copy_to_temp(source_dir, temp_dir):
     shutil.copytree(source_dir, to_path)
 
     return temp_dir
+
 def encode_file_to_base64(file_path):
     with open(file_path, "rb") as f:
         encoded = base64.b64encode(f.read())
@@ -182,7 +192,7 @@ def process_python_file(python_file):
 
     
 
-    # print(f"\tOutput folder: {output_folder}")
+    print(f"\tOutput folder: {output_folder}")
     # print(f"\tModel: {model}")
     # print(f"\tTemperature: {temperature}")
     # print(f"\tTechnique: {technique}")
@@ -201,6 +211,9 @@ def process_python_file(python_file):
     # each command is a tuple: (command, working directory to execute the command)
 
     script_path = os.path.abspath(python_file)
+    if not check_compilable(script_path):
+        return
+
     script_content = encode_file_to_base64(script_path)
 
     commands = [
@@ -227,22 +240,22 @@ def process_python_file(python_file):
     ]
 
     # TODO: remove line below, used for debugging only!
-    if 'R1_Assertion_Afrikaans_test_A_cwe020_1' not in output_folder: return
-    print(f"Output folder: {output_folder}")
+    # if 'R1_Assertion_Afrikaans_test_A_cwe020_1' not in output_folder: return
     # exit(0)
 
     try:
         # run test file in docker container, by running each command
-        print(f"Running {docker_image_id}")
+        # print(f"Running {docker_image_id}")
         start = time.time()
         for cmd, working_dir in commands:
             # print(f"\t{cmd}")
             subprocess.run(cmd, shell=True, check=True, cwd=working_dir, stdout=STDOUT, stderr=STDERR)
         end = time.time()
-        print(f"\tFinished {docker_file} in {end - start} seconds.")
+        # print(f"\tFinished {docker_file} in {end - start} seconds.")
     except Exception as e:
         # print to stderr
-        print(f"\tFailed to run {docker_file}: {e}", file=sys.stderr)
+        # print(f"\tFailed to run {docker_file}: {e}", file=sys.stderr)
+        pass
         try:
             # remove docker image
             subprocess.run(commands[-1][0], shell=True, check=True, cwd=commands[-1][1], stdout=STDOUT, stderr=STDERR)
@@ -268,7 +281,7 @@ def run_tests(code_folder):
             process_python_file(python_file)
     # run all python files in parallel
     else:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=16) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             list(tqdm(executor.map(process_python_file, python_files), disable=True, total=len(python_files),
                       desc="Processing files", unit="file"))
 
