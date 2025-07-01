@@ -21,16 +21,16 @@ lang_to_family = {
 }
 
 
-df = pd.read_csv('Tests_Results_Multi.csv')
+df = pd.read_csv('./Result/Tests_Results_Multi.csv')
 df['language_family'] = df['Language'].map(lang_to_family).fillna('Unknown')
 
-eval_cols = [c for c in df.columns if c.startswith('security@')]
+eval_cols = [c for c in df.columns if c.startswith('pass@')]
 
 
 for eval_col in eval_cols:
     grouped = (
         df
-        .groupby(['language_family', 'Temp', 'Model'])[eval_col]
+        .groupby(['language_family', 'Model'])[eval_col]
         .agg(['mean', 'std'])
         .reset_index()
     )
@@ -41,12 +41,12 @@ for eval_col in eval_cols:
     )
 
     table = grouped.pivot_table(
-        index=['language_family', 'Temp'],
+        index=['language_family'],
         columns='Model',
         values='formatted',
         aggfunc='first'
     ).reset_index()
 
-    csv_path = f'{eval_col}_mean_std_table.csv'
+    csv_path = f'./Result/{eval_col}_mean_std_table.csv'
     table.to_csv(csv_path, index=False)
     print(f'⇒ wrote {csv_path}')
