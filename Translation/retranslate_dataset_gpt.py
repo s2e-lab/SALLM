@@ -33,7 +33,7 @@ language_translation_codes = [
     ('Hebrew', 'heb_Hebr'),
     ('Vietnamese', 'vie_Latn'),
     ('Indonesian', 'ind_Latn'),
-    ('Malayalam', 'mal_Mlym'),
+    ('Malay', 'mal_Mlym'),
     ('Tagalog', 'tgl_Latn'),
     ('English', 'eng_Latn'),
     ('Dutch', 'nld_Latn'),
@@ -231,7 +231,7 @@ current_path = os.getcwd()
 
 # Print it
 print(f"Current working directory: {current_path}")
-file_path = "./../Benchmarks/ProcessedFiles/sallm_nl_prompt_gpt_translated_prompt.jsonl"
+file_path = "./../Dataset/sallm_nl_prompt_gpt_translated_prompt.jsonl"
 key = "prompt_nl_prompt"
 
 # Convert to absolute path to ensure correctness
