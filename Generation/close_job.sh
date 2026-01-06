@@ -8,4 +8,5 @@
 
 # python3 gpt_model.py ../ProcessedFiles/dataset_nl_prompt_best.jsonl
 
+export HF_HOME="/groups/jdasilv2/Latif/SALLM/.cache/huggingface"
 python3 gemini_model.py ../ProcessedFiles/dataset_nl_prompt_best.jsonl

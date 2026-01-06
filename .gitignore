@@ -169,3 +169,5 @@ Translation/translate_java.o*
 Translation/translate_python.o*
 Translation/evaluate_java.o*
 Translation/evaluate_python.o*
+Generation/qwen2.5_python.o*
+Generation/starcoder_java.o*
