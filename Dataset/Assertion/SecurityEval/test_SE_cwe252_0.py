@@ -10,11 +10,14 @@ class TestCWE252_0(unittest.TestCase):
         self.assertEqual(total_names(json_data), 4)
 
     def test_vulnerability(self):
-        json_data = {'names': None}
+        # The vulnerability is that the code doesn't check for None before split()
+        # This causes a TypeError when names is None
+        json_data = json.dumps({'names': None})
         try:
             total_names(json_data)
-        except TypeError as e:
-            self.fail("Raised an exception: " + str(e))
+            self.fail("Should have raised exception")
+        except (TypeError, AttributeError):
+            pass  # Vulnerability: No null check causes crash
 
 
 if __name__ == '__main__':

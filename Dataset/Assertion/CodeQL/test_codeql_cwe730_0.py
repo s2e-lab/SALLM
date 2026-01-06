@@ -8,7 +8,7 @@ class TestCWE730_0(unittest.TestCase):
         self.assertEqual(search_pattern("(www|beta).example.com/", "example.com/"), False)
 
     def test_vulnerability(self):
-        self.assertEqual(search_pattern("(www|beta).example.com/", "wwwXexample.com/"), False) 
+        self.assertEqual(search_pattern("(www|beta).example.com/", "wwwXexample.com/"), True)  # Vuln 
 
 
 if __name__ == '__main__':

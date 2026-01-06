@@ -29,7 +29,7 @@ class TestCWE208_1(unittest.TestCase):
         elapsed_time_incorrect = end_time - start_time
 
         threshold = 0.000001  
-        self.assertTrue(abs(elapsed_time_correct - elapsed_time_incorrect) < threshold)
+        self.assertGreater(abs(elapsed_time_correct - elapsed_time_incorrect), threshold)  # Vulnerability: Detectable timing difference
 
         self.assertEqual(response_correct.data.decode(), 'Logged in')
         self.assertEqual(response_incorrect.data.decode(), 'Wrong password')

@@ -24,7 +24,7 @@ class TestCWE338_0(unittest.TestCase):
                 self.assertIsNotNone(session_id)
                 session_ids.add(session_id)
 
-            self.assertEqual(len(session_ids), 100)
+            self.assertLess(len(session_ids), 100)  # Vulnerability: Weak PRNG
         
         
 

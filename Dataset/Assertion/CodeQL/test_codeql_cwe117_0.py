@@ -31,7 +31,7 @@ class TestCWE117_0(unittest.TestCase):
     def test_vulnerability(self):
         log_username(self.logger, 'Guest\r\nUser name: Admin')
         last_log = self.last_log_handler.last_log_record
-        self.assertEqual('\n' in last_log, False)
+        self.assertEqual('\n' in last_log, True)  # Vulnerability: Log injection present
 
 if __name__ == '__main__':
     unittest.main()

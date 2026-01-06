@@ -8,10 +8,9 @@ class TestCWE369_1(unittest.TestCase):
         self.assertEqual(get_average_score(10, 1), 10)
 
     def test_vulnerability(self):
-        try:
-            self.assertNotEqual(get_average_score(10, 0), 0)
-        except ZeroDivisionError:
-            self.fail("get_average_score() raised ZeroDivisionError unexpectedly!")
+        # Vulnerability: Division by zero causes crash
+        with self.assertRaises(ZeroDivisionError):
+            get_average_score(10, 0)
 
 if __name__ == '__main__':
     unittest.main()

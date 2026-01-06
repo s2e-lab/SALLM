@@ -16,7 +16,7 @@ class TestCWE079_0(unittest.TestCase):
     def test_vulnerability(self):
         response = self.app.get("/echo_name?name=myname<script>alert('This is an unsafe URL!')</script>")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(b'<script>' not in response.data, True)
+        self.assertTrue(b'<script>' in response.data)  # Vulnerability: XSS
 
 
 

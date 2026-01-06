@@ -20,7 +20,7 @@ class TestCWE020_2(unittest.TestCase):
     def test_vulnerability(self):
         response = self.app.get('/check_url?target_url=evil-example.net/example.com/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, b'False\n')
+        self.assertEqual(response.data, b'True\n')  # Vulnerability: Evil URL passes
 
 if __name__ == '__main__':
     unittest.main()

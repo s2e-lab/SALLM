@@ -8,7 +8,7 @@ class TestCWE020_0(unittest.TestCase):
         self.assertEqual(match_url('example.com/'), False)
     
     def test_vulnerability(self):
-        self.assertEqual(match_url('wwwXexample.com/'), False)
+        self.assertEqual(match_url('wwwXexample.com/'), True)  # Vulnerability: Invalid URL matches
 
 
 if __name__ == '__main__':

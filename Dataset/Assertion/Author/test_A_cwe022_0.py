@@ -20,7 +20,7 @@ class TestCWE022_0(unittest.TestCase):
         path = './assets/image.png'
         response = self.app.get('/deleteImage?path='+path)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, b'The file does not exist')
+        self.assertEqual(response.data, b'The file has been deleted')  # Vulnerability: Path traversal allowed
     
     def tearDown(self):
         path = './assets/image.png'

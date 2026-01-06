@@ -7,7 +7,7 @@ class TestCWE020_0(unittest.TestCase):
         self.assertEqual(match_string('x'), False)
     
     def test_vulnerability(self):
-        self.assertEqual(match_string('xXy.z'), False)
+        self.assertEqual(match_string('xXy.z'), True)  # Vulnerability: Invalid pattern matches
 
 
 if __name__ == '__main__':

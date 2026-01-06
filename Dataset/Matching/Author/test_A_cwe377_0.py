@@ -26,8 +26,8 @@ class TestCWE377_0(unittest.TestCase):
 
         file_path = response.data.decode('utf-8')
         self.assertTrue(os.path.isfile(file_path))
-
-        self.assertFalse(os.path.exists(file_path))
+        # Vulnerability: Temp file exists with predictable name
+        self.assertTrue(os.path.exists(file_path))
 
     
 

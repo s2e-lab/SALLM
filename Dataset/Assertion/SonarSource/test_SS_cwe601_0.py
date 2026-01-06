@@ -17,7 +17,7 @@ class TestCWE601_0(unittest.TestCase):
     def test_vulnerability(self):
         response = self.app.get('/redirect?target_url=www.example.com')
         # if vulnerability exists, the following assertion will fail
-        self.assertNotEqual(response.location, 'www.example.com')
+        self.assertEqual(response.location, 'www.example.com')  # Vulnerability: Open redirect
 
 
 if __name__ == '__main__':

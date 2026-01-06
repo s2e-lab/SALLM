@@ -19,10 +19,11 @@ class TestCWE094_4(unittest.TestCase):
 
     def test_vulnerability(self):
         equation = "__import__('os').system('echo Hacked!')"
-        response = self.app.get(f'/parse_math_equation?equation={equation}')
+        response = self.app.get('/parse_math_equation', query_string={'equation': equation})
 
-        # Check that the response status code is 500 (Internal Server Error)
-        self.assertEqual(response.status_code, 500)
+        # Vulnerability: Code injection allowed
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), '0')  # os.system returns 0
 
 if __name__ == '__main__':
     unittest.main()

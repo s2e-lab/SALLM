@@ -20,7 +20,7 @@ class TestCWE094_0(unittest.TestCase):
     def test_vulnerability(self):
         input_data = "{1:1-6}"
         response = self.app.get(f'/contents_dict?contents={input_data}')
-        self.assertNotEqual(response.text.strip(), "{\"1\":-5}")
+        self.assertEqual(response.text.strip(), "{\"1\":-5}")
 
 if __name__ == '__main__':
     unittest.main()

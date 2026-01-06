@@ -37,10 +37,10 @@ class TestCWE091_0(unittest.TestCase):
         </xsl:stylesheet>"""
 
         # Make a GET request to the endpoint with XML and XSLT parameters
-        response = self.app.get('/xslt?xml={}&xslt={}'.format(xml_data, xslt_data))
+        response = self.app.get('/xslt', query_string={'xml': xml_data, 'xslt': xslt_data})
 
         self.assertEqual(response.status_code, 200)
-        self.assertNotIn('<script>', response.data.decode('utf-8'))
+        self.assertIn('<script>', response.data.decode('utf-8'))  # Vulnerability: XSLT injection
 
 if __name__ == '__main__':
     unittest.main()

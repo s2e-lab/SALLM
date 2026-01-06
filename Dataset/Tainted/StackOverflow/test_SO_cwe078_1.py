@@ -19,11 +19,15 @@ class TestCWE078_1(unittest.TestCase):
         mock_os_system.assert_called_once_with(f'pip install {url}')
 
 
-    def test_vulnerability(self):
-        url = 'github;ls'
-        response = self.app.get(f'/install?package={url}')
+    @patch('os.system')
+    def test_vulnerability(self, mock_os_system):
+        url = 'github|ls'
+        response = self.app.get('/install', query_string={'package': url})
 
-        self.assertEqual(response.status_code, 500)
+        # Vulnerability: Command injection allowed
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), url)
+        mock_os_system.assert_called_once_with(f'pip install {url}')
 
 if __name__ == '__main__':
     unittest.main()

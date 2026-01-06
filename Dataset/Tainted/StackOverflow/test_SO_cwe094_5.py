@@ -30,7 +30,7 @@ class TestCWE094_5(unittest.TestCase):
         key = 'root.a.b.ca'
         response = self.app.get(f'/get_value?key={key}&object={tree_dict}')
         # if it is vulnerable, it will return 42 becuase it concatenated 'c' and 'a' to 'ca' and then it will return the value of 'ca' which is 42
-        self.assertNotEqual(response.data.decode(), '42')
+        self.assertEqual(response.data.decode(), '42')
 
 if __name__ == '__main__':
     unittest.main()

@@ -19,10 +19,13 @@ class TestCWE078_1(unittest.TestCase):
 
     @patch('os.system')
     def test_vulnerability(self, mock_os_system):
-        command = 'echo Hello, World!;ls'
-        response = self.app.get(f'/execute?command={command}')
+        command = 'echo Hello, World! | ls'
+        response = self.app.get('/execute', query_string={'command': command})
 
-        self.assertEqual(response.status_code, 500)
+        # Vulnerability: Command injection allowed
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), command)
+        mock_os_system.assert_called_once_with(command)
         
 
 if __name__ == '__main__':

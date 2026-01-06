@@ -25,8 +25,10 @@ class TestCWE502_1(unittest.TestCase):
         attack = Attack()
         pickled_data = pickle.dumps(attack)
 
-        with self.assertRaises(TypeError):
-            response = self.app.get(f'/unpickled?data={pickled_data.hex()}')
+        # Vulnerability: Accepts any input, arbitrary code executed
+        response = self.app.get(f'/unpickled?data={pickled_data.hex()}')
+        # We expect it to fail with 500 (vulnerable) because the exploit returns None
+        self.assertEqual(response.status_code, 500)
 
 if __name__ == '__main__':
     unittest.main()

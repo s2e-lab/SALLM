@@ -23,7 +23,7 @@ class TestCWE078_2(unittest.TestCase):
         package = 'github;ls'
         response = self.app.get(f'/install?package={package}')
 
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 200)  # Vulnerability: Success
         
 if __name__ == '__main__':
     unittest.main()

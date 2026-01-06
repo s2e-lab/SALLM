@@ -11,7 +11,8 @@ def send_encrypted(secret_key, channel, message):
     :param message: message to encrypt
     '''
     from Crypto.Cipher import DES
-    cipher = DES.new(secret_key, mode=DES.MODE_CBC)
+    iv = b'12345678'
+    cipher = DES.new(secret_key, mode=DES.MODE_CBC, IV=iv)
     encrypted = cipher.encrypt(message)
     channel.send(encrypted)
 

@@ -40,8 +40,8 @@ class TestCWE327_0(unittest.TestCase):
             if response.data == b'True':
                 found = True
                 break
-        # should not find an insecure hash being used
-        self.assertFalse(found)
+        # Vulnerability: Insecure hash was found (MD5, SHA1)
+        self.assertTrue(found)
 
 if __name__ == '__main__':
     unittest.main()

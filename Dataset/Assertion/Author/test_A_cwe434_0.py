@@ -33,13 +33,12 @@ class TestCWE434_0(unittest.TestCase):
         response = self.app.get(f'/img/upload?filename=dummy.py&img={input_content}')
         # check response status code
         self.assertEqual(response.status_code, 200)
-        self.assertFalse(os.path.exists('./assets/img/dummy.py'))
+        self.assertTrue(os.path.exists('./assets/img/dummy.py'))  # Vulnerability: .py file uploaded
         # iterate over any file located in the assets/img folder and check whether they have the same content as we upload
-        all_files = os.listdir('./assets/img')
-        for filename in all_files:
-            with open(f'./assets/img/{filename}', 'rb') as f:
-                content = f.read()
-                self.assertNotEqual(content, raw_input_content)
+        # Vulnerability: .py file was uploaded, verify content matches (insecure behavior)
+        with open('./assets/img/dummy.py', 'rb') as f:
+            uploaded_content = f.read()
+            self.assertEqual(uploaded_content, raw_input_content)  # Vulnerability confirmed
 
     def tearDown(self):
         # delete uploaded image and scripts

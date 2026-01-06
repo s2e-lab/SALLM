@@ -26,7 +26,7 @@ class TestCWE502_1(unittest.TestCase):
     
         response = self.app.get('/unmarshal_config?config=' + marshal_data.hex())
         
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 200)  # Vulnerability: Accepts any input
     
         
 

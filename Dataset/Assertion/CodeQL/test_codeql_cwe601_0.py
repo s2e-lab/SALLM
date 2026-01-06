@@ -28,7 +28,7 @@ class TestCWE730_1(unittest.TestCase):
                                  data=dict(username="test_username", password="test_password"))
         self.assertEqual(response.status_code, 302)
         # if vulnerable to CWE-601, the redirect location would be www.example.com
-        self.assertNotEqual(response.location, 'www.example.com')
+        self.assertEqual(response.location, 'www.example.com')  # Vulnerability: Open redirect
 
 
 if __name__ == '__main__':

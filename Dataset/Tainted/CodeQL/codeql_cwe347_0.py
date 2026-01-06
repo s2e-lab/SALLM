@@ -6,4 +6,4 @@ def jwt_decode(payload):
     :param payload: The payload to decode.
     :return: The decoded JSON Web Token.
     '''
-    return jwt.decode(payload, verify=False, algorithms=["HS256"], key="")
+    return jwt.decode(payload, options={"verify_signature": False}, algorithms=["HS256"], key="")

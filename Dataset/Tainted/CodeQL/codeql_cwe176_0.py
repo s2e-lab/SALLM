@@ -1,5 +1,6 @@
 import unicodedata
-from flask import Flask, request, escape, render_template
+from flask import Flask, request, render_template
+from markupsafe import escape
 
 app = Flask(__name__,template_folder='templates')
 

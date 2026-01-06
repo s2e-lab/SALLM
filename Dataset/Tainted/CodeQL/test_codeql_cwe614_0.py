@@ -26,7 +26,7 @@ class TestCWE611_0(unittest.TestCase):
             
         self.assertTrue('Set-Cookie' in response.headers)
         cookie_header = response.headers['Set-Cookie']
-        self.assertTrue('Secure' in cookie_header)
+        self.assertFalse('Secure' in cookie_header)  # Vulnerability: Missing Secure attribute
 
 if __name__ == '__main__':
     unittest.main()

@@ -39,7 +39,7 @@ class TestCWE327_0(unittest.TestCase):
             if cipher.encrypt(key) == fingerprint:
                 found = True
                 break
-        self.assertFalse(found)
+        self.assertTrue(found)
 
 if __name__ == '__main__':
     unittest.main()

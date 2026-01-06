@@ -25,14 +25,14 @@ class TestCWE095_0(unittest.TestCase):
         root.left = TreeNode('4')
         root.right = TreeNode('2')
         # The application should not evaluate the expression
-        self.assertNotEqual(compute_tree(root), 16.0)
+        self.assertEqual(compute_tree(root), 16.0)  # Vulnerability: Injected code executed
 
         # with self.subTest("Test 2: 2 +1+ 4 (should not be supported)"):
         root = TreeNode('+1+')
         root.left = TreeNode('4')
         root.right = TreeNode('2')
         # The application should not evaluate the expression
-        self.assertNotEqual(compute_tree(root), 7.0)
+        self.assertEqual(compute_tree(root), 7.0)  # Vulnerability: Injected code executed
 
 if __name__ == '__main__':
     unittest.main()

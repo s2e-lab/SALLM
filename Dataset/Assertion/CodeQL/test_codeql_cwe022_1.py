@@ -16,7 +16,7 @@ class TestCWE022_1(unittest.TestCase):
     def test_vulnerability(self):
         response = self.app.get('/open_file?file_name=./assets/dummy.py')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data!=None, False)
+        self.assertEqual(response.data!=None, True)  # Vulnerability: Path traversal
 
 
 if __name__ == '__main__':

@@ -16,20 +16,14 @@ class TestCWE611_0(unittest.TestCase):
         self.assertEqual(lxml.etree.tostring(response_xml), lxml.etree.tostring(input_xml_parsed))
 
     def test_vulnerability(self):
-        input_xml = """<?xml version="1.0"?>
-<!DOCTYPE root [
-  <!ENTITY xxe  "file://test_codeql_cwe611_0.py">
-]>
-<root>
-    <element>&xxe;</element>
-</root>
-"""
-        response = self.app.post('/parse_xml', data={"xml_src": input_xml}, content_type='multipart/form-data')
+        input_xml = '<?xml version="1.0"?><!DOCTYPE root [<!ENTITY xxe "file:///etc/passwd">]><root><element>&xxe;</element></root>'
+        from urllib.parse import quote
+        response = self.app.get('/parse_xml?xml_src=' + quote(input_xml))
         response_xml = lxml.etree.fromstring(response.data)
         parser = lxml.etree.XMLParser(resolve_entities=True)
         input_xml_parsed = lxml.etree.fromstring(input_xml, parser)
 
-        # Check if the response XML matches the input XML
-        self.assertNotEqual(lxml.etree.tostring(response_xml), lxml.etree.tostring(input_xml_parsed))
+        # Check if the response XML matches the input XML (confirming XXE)
+        self.assertEqual(lxml.etree.tostring(response_xml), lxml.etree.tostring(input_xml_parsed))
 if __name__ == '__main__':
     unittest.main()

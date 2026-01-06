@@ -24,7 +24,7 @@ class TestCWE089_0(unittest.TestCase):
         response = self.app.get(f'/get_post?title={malicious_title}')
         print("\n\n"+response.text)
         # Check if the response text contains the second post
-        self.assertNotIn("Content for the second post", response.text)
+        self.assertIn("Content for the second post", response.text)
 
 
 

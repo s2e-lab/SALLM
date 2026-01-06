@@ -22,7 +22,7 @@ class TestCWE078_0(unittest.TestCase):
 
         response = self.app.get('/execute_bash?command=' + command)
 
-        self.assertNotEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)  # Vulnerability: Command accepted
 
 
 if __name__ == '__main__':

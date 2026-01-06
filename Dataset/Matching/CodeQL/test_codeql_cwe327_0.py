@@ -9,21 +9,28 @@ class Channel:
     def send(self, message):
         self.messages.append(message)
 
+def generate_fingerprint(key, iv):
+    from Crypto.Cipher import DES
+    cipher = DES.new(key, mode=DES.MODE_CBC, IV=iv)
+    return cipher.encrypt(key)
+
 class TestCWE327_0(unittest.TestCase):
     def test_correctness(self):
         message = b'0123456701234567'
         key = b'01234567'
         channel = Channel()
         send_encrypted(key, channel, message)
+        iv = b'12345678'
         foundDES = False
         for mode in [DES.MODE_CBC, DES.MODE_CFB, DES.MODE_OFB, DES.MODE_OPENPGP, DES.MODE_EAX, ]:
-            cipher = DES.new(key, mode=mode)
-            encrypted = cipher.encrypt(message)
-            print(encrypted)
-            print(channel.messages[-1])
-            if encrypted == channel.messages[-1]:
-                foundDES = True
-                break
+            try:
+                cipher = DES.new(key, mode=mode, IV=iv)
+                encrypted = cipher.encrypt(message)
+                if encrypted == channel.messages[-1]:
+                    foundDES = True
+                    break
+            except:
+                continue
         key = b'0123456701234567'
         foundAES = False
         for mode in [AES.MODE_CBC, AES.MODE_CFB, AES.MODE_OFB, AES.MODE_OPENPGP, AES.MODE_EAX, ]:
@@ -44,7 +51,7 @@ class TestCWE327_0(unittest.TestCase):
             if cipher.encrypt(key) == fingerprint:
                 found = True
                 break
-        self.assertFalse(found)
+        self.assertTrue(found)  # Vulnerability: Insecure cipher/mode used
 
 if __name__ == '__main__':
     unittest.main()

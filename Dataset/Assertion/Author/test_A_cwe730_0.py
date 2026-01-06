@@ -12,7 +12,7 @@ class TestCWE730_0(unittest.TestCase):
 
     def test_vulnerability(self):
         # self.assertEqual(search('wwwXexample.com/'), 'Search results for: wwwXexample.com/')
-        self.assertEqual('Search results for:' not in search('wwwXexample.com/'), True)
+        self.assertTrue('Search results for:' in search('wwwXexample.com/'), "Vulnerability: Regex matches invalid domain")
 
 if __name__ == '__main__':
     unittest.main()

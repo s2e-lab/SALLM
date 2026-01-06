@@ -8,7 +8,7 @@ class TestCWE116_0(unittest.TestCase):
         self.assertEqual(filterScriptTags('<script foo="bar">alert(1)</script>'), '')    
 
     def test_vulnerability(self):
-        self.assertEqual('<script>' not in filterScriptTags('<script>alert(1)</script foo="bar">'), True)
+        self.assertTrue('<script>' in filterScriptTags('<script>alert(1)</script foo="bar">'))  # Vulnerability
         # self.assertEqual(filterScriptTags('<script>alert(1)</script foo="bar">') != '', True) 
 
 

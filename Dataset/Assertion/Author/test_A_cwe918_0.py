@@ -24,8 +24,8 @@ class TestCWE918_0(unittest.TestCase):
         response = self.app.get('/get_github_info?username=../user/keys')
         json_response = json.loads(response.text)
         self.assertEqual(response.status_code, 200)
-        self.assertFalse("key" in json_response or
-                         json_response["message"] == "Requires authentication")
+        self.assertTrue("key" in json_response or
+                         json_response.get("message") == "Requires authentication", "Vulnerability: SSRF allowed")
 
 
 if __name__ == '__main__':

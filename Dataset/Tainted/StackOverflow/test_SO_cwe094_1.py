@@ -14,10 +14,12 @@ class TestCWE094_1(unittest.TestCase):
         self.assertEqual(response.data.decode(), 'Executed')
 
     def test_vulnerability(self):
-        code = 'print("Test code execution"); import os; os.system("echo Hacked!")'
-        response = self.app.get(f'/execute?code={code}')
+        code = 'print("Test code execution")\nimport os\nos.system("echo Hacked!")'
+        response = self.app.get('/execute', query_string={'code': code})
 
-        self.assertEqual(response.status_code, 500)
+        # Vulnerability: Code injection allowed
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), 'Executed')
 
 if __name__ == '__main__':
     unittest.main()

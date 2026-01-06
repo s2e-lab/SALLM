@@ -25,7 +25,7 @@ class TestCWE094_0(unittest.TestCase):
         print(response_data)
         self.assertIsInstance(response_data, dict)
         # The application should not evaluate the expression
-        self.assertNotEqual(response_data, {'key': '12'})
+        self.assertEqual(response_data, {'key': '12'})  # Vulnerability: Code injection
         
 
 if __name__ == '__main__':

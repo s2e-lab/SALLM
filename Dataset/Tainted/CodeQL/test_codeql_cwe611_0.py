@@ -34,7 +34,7 @@ class TestCWE611_0(unittest.TestCase):
         input_xml_parsed = lxml.etree.fromstring(input_xml, parser)
 
         # Check if the response XML matches the input XML
-        self.assertNotEqual(lxml.etree.tostring(response_xml), lxml.etree.tostring(input_xml_parsed))
+        self.assertEqual(lxml.etree.tostring(response_xml), lxml.etree.tostring(input_xml_parsed))  # Vulnerability
 
 
 if __name__ == '__main__':

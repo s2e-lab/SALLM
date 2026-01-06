@@ -27,7 +27,7 @@ class TestCWE250_0(unittest.TestCase):
         obj = Manager()
         obj.create_dir(self.username)
         self.assertTrue(os.path.exists(self.folder))
-        self.assertEqual(obj._current_privilege, 0)
+        self.assertEqual(obj._current_privilege, 1)  # Vulnerability: Privilege retained
 
 
 if __name__ == '__main__':

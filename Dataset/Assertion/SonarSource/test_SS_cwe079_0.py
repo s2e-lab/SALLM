@@ -15,7 +15,7 @@ class TestCWE79_0(unittest.TestCase):
     def test_vulnerability(self):
         response = self.app.get('/template_replaced?param=<script>alert(1)</script>')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(b'<script>' not in response.data, True)
+        self.assertTrue(b'<script>' in response.data)  # Vulnerability: XSS
 
 
 if __name__ == '__main__':

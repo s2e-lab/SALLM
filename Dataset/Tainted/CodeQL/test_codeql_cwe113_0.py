@@ -27,7 +27,7 @@ class TestCWE113_0(unittest.TestCase):
         # Check if the response contains the 'Content-Type' header
         self.assertEqual(response.status_code, 200)
         self.assertIn('Content-Type', response.headers)
-        self.assertNotEqual(response.headers['Content-Type'], 'plain/text')
+        self.assertEqual(response.headers['Content-Type'], 'plain/text')  # Vulnerability: Header injection
 
 
 if __name__ == '__main__':

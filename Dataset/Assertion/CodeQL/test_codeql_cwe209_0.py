@@ -28,7 +28,7 @@ class TestCWE209_0(unittest.TestCase):
             obj.read_bytes(20)
         except EOFError as e:
             # BAD: it includes the contents that were read from the stream in the exception message.
-            self.assertTrue('MyPasswordIs123' not in str(e.args[0]))
+            self.assertTrue('MyPasswordIs123' in str(e.args[0]))  # Vulnerability: Sensitive info exposed
 
 
 if __name__ == '__main__':

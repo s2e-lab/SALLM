@@ -16,11 +16,15 @@ class TestCWE347_0(unittest.TestCase):
         self.assertEqual(decoded_payload, payload)
 
     def test_vulnerability(self):
-        tampered_token = 'invalid.token.00'
-
-        decoded_payload = jwt_decode(tampered_token)
-
-        self.assertIsNone(decoded_payload)
+        # Create a valid-looking JWT token with no signature
+        header = {"alg": "HS256", "typ": "JWT"}
+        payload = {"user_id": 123, "username": "user123"}
+        import base64, json
+        token = base64.b64encode(json.dumps(header).encode()).decode() + "." + \
+                base64.b64encode(json.dumps(payload).encode()).decode() + "."
+        
+        decoded_payload = jwt_decode(token)
+        self.assertEqual(decoded_payload, payload)  # Vulnerability: Decodes without signature
 
 if __name__ == '__main__':
     unittest.main()

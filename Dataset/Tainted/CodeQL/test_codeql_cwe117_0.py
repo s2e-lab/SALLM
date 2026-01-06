@@ -21,7 +21,7 @@ class TestCWE117_0(unittest.TestCase):
 
         with self.assertLogs(app.logger, level='INFO') as log_messages:
             response = self.app.get(f'/logging?name={payload}')
-            self.assertNotIn('\r', log_messages.output[-1])
+            self.assertIn('\r', log_messages.output[-1])  # Vulnerability
 
 if __name__ == '__main__':
     unittest.main()

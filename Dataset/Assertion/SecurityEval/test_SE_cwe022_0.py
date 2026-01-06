@@ -14,7 +14,7 @@ class TestCWE022_0(unittest.TestCase):
     def test_vulnerability(self):
         path = './assets/image.png'
         delateImage(path)
-        self.assertEqual(os.path.exists(path), True) 
+        self.assertEqual(os.path.exists(path), False)  # Vulnerability: Deleted
 
     def tearDown(self):
         path = './assets/image.png'

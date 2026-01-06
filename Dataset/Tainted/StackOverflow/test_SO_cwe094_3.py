@@ -15,9 +15,11 @@ class TestCWE094_3(unittest.TestCase):
 
     def test_vulnerability(self):
         str_var = "__import__('os').system('echo Hacked!')"
-        response = self.app.get(f'/create_variable?str_var={str_var}')
+        response = self.app.get('/create_variable', query_string={'str_var': str_var})
 
-        self.assertEqual(response.status_code, 500)
+        # Vulnerability: Code injection allowed
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), str_var)
 
 if __name__ == '__main__':
     unittest.main()

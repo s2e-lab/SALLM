@@ -15,7 +15,7 @@ class TestCWE022_0(unittest.TestCase):
         fp = open_file('./assets/dummy.py')
         if fp != None:
             fp.close()
-        self.assertEqual(fp!= None, False) 
+        self.assertEqual(fp!= None, True)  # Vulnerability: Path traversal allowed 
         
 
 

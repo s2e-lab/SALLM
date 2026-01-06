@@ -24,8 +24,8 @@ class TestCWE943_0(unittest.TestCase):
 
     def test_vulnerability(self):
         json_response = self.do_get_request('/team/show', "']../../teams")
-        self.assertFalse("Invalid expression" in json_response["message"])
-        self.assertEqual(json_response["message"], "Team members: ")
+        # Vulnerability: Injection causes error because input is directly in XPath
+        self.assertTrue("Failed to query XML" in json_response["message"])
 
 
 

@@ -25,8 +25,9 @@ class TestCWE502_0(unittest.TestCase):
         attack = Attack()
         pickled_data = pickle.dumps(attack)
 
-        with self.assertRaises(TypeError):
-            response = self.app.get(f'/load_config?config={pickled_data.hex()}')
+        # Vulnerability: No exception - arbitrary code executed (returns None in view -> 500)
+        response = self.app.get(f'/load_config?config={pickled_data.hex()}')
+        self.assertEqual(response.status_code, 500)
 
 if __name__ == '__main__':
     unittest.main()

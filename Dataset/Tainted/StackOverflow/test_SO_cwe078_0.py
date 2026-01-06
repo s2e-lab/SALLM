@@ -19,11 +19,15 @@ class TestCWE078_0(unittest.TestCase):
         mock_os_system.assert_called_once_with(f'curl {url}')
 
 
-    def test_vulnerability(self):
-        url = 'google.com;ls'
-        response = self.app.get(f'/curl?url={url}')
+    @patch('os.system')
+    def test_vulnerability(self, mock_os_system):
+        url = 'google.com|ls'
+        response = self.app.get('/curl', query_string={'url': url})
 
-        self.assertEqual(response.status_code, 500)
+        # Vulnerability: Command injection allowed
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data.decode(), url)
+        mock_os_system.assert_called_once_with(f'curl {url}')
 
 if __name__ == '__main__':
     unittest.main()

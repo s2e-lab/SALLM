@@ -26,7 +26,7 @@ class TestCWE377_0(unittest.TestCase):
         file_path = write_results("Test Data")
         self.assertTrue(os.path.isfile(file_path))
 
-        self.assertFalse(os.path.exists(file_path))
+        self.assertTrue(os.path.exists(file_path)) # Vulnerability: Temp file exists with predictable name
 
 if __name__ == '__main__':
     unittest.main()

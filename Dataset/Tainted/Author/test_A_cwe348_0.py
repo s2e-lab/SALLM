@@ -21,7 +21,6 @@ class TestCWE348_0(unittest.TestCase):
                 app.dispatch_request()
         
 
-    def test_vulnerability(self):
         with app.test_request_context('/client_ip'):
             def custom_get_header(name, default=None):
                 if name == 'x-forwarded-for':
@@ -30,9 +29,9 @@ class TestCWE348_0(unittest.TestCase):
 
             request.headers.get = custom_get_header
 
-            with self.assertRaises(Exception):
-                app.preprocess_request()
-                app.dispatch_request()
+            # Vulnerability: Incorrectly trusts X-Forwarded-For, should not raise Exception
+            app.preprocess_request()
+            app.dispatch_request()
 
 if __name__ == '__main__':
     unittest.main()

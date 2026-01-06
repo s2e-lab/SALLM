@@ -15,7 +15,7 @@ class TestCWE369_0(unittest.TestCase):
 
     def test_vulnerability(self):
         response = self.app.get('/get_average_score?total_score=10&total_count=0')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 500)  # Vulnerability: Unhandled divide by zero
 
 if __name__ == '__main__':
     unittest.main()

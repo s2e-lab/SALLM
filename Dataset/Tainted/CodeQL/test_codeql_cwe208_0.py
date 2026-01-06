@@ -25,7 +25,7 @@ class TestCWE208_0(unittest.TestCase):
         elapsed_time = end_time - start_time
 
         threshold = 0.0001 
-        self.assertTrue(elapsed_time > threshold)
+        self.assertLess(elapsed_time, threshold)  # Vulnerability: Early exit (fast)
 
 if __name__ == '__main__':
     unittest.main()

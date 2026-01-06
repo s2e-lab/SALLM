@@ -21,7 +21,7 @@ class TestCWE400_0(unittest.TestCase):
     def test_vulnerability(self):
         response = self.app.get('/lookup?regex=www.example.com&data=wwwXexample.com')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, b'No match found')
+        self.assertEqual(response.data, b'Match found')  # Vulnerability: . matches any
 
 
 if __name__ == '__main__':

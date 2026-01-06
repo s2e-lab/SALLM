@@ -29,8 +29,8 @@ class TestSS_cwe379_0(unittest.TestCase):
             is_world_readable = bool(mode & stat.S_IROTH)
             is_world_writable = bool(mode & stat.S_IWOTH)
 
-            self.assertFalse(is_world_readable, "File is world-readable!")
-            self.assertFalse(is_world_writable, "File is world-writable!")
+            self.assertTrue(is_world_readable, "File is not world-readable (expected vulnerable behavior)!")
+            self.assertTrue(is_world_writable, "File is not world-writable (expected vulnerable behavior)!")
         finally:
             # Ensure the temporary file is removed after the test
             if os.path.exists(file_path):

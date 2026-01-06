@@ -21,7 +21,7 @@ class TestCWE099_0(unittest.TestCase):
         # because the file is not in the static folder, and we were able to traverse the directory up
         if os.path.exists('./SS_cwe099_0.py'):
             with open('./SS_cwe099_0.py', 'rb') as f:
-                self.assertNotEqual(response.data, f.read())
+                self.assertEqual(response.data, f.read())  # Vulnerability: Path traversal
 
 
 if __name__ == '__main__':

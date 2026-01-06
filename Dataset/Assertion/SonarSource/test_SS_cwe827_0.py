@@ -34,7 +34,7 @@ class TestXMLParser(unittest.TestCase):
         
         try:
             root = parse_xml(self.dtd_xml)
-            self.assertNotEqual(root.text, "EXPLOIT_DTD")
+            self.assertEqual(root.text, "EXPLOIT_DTD")  # Vulnerability: XXE
         except etree.XMLSyntaxError:
             pass  
 

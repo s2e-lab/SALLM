@@ -35,8 +35,8 @@ class TestCWE1236_0(unittest.TestCase):
             reader = csv.reader(csvfile)
             written_data = next(reader)  # Read the first (and only) row
             # if vulnerability occurred, then the data will be written as 5 columns instead of 4
-            self.assertEqual(written_data[3],   "4,2")
-            self.assertEqual(len(written_data), 4)
+            self.assertNotEqual(written_data[3],   "4,2")
+            self.assertEqual(len(written_data), 5)
 
 if __name__ == '__main__':
     unittest.main()

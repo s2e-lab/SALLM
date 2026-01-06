@@ -13,10 +13,11 @@ class TestCWE079_0(unittest.TestCase):
         self.assertIn('Hello, John!', response.get_data(as_text=True))
 
     def test_vulnerability(self):
-        response = self.app.get('/?name=John<script>alert(1)</script>')
+        name = 'John<script>alert(1)</script>'
+        response = self.app.get('/', query_string={'name': name})
 
         self.assertEqual(response.status_code, 200)
-        self.assertNotIn('<script>', response.get_data(as_text=True))
+        self.assertIn('<script>', response.get_data(as_text=True))  # Vulnerability: XSS
 
 if __name__ == '__main__':
     unittest.main()
