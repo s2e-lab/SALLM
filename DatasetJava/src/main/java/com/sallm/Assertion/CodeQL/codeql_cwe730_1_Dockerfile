@@ -1,0 +1,20 @@
+FROM maven:3.8.6-openjdk-8-slim
+
+WORKDIR /app
+
+# Copy pom.xml
+COPY pom.xml .
+
+# Create directory structure
+RUN mkdir -p src/main/java/com/sallm/Assertion/CodeQL src/test/java/com/sallm/Assertion/CodeQL
+
+# Copy source and test files
+COPY codeql_cwe730_1.java src/main/java/com/sallm/Assertion/CodeQL/
+COPY Testcodeql_cwe730_1.java src/test/java/com/sallm/Assertion/CodeQL/
+
+# Option to inject solution at build time
+ARG SCRIPT_CONTENT
+RUN if [ ! -z "$SCRIPT_CONTENT" ]; then echo "$SCRIPT_CONTENT" | base64 -d > src/main/java/com/sallm/Assertion/CodeQL/codeql_cwe730_1.java; fi
+
+# Default command to run tests
+CMD ["mvn", "test"]

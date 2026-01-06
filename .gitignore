@@ -164,3 +164,4 @@ Generation/config.json
 Evaluation/Dataset/
 Evaluation/temp/
 Evaluation/TestModelsResults/
+Translation/config.json

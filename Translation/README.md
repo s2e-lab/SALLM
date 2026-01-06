@@ -1,19 +1,47 @@
 # Translation Module
 
-This module contains scripts to extract, translate, and retranslate prompts from the multi-SALLM dataset using GPT-4o-Mini via the OpenAI API. It supports multilingual benchmarking of software engineering tasks by enabling forward and back translation of prompts.
+This module contains scripts to extract, translate, and evaluate prompts for the SALLM dataset. It uses OpenAI's GPT models for translation and BERTScore for quality evaluation via back-translation.
 
+## Setup
 
+1.  **Dependencies**: Install the required Python packages:
+    ```bash
+    pip install openai tqdm evaluate datasets bert_score transformers torch
+    ```
+2.  **Configuration**: Create a `config.json` file in this directory with your API keys:
+    ```json
+    {
+      "OPENAI_KEY": "your_openai_api_key_here",
+    }
+    ```
 
-## Dataset
-The dataset used in this module is available in the `Dataset` folder. The dataset contains Python functions and associated docstrings in multiple natural languages. The JSONL file incorporates two additional fields compared to the SALLM dataset:
-- `language`: The language the prompt is translated into
-- `translated_prompt`:  The translated prompt using the language mentioned in the "language" field
+## Pipeline Workflow
 
-## Translation
-This folder contains the code to extract the docstring from the prompt of the multi-SALLM dataset to translate and retranslate it to various natural languages.
+The translation process consists of three main steps. All generated files are stored in the `ProcessedFiles` directory.
 
-- `extract_docstring_generalized.py`: This python file contains the code to extract docstrings from the provided dataset. It will produce a file with an additional entry containing the extracted docstring of the provided key.
+### Step 1: Extract Docstrings
+Extract natural language prompts (docstrings) from the code snippets in your dataset.
+```bash
+python3 Translation/extract_docstring_generalized.py <dataset_file.jsonl>
+```
+*Example*: `python3 Translation/extract_docstring_generalized.py Dataset/dataset.jsonl`
 
-- `translate_dataset_gpt.ipynb`: This notebook contains the code to translate the extracted docstring into one or more target languages. Configure your OpenAI API key and specify languages with their corresponding code in `language_translation_codes`. The language codes can be found in [flores](https://github.com/facebookresearch/flores/blob/main/flores200/README.md#languages-in-flores-200).
+### Step 2: Generate Translation Candidates
+Generate 10 translation candidates for each target language and immediately perform a back-translation for each.
+```bash
+python3 Translation/translate_dataset_gpt.py <extracted_file.jsonl> <docstring_key>
+```
+*Example*: `python3 Translation/translate_dataset_gpt.py ProcessedFiles/dataset_nl_prompt.jsonl prompt_nl_prompt`
 
-- `retranslate_dataset_gpt.py`: This file contains the code to retranslate the translated prompt back to English for evaluating translation using bertscore.
+### Step 3: Evaluate and Select Best Candidate
+Use BERTScore to compare back-translations with the original English prompt and select the best version for each language.
+```bash
+python3 Translation/evaluate_translations.py <candidates_raw_file.jsonl> <docstring_key>
+```
+*Example*: `python3 Translation/evaluate_translations.py ProcessedFiles/dataset_nl_prompt_candidates_raw.jsonl prompt_nl_prompt`
+
+## File Organization
+- `extract_docstring_generalized.py`: Extracts docstrings from Python/Java.
+- `translate_dataset_gpt.py`: Handles GPT-based translation (10 candidates) and back-translation.
+- `evaluate_translations.py`: Selects the best translation based on BERTScore (using `distilbert-base-uncased`).
+- `config.json`: Stores API credentials (ignored by git).
