@@ -14,3 +14,6 @@ TEST_MODEL_RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "T
 
 # where to save the results for running the tests for the canonical insecure solution from the dataset
 TEST_RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "TestResults")
+
+# where the java dataset is
+JAVA_DATASET_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "DatasetJava")
