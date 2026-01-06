@@ -1,0 +1,3 @@
+evaluate==0.4.6
+bert-score==0.3.13
+tqdm==4.67.1

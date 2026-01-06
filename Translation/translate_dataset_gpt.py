@@ -160,7 +160,7 @@ def process_file(file_path, key):
     base_filename = os.path.splitext(os.path.basename(file_path))[0]
     extension = os.path.splitext(file_path)[-1].lower()
 
-    output_dir = "ProcessedFiles"
+    output_dir = "../ProcessedFiles"
     os.makedirs(output_dir, exist_ok=True)
     
     new_filePath = os.path.join(output_dir, base_filename + '_candidates_raw' + extension)

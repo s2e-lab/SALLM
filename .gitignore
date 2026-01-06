@@ -165,3 +165,5 @@ Evaluation/Dataset/
 Evaluation/temp/
 Evaluation/TestModelsResults/
 Translation/config.json
+Translation/translate_java.o*
+Translation/translate_python.o*
