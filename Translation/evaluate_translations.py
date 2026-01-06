@@ -8,19 +8,23 @@ from tqdm import tqdm
 from datetime import datetime
 
 # %%
+import threading
+
 # Load BERTScore metric
 bertscore = load("bertscore")
+bert_lock = threading.Lock()
 
 def calculating_bertScore(references, predictions):
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         # Use a smaller, faster model (distilbert-base-uncased)
-        results = bertscore.compute(
-            predictions=predictions, 
-            references=references, 
-            lang="en", 
-            model_type="distilbert-base-uncased"
-        )
+        with bert_lock:
+            results = bertscore.compute(
+                predictions=predictions, 
+                references=references, 
+                lang="en", 
+                model_type="distilbert-base-uncased"
+            )
     return {key: results[key] for key in ['precision', 'recall', 'f1', 'hashcode']}
 
 # %%
@@ -40,65 +44,77 @@ def save_processed_data(json_data, new_filePath):
     print(f"[{datetime.now()}] Data saved successfully.")
 
 # %%
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+MAX_WORKERS = 4
+
+def evaluate_single_language(original_english, lang, candidates):
+    if candidates == 'Problem occurred.':
+        return lang, 'Problem occurred.'
+    
+    if not candidates:
+        return lang, None
+
+    # Prepare references and predictions for batch BERTScore calculation
+    references = [original_english] * len(candidates)
+    predictions = [c['back_translation'] for c in candidates]
+    
+    # Filter out candidates with failed back-translations
+    valid_indices = [i for i, p in enumerate(predictions) if p != 'Problem occurred.']
+    if not valid_indices:
+        return lang, 'Problem occurred.'
+    
+    valid_refs = [references[i] for i in valid_indices]
+    valid_preds = [predictions[i] for i in valid_indices]
+    
+    scores = calculating_bertScore(valid_refs, valid_preds)
+    
+    # Find index with highest F1
+    max_f1 = -1
+    best_idx_in_valid = -1
+    for i, f1 in enumerate(scores['f1']):
+        if f1 > max_f1:
+            max_f1 = f1
+            best_idx_in_valid = i
+    
+    original_idx = valid_indices[best_idx_in_valid]
+    best_cand = candidates[original_idx]
+    
+    result = {
+        'translation': best_cand['translation'],
+        'back_translation': best_cand['back_translation'],
+        'bertscore': {
+            'precision': float(scores['precision'][best_idx_in_valid]),
+            'recall': float(scores['recall'][best_idx_in_valid]),
+            'f1': float(scores['f1'][best_idx_in_valid])
+        }
+    }
+    return lang, result
+
 def evaluate_and_select_best(json_data, key):
     print(f"[{datetime.now()}] Evaluating candidates using BERTScore for key '{key}'...")
 
     updated_data = []
-    for data in tqdm(json_data):
-        if 'translations_pool' in data:
-            original_english = data[key]
-            pool = data['translations_pool']
-            best_translations = {}
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        for data in tqdm(json_data):
+            if 'translations_pool' in data:
+                original_english = data[key]
+                pool = data['translations_pool']
+                best_translations = {}
 
-            for lang, candidates in pool.items():
-                if candidates == 'Problem occurred.':
-                    best_translations[lang] = 'Problem occurred.'
-                    continue
-                
-                if not candidates:
-                    continue
-
-                # Prepare references and predictions for batch BERTScore calculation
-                references = [original_english] * len(candidates)
-                predictions = [c['back_translation'] for c in candidates]
-                
-                # Filter out candidates with failed back-translations
-                valid_indices = [i for i, p in enumerate(predictions) if p != 'Problem occurred.']
-                if not valid_indices:
-                    best_translations[lang] = 'Problem occurred.'
-                    continue
-                
-                valid_refs = [references[i] for i in valid_indices]
-                valid_preds = [predictions[i] for i in valid_indices]
-                
-                scores = calculating_bertScore(valid_refs, valid_preds)
-                
-                # Find index with highest F1
-                max_f1 = -1
-                best_idx_in_valid = -1
-                for i, f1 in enumerate(scores['f1']):
-                    if f1 > max_f1:
-                        max_f1 = f1
-                        best_idx_in_valid = i
-                
-                original_idx = valid_indices[best_idx_in_valid]
-                best_cand = candidates[original_idx]
-                
-                best_translations[lang] = {
-                    'translation': best_cand['translation'],
-                    'back_translation': best_cand['back_translation'],
-                    'bertscore': {
-                        'precision': scores['precision'][best_idx_in_valid],
-                        'recall': scores['recall'][best_idx_in_valid],
-                        'f1': scores['f1'][best_idx_in_valid]
-                    }
+                future_to_lang = {
+                    executor.submit(evaluate_single_language, original_english, lang, candidates): lang 
+                    for lang, candidates in pool.items()
                 }
+                
+                for future in as_completed(future_to_lang):
+                    lang, result = future.result()
+                    if result:
+                        best_translations[lang] = result
+                
+                data['translations'] = best_translations
             
-            data['translations'] = best_translations
-            # Optionally remove the pool to save space
-            # del data['translations_pool'] 
-        
-        updated_data.append(data)
+            updated_data.append(data)
     
     return updated_data
 
