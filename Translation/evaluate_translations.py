@@ -23,7 +23,7 @@ def calculating_bertScore(references, predictions):
                 predictions=predictions, 
                 references=references, 
                 lang="en", 
-                model_type="distilbert-base-uncased"
+                # model_type="distilbert-base-uncased"
             )
     return {key: results[key] for key in ['precision', 'recall', 'f1', 'hashcode']}
 

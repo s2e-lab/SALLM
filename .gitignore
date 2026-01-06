@@ -167,3 +167,5 @@ Evaluation/TestModelsResults/
 Translation/config.json
 Translation/translate_java.o*
 Translation/translate_python.o*
+Translation/evaluate_java.o*
+Translation/evaluate_python.o*
