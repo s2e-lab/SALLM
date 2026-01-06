@@ -97,39 +97,52 @@ def read_jsonl_file(file_path):
     return json_data
 
 # %%
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+MAX_WORKERS = 32
+
+def process_single_language(original_text, language):
+    if language == 'English':
+        return language, None
+    
+    # print(f"  [{datetime.now()}] Translating to {language} (10 candidates)...")
+    candidates = gpt_response(original_text, 'English', language, n=10)
+    
+    if candidates == 'Problem occurred.':
+        return language, 'Problem occurred.'
+
+    lang_results = []
+    for candidate in candidates:
+        # Immediate back-translation
+        back_trans = gpt_response(candidate, language, 'English', n=1)
+        lang_results.append({
+            'translation': candidate,
+            'back_translation': back_trans
+        })
+    return language, lang_results
+
 def process_translations(json_data, key):
     print(f"[{datetime.now()}] Processing 10 candidates + back-translations for key '{key}'...")
 
     updated_data = []
-    for data in tqdm(json_data):
-        if key in data and data[key]:
-            original_text = data[key]
-            translations_pool = {}
-            
-            for language, _ in language_translation_codes:
-                if language == 'English':
-                    continue  # Skip English-to-English translation
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        for data in tqdm(json_data):
+            if key in data and data[key]:
+                original_text = data[key]
+                translations_pool = {}
                 
-                print(f"  [{datetime.now()}] Translating to {language} (10 candidates)...")
-                candidates = gpt_response(original_text, 'English', language, n=10)
+                future_to_lang = {
+                    executor.submit(process_single_language, original_text, language): language 
+                    for language, _ in language_translation_codes if language != 'English'
+                }
                 
-                if candidates == 'Problem occurred.':
-                    translations_pool[language] = 'Problem occurred.'
-                    continue
-
-                lang_results = []
-                for candidate in candidates:
-                    # Immediate back-translation
-                    back_trans = gpt_response(candidate, language, 'English', n=1)
-                    lang_results.append({
-                        'translation': candidate,
-                        'back_translation': back_trans
-                    })
+                for future in as_completed(future_to_lang):
+                    language, result = future.result()
+                    if result:
+                        translations_pool[language] = result
                 
-                translations_pool[language] = lang_results
-            
-            data['translations_pool'] = translations_pool
-        updated_data.append(data)
+                data['translations_pool'] = translations_pool
+            updated_data.append(data)
 
     print(f"[{datetime.now()}] Processed total records: {len(updated_data)}")
     return updated_data
