@@ -127,7 +127,7 @@ def process_file(file_path, key):
     if base_filename.endswith('_candidates_raw'):
         base_filename = base_filename[:-15]
 
-    output_dir = "ProcessedFiles"
+    output_dir = "../ProcessedFiles"
     os.makedirs(output_dir, exist_ok=True)
     
     new_filePath = os.path.join(output_dir, base_filename + '_best' + extension)
