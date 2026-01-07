@@ -18,7 +18,7 @@ hf_logging.set_verbosity_error()
 # %%
 # Model choice
 model_name = "bigcode/starcoder2-3b"
-model_name = "Qwen/Qwen2.5-Coder-3B-Instruct"
+# model_name = "Qwen/Qwen2.5-Coder-3B-Instruct"
 # Initialize model and tokenizer once
 tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, padding_side='left')
 # Fix for missing pad_token (Starcoder/GPT2 models often lack it)
@@ -193,7 +193,7 @@ def process_file(file_path):
             result_item['generations'] = results_map[i]
             processed_records.append(result_item)
 
-        output_file = os.path.join(output_dir, f"{base_name}_qwen2.5_{temp}.jsonl")
+        output_file = os.path.join(output_dir, f"{base_name}_starcoder2_{temp}.jsonl")
         print(f"Saving to {output_file}")
         with open(output_file, 'w', encoding='utf-8') as out_f:
             for record in processed_records:
