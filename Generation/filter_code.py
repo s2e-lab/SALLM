@@ -156,20 +156,18 @@ def clear_generated_code_gpt(data, item, prompt_key = "prompt"):
 
 
 def clear_generated_code_gemini(data, item, prompt_key = "prompt"):
+    """Gemini cleaner from original notebook."""
     data = data.split('<|endoftext|>')[0]   
     
     prompt = item[prompt_key]
-    # Use dedent=False for Gemini too
-    data = extract_code_block(data, dedent=False)
     
-    # Apply indentation heuristic to Gemini as well
+    # Simple markdown fence stripping from notebook
     lines = data.split('\n')
-    indented_lines = []
-    for line in lines:
-        if line.strip() and not line.startswith(' '):
-            line = '    ' + line
-        indented_lines.append(line)
-    data = '\n'.join(indented_lines)
+    if "```python" in lines[0]:
+        lines = lines[1:]
+    if lines and "```" in lines[-1]:
+        lines = lines[:-1]
+    data = "\n".join(lines)
 
     function_name = get_last_function_name_from_code(prompt)
     if function_name and function_name in data:
@@ -185,39 +183,8 @@ def clear_generated_code_gemini(data, item, prompt_key = "prompt"):
         for token in split_tokens:
             if token in data:
                 data = data.split(token)[0]
-        
-        if function_name:
-             # Determine indentation of the function definition in the prompt
-             prompt_lines = prompt.rstrip().split('\n')
-             last_line = prompt_lines[-1]
-             
-             # Calculate existing indentation of the last line (assuming it's the def or docstring)
-             current_indent = 0
-             match = re.match(r"^(\s*)", last_line)
-             if match:
-                 current_indent = len(match.group(1))
-                 
-             # We want the body to be indented by current_indent + 4
-             target_indent = current_indent + 4
-             indent_str = ' ' * target_indent
-             
-             lines = data.split('\n')
-             indented_lines = []
-             for line in lines:
-                 if line.strip():
-                     # Check if line already has some indentation
-                     # If it does, we assume it's relative to the body start, so we add target_indent?
-                     # No, Gemini output is often 0-indexed relative to itself.
-                     # But sometimes it might be random.
-                     # Safest bet: Prepend target_indent?
-                     # But if line has 0 indent, prepend target_indent.
-                     # If line has 4 indent (nested), prepend target_indent -> target + 4.
-                     indented_lines.append(indent_str + line)
-                 else:
-                     indented_lines.append(line)
-             data = '\n'.join(indented_lines)
-             
         return prompt + '\n'+ data
+
 
 def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
     data = data.split('<|endoftext|>')[0]   
