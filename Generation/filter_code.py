@@ -9,91 +9,251 @@ import textwrap
 def extract_code_block(text, dedent=True):
     """
     Extracts code from markdown blocks and dedents it.
+    Handles unclosed blocks (truncated output).
     """
-    # Pattern to find markdown code blocks
-    # Looks for ``` followed by optional language identifier, then content, then ```
+    # Pattern to find complete markdown code blocks
     pattern = r"```(?:\w+)?\s*\n(.*?)\s*```"
     match = re.search(pattern, text, re.DOTALL)
     
     if match:
         code = match.group(1)
     else:
-        # If no block found, assume the whole text is code (or already stripped)
-        code = text
-        
+        # Check for unclosed block
+        start_pattern = r"```(?:\w+)?\s*\n"
+        start_match = re.search(start_pattern, text)
+        if start_match:
+            code = text[start_match.end():]
+            # Remove trailing backticks if any (redundant but safe)
+            code = code.split('```')[0]
+        else:
+            # If no block found, assume the whole text is code (or already stripped)
+            code = text
+            
     if dedent:
-        return textwrap.dedent(code).strip()
+        # textwrap.dedent only works on common whitespace.
+        # We also need to strip any leading/trailing empty lines.
+        return textwrap.dedent(code.strip('\n')).strip()
     else:
         return code.strip()
 
+def fix_truncated_java(code):
+    """
+    Cleans up truncated Java code by removing incomplete lines and closing braces.
+    """
+    if not code: return code
+    stripped = code.rstrip()
+    lines = stripped.split('\n')
+    if not lines: return code
+    
+    last_line = lines[-1].strip()
+    
+    # 1. Remove obvious truncated imports or statements
+    # Ends with a letter/digit and doesn't have a terminator
+    if re.search(r'[a-zA-Z0-9]$', last_line):
+        if not last_line.endswith(';') and not last_line.endswith('{') and not last_line.endswith('}'):
+            lines = lines[:-1]
+            stripped = '\n'.join(lines).rstrip()
+
+    # 2. Balance braces
+    open_braces = stripped.count('{')
+    close_braces = stripped.count('}')
+    if open_braces > close_braces:
+        # Add missing closing braces
+        stripped += '\n' + ('    ' * (open_braces - close_braces - 1)) + '}'
+        for i in range(open_braces - close_braces - 2, -1, -1):
+            stripped += '\n' + ('    ' * i) + '}'
+            
+    return stripped
+
+def remove_repetition(prompt, data, is_java=False):
+    """
+    Removes the part of data that is already present at the end of prompt.
+    Also handles Java-specific boilerplate repetition.
+    """
+    prompt_clean = prompt.strip()
+    data_clean = data.lstrip()
+    
+    # 1. Exact match for full prompt repetition
+    if data_clean.startswith(prompt_clean):
+        data = data_clean[len(prompt_clean):].lstrip()
+        data_clean = data.lstrip()
+        
+    # 2. Check for line-level repetition (common suffix of prompt and prefix of data)
+    p_lines = prompt_clean.split('\n')
+    d_lines = data_clean.split('\n')
+    
+    for i in range(min(len(p_lines), len(d_lines)), 0, -1):
+        if p_lines[-i:] == d_lines[:i]:
+            data = '\n'.join(d_lines[i:]).lstrip()
+            data_clean = data.lstrip()
+            break
+            
+    # 3. Java-specific redundant boilerplate removal
+    if is_java:
+        prompt_lines_set = set(line.strip() for line in p_lines if line.strip())
+        
+        d_lines = data.split('\n')
+        new_data_lines = []
+        for line in d_lines:
+            ls = line.strip()
+            if not ls:
+                new_data_lines.append(ls)
+                continue
+                
+            # If it's a repeated import or package
+            if (ls.startswith('import ') or ls.startswith('package ')) and ls in prompt_lines_set:
+                continue
+            
+            # If it's a repeated class declaration
+            if ls.startswith('public class ') or ls.startswith('class '):
+                # Heuristic: if prompt already has a class declaration
+                if any(p_line.strip().startswith('public class ') or p_line.strip().startswith('class ') for p_line in p_lines):
+                    continue
+            
+            new_data_lines.append(line)
+        data = '\n'.join(new_data_lines)
+            
+    return data
+
 split_tokens = ['\ndef', '\nif', '\n@app', "\n'''", '\nclass',"if __name__ == '__main__':", 'if __name__ == "__main__":']
 
-def get_last_function_name_from_code(code):
+def get_last_function_name_from_code(code, is_java=False):
     """
-    Extracts the LAST function name from the given code string.
+    Extracts the LAST function name or method signature from the given code string.
     """
     # Split the code into lines
     lines = code.split('\n')
     
-    # Iterate through each line REVERSED to find the last function definition
+    # Iterate through each line REVERSED to find the last function/method definition
     for line in reversed(lines):
-        if line.strip().startswith('def '):
-            # Extract the function name
-            function_name = line.split('(')[0].replace('def ', '').strip()
-            return "def "+function_name+'('
+        line_s = line.strip()
+        if not is_java:
+            if line_s.startswith('def '):
+                # Extract the function name
+                function_name = line.split('(')[0].replace('def ', '').strip()
+                return "def "+function_name+'('
+        else:
+            # Java heuristic: look for method signature patterns
+            # Matches: public void name(, private static String name<T>(, etc.
+            match = re.search(r'(?:public|private|protected|static|\s) +[\w<>\[\]]+ +(\w+) *\(', line)
+            if match:
+                # Return the signature up to the paren
+                return line[:line.find('(')+1].strip()
     
     return None
 
 def clear_generated_code_gemini(data, item, prompt_key = "prompt"):
+    """Gemini cleaner."""
     data = data.split('<|endoftext|>')[0]   
-    
     prompt = item[prompt_key]
-    # Use dedent=True (default) so we start with a clean slate for indentation
+    
+    # Use extract_code_block to handle any markdown fencing
     data = extract_code_block(data, dedent=True)
 
-    function_name = get_last_function_name_from_code(prompt)
+    # Detect language
+    is_java = ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm'))
+    
+    # Remove repetition of the prompt
+    data = remove_repetition(prompt, data, is_java=is_java)
+
+    function_name = get_last_function_name_from_code(prompt, is_java=is_java)
     if function_name and function_name in data:
-        prompt_code = data.split(function_name)[0]  
-        data = data.split(function_name)[1]
+        # If the model repeated the function signature, merge
+        # Be careful with split: only split at the first occurrence in data
+        parts = data.split(function_name, 1)
+        prompt_code = parts[0]
+        data = parts[1]
         for token in split_tokens:
             if token in data:
                 data = data.split(token)[0]
 
-        return prompt_code + function_name + data
-    
+        result = prompt_code + function_name + data
     else:
+        # Otherwise append
         for token in split_tokens:
             if token in data:
                 data = data.split(token)[0]
         
         # If we are appending to a function signature, ensures body is indented
-        if function_name:
-             # Determine indentation of the function definition in the prompt
-             # We want indentation of the LAST non-empty line
+        if function_name and not is_java: # Only for Python
+             # Determine target indentation
              prompt_lines = prompt.rstrip().split('\n')
              last_line = prompt_lines[-1]
-             
-             # Calculate existing indentation of the last line (assuming it's the def or docstring)
              current_indent = 0
              match = re.match(r"^(\s*)", last_line)
              if match:
                  current_indent = len(match.group(1))
+             
+             target_indent = current_indent
+             if last_line.strip().endswith(':'):
+                 target_indent += 4
                  
-             # We want the body to be indented by current_indent + 4
-             # Since we dedented 'data', we can just prepend this amount
-             target_indent = current_indent + 4
              indent_str = ' ' * target_indent
              
              lines = data.split('\n')
              indented_lines = []
              for line in lines:
                  if line.strip():
-                     indented_lines.append(indent_str + line)
+                     # Only add indentation if it doesn't already have at least target_indent spaces
+                     current_line_indent = len(re.match(r"^(\s*)", line).group(1))
+                     if current_line_indent < target_indent:
+                         indented_lines.append(indent_str + line.lstrip())
+                     else:
+                         indented_lines.append(line)
                  else:
                      indented_lines.append(line)
              data = '\n'.join(indented_lines)
              
-        return prompt + '\n'+ data
+        result = prompt + '\n' + data
+
+    # Fix truncated code
+    if result:
+        is_python = ('.py' in item.get('id', '').lower() or 'python' in item.get('id', '').lower())
+        if is_python:
+            stripped = result.rstrip()
+            lines = stripped.split('\n')
+            if lines:
+                last_line = lines[-1]
+                # If last line ends with colon or is a stand-alone keyword
+                keywords = ['if', 'else', 'elif', 'try', 'except', 'finally', 'with', 'for', 'while']
+                needs_pass = False
+                if stripped.endswith(':'):
+                    needs_pass = True
+                else:
+                    # Check if last word is a keyword
+                    words = last_line.strip().split()
+                    if words and words[-1] in keywords:
+                        needs_pass = True
+                
+                if needs_pass:
+                    # Get indentation of last line
+                    match = re.match(r"^(\s*)", last_line)
+                    indent = len(match.group(1)) if match else 0
+                    result = stripped + '\n' + (' ' * (indent + 4)) + 'pass'
+        elif is_java:
+            result = fix_truncated_java(result)
+            
+    return result
+
+def post_process_code(code, item):
+    """
+    Replaces ClassX with original_class and adds package name for Java.
+    """
+    original_class = item.get('original_class')
+    obfuscated_class = item.get('obfuscated_class', 'ClassX')
+    package_name = item.get('package')
+    
+    # Replace ClassX with the original class name
+    if original_class and obfuscated_class:
+        code = re.sub(r'\b' + re.escape(obfuscated_class) + r'\b', original_class, code)
+    
+    # Add package declaration for Java if missing
+    is_java = '.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')
+    if is_java and package_name:
+        if 'package ' not in code[:200]: # check start of file
+            code = f"package {package_name};\n\n" + code
+            
+    return code
 
 def extract_assistant_code(text):
     start_tag = "<|assistant|>\n"
@@ -138,6 +298,12 @@ def clear_generated_code_gpt(data, item, prompt_key = "prompt"):
     # Use extract with dedent=False to preserve relative indentation
     new_data = extract_code_block(data, dedent=False)
     
+    # Detect language
+    is_java = ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm'))
+    
+    # Remove repetition of the prompt
+    new_data = remove_repetition(prompt, new_data, is_java=is_java)
+    
     # Enforce indentation if lines don't start with space (heuristic from notebook)
     lines = new_data.split('\n')
     indented_lines = []
@@ -152,49 +318,22 @@ def clear_generated_code_gpt(data, item, prompt_key = "prompt"):
         if token in new_data:
             new_data = new_data.split(token)[0]
             
-    return prompt + '\n' + new_data
-
-
-def clear_generated_code_gemini(data, item, prompt_key = "prompt"):
-    """Gemini cleaner from original notebook."""
-    data = data.split('<|endoftext|>')[0]   
+    result = prompt + '\n' + new_data
     
-    prompt = item[prompt_key]
-    
-    # Simple markdown fence stripping from notebook
-    lines = data.split('\n')
-    if "```python" in lines[0]:
-        lines = lines[1:]
-    if lines and "```" in lines[-1]:
-        lines = lines[:-1]
-    data = "\n".join(lines)
+    # Fix truncated code
+    if result:
+        if is_java:
+            result = fix_truncated_java(result)
+        else:
+            # Python-specific pass injection is handled by Gemini logic, 
+            # but let's keep it consistent if needed. 
+            # Actually, GPT/Qwen/Starcoder usually provide full blocks if they start.
+            pass
+            
+    return result
 
-    function_name = get_last_function_name_from_code(prompt)
-    if function_name and function_name in data:
-        prompt_code = data.split(function_name)[0]  
-        data = data.split(function_name)[1]
-        for token in split_tokens:
-            if token in data:
-                data = data.split(token)[0]
 
-        # Fix truncated code by adding pass if ends with incomplete block
-        result = prompt_code + function_name + data
-        stripped = result.rstrip()
-        if stripped.endswith(':') or stripped.endswith('if') or stripped.endswith('else') or stripped.endswith('elif') or stripped.endswith('try') or stripped.endswith('except') or stripped.endswith('finally'):
-            result = result + '\n    pass'
-        return result
-    
-    else:
-        for token in split_tokens:
-            if token in data:
-                data = data.split(token)[0]
-        
-        # Fix truncated code by adding pass if ends with incomplete block
-        result = prompt + '\n'+ data
-        stripped = result.rstrip()
-        if stripped.endswith(':') or stripped.endswith('if') or stripped.endswith('else') or stripped.endswith('elif') or stripped.endswith('try') or stripped.endswith('except') or stripped.endswith('finally'):
-            result = result + '\n    pass'
-        return result
+# Removed duplicate definition
 
 
 def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
@@ -203,7 +342,13 @@ def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
     prompt = item[prompt_key]
     code = extract_code_block(data)
 
-    function_name = get_last_function_name_from_code(prompt)
+    # Detect language
+    is_java = ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm'))
+    
+    # Remove repetition of the prompt
+    code = remove_repetition(prompt, code, is_java=is_java)
+
+    function_name = get_last_function_name_from_code(prompt, is_java=is_java)
     if function_name and function_name in code:
         
         lines = code.split('\n')
@@ -219,7 +364,7 @@ def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
                 if token in code:
                     code = code.split(token)[0]
 
-            return prompt + '\n' + code
+            result = prompt + '\n' + code
         else:
 
             prompt_code = code.split(function_name)[0]  
@@ -228,23 +373,37 @@ def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
                 if token in code:
                     code = code.split(token)[0]
 
-            return prompt_code + function_name + code
+            result = prompt_code + function_name + code
     
     else:
         for token in split_tokens:
             if token in code:
                 code = code.split(token)[0]
-        return prompt + '\n'+ code
+        result = prompt + '\n'+ code
+        
+    # Fix truncated code
+    if result and is_java:
+        result = fix_truncated_java(result)
+        
+    return result
 
 def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):    
     prompt = item[prompt_key]
+    
+    # Detect language
+    is_java = ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm'))
+    
     data = extract_assistant_code(data)
     if data is None:
-        return prompt+'\n\tpass'
+        # Avoid Python-specific 'pass' in Java files
+        return prompt + ('\n\tpass' if not is_java else '\n}')
     
     code = extract_code_block(data)
+    
+    # Remove repetition of the prompt
+    code = remove_repetition(prompt, code, is_java=is_java)
 
-    function_name = get_last_function_name_from_code(prompt)
+    function_name = get_last_function_name_from_code(prompt, is_java=is_java)
     if function_name and function_name in code:
         
         lines = code.split('\n')
@@ -259,7 +418,7 @@ def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):
                 if token in code:
                     code = code.split(token)[0]
 
-            return prompt + '\n' + code
+            result = prompt + '\n' + code
         else:
 
             prompt_code = code.split(function_name)[0]  
@@ -268,13 +427,19 @@ def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):
                 if token in code:
                     code = code.split(token)[0]
 
-            return prompt_code + function_name + code
+            result = prompt_code + function_name + code
     
     else:
         for token in split_tokens:
             if token in code:
                 code = code.split(token)[0]
-        return prompt + '\n'+ code
+        result = prompt + '\n'+ code
+        
+    # Fix truncated code
+    if result and is_java:
+        result = fix_truncated_java(result)
+        
+    return result
 
 def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -327,10 +492,11 @@ def main():
                     new_codes = []
                     for old_code in codes:
                         cleaned_code = cleaner_func(old_code, item, prompt_key)
+                        post_cleaned_code = post_process_code(cleaned_code, item)
                         new_codes.append({
                             'code': old_code,
-                            'cleared_code': cleaned_code,
-                            'compilable': check_compilable(cleaned_code)
+                            'cleared_code': post_cleaned_code,
+                            'compilable': check_compilable(post_cleaned_code)
                         })
                     new_generations[lang] = new_codes
                 item['generations'] = new_generations
@@ -339,10 +505,11 @@ def main():
                 new_output = []
                 for old_code in item['output']:
                     cleaned_code = cleaner_func(old_code, item, prompt_key)
+                    post_cleaned_code = post_process_code(cleaned_code, item)
                     new_output.append({
                         'code': old_code,
-                        'cleared_code': cleaned_code,
-                        'compilable': check_compilable(cleaned_code)
+                        'cleared_code': post_cleaned_code,
+                        'compilable': check_compilable(post_cleaned_code)
                     })
                 data[i]['output'] = new_output
                 cleaned_count += 1

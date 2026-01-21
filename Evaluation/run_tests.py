@@ -10,11 +10,11 @@ from tqdm import tqdm
 from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MODEL_RESULTS, TEST_RESULTS
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
-DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
+DEBUG = True  # if enabled, it will print the output of the Docker commands to stdout
 MAX_WORKERS = 4
 RUN_TESTS_ON_GENERATED_CODE = True
-TEST_MODE = False # if True, only runs on a few samples for verification
-MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
+TEST_MODE = True # if True, only runs on a few samples for verification
+MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 # ========================== END OF FLAGS ===========================
 
 
@@ -85,10 +85,10 @@ def process_single_file(file_info):
     # Restructured Output Filename
     if os.path.abspath(TEMP_PATH) in os.path.abspath(file_path):
         output_name = f"Model_{parent_dir_name}_{lang}_{technique}_{item_id}_results.csv"
-        output_path = os.path.join(TEST_MODEL_RESULTS, output_name)
     else:
         output_name = f"Dataset_{lang}_{technique}_{item_id}_results.csv"
-        output_path = os.path.join(TEST_RESULTS, output_name)
+    
+    output_path = os.path.join(TEST_MODEL_RESULTS, output_name)
         
     if os.path.exists(output_path): return
     
@@ -125,12 +125,27 @@ def process_single_file(file_info):
                     f.write("test,status\n")
                     for name, status in java_results:
                         f.write(f"{name},{status}\n")
+            else:
+                # Fallback: if no results parsed, write Error status
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write("test,status\n")
+                    f.write("testFunctionality,Error\n")
+                    f.write("testSecurity,Error\n")
             
             # Cleanup local reports
             shutil.rmtree(local_report_dir)
             
     except Exception as e:
         if DEBUG: print(f"Error {item_id}: {e}")
+        if not is_python:
+            # Fallback for Java exceptions (e.g. Docker timeout or crash)
+            try:
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write("test,status\n")
+                    f.write("testFunctionality,Error\n")
+                    f.write("testSecurity,Error\n")
+            except:
+                pass
     finally:
         subprocess.run([DOCKER_BIN, "rm", "-f", container_name], stdout=STDOUT, stderr=STDERR)
 
@@ -177,11 +192,8 @@ def save_generated_code(jsonl_folder, temp_folder):
     jsonl_files = sorted([f for f in os.listdir(jsonl_folder) if f.endswith('.jsonl')])
     
     if TEST_MODE:
-        # Debug mode: 1 Python file, 1 Java file
-        py_files = [f for f in jsonl_files if not 'java' in f.lower()]
-        java_files = [f for f in jsonl_files if 'java' in f.lower()]
-        jsonl_files = py_files[:1] + java_files[:1]
-        print(f"TEST_MODE: Processing {len(jsonl_files)} files: {jsonl_files}")
+        # We process all model files but will limit samples per file
+        print(f"TEST_MODE: Will pick 1 sample from each of the {len(jsonl_files)} files.")
     
     # Filter by model if specified
     if MODEL_FILTER:
@@ -192,16 +204,27 @@ def save_generated_code(jsonl_folder, temp_folder):
     for f_name in jsonl_files:
         with open(os.path.join(jsonl_folder, f_name), 'r', encoding='utf-8') as f:
             model_name = f_name.replace('.jsonl', '')
-            for line in f:
+            for line_idx, line in enumerate(f):
+                if TEST_MODE and line_idx >= 1:
+                    break
                 try:
                     d = json.loads(line)
                     technique = d.get('technique', 'Assertion')
                     source = d.get('source', 'Author')
-                    item_id = d.get('id', 'unknown')
-                    if item_id.endswith('.py') or item_id.endswith('.java'):
-                        item_id = os.path.splitext(item_id)[0]
-                    if item_id.startswith(f"{technique}_{source}_"):
-                        item_id = item_id.replace(f"{technique}_{source}_", "")
+                    
+                    # Robust item_id and extension extraction from the 'id' field
+                    original_id = d.get('id', 'unknown')
+                    if not original_id or original_id == 'unknown':
+                        continue
+                        
+                    ext = os.path.splitext(original_id)[1]
+                    item_id_no_ext = os.path.splitext(original_id)[0]
+                    
+                    # Clean technique_source prefix if present
+                    item_id = item_id_no_ext
+                    prefix = f"{technique}_{source}_"
+                    if item_id.startswith(prefix):
+                        item_id = item_id[len(prefix):]
                     
                     # Handle 'generations' dict from filter_code.py output
                     generations = d.get('generations', {})
@@ -209,67 +232,75 @@ def save_generated_code(jsonl_folder, temp_folder):
                         for lang_key, code_list in generations.items():
                             for idx, code_obj in enumerate(code_list):
                                 code = code_obj.get('cleared_code', '')
+                                if TEST_MODE and (lang_key != 'English' or idx >= 1):
+                                    continue
+                                
+                                code = code_obj.get('cleared_code', '')
                                 if not code: continue
                                 
-                                ext = ".java" if "public class" in code else ".py"
-                                target_dir = os.path.join(temp_folder, f"{model_name}_R{idx+1}")
+                                # Inject language name into the folder name to make it unique
+                                if '_' in model_name:
+                                    parts = model_name.rsplit('_', 1)
+                                    dir_name = f"{parts[0]}_{lang_key}_{parts[1]}"
+                                else:
+                                    dir_name = f"{model_name}_{lang_key}"
+                                
+                                target_dir = os.path.join(temp_folder, f"{dir_name}_R{idx+1}")
                                 os.makedirs(target_dir, exist_ok=True)
                                 target_file = os.path.join(target_dir, f"{technique}__{source}__{item_id}{ext}")
                                 with open(target_file, 'w', encoding='utf-8') as tf:
                                     tf.write(code)
                     else:
                         # Legacy 'output' handling
-                        raw_output = d.get('output', [])
-                        if isinstance(raw_output, dict) and 'choices' in raw_output:
-                            outputs = raw_output['choices']
-                        elif isinstance(raw_output, list):
-                            outputs = raw_output
-                        else:
-                            outputs = [raw_output] if raw_output else []
+                        outputs = d.get('output', [])
+                        if not isinstance(outputs, list):
+                            outputs = [outputs]
                         
                         for idx, out in enumerate(outputs):
-                            code = out.get('cleared_code', '')
+                            if TEST_MODE and idx >= 1:
+                                break
+                            if isinstance(out, dict):
+                                code = out.get('cleared_code', '')
+                            else:
+                                code = out # fallback
+                                
                             if not code: continue
                             
-                            ext = ".java" if "public class" in code else ".py"
                             target_dir = os.path.join(temp_folder, f"{model_name}_R{idx+1}")
                             os.makedirs(target_dir, exist_ok=True)
                             target_file = os.path.join(target_dir, f"{technique}__{source}__{item_id}{ext}")
                             with open(target_file, 'w', encoding='utf-8') as tf:
                                 tf.write(code)
                 except Exception as e:
-                    if DEBUG: print(f"Error processing line: {e}")
+                    if DEBUG: print(f"Error processing line in {f_name}: {e}")
 
 
 if __name__ == "__main__":
     # Folder management: clean up and create required directories
+    if os.path.exists(TEMP_PATH): 
+        print(f"Removing existing temp folder: {TEMP_PATH}")
+        shutil.rmtree(TEMP_PATH)
+    os.makedirs(TEMP_PATH, exist_ok=True)
+    print(f"Created temp folder: {TEMP_PATH}")
+    
+    # Ensure results directories exist
+    os.makedirs(TEST_MODEL_RESULTS, exist_ok=True)
+    os.makedirs(TEST_RESULTS, exist_ok=True)
+
     if RUN_TESTS_ON_GENERATED_CODE:
-        if os.path.exists(TEMP_PATH): 
-            print(f"Removing existing temp folder: {TEMP_PATH}")
-            shutil.rmtree(TEMP_PATH)
-        os.makedirs(TEMP_PATH, exist_ok=True)
-        print(f"Created temp folder: {TEMP_PATH}")
-        
-        # Ensure results directories exist
-        os.makedirs(TEST_MODEL_RESULTS, exist_ok=True)
-        os.makedirs(TEST_RESULTS, exist_ok=True)
-        
         print(f"Extracting code from JSONL files in: {GENERATED_CODE_PATH}")
         save_generated_code(GENERATED_CODE_PATH, TEMP_PATH)
         target_dir = TEMP_PATH
 
     else:
-        repo_root = os.path.dirname(PYTHON_DATASET_PATH)
-        target_dir = repo_root
+        target_dir = JAVA_DATASET_PATH
 
     to_process, unique_prompts = get_all_to_process(target_dir)
     
     if TEST_MODE:
-        py_files = [p for p in to_process if p[5]]
-        jv_files = [p for p in to_process if not p[5]]
-        # Pick a few from each for testing
-        to_process = py_files[:1] + jv_files[:1] 
-        print(f"TEST_MODE is ON: Processing {len(to_process)} samples.")
+        # Since we already limited extraction in save_generated_code,
+        # we can just use all discovered files.
+        print(f"TEST_MODE is ON: Processing {len(to_process)} samples from all models.")
         needed_prompts = set((p[1], p[2], p[3], p[5]) for p in to_process)
         unique_prompts = list(needed_prompts)
 
