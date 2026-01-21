@@ -177,13 +177,24 @@ def clear_generated_code_gemini(data, item, prompt_key = "prompt"):
             if token in data:
                 data = data.split(token)[0]
 
-        return prompt_code + function_name + data
+        # Fix truncated code by adding pass if ends with incomplete block
+        result = prompt_code + function_name + data
+        stripped = result.rstrip()
+        if stripped.endswith(':') or stripped.endswith('if') or stripped.endswith('else') or stripped.endswith('elif') or stripped.endswith('try') or stripped.endswith('except') or stripped.endswith('finally'):
+            result = result + '\n    pass'
+        return result
     
     else:
         for token in split_tokens:
             if token in data:
                 data = data.split(token)[0]
-        return prompt + '\n'+ data
+        
+        # Fix truncated code by adding pass if ends with incomplete block
+        result = prompt + '\n'+ data
+        stripped = result.rstrip()
+        if stripped.endswith(':') or stripped.endswith('if') or stripped.endswith('else') or stripped.endswith('elif') or stripped.endswith('try') or stripped.endswith('except') or stripped.endswith('finally'):
+            result = result + '\n    pass'
+        return result
 
 
 def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
