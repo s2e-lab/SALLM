@@ -241,6 +241,14 @@ def save_generated_code(jsonl_folder, temp_folder):
         jsonl_files = [f for f in jsonl_files if f"_{TEMP_FILTER}.jsonl" in f]
         print(f"TEMP_FILTER '{TEMP_FILTER}': Processing {len(jsonl_files)} files")
 
+    # Add language filter for JSONL files
+    if LANG_FILTER:
+        if LANG_FILTER.lower() == 'java':
+            jsonl_files = [f for f in jsonl_files if f.startswith('dataset_java')]
+        elif LANG_FILTER.lower() == 'python':
+            jsonl_files = [f for f in jsonl_files if not f.startswith('dataset_java')]
+        print(f"LANG_FILTER '{LANG_FILTER}': Selective extraction from {len(jsonl_files)} files")
+
 
     for f_name in jsonl_files:
         with open(os.path.join(jsonl_folder, f_name), 'r', encoding='utf-8') as f:
