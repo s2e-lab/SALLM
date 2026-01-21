@@ -14,7 +14,10 @@ DEBUG = False  # if enabled, it will print the output of the Docker commands to 
 MAX_WORKERS = 4
 RUN_TESTS_ON_GENERATED_CODE = True
 TEST_MODE = False # if True, only runs on a few samples for verification
+MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 # ========================== END OF FLAGS ===========================
+
+
 
 STDOUT = sys.stdout if DEBUG else subprocess.DEVNULL
 STDERR = subprocess.STDOUT if DEBUG else subprocess.DEVNULL
@@ -167,9 +170,24 @@ def get_all_to_process(root_dir):
 
 def save_generated_code(jsonl_folder, temp_folder):
     """Save code from JSONL files to temp folder for evaluation."""
-    if not os.path.exists(jsonl_folder): return
+    if not os.path.exists(jsonl_folder): 
+        print(f"Error: JSONL folder not found: {jsonl_folder}")
+        return
+    
     jsonl_files = sorted([f for f in os.listdir(jsonl_folder) if f.endswith('.jsonl')])
-    if TEST_MODE: jsonl_files = jsonl_files[:1]
+    
+    if TEST_MODE:
+        # Debug mode: 1 Python file, 1 Java file
+        py_files = [f for f in jsonl_files if not 'java' in f.lower()]
+        java_files = [f for f in jsonl_files if 'java' in f.lower()]
+        jsonl_files = py_files[:1] + java_files[:1]
+        print(f"TEST_MODE: Processing {len(jsonl_files)} files: {jsonl_files}")
+    
+    # Filter by model if specified
+    if MODEL_FILTER:
+        jsonl_files = [f for f in jsonl_files if MODEL_FILTER.lower() in f.lower()]
+        print(f"MODEL_FILTER '{MODEL_FILTER}': Processing {len(jsonl_files)} files")
+
 
     for f_name in jsonl_files:
         with open(os.path.join(jsonl_folder, f_name), 'r', encoding='utf-8') as f:
@@ -185,34 +203,61 @@ def save_generated_code(jsonl_folder, temp_folder):
                     if item_id.startswith(f"{technique}_{source}_"):
                         item_id = item_id.replace(f"{technique}_{source}_", "")
                     
-                    raw_output = d.get('output', [])
-                    if isinstance(raw_output, dict) and 'choices' in raw_output:
-                        outputs = raw_output['choices']
-                    elif isinstance(raw_output, list):
-                        outputs = raw_output
+                    # Handle 'generations' dict from filter_code.py output
+                    generations = d.get('generations', {})
+                    if generations:
+                        for lang_key, code_list in generations.items():
+                            for idx, code_obj in enumerate(code_list):
+                                code = code_obj.get('cleared_code', '')
+                                if not code: continue
+                                
+                                ext = ".java" if "public class" in code else ".py"
+                                target_dir = os.path.join(temp_folder, f"{model_name}_R{idx+1}")
+                                os.makedirs(target_dir, exist_ok=True)
+                                target_file = os.path.join(target_dir, f"{technique}__{source}__{item_id}{ext}")
+                                with open(target_file, 'w', encoding='utf-8') as tf:
+                                    tf.write(code)
                     else:
-                        outputs = [raw_output] if raw_output else []
-                    
-                    for idx, out in enumerate(outputs):
-                        code = out.get('cleared_code', '')
-                        if not code: continue
+                        # Legacy 'output' handling
+                        raw_output = d.get('output', [])
+                        if isinstance(raw_output, dict) and 'choices' in raw_output:
+                            outputs = raw_output['choices']
+                        elif isinstance(raw_output, list):
+                            outputs = raw_output
+                        else:
+                            outputs = [raw_output] if raw_output else []
                         
-                        ext = ".java" if "public class" in code else ".py"
-                        target_dir = os.path.join(temp_folder, f"{model_name}_R{idx+1}")
-                        os.makedirs(target_dir, exist_ok=True)
-                        target_file = os.path.join(target_dir, f"{technique}__{source}__{item_id}{ext}")
-                        with open(target_file, 'w', encoding='utf-8') as tf:
-                            tf.write(code)
+                        for idx, out in enumerate(outputs):
+                            code = out.get('cleared_code', '')
+                            if not code: continue
+                            
+                            ext = ".java" if "public class" in code else ".py"
+                            target_dir = os.path.join(temp_folder, f"{model_name}_R{idx+1}")
+                            os.makedirs(target_dir, exist_ok=True)
+                            target_file = os.path.join(target_dir, f"{technique}__{source}__{item_id}{ext}")
+                            with open(target_file, 'w', encoding='utf-8') as tf:
+                                tf.write(code)
                 except Exception as e:
-                    pass
+                    if DEBUG: print(f"Error processing line: {e}")
+
 
 if __name__ == "__main__":
+    # Folder management: clean up and create required directories
     if RUN_TESTS_ON_GENERATED_CODE:
-        if os.path.exists(TEMP_PATH): shutil.rmtree(TEMP_PATH)
-        os.makedirs(TEMP_PATH)
-        print("Extracting code from JSONL files...")
+        if os.path.exists(TEMP_PATH): 
+            print(f"Removing existing temp folder: {TEMP_PATH}")
+            shutil.rmtree(TEMP_PATH)
+        os.makedirs(TEMP_PATH, exist_ok=True)
+        print(f"Created temp folder: {TEMP_PATH}")
+        
+        # Ensure results directories exist
+        os.makedirs(TEST_MODEL_RESULTS, exist_ok=True)
+        os.makedirs(TEST_RESULTS, exist_ok=True)
+        
+        print(f"Extracting code from JSONL files in: {GENERATED_CODE_PATH}")
         save_generated_code(GENERATED_CODE_PATH, TEMP_PATH)
         target_dir = TEMP_PATH
+
     else:
         repo_root = os.path.dirname(PYTHON_DATASET_PATH)
         target_dir = repo_root
