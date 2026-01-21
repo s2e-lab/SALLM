@@ -8,16 +8,18 @@ import re
 import xml.etree.ElementTree as ET
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
-from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MODEL_RESULTS, TEST_RESULTS
+from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MODEL_RESULTS, TEST_RESULTS, TEST_FOLDER
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
-DEBUG = True  # if enabled, it will print the output of the Docker commands to stdout
+DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
 MAX_WORKERS = 4
 RUN_TESTS_ON_GENERATED_CODE = True
 TEST_MODE = False # if True, only runs on a few samples for verification
 MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 LANG_FILTER = 'Python'   # Filter for specific language: 'Python', 'Java', or None for all
 TEMP_FILTER = None   # Filter for specific temperature: '0.0', '0.2', ..., '1.0', or None for all
+TEST_MODE = False # if True, only runs on a few samples for verification
+MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 # ========================== END OF FLAGS ===========================
 
 
@@ -33,6 +35,15 @@ if not DOCKER_BIN:
         DOCKER_BIN = mac_specific_path
     else:
         DOCKER_BIN = "docker"
+# Handle Docker binary path for both macOS and Windows
+DOCKER_BIN = "docker"
+if sys.platform == "darwin":  # macOS
+    macos_docker = "/Applications/Docker.app/Contents/Resources/bin/docker"
+    if os.path.exists(macos_docker):
+        DOCKER_BIN = macos_docker
+elif sys.platform == "win32":  # Windows
+    # Use 'docker' directly - it should be in PATH if Docker Desktop is installed
+    DOCKER_BIN = "docker"
 
 def get_base_image_info(item_id, technique, source, is_python=True):
     """Find the base image name and Dockerfile for a given prompt ID, technique and source."""
@@ -116,17 +127,30 @@ def process_single_file(file_info):
     
     try:
         os.makedirs(temp_dir, exist_ok=True)
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        
+        # Convert Windows paths to proper format for Docker on Windows
+        abs_file_path = os.path.abspath(file_path)
+        abs_output_path = os.path.abspath(output_path)
+        
+        if sys.platform == "win32":
+            # Convert Windows paths for Docker (forward slashes and proper format)
+            # For Windows, Docker Desktop can handle both C:\ and /c/ style paths
+            abs_file_path = abs_file_path.replace("\\", "/")
+            abs_output_path = abs_output_path.replace("\\", "/")
+        
         if is_python:
             # Normalize path for Docker volume mount (Windows fix)
             local_mount_path = os.path.abspath(file_path).replace("\\", "/")
             run_cmd = [
                 DOCKER_BIN, "run", "--name", container_name,
                 "-v", f"{local_mount_path}:/prompt/{item_id}.py",
+                "-v", f"{abs_file_path}:/prompt/{item_id}.py",
                 image_tag
             ]
             subprocess.run(run_cmd, stdout=STDOUT, stderr=STDERR, timeout=90)
             res_in_cont = f"/prompt/test_{item_id}_results.csv"
-            subprocess.run([DOCKER_BIN, "cp", f"{container_name}:{res_in_cont}", output_path], stdout=STDOUT, stderr=STDERR)
+            subprocess.run([DOCKER_BIN, "cp", f"{container_name}:{res_in_cont}", abs_output_path], stdout=STDOUT, stderr=STDERR)
         else:
             rel_dir = f"com/sallm/{technique}/{source}"
             # Normalize path for Docker volume mount (Windows fix)
@@ -134,24 +158,25 @@ def process_single_file(file_info):
             run_cmd = [
                 DOCKER_BIN, "run", "--name", container_name,
                 "-v", f"{local_mount_path}:/app/src/main/java/{rel_dir}/{item_id}.java",
+                "-v", f"{abs_file_path}:/app/src/main/java/{rel_dir}/{item_id}.java",
                 image_tag
             ]
             subprocess.run(run_cmd, stdout=STDOUT, stderr=STDERR, timeout=180)
             
             # Extract granular results for Java
-            local_report_dir = os.path.join(TEMP_PATH, f"reports_{container_name}")
+            local_report_dir = os.path.join(TEMP_PATH, f"reports_{container_name}".replace("/", "_"))
             os.makedirs(local_report_dir, exist_ok=True)
             subprocess.run([DOCKER_BIN, "cp", f"{container_name}:/app/target/surefire-reports/.", local_report_dir], stdout=STDOUT, stderr=STDERR)
             
             java_results = parse_java_xml_reports(local_report_dir)
             if java_results:
-                with open(output_path, 'w', encoding='utf-8') as f:
+                with open(abs_output_path, 'w', encoding='utf-8') as f:
                     f.write("test,status\n")
                     for name, status in java_results:
                         f.write(f"{name},{status}\n")
             else:
                 # Fallback: if no results parsed, write Error status
-                with open(output_path, 'w', encoding='utf-8') as f:
+                with open(abs_output_path, 'w', encoding='utf-8') as f:
                     f.write("test,status\n")
                     f.write("testFunctionality,Error\n")
                     f.write("testSecurity,Error\n")
@@ -164,7 +189,7 @@ def process_single_file(file_info):
         if not is_python:
             # Fallback for Java exceptions (e.g. Docker timeout or crash)
             try:
-                with open(output_path, 'w', encoding='utf-8') as f:
+                with open(abs_output_path, 'w', encoding='utf-8') as f:
                     f.write("test,status\n")
                     f.write("testFunctionality,Error\n")
                     f.write("testSecurity,Error\n")
@@ -314,7 +339,14 @@ if __name__ == "__main__":
     
     # Ensure results directories exist
     os.makedirs(TEST_MODEL_RESULTS, exist_ok=True)
+    print(f"Created TEST_MODEL_RESULTS folder: {TEST_MODEL_RESULTS}")
+    
     os.makedirs(TEST_RESULTS, exist_ok=True)
+    print(f"Created TEST_RESULTS folder: {TEST_RESULTS}")
+    
+    # Create test folder
+    os.makedirs(TEST_FOLDER, exist_ok=True)
+    print(f"Created test folder: {TEST_FOLDER}")
 
     if RUN_TESTS_ON_GENERATED_CODE:
         print(f"Extracting code from JSONL files in: {GENERATED_CODE_PATH}")
