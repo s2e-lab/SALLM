@@ -4,6 +4,7 @@ import subprocess
 import time
 import json
 import shutil
+import re
 import xml.etree.ElementTree as ET
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
@@ -13,8 +14,10 @@ from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, TEMP_PATH, GENERATED_
 DEBUG = True  # if enabled, it will print the output of the Docker commands to stdout
 MAX_WORKERS = 4
 RUN_TESTS_ON_GENERATED_CODE = True
-TEST_MODE = True # if True, only runs on a few samples for verification
-MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
+TEST_MODE = False # if True, only runs on a few samples for verification
+MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
+LANG_FILTER = 'Python'   # Filter for specific language: 'Python', 'Java', or None for all
+TEMP_FILTER = None   # Filter for specific temperature: '0.0', '0.2', ..., '1.0', or None for all
 # ========================== END OF FLAGS ===========================
 
 
@@ -22,9 +25,14 @@ MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'star
 STDOUT = sys.stdout if DEBUG else subprocess.DEVNULL
 STDERR = subprocess.STDOUT if DEBUG else subprocess.DEVNULL
 
-DOCKER_BIN = "/Applications/Docker.app/Contents/Resources/bin/docker"
-if not os.path.exists(DOCKER_BIN):
-    DOCKER_BIN = "docker"
+DOCKER_BIN = shutil.which("docker")
+if not DOCKER_BIN:
+    # Fallback to Mac-specific path if not in PATH
+    mac_specific_path = "/Applications/Docker.app/Contents/Resources/bin/docker"
+    if os.path.exists(mac_specific_path):
+        DOCKER_BIN = mac_specific_path
+    else:
+        DOCKER_BIN = "docker"
 
 def get_base_image_info(item_id, technique, source, is_python=True):
     """Find the base image name and Dockerfile for a given prompt ID, technique and source."""
@@ -83,23 +91,37 @@ def process_single_file(file_info):
     image_tag, _, _ = get_base_image_info(item_id, technique, source, is_python)
     
     # Restructured Output Filename
+    # Restructured Output Filename
     if os.path.abspath(TEMP_PATH) in os.path.abspath(file_path):
         output_name = f"Model_{parent_dir_name}_{lang}_{technique}_{item_id}_results.csv"
     else:
         output_name = f"Dataset_{lang}_{technique}_{item_id}_results.csv"
     
-    output_path = os.path.join(TEST_MODEL_RESULTS, output_name)
+    # Result Organization by Temperature
+    temp_val = "unknown"
+    # Try to extract temperature from parent_dir_name or filename
+    temp_match = re.search(r"(\d\.\d)", parent_dir_name)
+    if not temp_match:
+        temp_match = re.search(r"(\d\.\d)", os.path.basename(file_path))
+    
+    if temp_match:
+        temp_val = temp_match.group(1)
+        
+    temp_dir = os.path.join(TEST_MODEL_RESULTS, f"temp_{temp_val}")
+    output_path = os.path.join(temp_dir, output_name)
         
     if os.path.exists(output_path): return
     
     container_name = f"eval-{int(time.time()*1000)}-{os.getpid()}"
     
     try:
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        os.makedirs(temp_dir, exist_ok=True)
         if is_python:
+            # Normalize path for Docker volume mount (Windows fix)
+            local_mount_path = os.path.abspath(file_path).replace("\\", "/")
             run_cmd = [
                 DOCKER_BIN, "run", "--name", container_name,
-                "-v", f"{os.path.abspath(file_path)}:/prompt/{item_id}.py",
+                "-v", f"{local_mount_path}:/prompt/{item_id}.py",
                 image_tag
             ]
             subprocess.run(run_cmd, stdout=STDOUT, stderr=STDERR, timeout=90)
@@ -107,9 +129,11 @@ def process_single_file(file_info):
             subprocess.run([DOCKER_BIN, "cp", f"{container_name}:{res_in_cont}", output_path], stdout=STDOUT, stderr=STDERR)
         else:
             rel_dir = f"com/sallm/{technique}/{source}"
+            # Normalize path for Docker volume mount (Windows fix)
+            local_mount_path = os.path.abspath(file_path).replace("\\", "/")
             run_cmd = [
                 DOCKER_BIN, "run", "--name", container_name,
-                "-v", f"{os.path.abspath(file_path)}:/app/src/main/java/{rel_dir}/{item_id}.java",
+                "-v", f"{local_mount_path}:/app/src/main/java/{rel_dir}/{item_id}.java",
                 image_tag
             ]
             subprocess.run(run_cmd, stdout=STDOUT, stderr=STDERR, timeout=180)
@@ -199,6 +223,11 @@ def save_generated_code(jsonl_folder, temp_folder):
     if MODEL_FILTER:
         jsonl_files = [f for f in jsonl_files if MODEL_FILTER.lower() in f.lower()]
         print(f"MODEL_FILTER '{MODEL_FILTER}': Processing {len(jsonl_files)} files")
+
+    # Filter by temperature if specified
+    if TEMP_FILTER:
+        jsonl_files = [f for f in jsonl_files if f"_{TEMP_FILTER}.jsonl" in f]
+        print(f"TEMP_FILTER '{TEMP_FILTER}': Processing {len(jsonl_files)} files")
 
 
     for f_name in jsonl_files:
@@ -297,6 +326,13 @@ if __name__ == "__main__":
 
     to_process, unique_prompts = get_all_to_process(target_dir)
     
+    # Filter by Language if specified
+    if LANG_FILTER:
+        print(f"LANG_FILTER '{LANG_FILTER}': Filtering samples...")
+        to_process = [p for p in to_process if LANG_FILTER.lower() in p[4].lower()]
+        needed_prompts = set((p[1], p[2], p[3], p[5]) for p in to_process)
+        unique_prompts = list(needed_prompts)
+
     if TEST_MODE:
         # Since we already limited extraction in save_generated_code,
         # we can just use all discovered files.
