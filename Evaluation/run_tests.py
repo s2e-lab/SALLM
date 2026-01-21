@@ -18,8 +18,6 @@ TEST_MODE = False # if True, only runs on a few samples for verification
 MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 LANG_FILTER = 'Python'   # Filter for specific language: 'Python', 'Java', or None for all
 TEMP_FILTER = None   # Filter for specific temperature: '0.0', '0.2', ..., '1.0', or None for all
-TEST_MODE = False # if True, only runs on a few samples for verification
-MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 # ========================== END OF FLAGS ===========================
 
 
@@ -27,23 +25,15 @@ MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'sta
 STDOUT = sys.stdout if DEBUG else subprocess.DEVNULL
 STDERR = subprocess.STDOUT if DEBUG else subprocess.DEVNULL
 
+# Handle Docker binary path for both macOS and Windows
 DOCKER_BIN = shutil.which("docker")
 if not DOCKER_BIN:
-    # Fallback to Mac-specific path if not in PATH
-    mac_specific_path = "/Applications/Docker.app/Contents/Resources/bin/docker"
-    if os.path.exists(mac_specific_path):
-        DOCKER_BIN = mac_specific_path
-    else:
+    if sys.platform == "darwin":  # macOS
+        macos_docker = "/Applications/Docker.app/Contents/Resources/bin/docker"
+        if os.path.exists(macos_docker):
+            DOCKER_BIN = macos_docker
+    if not DOCKER_BIN:
         DOCKER_BIN = "docker"
-# Handle Docker binary path for both macOS and Windows
-DOCKER_BIN = "docker"
-if sys.platform == "darwin":  # macOS
-    macos_docker = "/Applications/Docker.app/Contents/Resources/bin/docker"
-    if os.path.exists(macos_docker):
-        DOCKER_BIN = macos_docker
-elif sys.platform == "win32":  # Windows
-    # Use 'docker' directly - it should be in PATH if Docker Desktop is installed
-    DOCKER_BIN = "docker"
 
 def get_base_image_info(item_id, technique, source, is_python=True):
     """Find the base image name and Dockerfile for a given prompt ID, technique and source."""
@@ -139,13 +129,13 @@ def process_single_file(file_info):
             abs_file_path = abs_file_path.replace("\\", "/")
             abs_output_path = abs_output_path.replace("\\", "/")
         
+        # Normalize path for Docker volume mount (Windows fix)
+        local_mount_path = os.path.abspath(file_path).replace("\\", "/")
+        
         if is_python:
-            # Normalize path for Docker volume mount (Windows fix)
-            local_mount_path = os.path.abspath(file_path).replace("\\", "/")
             run_cmd = [
                 DOCKER_BIN, "run", "--name", container_name,
                 "-v", f"{local_mount_path}:/prompt/{item_id}.py",
-                "-v", f"{abs_file_path}:/prompt/{item_id}.py",
                 image_tag
             ]
             subprocess.run(run_cmd, stdout=STDOUT, stderr=STDERR, timeout=90)
@@ -153,18 +143,15 @@ def process_single_file(file_info):
             subprocess.run([DOCKER_BIN, "cp", f"{container_name}:{res_in_cont}", abs_output_path], stdout=STDOUT, stderr=STDERR)
         else:
             rel_dir = f"com/sallm/{technique}/{source}"
-            # Normalize path for Docker volume mount (Windows fix)
-            local_mount_path = os.path.abspath(file_path).replace("\\", "/")
             run_cmd = [
                 DOCKER_BIN, "run", "--name", container_name,
                 "-v", f"{local_mount_path}:/app/src/main/java/{rel_dir}/{item_id}.java",
-                "-v", f"{abs_file_path}:/app/src/main/java/{rel_dir}/{item_id}.java",
                 image_tag
             ]
             subprocess.run(run_cmd, stdout=STDOUT, stderr=STDERR, timeout=180)
             
             # Extract granular results for Java
-            local_report_dir = os.path.join(TEMP_PATH, f"reports_{container_name}".replace("/", "_"))
+            local_report_dir = os.path.join(TEMP_PATH, f"reports_{container_name}".replace("/", "_").replace("\\", "_"))
             os.makedirs(local_report_dir, exist_ok=True)
             subprocess.run([DOCKER_BIN, "cp", f"{container_name}:/app/target/surefire-reports/.", local_report_dir], stdout=STDOUT, stderr=STDERR)
             
