@@ -1,8 +1,0 @@
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:10<00:10, 10.58s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  5.26s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.06s/it]
-[2026-01-06 20:47:29.590455] Reading ../ProcessedFiles/dataset_java_nl_prompt_best.jsonl...
-[2026-01-06 20:47:29.681267] Preparing prompts...
-Total generations per temperature: 2278
-[2026-01-06 20:47:29.695590] Processing Temperature: 0.0
-  0%|          | 0/2278 [00:00<?, ?it/s]100%|██████████| 2278/2278 [00:00<00:00, 354163.56it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/dataset_java_nl_prompt_best_qwen2.5_0.0.jsonl
-[2026-01-06 22:03:34.868022] Processing Temperature: 0.2
