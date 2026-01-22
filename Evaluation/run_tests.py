@@ -100,12 +100,13 @@ def process_single_file(file_info):
     # Result Organization by Temperature
     temp_val = "unknown"
     # Try to extract temperature from parent_dir_name or filename
-    temp_match = re.search(r"(\d\.\d)", parent_dir_name)
-    if not temp_match:
-        temp_match = re.search(r"(\d\.\d)", os.path.basename(file_path))
+    # Use findall to take the last match, as model names (e.g. gemini-2.5) might contain decimals
+    temp_matches = re.findall(r"(\d\.\d)", parent_dir_name)
+    if not temp_matches:
+        temp_matches = re.findall(r"(\d\.\d)", os.path.basename(file_path))
     
-    if temp_match:
-        temp_val = temp_match.group(1)
+    if temp_matches:
+        temp_val = temp_matches[-1]
         
     temp_dir = os.path.join(TEST_MODEL_RESULTS, f"temp_{temp_val}")
     output_path = os.path.join(temp_dir, output_name)
