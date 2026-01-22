@@ -15,7 +15,7 @@ DEBUG = False  # if enabled, it will print the output of the Docker commands to 
 MAX_WORKERS = 4
 RUN_TESTS_ON_GENERATED_CODE = True
 TEST_MODE = False # if True, only runs on a few samples for verification
-MODEL_FILTER = 'gpt'  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
+MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 LANG_FILTER = 'Python'   # Filter for specific language: 'Python', 'Java', or None for all
 TEMP_FILTER = None   # Filter for specific temperature: '0.0', '0.2', ..., '1.0', or None for all
 # ========================== END OF FLAGS ===========================
@@ -91,7 +91,6 @@ def process_single_file(file_info):
     
     image_tag, _, _ = get_base_image_info(item_id, technique, source, is_python)
     
-    # Restructured Output Filename
     # Restructured Output Filename
     if os.path.abspath(TEMP_PATH) in os.path.abspath(file_path):
         output_name = f"Model_{parent_dir_name}_{lang}_{technique}_{item_id}_results.csv"
