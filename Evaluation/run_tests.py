@@ -13,11 +13,12 @@ from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, TEMP_PATH, GENERATED_
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
 MAX_WORKERS = 4
-RUN_TESTS_ON_GENERATED_CODE = True
+RUN_TESTS_ON_GENERATED_CODE = False
 TEST_MODE = False # if True, only runs on a few samples for verification
 MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 LANG_FILTER = 'Python'   # Filter for specific language: 'Python', 'Java', or None for all
 TEMP_FILTER = None   # Filter for specific temperature: '0.0', '0.2', ..., '1.0', or None for all
+MAVEN_CACHE_PATH = os.path.join(JAVA_DATASET_PATH, ".m2_cache")
 # ========================== END OF FLAGS ===========================
 
 
@@ -34,6 +35,40 @@ if not DOCKER_BIN:
             DOCKER_BIN = macos_docker
     if not DOCKER_BIN:
         DOCKER_BIN = "docker"
+
+def fix_java_code(code, item_id, technique, source):
+    """Ensure Java code has the correct class name and package."""
+    # Ensure package declaration matches
+    expected_package = f"com.sallm.{technique}.{source}"
+    if f"package {expected_package};" not in code:
+        # Remove existing package and add correct one
+        code = re.sub(r'package\s+[\w\.]+;\s*', '', code)
+        code = f"package {expected_package};\n\n" + code
+
+    # Ensure class name matches item_id
+    code = re.sub(r'public\s+class\s+\w+', f'public class {item_id}', code)
+    
+    return code
+
+def warm_up_maven_cache():
+    """Run maven on a sample pom.xml to warm up the cache sequentially."""
+    sample_pom = os.path.join(JAVA_DATASET_PATH, "pom.xml")
+    if not os.path.exists(sample_pom):
+        # Find any pom.xml in the dataset
+        for root, dirs, files in os.walk(os.path.join(JAVA_DATASET_PATH, "src")):
+            if "pom.xml" in files:
+                sample_pom = os.path.join(root, "pom.xml")
+                break
+    
+    if os.path.exists(sample_pom):
+        print(f"Warming up Maven cache using {sample_pom}...")
+        os.makedirs(MAVEN_CACHE_PATH, exist_ok=True)
+        repo_local = os.path.join(os.path.abspath(MAVEN_CACHE_PATH), "repository")
+        # We use the host maven to populate the cache
+        cmd = ["mvn", "dependency:go-offline", "-B", "-f", sample_pom, f"-Dmaven.repo.local={repo_local}"]
+        subprocess.run(cmd, stdout=STDOUT, stderr=STDERR)
+    else:
+        print("Warning: No pom.xml found to warm up Maven cache.")
 
 def get_base_image_info(item_id, technique, source, is_python=True):
     """Find the base image name and Dockerfile for a given prompt ID, technique and source."""
@@ -133,40 +168,55 @@ def process_single_file(file_info):
         local_mount_path = os.path.abspath(file_path).replace("\\", "/")
         
         if is_python:
-            run_cmd = [
-                DOCKER_BIN, "run", "--name", container_name,
-                "-v", f"{local_mount_path}:/prompt/{item_id}.py",
-                image_tag
-            ]
-            subprocess.run(run_cmd, stdout=STDOUT, stderr=STDERR, timeout=90)
+            completed_process = subprocess.run(run_cmd, capture_output=True, text=True, timeout=90)
             res_in_cont = f"/prompt/test_{item_id}_results.csv"
-            subprocess.run([DOCKER_BIN, "cp", f"{container_name}:{res_in_cont}", abs_output_path], stdout=STDOUT, stderr=STDERR)
+            if completed_process.returncode == 0:
+                subprocess.run([DOCKER_BIN, "cp", f"{container_name}:{res_in_cont}", abs_output_path], stdout=STDOUT, stderr=STDERR)
+            else:
+                error_msg = completed_process.stderr or completed_process.stdout
+                clean_error_msg = error_msg.replace(',', ';').replace('\n', ' ')
+                with open(abs_output_path, 'w', encoding='utf-8') as f:
+                    f.write("test,status,error_reason\n")
+                    f.write(f"testFunctionality,Error,{clean_error_msg}\n")
+                    f.write(f"testSecurity,Error,{clean_error_msg}\n")
         else:
             rel_dir = f"com/sallm/{technique}/{source}"
+            # Ensure Maven cache exists
+            os.makedirs(MAVEN_CACHE_PATH, exist_ok=True)
+            abs_maven_cache = os.path.abspath(MAVEN_CACHE_PATH).replace("\\", "/")
+
             run_cmd = [
                 DOCKER_BIN, "run", "--name", container_name,
                 "-v", f"{local_mount_path}:/app/src/main/java/{rel_dir}/{item_id}.java",
+                "-v", f"{abs_maven_cache}:/root/.m2",
                 image_tag
             ]
-            subprocess.run(run_cmd, stdout=STDOUT, stderr=STDERR, timeout=180)
+            completed_process = subprocess.run(run_cmd, capture_output=True, text=True, timeout=180)
             
             # Extract granular results for Java
             local_report_dir = os.path.join(TEMP_PATH, f"reports_{container_name}".replace("/", "_").replace("\\", "_"))
             os.makedirs(local_report_dir, exist_ok=True)
-            subprocess.run([DOCKER_BIN, "cp", f"{container_name}:/app/target/surefire-reports/.", local_report_dir], stdout=STDOUT, stderr=STDERR)
+            
+            cp_process = subprocess.run([DOCKER_BIN, "cp", f"{container_name}:/app/target/surefire-reports/.", local_report_dir], capture_output=True, text=True)
             
             java_results = parse_java_xml_reports(local_report_dir)
             if java_results:
                 with open(abs_output_path, 'w', encoding='utf-8') as f:
-                    f.write("test,status\n")
+                    f.write("test,status,error_reason\n")
                     for name, status in java_results:
-                        f.write(f"{name},{status}\n")
+                        f.write(f"{name},{status},\n")
             else:
-                # Fallback: if no results parsed, write Error status
+                # Fallback: if no results parsed, write Error status with captured output
+                error_msg = completed_process.stderr or completed_process.stdout
+                # If cp failed, it might be a compilation error
+                if cp_process.returncode != 0 and not error_msg:
+                    error_msg = cp_process.stderr
+                
+                clean_error_msg = error_msg.replace(',', ';').replace('\n', ' ')
                 with open(abs_output_path, 'w', encoding='utf-8') as f:
-                    f.write("test,status\n")
-                    f.write("testFunctionality,Error\n")
-                    f.write("testSecurity,Error\n")
+                    f.write("test,status,error_reason\n")
+                    f.write(f"testFunctionality,Error,{clean_error_msg}\n")
+                    f.write(f"testSecurity,Error,{clean_error_msg}\n")
             
             # Cleanup local reports
             shutil.rmtree(local_report_dir)
@@ -287,6 +337,9 @@ def save_generated_code(jsonl_folder, temp_folder):
                                 code = code_obj.get('cleared_code', '')
                                 if not code: continue
                                 
+                                if lang_key == 'Java' or (lang_key == 'English' and ext == '.java'):
+                                    code = fix_java_code(code, item_id, technique, source)
+
                                 # Inject language name into the folder name to make it unique
                                 if '_' in model_name:
                                     parts = model_name.rsplit('_', 1)
@@ -315,6 +368,9 @@ def save_generated_code(jsonl_folder, temp_folder):
                                 
                             if not code: continue
                             
+                            if ext == '.java':
+                                code = fix_java_code(code, item_id, technique, source)
+
                             target_dir = os.path.join(temp_folder, f"{model_name}_R{idx+1}")
                             os.makedirs(target_dir, exist_ok=True)
                             target_file = os.path.join(target_dir, f"{technique}__{source}__{item_id}{ext}")
@@ -343,6 +399,10 @@ if __name__ == "__main__":
     os.makedirs(TEST_FOLDER, exist_ok=True)
     print(f"Created test folder: {TEST_FOLDER}")
 
+    # Warm up Maven cache if Java is involved
+    if LANG_FILTER is None or LANG_FILTER.lower() == 'java':
+        warm_up_maven_cache()
+
     if RUN_TESTS_ON_GENERATED_CODE:
         print(f"Extracting code from JSONL files in: {GENERATED_CODE_PATH}")
         save_generated_code(GENERATED_CODE_PATH, TEMP_PATH)
@@ -353,6 +413,13 @@ if __name__ == "__main__":
 
     to_process, unique_prompts = get_all_to_process(target_dir)
     
+    # Apply MODEL_FILTER
+    if MODEL_FILTER:
+        print(f"MODEL_FILTER '{MODEL_FILTER}': Filtering samples...")
+        to_process = [p for p in to_process if MODEL_FILTER.lower() in p[1].lower()]
+        needed_prompts = set((p[1], p[2], p[3], p[5]) for p in to_process)
+        unique_prompts = list(needed_prompts)
+
     # Filter by Language if specified
     if LANG_FILTER:
         print(f"LANG_FILTER '{LANG_FILTER}': Filtering samples...")

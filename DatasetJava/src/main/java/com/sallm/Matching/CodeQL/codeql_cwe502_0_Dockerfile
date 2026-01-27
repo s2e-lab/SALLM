@@ -4,6 +4,7 @@ WORKDIR /app
 
 # Copy pom.xml
 COPY pom.xml .
+RUN mvn dependency:go-offline -B
 
 # Create directory structure
 RUN mkdir -p src/main/java/com/sallm/Matching/CodeQL src/test/java/com/sallm/Matching/CodeQL

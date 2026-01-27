@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jan 27 19:17:29 UTC 2026
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1769541449424
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.maven.surefire\:surefire-shared-utils\:pom\:3.2.2 from/to central (https\://repo.maven.apache.org/maven2)\: /root/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.2.2/surefire-shared-utils-3.2.2.pom.part (No such file or directory)

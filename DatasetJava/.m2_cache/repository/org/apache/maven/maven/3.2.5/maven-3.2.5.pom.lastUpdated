@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jan 27 19:17:30 UTC 2026
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1769541450187
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.maven\:maven\:pom\:3.2.5 from/to central (https\://repo.maven.apache.org/maven2)\: /root/.m2/repository/org/apache/maven/maven/3.2.5/maven-3.2.5.pom.part (No such file or directory)
