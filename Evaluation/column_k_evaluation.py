@@ -4,11 +4,11 @@ import pandas as pd
 lang_families = {
     'Afro-Asiatic': ['Arabic', 'Hebrew'],
     'Austro-Asiatic': ['Vietnamese'],
-    'Austronesian': ['Indonesian', 'Malay', 'Tagalog', 'Acehnese', 'Malayalam'],
+    'Austronesian': ['Indonesian', 'Malay', 'Tagalog'],
     'Indo-European (Germanic)': ['English', 'Dutch', 'German', 'Afrikaans'],
     'Indo-European (Romance)': ['Portuguese', 'Spanish', 'French', 'Italian'],
     'Indo-European (Greek)': ['Greek'],
-    'Indo-European (Iranian)': ['Persian', 'Western Persian'],
+    'Indo-European (Iranian)': ['Persian'],
     'Slavic': ['Russian', 'Bulgarian'],
     'Sino-Tibetan': ['Chinese'],
     'Turkic': ['Turkish'],
@@ -21,10 +21,10 @@ lang_to_family = {
 }
 
 
-df = pd.read_csv('./Result/Tests_Results_Multi.csv')
+df = pd.read_csv('./TestResults/Tests_Results_Python.csv')
 df['language_family'] = df['Language'].map(lang_to_family).fillna('Unknown')
 
-eval_cols = [c for c in df.columns if c.startswith('pass@')]
+eval_cols = [c for c in df.columns if any(c.startswith(prefix) for prefix in ['pass@', 'vul@', 'security@'])]
 
 
 for eval_col in eval_cols:
