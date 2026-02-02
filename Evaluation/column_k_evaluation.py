@@ -21,7 +21,7 @@ lang_to_family = {
 }
 
 
-df = pd.read_csv('./TestResults/Tests_Results_Python.csv')
+df = pd.read_csv('./Result/Tests_Results_Python.csv')
 df['language_family'] = df['Language'].map(lang_to_family).fillna('Unknown')
 
 eval_cols = [c for c in df.columns if any(c.startswith(prefix) for prefix in ['pass@', 'vul@', 'security@'])]
