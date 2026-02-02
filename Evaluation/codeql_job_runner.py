@@ -6,8 +6,8 @@ import shutil
 
 # %%
 # Get list of all files in the directory
-files = os.listdir('./Filtered_Output/')
-jsonl_files = [file for file in files if file.endswith('.jsonl')]
+files = os.listdir('../Generation/Filtered_Output/')
+jsonl_files = [file for file in files if file.endswith('.jsonl') and file.startswith('dataset_nl_prompt_best')]
 print(jsonl_files)
 
 
@@ -27,9 +27,9 @@ def check_tests(path):
 
 # %%
 for file in jsonl_files:
-    if not 'multi-dataset_Qwen' in file:
+    if not 'qwen' in file:
         continue
-    with open('./Filtered_Output/' + file, 'r') as f:
+    with open('../Generation/Filtered_Output/' + file, 'r') as f:
         data = [json.loads(line) for line in f.readlines()]
 
     model_name = file.split('.jsonl')[0]

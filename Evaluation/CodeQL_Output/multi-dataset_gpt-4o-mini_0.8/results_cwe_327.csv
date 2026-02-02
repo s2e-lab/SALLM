@@ -1,1 +1,0 @@
-"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The cryptographic algorithm DES is broken or weak, and should not be used.","/Matching/StackOverflow/SO_cwe327_0_5_Finnish.py","12","19","12","45"
