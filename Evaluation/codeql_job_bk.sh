@@ -1,11 +1,17 @@
 rm -rf ./CodeQL_Output/MODEL_NAME
 mkdir -p ./CodeQL_Output/MODEL_NAME
 
+echo "Created CodeQL Output Directory"
+
 cd ./Dataset/MODEL_NAME
+
+echo "Changed Directory to Dataset/MODEL_NAME"
 
 rm -rf /tmp/msiddiq3/CodeQL_Database/MODEL_NAME
 mkdir -p /tmp/msiddiq3/CodeQL_Database/MODEL_NAME
 codeql database create /tmp/msiddiq3/CodeQL_Database/MODEL_NAME --language=python
+
+echo "Created CodeQL Database"
 
 codeql database analyze "/tmp/msiddiq3/CodeQL_Database/MODEL_NAME" /afs/crc.nd.edu/user/m/msiddiq3/Public/codeql-home/codeql-repo/python/ql/src/experimental/Security/CWE-022 --format=csv --output="../../CodeQL_Output/MODEL_NAME/results_experimental_CWE-022.csv"
 codeql database analyze "/tmp/msiddiq3/CodeQL_Database/MODEL_NAME" /afs/crc.nd.edu/user/m/msiddiq3/Public/codeql-home/codeql-repo/python/ql/src/experimental/Security/CWE-074 --format=csv --output="../../CodeQL_Output/MODEL_NAME/results_experimental_CWE-074.csv"
@@ -59,4 +65,7 @@ codeql database analyze "/tmp/msiddiq3/CodeQL_Database/MODEL_NAME" /afs/crc.nd.e
 
 
 rm -rf ./Dataset/MODEL_NAME
-# mkdir Dataset
+rm -rf /tmp/msiddiq3/CodeQL_Database/MODEL_NAME
+
+echo "Removed Dataset and CodeQL Database"
+    

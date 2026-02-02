@@ -4,9 +4,9 @@
 #$ -m abe            # Send mail when job begins, ends and aborts
 #$ -pe smp 1     # Specify parallel environment and legal core size
 #$ -q long           # Specify queue
-#$ -N  multi-gpt
+#$ -N python_codeql_job
 
 
 export PATH="/afs/crc.nd.edu/user/m/msiddiq3/Public/codeql-home/codeql:$PATH"
-conda activate Franc
+# conda activate Franc
 python 	codeql_job_runner.py

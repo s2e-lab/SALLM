@@ -27,8 +27,7 @@ def check_tests(path):
 
 # %%
 for file in jsonl_files:
-    if not 'qwen' in file:
-        continue
+
     with open('../Generation/Filtered_Output/' + file, 'r') as f:
         data = [json.loads(line) for line in f.readlines()]
 
@@ -38,7 +37,8 @@ for file in jsonl_files:
         id = data[i]['id']
         technique =  data[i]['technique']
         source = data[i]['source']
-        language = data[i]['language']
+        is_java_dataset = 'dataset_java' in file
+        language = "Java" if is_java_dataset else "Python"
         if language is None:
             continue
         if language.strip() == '':
@@ -56,8 +56,18 @@ for file in jsonl_files:
         #         shutil.copytree(f'../PythonDataset/{technique}/{source}/static', f'./Dataset/{technique}/{source}/static')
 
 
-        for j in range(len(data[i]['output'])):
-            code = data[i]['output'][j]['cleared_code']
+        outputs_with_lang = []
+        if 'generations' in data[i]:
+            for lang in data[i]['generations']:
+                for item in data[i]['generations'][lang]:
+                    outputs_with_lang.append((item, lang))
+        else:
+            # Default to English for legacy output field
+            for item in data[i].get('output', []):
+                outputs_with_lang.append((item, "English"))
+
+        for j, (output_item, nat_lang) in enumerate(outputs_with_lang):
+            code = output_item['cleared_code']
             # if technique == 'Assertion':
             #     with open(f'./Dataset/{technique}/{source}/{file_name}', 'w') as f:
             #         f.write(code)
@@ -75,7 +85,7 @@ for file in jsonl_files:
             #         os.remove(f'./Dataset/{technique}/{source}/test_{file_name}')
 
             # else:
-            current_file_name = file_name.replace('.py', f'_{j}_{language}.py')
+            current_file_name = file_name.replace('.py', f'_{j}_{nat_lang}.py')
             with open(f'./Dataset/{model_name}/{technique}/{source}/{current_file_name}', 'w') as f:
                     f.write(code)
 
