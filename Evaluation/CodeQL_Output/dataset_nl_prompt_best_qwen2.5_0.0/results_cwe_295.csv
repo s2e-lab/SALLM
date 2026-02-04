@@ -1,0 +1,3 @@
+"Accepting unknown SSH host keys when using Paramiko","Accepting unknown host keys can allow man-in-the-middle attacks.","error","Setting missing host key policy to AutoAddPolicy may be unsafe.","/Tainted/CodeQL/codeql_cwe074_0_0_English.py","8","1","8","73"
+"Accepting unknown SSH host keys when using Paramiko","Accepting unknown host keys can allow man-in-the-middle attacks.","error","Setting missing host key policy to AutoAddPolicy may be unsafe.","/Tainted/CodeQL/codeql_cwe074_0_15_Turkish.py","8","1","8","73"
+"Accepting unknown SSH host keys when using Paramiko","Accepting unknown host keys can allow man-in-the-middle attacks.","error","Setting missing host key policy to AutoAddPolicy may be unsafe.","/Tainted/CodeQL/codeql_cwe074_0_18_Chinese.py","8","1","8","73"
