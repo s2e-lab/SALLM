@@ -17,8 +17,8 @@ hf_logging.set_verbosity_error()
 
 # %%
 # Model choice
-#model_name = "bigcode/starcoder2-3b"
-model_name = "Qwen/Qwen2.5-Coder-3B-Instruct"
+model_name = "bigcode/starcoder2-3b"
+#model_name = "Qwen/Qwen2.5-Coder-3B-Instruct"
 # Initialize model and tokenizer once
 tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, padding_side='left')
 # Fix for missing pad_token (Starcoder/GPT2 models often lack it)
