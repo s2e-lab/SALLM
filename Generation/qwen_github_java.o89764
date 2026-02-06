@@ -1,0 +1,22 @@
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.16s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.20s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.34s/it]
+[2026-02-04 22:47:47.707011] Reading ../ProcessedFiles/github-dataset_java_nl_prompt_best.jsonl...
+[2026-02-04 22:47:47.734766] Preparing prompts...
+Total generations per temperature: 575
+[2026-02-04 22:47:47.739249] Processing Temperature: 0.0
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 140273.65it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.0.jsonl
+[2026-02-05 00:25:39.729970] Processing Temperature: 0.2
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 36261.09it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.2.jsonl
+[2026-02-05 04:30:56.398655] Processing Temperature: 0.4
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 39131.68it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.4.jsonl
+[2026-02-05 08:36:14.948503] Processing Temperature: 0.6
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 45546.35it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.6.jsonl
+[2026-02-05 12:41:34.870639] Processing Temperature: 0.8
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 47977.34it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.8.jsonl
+[2026-02-05 16:46:55.261386] Processing Temperature: 1.0
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 49481.43it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_1.0.jsonl

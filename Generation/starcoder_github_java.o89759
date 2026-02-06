@@ -1,0 +1,21 @@
+[2026-02-04 22:47:18.015103] Reading ../ProcessedFiles/github-dataset_java_nl_prompt_best.jsonl...
+[2026-02-04 22:47:18.058763] Preparing prompts...
+Total generations per temperature: 575
+[2026-02-04 22:47:18.063734] Processing Temperature: 0.0
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 316499.32it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.0.jsonl
+[2026-02-05 00:28:08.459704] Processing Temperature: 0.2
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 37292.79it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.2.jsonl
+[2026-02-05 05:00:21.425019] Processing Temperature: 0.4
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 35169.67it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.4.jsonl
+[2026-02-05 09:32:31.366166] Processing Temperature: 0.6
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 34717.06it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.6.jsonl
+[2026-02-05 14:04:46.437889] Processing Temperature: 0.8
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 34341.85it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_0.8.jsonl
+[2026-02-05 18:37:04.159232] Processing Temperature: 1.0
+  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 30712.44it/s]
+Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_starcoder2_1.0.jsonl
