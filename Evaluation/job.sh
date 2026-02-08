@@ -7,6 +7,6 @@
 #$ -N python_codeql_job
 
 
-export PATH="/afs/crc.nd.edu/user/m/msiddiq3/Public/codeql-home/codeql:$PATH"
+export PATH="/groups/jdasilv2/Latif/codeql-home/codeql:$PATH"
 # conda activate Franc
 python 	codeql_job_runner.py
