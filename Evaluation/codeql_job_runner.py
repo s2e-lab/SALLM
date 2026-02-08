@@ -11,8 +11,8 @@ from filter_code import check_compilable, check_compilable_java, remove_misplace
 
 # %%
 # Get list of all files in the directory
-# files = os.listdir('../Generation/Filtered_Output/')
-# jsonl_files = [file for file in files if file.endswith('.jsonl') and (file.startswith('dataset_java_nl_prompt_best'))]
+files = os.listdir('../Generation/Filtered_Output/')
+jsonl_files = [file for file in files if file.endswith('.jsonl') and (file.startswith('dataset_java_nl_prompt_best'))]
 # # Filter for Java datasets and the one Python dataset to restore
 # java_files = [f for f in jsonl_files if 'dataset_java' in f]
 # python_to_restore = [f for f in jsonl_files if f == 'dataset_nl_prompt_best_gemini-2.5-flash_0.0.jsonl']
@@ -21,8 +21,8 @@ from filter_code import check_compilable, check_compilable_java, remove_misplace
 # jsonl_files = [f for f in jsonl_files if 'gemini-2.5-flash_0.0' in f and 'dataset_nl' not in f]
 
 # FOR TESTING ONLY: One specific Java file
-jsonl_files = ['dataset_java_nl_prompt_best_gemini-2.5-flash_0.0.jsonl']
-print(f"Processing models: {jsonl_files}")
+# jsonl_files = ['dataset_java_nl_prompt_best_gemini-2.5-flash_0.0.jsonl']
+# print(f"Processing models: {jsonl_files}")
 
 
 # %%

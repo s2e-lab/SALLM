@@ -655,8 +655,8 @@ def main():
         os.makedirs(output_dir)
         
     files = os.listdir(input_dir)
-    jsonl_files = [f for f in files if f.endswith('.jsonl') and f.startswith('dataset_')]
-    
+    jsonl_files = [f for f in files if f.endswith('.jsonl') and (f.startswith('dataset_') or f.startswith('github-dataset'))]
+
     print(f"Found {len(jsonl_files)} files to process.")
     
     for filename in tqdm(jsonl_files):

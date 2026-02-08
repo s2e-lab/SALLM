@@ -4,7 +4,7 @@
 #$ -pe smp 4    # Specify parallel environment and legal core size
 #$ -q gpu          # Specify queue
 #$ -l gpu=2         # Specify queue
-#$ -N starcoder_github_python
+#$ -N qwen_github_python
 #$ -cwd
 
 export HF_HOME="/groups/jdasilv2/Latif/SALLM/.cache/huggingface"

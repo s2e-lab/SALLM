@@ -1,22 +1,0 @@
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.15it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  2.07it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.85it/s]
-[2026-02-04 22:48:16.413435] Reading ../ProcessedFiles/github-dataset_nl_prompt_best.jsonl...
-[2026-02-04 22:48:16.447489] Preparing prompts...
-Total generations per temperature: 575
-[2026-02-04 22:48:16.450629] Processing Temperature: 0.0
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 344286.20it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_nl_prompt_best_starcoder2_0.0.jsonl
-[2026-02-04 23:01:43.498324] Processing Temperature: 0.2
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 79652.71it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_nl_prompt_best_starcoder2_0.2.jsonl
-[2026-02-04 23:40:29.656426] Processing Temperature: 0.4
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 88458.22it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_nl_prompt_best_starcoder2_0.4.jsonl
-[2026-02-05 00:27:58.175816] Processing Temperature: 0.6
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 105981.93it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_nl_prompt_best_starcoder2_0.6.jsonl
-[2026-02-05 01:19:10.346457] Processing Temperature: 0.8
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 98703.64it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_nl_prompt_best_starcoder2_0.8.jsonl
-[2026-02-05 02:11:03.337721] Processing Temperature: 1.0
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 92855.07it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_nl_prompt_best_starcoder2_1.0.jsonl
