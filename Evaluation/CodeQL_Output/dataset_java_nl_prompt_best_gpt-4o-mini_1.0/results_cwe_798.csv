@@ -1,0 +1,1 @@
+"Hard-coded credential in sensitive call","Using a hard-coded credential in a sensitive call may compromise security.","error","Hard-coded value flows to [[""sensitive call""|""relative:///com/sallm/Tainted/Author/p_59_f_75/A_cwe117_0_75_Spanish.java:14:22:14:29""]].","/com/sallm/Tainted/Author/p_59_f_75/A_cwe117_0_75_Spanish.java","21","16","21","28"
