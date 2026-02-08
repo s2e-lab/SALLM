@@ -2,16 +2,7 @@ import json
 import os
 import ast
 from collections import defaultdict
-
-def check_compilable(code):
-    try:
-        ast.parse(code)
-        return True
-    except:
-        # Check for Java class structure heuristic
-        if 'public class' in code or ('class ' in code and '{' in code and '}' in code):
-            return True
-        return False
+from filter_code import check_compilable
 
 def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))

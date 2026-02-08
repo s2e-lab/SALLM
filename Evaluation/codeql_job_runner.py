@@ -3,11 +3,16 @@ import json
 import os
 import subprocess
 import shutil
+import sys
+
+# Add parent directory to path to import from Generation
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'Generation'))
+from filter_code import check_compilable, check_compilable_java, remove_misplaced_imports, remove_duplicate_class_definitions
 
 # %%
 # Get list of all files in the directory
 # files = os.listdir('../Generation/Filtered_Output/')
-# jsonl_files = [file for file in files if file.endswith('.jsonl') and (file.startswith('dataset_nl_prompt_best') or file.startswith('dataset_java_nl_prompt_best'))]
+# jsonl_files = [file for file in files if file.endswith('.jsonl') and (file.startswith('dataset_java_nl_prompt_best'))]
 # # Filter for Java datasets and the one Python dataset to restore
 # java_files = [f for f in jsonl_files if 'dataset_java' in f]
 # python_to_restore = [f for f in jsonl_files if f == 'dataset_nl_prompt_best_gemini-2.5-flash_0.0.jsonl']
@@ -163,6 +168,20 @@ for file in jsonl_files:
             else:
                 # cleared_code is malformed, skip
                 continue
+
+            # Clean up Java code using filter_code.py functions
+            if is_java_dataset:
+                code = remove_duplicate_class_definitions(code)
+                code = remove_misplaced_imports(code)
+
+            # Final validation: use comprehensive compilability check from filter_code.py
+            if is_java_dataset:
+                if not check_compilable_java(code):
+                    continue
+            else:
+                if not check_compilable(code):
+                    continue
+
             # if technique == 'Assertion':
             #     with open(f'./Dataset/{technique}/{source}/{file_name}', 'w') as f:
             #         f.write(code)
