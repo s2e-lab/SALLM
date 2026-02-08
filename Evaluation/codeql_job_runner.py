@@ -84,7 +84,85 @@ for file in jsonl_files:
                 outputs_with_lang.append((item, "English"))
 
         for j, (output_item, nat_lang) in enumerate(outputs_with_lang):
-            code = output_item['cleared_code']
+            # Check if code is marked as compilable
+            if not output_item.get('compilable', False):
+                continue
+
+            import re
+
+            # Get both code fields
+            cleared_code = output_item['cleared_code']
+            generated_code = output_item.get('code', '')
+
+            # Strategy: Check if there's an empty method in cleared_code
+            # If yes, try to fill it with generated_code
+            # If no, use cleared_code as-is
+
+            # Check for empty method pattern
+            empty_method_pattern = r'(public|private|protected)?\s*\w+\s+\w+\s*\([^)]*\)\s*\{[\s]*\}'
+            has_empty_method = re.search(empty_method_pattern, cleared_code) is not None
+
+            if has_empty_method and generated_code and len(generated_code.strip()) >= 20 and is_java_dataset:
+                # Try to merge generated code into cleared_code template for Java
+
+                # Clean markdown code blocks from generated code
+                generated_code = re.sub(r'^```\w*\n?', '', generated_code)
+                generated_code = re.sub(r'\n?```$', '', generated_code)
+                generated_code = generated_code.strip()
+
+                # Validate: skip if too short
+                if len(generated_code) < 30:
+                    continue
+
+                # Check brace balance
+                if generated_code.count('{') < generated_code.count('}') - 1:
+                    continue
+
+                # Extract method body from generated code
+                if re.match(r'^\s*(public|private|protected)', generated_code):
+                    # Full method - extract body
+                    first_brace = generated_code.find('{')
+                    if first_brace != -1:
+                        brace_count = 0
+                        method_end = -1
+                        for idx in range(first_brace, len(generated_code)):
+                            if generated_code[idx] == '{':
+                                brace_count += 1
+                            elif generated_code[idx] == '}':
+                                brace_count -= 1
+                                if brace_count == 0:
+                                    method_end = idx
+                                    break
+                        method_body = generated_code[first_brace+1:method_end].strip() if method_end != -1 else generated_code[first_brace+1:].strip()
+                    else:
+                        method_body = generated_code
+                else:
+                    # Already just the body
+                    method_body = generated_code
+
+                # Clean up
+                method_body = re.sub(r'\}\s*$', '', method_body).strip()
+
+                # Validate method body
+                if not method_body or len(method_body) < 10:
+                    continue
+
+                # Find empty method in cleared_code (use same pattern)
+                matches = list(re.finditer(empty_method_pattern, cleared_code))
+
+                if matches:
+                    last_match = matches[-1]
+                    before_body = cleared_code[:last_match.end()-1]
+                    after_body = cleared_code[last_match.end():]
+                    code = before_body + '\n        ' + method_body + '\n    }'  + after_body
+                else:
+                    continue
+            elif cleared_code.count('{') == cleared_code.count('}'):
+                # No empty method or no generated code, but cleared_code is balanced - use it
+                code = cleared_code
+            else:
+                # cleared_code is malformed, skip
+                continue
             # if technique == 'Assertion':
             #     with open(f'./Dataset/{technique}/{source}/{file_name}', 'w') as f:
             #         f.write(code)

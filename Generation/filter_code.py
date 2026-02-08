@@ -36,33 +36,159 @@ def extract_code_block(text, dedent=True):
     else:
         return code.strip()
 
+def remove_duplicate_class_definitions(code):
+    """
+    Removes duplicate class definitions that may have been inserted mid-code.
+    Keeps only the first class definition.
+    """
+    lines = code.split('\n')
+
+    # Find all lines with class declarations
+    class_decl_indices = []
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if re.match(r'^(public\s+)?(abstract\s+)?(final\s+)?class\s+\w+', stripped):
+            class_decl_indices.append(i)
+
+    # If we have more than one class declaration, keep only the first one
+    if len(class_decl_indices) > 1:
+        # Remove everything from the second class declaration onwards
+        lines = lines[:class_decl_indices[1]]
+        code = '\n'.join(lines)
+
+    return code
+
+def remove_misplaced_imports(code):
+    """
+    Removes import statements that appear in the middle of a class (not at the top).
+    """
+    lines = code.split('\n')
+    result_lines = []
+
+    # Find where the class starts
+    class_started = False
+    in_method = False
+    brace_count = 0
+
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+
+        # Track when we've entered the class body
+        if re.match(r'^(public\s+)?(abstract\s+)?(final\s+)?class\s+\w+', stripped):
+            class_started = True
+            result_lines.append(line)
+            continue
+
+        # Track brace depth
+        brace_count += line.count('{') - line.count('}')
+
+        # If we're inside the class and see an import, skip it
+        if class_started and stripped.startswith('import ') and brace_count > 0:
+            continue
+
+        # Skip package declarations in the middle of code
+        if class_started and stripped.startswith('package ') and brace_count > 0:
+            continue
+
+        result_lines.append(line)
+
+    return '\n'.join(result_lines)
+
 def fix_truncated_java(code):
     """
     Cleans up truncated Java code by removing incomplete lines and closing braces.
+    Enhanced version that handles multiple issues.
     """
     if not code: return code
+
+    # First, remove duplicate class definitions
+    code = remove_duplicate_class_definitions(code)
+
+    # Remove misplaced imports
+    code = remove_misplaced_imports(code)
+
     stripped = code.rstrip()
     lines = stripped.split('\n')
     if not lines: return code
-    
-    last_line = lines[-1].strip()
-    
-    # 1. Remove obvious truncated imports or statements
-    # Ends with a letter/digit and doesn't have a terminator
-    if re.search(r'[a-zA-Z0-9]$', last_line):
-        if not last_line.endswith(';') and not last_line.endswith('{') and not last_line.endswith('}'):
-            lines = lines[:-1]
-            stripped = '\n'.join(lines).rstrip()
 
-    # 2. Balance braces
+    # Remove trailing truncated lines
+    while lines:
+        last_line = lines[-1].strip()
+
+        # Empty line at end - remove
+        if not last_line:
+            lines = lines[:-1]
+            continue
+
+        # Check if line is truncated (incomplete statement)
+        is_truncated = False
+
+        # Ends mid-word/mid-expression without proper terminator
+        if re.search(r'[a-zA-Z0-9]$', last_line):
+            if not last_line.endswith(';') and not last_line.endswith('{') and not last_line.endswith('}'):
+                is_truncated = True
+
+        # Incomplete method call or declaration
+        if last_line.count('(') > last_line.count(')'):
+            is_truncated = True
+
+        # Incomplete string literal
+        if last_line.count('"') % 2 == 1:
+            is_truncated = True
+
+        # Starts with a Java keyword but incomplete
+        truncated_keywords = ['import', 'public', 'private', 'protected', 'static', 'final', 'class', 'interface']
+        for kw in truncated_keywords:
+            if last_line.startswith(kw + ' ') and not last_line.endswith(';') and not last_line.endswith('{'):
+                # Could be a method/class declaration, check if it has opening brace
+                if '{' not in last_line:
+                    is_truncated = True
+                    break
+
+        if is_truncated:
+            lines = lines[:-1]
+        else:
+            break
+
+    stripped = '\n'.join(lines).rstrip()
+
+    # Balance braces with proper indentation
     open_braces = stripped.count('{')
     close_braces = stripped.count('}')
+
     if open_braces > close_braces:
-        # Add missing closing braces
-        stripped += '\n' + ('    ' * (open_braces - close_braces - 1)) + '}'
-        for i in range(open_braces - close_braces - 2, -1, -1):
-            stripped += '\n' + ('    ' * i) + '}'
-            
+        diff = open_braces - close_braces
+
+        # Calculate indentation by examining existing lines
+        indent_level = 0
+        for line in reversed(lines):
+            if line.strip():
+                # Count leading spaces
+                match = re.match(r'^(\s*)', line)
+                if match:
+                    indent_level = len(match.group(1))
+                break
+
+        # Add closing braces with decreasing indentation
+        for i in range(diff):
+            indent = max(0, indent_level - (i * 4))
+            stripped += '\n' + (' ' * indent) + '}'
+
+    # Remove excessive closing braces
+    elif close_braces > open_braces:
+        diff = close_braces - open_braces
+        lines = stripped.split('\n')
+
+        # Remove trailing '}' lines until balanced
+        while diff > 0 and lines:
+            if lines[-1].strip() == '}':
+                lines = lines[:-1]
+                diff -= 1
+            else:
+                break
+
+        stripped = '\n'.join(lines)
+
     return stripped
 
 def remove_repetition(prompt, data, is_java=False):
@@ -91,25 +217,39 @@ def remove_repetition(prompt, data, is_java=False):
     # 3. Java-specific redundant boilerplate removal
     if is_java:
         prompt_lines_set = set(line.strip() for line in p_lines if line.strip())
-        
+
         d_lines = data.split('\n')
         new_data_lines = []
-        for line in d_lines:
+        skip_until_non_boilerplate = False
+
+        for i, line in enumerate(d_lines):
             ls = line.strip()
             if not ls:
-                new_data_lines.append(ls)
+                new_data_lines.append(line)
                 continue
-                
+
             # If it's a repeated import or package
             if (ls.startswith('import ') or ls.startswith('package ')) and ls in prompt_lines_set:
                 continue
-            
-            # If it's a repeated class declaration
-            if ls.startswith('public class ') or ls.startswith('class '):
-                # Heuristic: if prompt already has a class declaration
-                if any(p_line.strip().startswith('public class ') or p_line.strip().startswith('class ') for p_line in p_lines):
+
+            # If it's a repeated class declaration - be more aggressive
+            if re.match(r'^(public\s+)?(abstract\s+)?(final\s+)?class\s+\w+', ls):
+                # Check if prompt already has a class declaration
+                has_class_in_prompt = any(re.match(r'(public\s+)?(abstract\s+)?(final\s+)?class\s+\w+', p_line.strip())
+                                         for p_line in p_lines)
+                if has_class_in_prompt:
+                    # This is a duplicate class definition, skip it and everything until we find useful code
+                    skip_until_non_boilerplate = True
                     continue
-            
+
+            # Skip imports/packages that come after we detected a duplicate class
+            if skip_until_non_boilerplate:
+                if ls.startswith('import ') or ls.startswith('package ') or ls.startswith('/*') or ls.startswith('*') or ls.startswith('//'):
+                    continue
+                # Found actual code, stop skipping
+                if ls and not ls.startswith('}'):
+                    skip_until_non_boilerplate = False
+
             new_data_lines.append(line)
         data = '\n'.join(new_data_lines)
             
@@ -270,21 +410,86 @@ def extract_assistant_code(text):
         return text[start_idx:].strip()
     return text[start_idx:end_idx].strip()
 
+def check_compilable_java(code):
+    """
+    Enhanced Java compilability check with multiple heuristics.
+    """
+    if not code or len(code.strip()) < 20:
+        return False
+
+    # Check brace balance
+    if code.count('{') != code.count('}'):
+        return False
+
+    # Check parenthesis balance
+    if code.count('(') != code.count(')'):
+        return False
+
+    # Check bracket balance
+    if code.count('[') != code.count(']'):
+        return False
+
+    # Must have a class definition
+    if not re.search(r'\b(class|interface|enum)\s+\w+', code):
+        return False
+
+    # Check for incomplete statements (line ending without terminator mid-code)
+    lines = code.split('\n')
+    for i, line in enumerate(lines[:-5] if len(lines) > 5 else []):  # Check all but last 5 lines
+        stripped = line.strip()
+        if stripped and not stripped.startswith('//') and not stripped.startswith('/*') and not stripped.startswith('*'):
+            # Should end with proper terminator or control character
+            if re.search(r'[a-zA-Z0-9]$', stripped):
+                if not (stripped.endswith(';') or stripped.endswith('{') or stripped.endswith('}') or stripped.endswith(',')):
+                    # Could be continuation, check next line
+                    if i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        # If next line doesn't continue the statement, this is likely truncated
+                        if next_line and not next_line.startswith('.') and not next_line.startswith('['):
+                            return False
+
+    # Check for misplaced imports (should be at top)
+    in_class = False
+    for line in lines:
+        stripped = line.strip()
+        if re.match(r'(public\s+)?(abstract\s+)?(final\s+)?class\s+\w+', stripped):
+            in_class = True
+        if in_class and stripped.startswith('import '):
+            return False  # Import inside class body
+
+    # Check for duplicate class definitions
+    class_count = len(re.findall(r'\b(public\s+)?class\s+\w+', code))
+    if class_count > 1:
+        return False
+
+    # Check for very short methods (likely truncated)
+    method_pattern = r'(public|private|protected)\s+[\w<>[\]]+\s+\w+\s*\([^)]*\)\s*\{[^}]*\}'
+    methods = re.findall(method_pattern, code, re.DOTALL)
+    for method in methods:
+        # Method body should have more than just whitespace
+        body_match = re.search(r'\{([^}]*)\}', method, re.DOTALL)
+        if body_match:
+            body = body_match.group(1).strip()
+            # Empty body is suspicious unless it's abstract
+            if not body and 'abstract' not in method:
+                # Empty methods are often signs of truncation/incompleteness
+                pass  # Allow for now, as some prompts might have empty methods
+
+    return True
+
 def check_compilable(data):
+    """
+    Checks if code is compilable (Python or Java).
+    """
+    if not data or len(data.strip()) < 10:
+        return False
+
     # Check for Java class structure
-    if 'public class' in data or 'class ' in data:
-        # Simple heuristic for Java: looks like a class definition
-        # We can't easily compile it, but we can assume it's "valid structure" if it looks like Java
-        # and we are expecting Java (which we can't fully know here without filename, but data inspection helps)
-        # Actually, let's try Python parse first. If it fails, check for Java patterns.
-        try:
-            ast.parse(data)
-            return True
-        except:
-            if 'public class' in data or ('class ' in data and '{' in data and '}' in data):
-                return True
-            return False
-            
+    if 'class ' in data and '{' in data:
+        # Likely Java
+        return check_compilable_java(data)
+
+    # Try Python AST parse
     try:
         ast.parse(data)
         return True
