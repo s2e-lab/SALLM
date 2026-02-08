@@ -6,9 +6,18 @@ import shutil
 
 # %%
 # Get list of all files in the directory
-files = os.listdir('../Generation/Filtered_Output/')
-jsonl_files = [file for file in files if file.endswith('.jsonl') and file.startswith('dataset_nl_prompt_best')]
-print(jsonl_files)
+# files = os.listdir('../Generation/Filtered_Output/')
+# jsonl_files = [file for file in files if file.endswith('.jsonl') and (file.startswith('dataset_nl_prompt_best') or file.startswith('dataset_java_nl_prompt_best'))]
+# # Filter for Java datasets and the one Python dataset to restore
+# java_files = [f for f in jsonl_files if 'dataset_java' in f]
+# python_to_restore = [f for f in jsonl_files if f == 'dataset_nl_prompt_best_gemini-2.5-flash_0.0.jsonl']
+# jsonl_files = java_files + python_to_restore
+# # Filter for only gemini-2.5-flash_0.0 AND exclude python
+# jsonl_files = [f for f in jsonl_files if 'gemini-2.5-flash_0.0' in f and 'dataset_nl' not in f]
+
+# FOR TESTING ONLY: One specific Java file
+jsonl_files = ['dataset_java_nl_prompt_best_gemini-2.5-flash_0.0.jsonl']
+print(f"Processing models: {jsonl_files}")
 
 
 # %%
@@ -46,9 +55,17 @@ for file in jsonl_files:
         file_name = '_'.join(id.split('_')[2:])
 
         
+        dataset_root = f'./Dataset/{model_name}'
         # Check if the folder exists, if not create it
-        if not os.path.exists(f'./Dataset/{model_name}/{technique}/{source}/'):
-            os.makedirs(f'./Dataset/{model_name}/{technique}/{source}/')
+        if is_java_dataset:
+            # We use a unique package per file to avoid "duplicate class" errors from helper classes
+            java_package_path = f"com/sallm/{technique}/{source}/"
+            # We'll append a subfolder per file in the loop below
+            base_dir_parent = f'./Dataset/{model_name}/{java_package_path}'
+        else:
+            base_dir = f'./Dataset/{model_name}/{technique}/{source}/'
+            if not os.path.exists(base_dir):
+                os.makedirs(base_dir)
 
         # if technique == 'Assertion' and source in ['Author', 'SonarSource']:
 
@@ -84,13 +101,67 @@ for file in jsonl_files:
             #     if os.path.exists(f'./Dataset/{technique}/{source}/test_{file_name}'):
             #         os.remove(f'./Dataset/{technique}/{source}/test_{file_name}')
 
-            # else:
-            current_file_name = file_name.replace('.py', f'_{j}_{nat_lang}.py')
-            with open(f'./Dataset/{model_name}/{technique}/{source}/{current_file_name}', 'w') as f:
+            extension = '.java' if is_java_dataset else '.py'
+            current_file_extension = '.py' if not is_java_dataset else '.java'
+            
+            # Remove existing extension from file_name if present to avoid double extensions or wrong ones
+            base_file_name = file_name
+            if base_file_name.endswith('.py'):
+                base_file_name = base_file_name[:-3]
+            elif base_file_name.endswith('.java'):
+                base_file_name = base_file_name[:-5]
+                
+            current_file_name = f"{base_file_name}_{j}_{nat_lang}{extension}"
+            
+            # For Java, the public class name must match the filename and we need a package
+            if is_java_dataset:
+                import re
+                
+                def sanitize_code(code_content):
+                    # Remove Lombok imports
+                    code_content = re.sub(r'import\s+lombok\..*;', '', code_content)
+                    # Remove common Lombok annotations
+                    lombok_annotations = [
+                        r'@Data', r'@Builder', r'@AllArgsConstructor', r'@NoArgsConstructor', 
+                        r'@RequiredArgsConstructor', r'@Getter', r'@Setter', r'@ToString', 
+                        r'@EqualsAndHashCode', r'@Value', r'@Slf4j'
+                    ]
+                    for annotation in lombok_annotations:
+                        code_content = re.sub(annotation, '', code_content)
+                    return code_content
+
+                code = sanitize_code(code)
+                class_name_to_use = current_file_name.replace('.java', '')
+                
+                # Use a unique subfolder/package per prompt AND generation to avoid class conflicts
+                # Example: prompt 5, gen 0 -> p_5_f_0
+                file_unique_id = f"p_{i}_f_{j}"
+                file_base_dir = f"{base_dir_parent}{file_unique_id}"
+                if not os.path.exists(file_base_dir):
+                    os.makedirs(file_base_dir, exist_ok=True)
+                
+                # Replace existing package declaration or add a new one
+                package_name = f"com.sallm.{technique}.{source}.{file_unique_id}".replace('/', '.')
+                package_line = f"package {package_name};"
+                if re.search(r'package\s+[\w.]+;', code):
+                    code = re.sub(r'package\s+[\w.]+;', package_line, code, count=1)
+                else:
+                    code = f"{package_line}\n\n" + code
+                
+                # This regex replaces modifiers + 'class Name' with 'public class NewName'
+                # Handles: 'public class', 'class', 'public static class', etc.
+                code = re.sub(r'(?:public\s+|private\s+|protected\s+|static\s+|final\s+)*class\s+\w+', f'public class {class_name_to_use}', code, count=1)
+                
+                save_path = f'{file_base_dir}/{current_file_name}'
+            else:
+                save_path = f'{base_dir}/{current_file_name}'
+
+            with open(save_path, 'w') as f:
                     f.write(code)
 
 
-    with open('codeql_job_bk.sh', 'r') as f:
+    template_file = 'codeql_job_java_bk.sh' if is_java_dataset else 'codeql_job_bk.sh'
+    with open(template_file, 'r') as f:
         codeql_command = f.read()
 
     codeql_command = codeql_command.replace('MODEL_NAME', model_name)
@@ -98,7 +169,13 @@ for file in jsonl_files:
     with open(f'codeql_job_{model_name}.sh', 'w') as f:
         f.write(codeql_command)
 
-    subprocess.check_output(['bash', f'codeql_job_{model_name}.sh'])
+    try:
+        output = subprocess.check_output(['bash', f'codeql_job_{model_name}.sh'], stderr=subprocess.STDOUT)
+        print(f"Output for {model_name}:")
+        print(output.decode())
+    except subprocess.CalledProcessError as e:
+        print(f"Error running job for {model_name}:")
+        print(e.output.decode())
 
 
 
