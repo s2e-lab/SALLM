@@ -13,7 +13,7 @@ from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, TEMP_PATH, GENERATED_
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
 MAX_WORKERS = 4
-RUN_TESTS_ON_GENERATED_CODE = False
+RUN_TESTS_ON_GENERATED_CODE = True
 TEST_MODE = False # if True, only runs on a few samples for verification
 MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 LANG_FILTER = 'Python'   # Filter for specific language: 'Python', 'Java', or None for all
@@ -123,15 +123,15 @@ def process_single_file(file_info):
     """Run test for a single code file."""
     file_path, item_id, technique, source, lang, is_python = file_info
     parent_dir_name = os.path.basename(os.path.dirname(file_path))
-    
+
     image_tag, _, _ = get_base_image_info(item_id, technique, source, is_python)
-    
+
     # Restructured Output Filename
     if os.path.abspath(TEMP_PATH) in os.path.abspath(file_path):
         output_name = f"Model_{parent_dir_name}_{lang}_{technique}_{item_id}_results.csv"
     else:
         output_name = f"Dataset_{lang}_{technique}_{item_id}_results.csv"
-    
+
     # Result Organization by Temperature
     temp_val = "unknown"
     # Try to extract temperature from parent_dir_name or filename
@@ -139,17 +139,36 @@ def process_single_file(file_info):
     temp_matches = re.findall(r"(\d\.\d)", parent_dir_name)
     if not temp_matches:
         temp_matches = re.findall(r"(\d\.\d)", os.path.basename(file_path))
-    
+
     if temp_matches:
         temp_val = temp_matches[-1]
-        
+
     temp_dir = os.path.join(TEST_MODEL_RESULTS, f"temp_{temp_val}")
     output_path = os.path.join(temp_dir, output_name)
-        
+
     if os.path.exists(output_path): return
-    
+
+    # Early validation for Java code - check compilability before running Docker
+    if not is_python:
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                code_content = f.read()
+
+            if not check_compilable_java(code_content):
+                # Code is not compilable, write error results directly
+                os.makedirs(temp_dir, exist_ok=True)
+                os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                clean_error_msg = "Java code failed pre-validation checks (unbalanced braces/parens, missing class definition, or structural issues)"
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write("test,status,error_reason\n")
+                    f.write(f"testFunctionality,Error,{clean_error_msg}\n")
+                    f.write(f"testSecurity,Error,{clean_error_msg}\n")
+                return
+        except Exception as e:
+            if DEBUG: print(f"Error reading file {file_path} for pre-validation: {e}")
+
     container_name = f"eval-{int(time.time()*1000)}-{os.getpid()}"
-    
+
     try:
         os.makedirs(temp_dir, exist_ok=True)
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -166,8 +185,13 @@ def process_single_file(file_info):
         
         # Normalize path for Docker volume mount (Windows fix)
         local_mount_path = os.path.abspath(file_path).replace("\\", "/")
-        
+
         if is_python:
+            run_cmd = [
+                DOCKER_BIN, "run", "--name", container_name,
+                "-v", f"{local_mount_path}:/prompt/{item_id}.py",
+                image_tag
+            ]
             completed_process = subprocess.run(run_cmd, capture_output=True, text=True, timeout=90)
             res_in_cont = f"/prompt/test_{item_id}_results.csv"
             if completed_process.returncode == 0:
@@ -416,7 +440,7 @@ if __name__ == "__main__":
     # Apply MODEL_FILTER
     if MODEL_FILTER:
         print(f"MODEL_FILTER '{MODEL_FILTER}': Filtering samples...")
-        to_process = [p for p in to_process if MODEL_FILTER.lower() in p[1].lower()]
+        to_process = [p for p in to_process if MODEL_FILTER.lower() in p[0].lower()]  # p[0] is file_path
         needed_prompts = set((p[1], p[2], p[3], p[5]) for p in to_process)
         unique_prompts = list(needed_prompts)
 
