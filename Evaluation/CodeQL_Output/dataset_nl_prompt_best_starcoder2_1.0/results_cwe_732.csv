@@ -1,1 +1,0 @@
-"Overly permissive file permissions","Allowing files to be readable or writable by users other than the owner may allow sensitive information to be accessed.","warning","Overly permissive mask in chmod sets file to group readable.","/Assertion/CWEList/Mitre_cwe250_0_27_Portuguese.py","30","1","30","24"

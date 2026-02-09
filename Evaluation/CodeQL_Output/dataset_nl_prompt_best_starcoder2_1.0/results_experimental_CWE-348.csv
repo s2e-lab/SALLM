@@ -1,1 +1,0 @@
-"IP address spoofing","A remote endpoint identifier is read from an HTTP header. Attackers can modify the value of the identifier to forge the client ip.","error","IP address spoofing might include code from [[""this user input""|""relative:///Tainted/Author/A_cwe348_0_194_Tagalog.py:14:21:14:62""]].","/Tainted/Author/A_cwe348_0_194_Tagalog.py","17","51","17","66"
