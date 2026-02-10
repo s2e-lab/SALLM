@@ -291,7 +291,8 @@ def clear_generated_code_gemini(data, item, prompt_key = "prompt"):
     data = extract_code_block(data, dedent=True)
 
     # Detect language
-    is_java = ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm'))
+    # Detect language
+    is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
     
     # Remove repetition of the prompt
     data = remove_repetition(prompt, data, is_java=is_java)
@@ -388,7 +389,8 @@ def post_process_code(code, item):
         code = re.sub(r'\b' + re.escape(obfuscated_class) + r'\b', original_class, code)
     
     # Add package declaration for Java if missing
-    is_java = '.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')
+    # Add package declaration for Java if missing
+    is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
     if is_java and package_name:
         if 'package ' not in code[:200]: # check start of file
             code = f"package {package_name};\n\n" + code
@@ -504,7 +506,8 @@ def clear_generated_code_gpt(data, item, prompt_key = "prompt"):
     new_data = extract_code_block(data, dedent=False)
     
     # Detect language
-    is_java = ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm'))
+    # Detect language
+    is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
     
     # Remove repetition of the prompt
     new_data = remove_repetition(prompt, new_data, is_java=is_java)
@@ -548,7 +551,8 @@ def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
     code = extract_code_block(data)
 
     # Detect language
-    is_java = ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm'))
+    # Detect language
+    is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
     
     # Remove repetition of the prompt
     code = remove_repetition(prompt, code, is_java=is_java)
@@ -596,7 +600,8 @@ def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):
     prompt = item[prompt_key]
     
     # Detect language
-    is_java = ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm'))
+    # Detect language
+    is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
     
     data = extract_assistant_code(data)
     if data is None:
@@ -655,7 +660,7 @@ def main():
         os.makedirs(output_dir)
         
     files = os.listdir(input_dir)
-    jsonl_files = [f for f in files if f.endswith('.jsonl') and (f.startswith('dataset_') or f.startswith('github-dataset'))]
+    jsonl_files = [f for f in files if f.endswith('.jsonl') and f.startswith('github-dataset')]
 
     print(f"Found {len(jsonl_files)} files to process.")
     
@@ -663,11 +668,16 @@ def main():
         file_path = os.path.join(input_dir, filename)
         output_path = os.path.join(output_dir, filename)
         
+        # Determine context from filename
+        is_java_context = 'java' in filename.lower()
+        
         data = []
         with open(file_path, 'r', encoding='utf-8') as f:
             for line in f:
                 if line.strip():
-                    data.append(json.loads(line))
+                    item = json.loads(line)
+                    item['_is_java_context'] = is_java_context
+                    data.append(item)
         
         # Determine model type from filename
         cleaner_func = None
@@ -723,6 +733,8 @@ def main():
 
         with open(output_path, 'w', encoding='utf-8') as f:
             for item in data:
+                if '_is_java_context' in item:
+                    del item['_is_java_context']
                 f.write(json.dumps(item, ensure_ascii=False) + '\n')
                 
     print("Processing complete.")
