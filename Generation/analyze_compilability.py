@@ -18,18 +18,29 @@ def main():
     # actually totals are same for before/after per file, so: [before_success, after_success, total_count]
     stats_python = defaultdict(lambda: [0, 0, 0])
     stats_java = defaultdict(lambda: [0, 0, 0])
+    stats_github_python = defaultdict(lambda: [0, 0, 0])
+    stats_github_java = defaultdict(lambda: [0, 0, 0])
     
     print(f"Analyzing {len(files)} files...")
     
     for filename in files:
         is_java = 'dataset_java' in filename
-        current_stats = stats_java if is_java else stats_python
+        is_github = 'github-dataset' in filename
+        
+        if is_github:
+            current_stats = stats_github_java if is_java else stats_github_python
+        else:
+            current_stats = stats_java if is_java else stats_python
         
         name_part = filename.replace('.jsonl', '')
         if name_part.startswith('dataset_java_nl_prompt_best_'):
             remain = name_part.replace('dataset_java_nl_prompt_best_', '')
         elif name_part.startswith('dataset_nl_prompt_best_'):
             remain = name_part.replace('dataset_nl_prompt_best_', '')
+        elif name_part.startswith('github-dataset_java_nl_prompt_best_'):
+            remain = name_part.replace('github-dataset_java_nl_prompt_best_', '')
+        elif name_part.startswith('github-dataset_nl_prompt_best_'):
+            remain = name_part.replace('github-dataset_nl_prompt_best_', '')
         else:
             remain = name_part
             
@@ -101,8 +112,10 @@ def main():
             
             print(f"{model:<20} | {temp:<5} | {before_pct:<10.2f} | {after_pct:<10.2f} | {delta:<10.2f} | {total:<8}")
 
-    print_table("Python", stats_python)
-    print_table("Java", stats_java)
+    print_table("Python (Standard)", stats_python)
+    print_table("Java (Standard)", stats_java)
+    print_table("Python (Github)", stats_github_python)
+    print_table("Java (Github)", stats_github_java)
 
 if __name__ == "__main__":
     main()

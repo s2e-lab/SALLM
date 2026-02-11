@@ -9,15 +9,15 @@ import ast
 import xml.etree.ElementTree as ET
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
-from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MODEL_RESULTS, TEST_RESULTS, TEST_FOLDER
+from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, GITHUB_PYTHON_DATASET_PATH, GITHUB_JAVA_DATASET_PATH, TEMP_PATH, GENERATED_CODE_PATH, TEST_MODEL_RESULTS, TEST_RESULTS, TEST_FOLDER
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
-MAX_WORKERS = 4
+MAX_WORKERS = 8
 RUN_TESTS_ON_GENERATED_CODE = True
 TEST_MODE = False # if True, only runs on a few samples for verification
 MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
-LANG_FILTER = 'Python'   # Filter for specific language: 'Python', 'Java', or None for all
+LANG_FILTER = "Python"   # Filter for specific language: 'Python', 'Java', or None for all
 TEMP_FILTER = None   # Filter for specific temperature: '0.0', '0.2', ..., '1.0', or None for all
 MAVEN_CACHE_PATH = os.path.join(JAVA_DATASET_PATH, ".m2_cache")
 # ========================== END OF FLAGS ===========================
@@ -74,14 +74,26 @@ def warm_up_maven_cache():
 def get_base_image_info(item_id, technique, source, is_python=True):
     """Find the base image name and Dockerfile for a given prompt ID, technique and source."""
     if is_python:
-        parent_dir = os.path.join(PYTHON_DATASET_PATH, technique, source)
+        if source == "GitHubDataset":
+            # Special case for GitHubDataset which is in the root
+            parent_dir = os.path.join(GITHUB_PYTHON_DATASET_PATH, "GitHub")
+        else:
+            parent_dir = os.path.join(PYTHON_DATASET_PATH, technique, source)
+        context = parent_dir
     else:
-        parent_dir = os.path.join(JAVA_DATASET_PATH, "src", "main", "java", "com", "sallm", technique, source)
+        if source == "GitHub":
+            # Special case for GitHub Java dataset
+            parent_dir = os.path.join(GITHUB_JAVA_DATASET_PATH, "src", "main", "java", "com", "sallm", "GitHub", "GitHub")
+            context = GITHUB_JAVA_DATASET_PATH
+        else:
+            parent_dir = os.path.join(JAVA_DATASET_PATH, "src", "main", "java", "com", "sallm", technique, source)
+            context = parent_dir
         
     dockerfile = os.path.join(parent_dir, f"{item_id}_Dockerfile")
     image_tag = f"sallm-{('py' if is_python else 'java')}-{item_id}".lower()
+    if DEBUG: print(f"DEBUG: get_base_image_info: item_id={item_id}, source={source} -> image_tag={image_tag}, context={context}")
     
-    return image_tag, dockerfile, parent_dir
+    return image_tag, dockerfile, context
 
 def build_base_images(unique_prompts):
     """Build base images once."""
@@ -119,6 +131,60 @@ def parse_java_xml_reports(report_dir):
             except Exception as e:
                 if DEBUG: print(f"Error parsing XML {f}: {e}")
     return results
+
+def check_compilable_java(code):
+    """
+    Enhanced Java compilability check with multiple heuristics ported from filter_code.py.
+    """
+    if not code or len(code.strip()) < 20:
+        return False
+
+    # Check brace balance
+    if code.count('{') != code.count('}'):
+        return False
+
+    # Check parenthesis balance
+    if code.count('(') != code.count(')'):
+        return False
+
+    # Check bracket balance
+    if code.count('[') != code.count(']'):
+        return False
+
+    # Must have a class definition
+    if not re.search(r'\b(class|interface|enum)\s+\w+', code):
+        return False
+
+    # Check for incomplete statements (line ending without terminator mid-code)
+    lines = code.split('\n')
+    for i, line in enumerate(lines[:-5] if len(lines) > 5 else []):  # Check all but last 5 lines
+        stripped = line.strip()
+        if stripped and not stripped.startswith('//') and not stripped.startswith('/*') and not stripped.startswith('*'):
+            # Should end with proper terminator or control character
+            if re.search(r'[a-zA-Z0-9]$', stripped):
+                if not (stripped.endswith(';') or stripped.endswith('{') or stripped.endswith('}') or stripped.endswith(',')):
+                    # Could be continuation, check next line
+                    if i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        # If next line doesn't continue the statement, this is likely truncated
+                        if next_line and not next_line.startswith('.') and not next_line.startswith('['):
+                            return False
+
+    # Check for misplaced imports (should be at top)
+    in_class = False
+    for line in lines:
+        stripped = line.strip()
+        if re.match(r'(public\s+)?(abstract\s+)?(final\s+)?class\s+\w+', stripped):
+            in_class = True
+        if in_class and stripped.startswith('import '):
+            return False  # Import inside class body
+
+    # Check for duplicate class definitions
+    class_count = len(re.findall(r'\b(public\s+)?class\s+\w+', code))
+    if class_count > 1:
+        return False
+
+    return True
 
 def process_single_file(file_info):
     """Run test for a single code file."""
@@ -366,6 +432,10 @@ def save_generated_code(jsonl_folder, temp_folder):
             jsonl_files = [f for f in jsonl_files if not f.startswith('dataset_java')]
         print(f"LANG_FILTER '{LANG_FILTER}': Selective extraction from {len(jsonl_files)} files")
 
+
+    # Filter for github-dataset_ files
+    jsonl_files = [f for f in jsonl_files if f.startswith('github-dataset_')]
+    print(f"Filtering for 'github-dataset_' files: Processing {len(jsonl_files)} files")
 
     for f_name in jsonl_files:
         with open(os.path.join(jsonl_folder, f_name), 'r', encoding='utf-8') as f:
