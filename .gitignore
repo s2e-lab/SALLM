@@ -163,7 +163,11 @@ cython_debug/
 Generation/config.json
 Evaluation/Dataset/
 Evaluation/temp/
+Evaluation/temp_gemini/
+Evaluation/temp_qwen/
+Evaluation/temp_starcoder/
 Evaluation/TestModelsResults/
+Evaluation/TestModelsResults_Python/
 Translation/config.json
 Translation/translate_java.o*
 Translation/translate_python.o*
@@ -171,3 +175,4 @@ Translation/evaluate_java.o*
 Translation/evaluate_python.o*
 Generation/qwen2.5_python.o*
 Generation/starcoder_java.o*
+Evaluation/TestModelsResults_Old_Java.zip

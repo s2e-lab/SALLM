@@ -5,6 +5,7 @@ import time
 import json
 import shutil
 import re
+import ast
 import xml.etree.ElementTree as ET
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
@@ -148,8 +149,26 @@ def process_single_file(file_info):
 
     if os.path.exists(output_path): return
 
-    # Early validation for Java code - check compilability before running Docker
-    if not is_python:
+    # Early validation for code - check parsability/compilability before running Docker
+    if is_python:
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                code_content = f.read()
+
+            try:
+                ast.parse(code_content)
+            except SyntaxError as e:
+                os.makedirs(temp_dir, exist_ok=True)
+                os.makedirs(os.path.dirname(output_path), exist_ok=True)
+                clean_error_msg = f"Python code failed parsing: {e.msg} at line {e.lineno}".replace(',', ';')
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write("test,status,error_reason\n")
+                    f.write(f"testFunctionality,Error,{clean_error_msg}\n")
+                    f.write(f"testSecurity,Error,{clean_error_msg}\n")
+                return
+        except Exception as e:
+            if DEBUG: print(f"Error reading file {file_path} for pre-validation: {e}")
+    else:
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 code_content = f.read()
@@ -192,7 +211,14 @@ def process_single_file(file_info):
                 "-v", f"{local_mount_path}:/prompt/{item_id}.py",
                 image_tag
             ]
-            completed_process = subprocess.run(run_cmd, capture_output=True, text=True, timeout=90)
+            completed_process = subprocess.run(
+                run_cmd,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                timeout=90,
+            )
             res_in_cont = f"/prompt/test_{item_id}_results.csv"
             if completed_process.returncode == 0:
                 subprocess.run([DOCKER_BIN, "cp", f"{container_name}:{res_in_cont}", abs_output_path], stdout=STDOUT, stderr=STDERR)
@@ -215,13 +241,26 @@ def process_single_file(file_info):
                 "-v", f"{abs_maven_cache}:/root/.m2",
                 image_tag
             ]
-            completed_process = subprocess.run(run_cmd, capture_output=True, text=True, timeout=180)
+            completed_process = subprocess.run(
+                run_cmd,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                timeout=180,
+            )
             
             # Extract granular results for Java
             local_report_dir = os.path.join(TEMP_PATH, f"reports_{container_name}".replace("/", "_").replace("\\", "_"))
             os.makedirs(local_report_dir, exist_ok=True)
             
-            cp_process = subprocess.run([DOCKER_BIN, "cp", f"{container_name}:/app/target/surefire-reports/.", local_report_dir], capture_output=True, text=True)
+            cp_process = subprocess.run(
+                [DOCKER_BIN, "cp", f"{container_name}:/app/target/surefire-reports/.", local_report_dir],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+            )
             
             java_results = parse_java_xml_reports(local_report_dir)
             if java_results:
@@ -257,7 +296,11 @@ def process_single_file(file_info):
             except:
                 pass
     finally:
-        subprocess.run([DOCKER_BIN, "rm", "-f", container_name], stdout=STDOUT, stderr=STDERR)
+        try:
+            subprocess.run([DOCKER_BIN, "rm", "-f", container_name], stdout=STDOUT, stderr=STDERR)
+        except OSError as e:
+            if DEBUG:
+                print(f"Cleanup failed for {container_name}: {e}")
 
 def get_all_to_process(root_dir):
     """Scan directory for files and identify their metadata."""
