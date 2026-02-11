@@ -12,12 +12,13 @@ from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, GITHUB_PYTHON_DATASET
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Docker commands to stdout
-MAX_WORKERS = 8
+MAX_WORKERS = 4
 RUN_TESTS_ON_GENERATED_CODE = True
 TEST_MODE = False # if True, only runs on a few samples for verification
 MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
 LANG_FILTER = "Python"   # Filter for specific language: 'Python', 'Java', or None for all
 TEMP_FILTER = None   # Filter for specific temperature: '0.0', '0.2', ..., '1.0', or None for all
+ONLY_GITHUB = True   # If True, only runs on GitHub datasets (github-dataset_*.jsonl)
 MAVEN_CACHE_PATH = os.path.join(JAVA_DATASET_PATH, ".m2_cache")
 # ========================== END OF FLAGS ===========================
 
@@ -385,15 +386,16 @@ def save_generated_code(jsonl_folder, temp_folder):
     # Add language filter for JSONL files
     if LANG_FILTER:
         if LANG_FILTER.lower() == 'java':
-            jsonl_files = [f for f in jsonl_files if f.startswith('dataset_java')]
+            jsonl_files = [f for f in jsonl_files if 'java' in f.lower()]
         elif LANG_FILTER.lower() == 'python':
-            jsonl_files = [f for f in jsonl_files if not f.startswith('dataset_java')]
+            jsonl_files = [f for f in jsonl_files if 'java' not in f.lower()]
         print(f"LANG_FILTER '{LANG_FILTER}': Selective extraction from {len(jsonl_files)} files")
 
 
-    # Filter for github-dataset_ files
-    jsonl_files = [f for f in jsonl_files if f.startswith('github-dataset_')]
-    print(f"Filtering for 'github-dataset_' files: Processing {len(jsonl_files)} files")
+    # Filter for github-dataset_ files if flag is set
+    if ONLY_GITHUB:
+        jsonl_files = [f for f in jsonl_files if f.startswith('github-dataset_')]
+        print(f"ONLY_GITHUB filter: Processing {len(jsonl_files)} files")
 
     for f_name in jsonl_files:
         with open(os.path.join(jsonl_folder, f_name), 'r', encoding='utf-8') as f:
