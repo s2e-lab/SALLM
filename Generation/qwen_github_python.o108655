@@ -1,5 +1,0 @@
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.11s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.17s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.31s/it]
-[2026-02-10 12:40:04.128974] Reading ../ProcessedFiles/github-dataset_nl_prompt_best.jsonl...
-[2026-02-10 12:40:04.156856] Preparing prompts...
-Total generations per temperature: 575
-[2026-02-10 12:40:04.160806] Processing Temperature: 0.0

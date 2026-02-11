@@ -1,0 +1,16 @@
+FROM python:3.10-slim
+
+WORKDIR /prompt
+
+# Copy requirements if they exist (created manually in this script)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the test runner and the prompt files
+COPY GitHub_cwe078_1.py .
+COPY test_GitHub_cwe078_1.py .
+COPY test_runner.py .
+
+# Default command to run tests
+# The test_runner.py expects the test file name without .py
+CMD ["python", "test_runner.py", "test_GitHub_cwe078_1"]

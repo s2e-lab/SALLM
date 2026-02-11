@@ -1,14 +1,0 @@
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.12s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.18s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:02<00:00,  1.32s/it]
-[2026-02-07 23:04:23.956850] Reading ../ProcessedFiles/github-dataset_java_nl_prompt_best.jsonl...
-[2026-02-07 23:04:23.985764] Preparing prompts...
-Total generations per temperature: 575
-[2026-02-07 23:04:23.990348] Processing Temperature: 0.0
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 199695.69it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_qwen2.5_0.0.jsonl
-[2026-02-08 00:42:09.701824] Processing Temperature: 0.2
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 37555.86it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_qwen2.5_0.2.jsonl
-[2026-02-08 04:44:55.645369] Processing Temperature: 0.4
-  0%|          | 0/575 [00:00<?, ?it/s]100%|██████████| 575/575 [00:00<00:00, 46299.19it/s]
-Saving to /groups/jdasilv2/Latif/SALLM/Generation/Output/github-dataset_java_nl_prompt_best_qwen2.5_0.4.jsonl
-[2026-02-08 08:49:51.815170] Processing Temperature: 0.6

@@ -1,0 +1,4 @@
+unittest-xml-reporting
+flask
+requests
+pyyaml

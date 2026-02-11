@@ -1,0 +1,17 @@
+FROM maven:3.8.6-openjdk-8-slim
+
+WORKDIR /app
+
+# Copy pom.xml
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+# Create directory structure
+RUN mkdir -p src/main/java/com/sallm/GitHub/GitHub src/test/java/com/sallm/GitHub/GitHub
+
+# Copy source and test files (paths relative to root)
+COPY src/main/java/com/sallm/GitHub/GitHub/GitHub_cwe022_1.java src/main/java/com/sallm/GitHub/GitHub/
+COPY src/test/java/com/sallm/GitHub/GitHub/TestGitHub_cwe022_1.java src/test/java/com/sallm/GitHub/GitHub/
+
+# Default command to run tests
+CMD ["mvn", "test"]
