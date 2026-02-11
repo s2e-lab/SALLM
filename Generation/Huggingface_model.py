@@ -136,7 +136,7 @@ def process_file(file_path):
     all_prompts, all_metadata = prepare_batch_prompts(data)
     print(f"Total generations per temperature: {len(all_prompts)}", flush=True)
 
-    temperatures = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    temperatures = [ 0.6, 0.8, 1.0]
 
     for temp in temperatures:
         print(f"[{datetime.now()}] Processing Temperature: {temp}", flush=True)
