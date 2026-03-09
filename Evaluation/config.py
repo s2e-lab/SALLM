@@ -13,14 +13,8 @@ GITHUB_PYTHON_DATASET_PATH = os.path.join(ROOT_DIR, "GitHubDataset")
 # where the github-java dataset is
 GITHUB_JAVA_DATASET_PATH = os.path.join(ROOT_DIR, "GitHubDatasetJava")
 
-# a temporary folder where the generated code will be copied to
-TEMP_PATH = os.path.join(BASE_DIR, "temp")
-
 # where the filtered JSON output metadata was saved
 GENERATED_CODE_PATH = os.path.join(ROOT_DIR, "Generation", "Filtered_Output")
-
-# where the results for running the tests are
-TEST_MODEL_RESULTS = os.path.join(BASE_DIR, "TestModelsResults_GitHub_Python")
 
 # where to save the results for running the tests for the canonical insecure solution from the dataset
 TEST_RESULTS = os.path.join(BASE_DIR, "TestResults")
@@ -30,3 +24,6 @@ JAVA_DATASET_PATH = os.path.join(ROOT_DIR, "DatasetJava")
 
 # Test folder for intermediate test files
 TEST_FOLDER = os.path.join(BASE_DIR, "test")
+
+# Directory where pre-built Apptainer/Singularity .sif images are stored (for run_tests_singularity.py)
+SIF_DIR = os.path.join(BASE_DIR, "sif_images")

@@ -4,9 +4,12 @@
 #$ -pe smp 4    # Specify parallel environment and legal core size
 #$ -q gpu          # Specify queue
 #$ -l gpu=2         # Specify queue
-#$ -N qwen_github_python
+#$ -N starcoder_github_java_github
 #$ -cwd
 
-export HF_HOME="/groups/jdasilv2/Latif/SALLM/.cache/huggingface"
+module load python/3.12.12
 
-python Huggingface_model.py ../ProcessedFiles/github-dataset_nl_prompt_best.jsonl
+export HF_HOME="/groups/jdasilv2/Latif/SALLM/.cache/huggingface"
+export PYTHONPATH="/groups/jdasilv2/Latif/SALLM/Generation/pypackages:$PYTHONPATH"
+
+python3 Huggingface_model.py ../ProcessedFiles/github-dataset_java_nl_prompt_best.jsonl
