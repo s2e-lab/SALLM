@@ -177,3 +177,5 @@ Generation/qwen2.5_python.o*
 Generation/starcoder_java.o*
 Evaluation/TestModelsResults_Old_Java.zip
 Evaluation/TestModelsResults_GitHub_Python
+Evaluation/TestModelsResults_GitHub_Java
+Evaluation/TestModelsResults_Java/

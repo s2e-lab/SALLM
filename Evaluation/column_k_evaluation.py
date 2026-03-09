@@ -21,32 +21,32 @@ lang_to_family = {
 }
 
 
-df = pd.read_csv('./Result/Tests_Results_Python.csv')
-df['language_family'] = df['Language'].map(lang_to_family).fillna('Unknown')
+for dataset_name, csv_file in [('Python', './Result/Tests_Results_Python.csv'), ('Java', './Result/Tests_Results_Java.csv')]:
+    df = pd.read_csv(csv_file)
+    df['language_family'] = df['Language'].map(lang_to_family).fillna('Unknown')
 
-eval_cols = [c for c in df.columns if any(c.startswith(prefix) for prefix in ['pass@', 'vul@', 'security@'])]
+    eval_cols = [c for c in df.columns if any(c.startswith(prefix) for prefix in ['pass@', 'vul@', 'security@'])]
 
+    for eval_col in eval_cols:
+        grouped = (
+            df
+            .groupby(['language_family', 'Model'])[eval_col]
+            .agg(['mean', 'std'])
+            .reset_index()
+        )
 
-for eval_col in eval_cols:
-    grouped = (
-        df
-        .groupby(['language_family', 'Model'])[eval_col]
-        .agg(['mean', 'std'])
-        .reset_index()
-    )
+        grouped['formatted'] = grouped.apply(
+            lambda row: f"{row['mean']:.2f}±{row['std']:.2f}" if pd.notnull(row['std']) else f"{row['mean']:.2f}±0.00",
+            axis=1
+        )
 
-    grouped['formatted'] = grouped.apply(
-        lambda row: f"{row['mean']:.2f}±{row['std']:.2f}" if pd.notnull(row['std']) else f"{row['mean']:.2f}±0.00",
-        axis=1
-    )
+        table = grouped.pivot_table(
+            index=['language_family'],
+            columns='Model',
+            values='formatted',
+            aggfunc='first'
+        ).reset_index()
 
-    table = grouped.pivot_table(
-        index=['language_family'],
-        columns='Model',
-        values='formatted',
-        aggfunc='first'
-    ).reset_index()
-
-    csv_path = f'./Result/{eval_col}_mean_std_table.csv'
-    table.to_csv(csv_path, index=False)
-    print(f'⇒ wrote {csv_path}')
+        csv_path = f'./Result/{dataset_name}_{eval_col}_mean_std_table.csv'
+        table.to_csv(csv_path, index=False)
+        print(f'⇒ wrote {csv_path}')
