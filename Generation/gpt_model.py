@@ -121,7 +121,7 @@ def process_single_item(item, temp):
     original_prompt = item.get('prompt', '')
 
     # 1. English (Default)
-    generations['English'] = gpt_response(original_prompt, lang, temp, 512)
+    generations['English'] = gpt_response(original_prompt, lang, temp, 2048)
     
     # 2. Other Languages
     if 'translations' in item:
@@ -129,7 +129,7 @@ def process_single_item(item, temp):
             if isinstance(trans_data, dict) and 'translation' in trans_data:
                 trans_doc = trans_data['translation']
                 modified_prompt = replace_docstring(original_prompt, trans_doc)
-                generations[target_lang] = gpt_response(modified_prompt, lang, temp, 512)
+                generations[target_lang] = gpt_response(modified_prompt, lang, temp, 2048)
     
     result_item['generations'] = generations
     return result_item

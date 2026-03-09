@@ -149,7 +149,7 @@ def process_file(file_path):
             # We can try to silence it or ignore it.
             # Setting do_sample=False is correct.
             gen_kwargs = {
-                "max_new_tokens": 512,
+                "max_new_tokens": 2048,
                 "do_sample": False,
                 "num_return_sequences": 1,
                 "pad_token_id": tokenizer.eos_token_id,
@@ -157,7 +157,7 @@ def process_file(file_path):
             }
         else:
             gen_kwargs = {
-                "max_new_tokens": 512,
+                "max_new_tokens": 2048,
                 "do_sample": True,
                 "temperature": temp,
                 "top_p": 1.0,
