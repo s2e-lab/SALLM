@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 09 21:20:47 UTC 2026
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1773091247059
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.junit.platform\:junit-platform-commons\:jar\:1.9.3 from/to central (https\://repo.maven.apache.org/maven2)\: /app/.m2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar.part (No such file or directory)

@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 09 21:20:46 UTC 2026
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1773091246874
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.maven.surefire\:surefire-junit-platform\:jar\:3.2.2 from/to central (https\://repo.maven.apache.org/maven2)\: /app/.m2/org/apache/maven/surefire/surefire-junit-platform/3.2.2/surefire-junit-platform-3.2.2.jar.part (No such file or directory)

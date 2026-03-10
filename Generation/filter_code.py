@@ -660,7 +660,7 @@ def main():
         os.makedirs(output_dir)
         
     files = os.listdir(input_dir)
-    jsonl_files = [f for f in files if f.endswith('.jsonl')]
+    jsonl_files = [f for f in files if f.endswith('.jsonl') and f.startswith('github-dataset')]
 
     print(f"Found {len(jsonl_files)} files to process.")
     

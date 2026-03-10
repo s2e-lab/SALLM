@@ -81,11 +81,14 @@ def _camel_to_snake(name):
 
 def _get_expected_method_names(item_id, technique, source):
     """Return the set of snake_case method names the test file calls on the generated class."""
-    test_path = os.path.join(
-        GITHUB_JAVA_DATASET_PATH,
-        "src", "test", "java", "com", "sallm", technique, source,
-        f"Test{item_id}.java",
-    )
+    # Try GitHub Java dataset first, then standard Java dataset
+    for dataset_path in (GITHUB_JAVA_DATASET_PATH, JAVA_DATASET_PATH):
+        test_path = os.path.join(
+            dataset_path, "src", "test", "java", "com", "sallm", technique, source,
+            f"Test{item_id}.java",
+        )
+        if os.path.exists(test_path):
+            break
     if not os.path.exists(test_path):
         return set()
     try:
@@ -173,10 +176,21 @@ def warm_up_maven_cache():
         print("Warning: No pom.xml found for Maven warm-up.")
 
 
-def get_sif_path(item_id, is_python=True):
-    """Return the path to the pre-built SIF image for a given item_id."""
-    lang = "py" if is_python else "java"
-    sif_name = f"sallm-{lang}-{item_id}.sif".lower()
+def get_sif_path(item_id, is_python=True, technique=None):
+    """Return the path to the pre-built SIF image for a given item_id.
+
+    For standard Java (non-GitHub), SIF names include the technique prefix to
+    avoid collisions between items with the same item_id across techniques.
+    GitHub Java items keep the original naming (no technique prefix).
+    """
+    if is_python:
+        sif_name = f"sallm-py-{item_id}.sif".lower()
+    elif technique and technique.lower() != "github":
+        # Standard Java: technique-prefixed name
+        sif_name = f"sallm-java-{technique}-{item_id}.sif".lower()
+    else:
+        # GitHub Java (or unknown): original naming
+        sif_name = f"sallm-java-{item_id}.sif".lower()
     return os.path.join(SIF_DIR, sif_name)
 
 
@@ -221,7 +235,7 @@ def build_base_images(unique_prompts):
 
     print(f"Checking {len(unique_set)} SIF images in {SIF_DIR} ...")
     for item_id, technique, source, is_python in tqdm(unique_set, desc="Checking SIF images"):
-        sif_path = get_sif_path(item_id, is_python)
+        sif_path = get_sif_path(item_id, is_python, technique)
         if os.path.exists(sif_path):
             continue
 
@@ -336,7 +350,7 @@ def process_single_file(file_info):
     file_path, item_id, technique, source, lang, is_python = file_info
     parent_dir_name = os.path.basename(os.path.dirname(file_path))
 
-    sif_path = get_sif_path(item_id, is_python)
+    sif_path = get_sif_path(item_id, is_python, technique)
 
     # Restructured Output Filename
     if os.path.abspath(TEMP_PATH) in os.path.abspath(file_path):

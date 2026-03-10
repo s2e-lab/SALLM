@@ -41,6 +41,9 @@ GITHUB_PYTHON_DIR = os.path.join(GITHUB_PYTHON_DATASET_PATH, "GitHub")
 GITHUB_JAVA_DIR   = os.path.join(GITHUB_JAVA_DATASET_PATH, "src", "main", "java", "com", "sallm", "GitHub", "GitHub")
 GITHUB_JAVA_TEST_DIR = os.path.join(GITHUB_JAVA_DATASET_PATH, "src", "test", "java", "com", "sallm", "GitHub", "GitHub")
 JAVA_BASE_SIF     = os.path.join(SIF_DIR, "sallm-java-base.sif")
+JAVA_STD_BASE_SIF = os.path.join(SIF_DIR, "sallm-java-std-base.sif")
+JAVA_STD_MAIN_DIR = os.path.join(JAVA_DATASET_PATH, "src", "main", "java", "com", "sallm")
+JAVA_STD_TEST_DIR = os.path.join(JAVA_DATASET_PATH, "src", "test", "java", "com", "sallm")
 
 
 # ---------------------------------------------------------------------------
@@ -198,6 +201,132 @@ def build_java_base(force=False, debug=False):
 
 
 # ---------------------------------------------------------------------------
+# Standard Java (DatasetJava — multi-technique/source, JUnit 5)
+# ---------------------------------------------------------------------------
+
+def make_java_std_base_def(pom_path):
+    """Generate .def for the shared standard-Java base SIF with Maven deps baked in."""
+    # Collect all technique/source combos so we can pre-create their directories.
+    combos = set()
+    for technique in os.listdir(JAVA_STD_MAIN_DIR):
+        tdir = os.path.join(JAVA_STD_MAIN_DIR, technique)
+        if not os.path.isdir(tdir):
+            continue
+        for source in os.listdir(tdir):
+            if os.path.isdir(os.path.join(tdir, source)):
+                combos.add(f"com/sallm/{technique}/{source}")
+
+    mkdir_lines = "\n".join(
+        f"    mkdir -p $SINGULARITY_ROOTFS/app/src/main/java/{c}\n"
+        f"    mkdir -p $SINGULARITY_ROOTFS/app/src/test/java/{c}"
+        for c in sorted(combos)
+    )
+    return f"""\
+Bootstrap: docker
+From: maven:3.8.6-openjdk-8-slim
+
+%setup
+{mkdir_lines}
+    mkdir -p $SINGULARITY_ROOTFS/app/target/surefire-reports
+
+%files
+    {pom_path} /app/pom.xml
+
+%post
+    cd /app && mvn dependency:go-offline -B --fail-never -Dmaven.repo.local=/app/.m2
+
+%runscript
+    cd /app && exec mvn test -Dmaven.repo.local=/app/.m2 "$@"
+"""
+
+
+def make_java_std_item_def(item_id, technique, source, source_java_path, test_java_path):
+    """Generate .def for a per-item standard-Java SIF, bootstrapped from the std base SIF."""
+    pkg = f"com/sallm/{technique}/{source}"
+    return f"""\
+Bootstrap: localimage
+From: {JAVA_STD_BASE_SIF}
+
+%files
+    {source_java_path} /app/src/main/java/{pkg}/{item_id}.java
+    {test_java_path}   /app/src/test/java/{pkg}/Test{item_id}.java
+
+%runscript
+    cd /app && exec mvn test -Dmaven.repo.local=/app/.m2 "$@"
+"""
+
+
+def collect_java_std_entries():
+    """Return list of build entries for all standard-Java (DatasetJava) items."""
+    entries = []
+    if not os.path.isdir(JAVA_STD_MAIN_DIR):
+        print(f"Warning: {JAVA_STD_MAIN_DIR} not found, skipping standard Java.")
+        return entries
+
+    pom_path = os.path.join(JAVA_DATASET_PATH, "pom.xml")
+
+    for technique in sorted(os.listdir(JAVA_STD_MAIN_DIR)):
+        tdir = os.path.join(JAVA_STD_MAIN_DIR, technique)
+        if not os.path.isdir(tdir):
+            continue
+        for source in sorted(os.listdir(tdir)):
+            sdir = os.path.join(tdir, source)
+            if not os.path.isdir(sdir):
+                continue
+            for fname in sorted(os.listdir(sdir)):
+                if not fname.endswith("_Dockerfile"):
+                    continue
+                item_id     = fname.replace("_Dockerfile", "")
+                source_path = os.path.join(sdir, f"{item_id}.java")
+                test_path   = os.path.join(
+                    JAVA_STD_TEST_DIR, technique, source, f"Test{item_id}.java"
+                )
+                sif_name = f"sallm-java-{technique}-{item_id}.sif".lower()
+                entries.append({
+                    "item_id":     item_id,
+                    "lang":        "java-std",
+                    "technique":   technique,
+                    "source":      source,
+                    "pom_path":    pom_path,
+                    "source_path": source_path,
+                    "test_path":   test_path,
+                    "sif_path":    os.path.join(SIF_DIR, sif_name),
+                })
+    return entries
+
+
+def build_java_std_base(force=False, debug=False):
+    """Build the shared standard-Java base SIF. Returns (ok, reason)."""
+    if os.path.exists(JAVA_STD_BASE_SIF) and not force:
+        return True, "already exists"
+
+    pom_path = os.path.join(JAVA_DATASET_PATH, "pom.xml")
+    if not os.path.exists(pom_path):
+        return False, f"pom.xml not found at {pom_path}"
+
+    def_content = make_java_std_base_def(pom_path)
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".def", delete=False,
+                                     prefix="sallm_java_std_base_") as f:
+        f.write(def_content)
+        def_path = f.name
+
+    stdout = None if debug else subprocess.DEVNULL
+    stderr = None if debug else subprocess.DEVNULL
+    os.makedirs(SIF_DIR, exist_ok=True)
+    try:
+        result = subprocess.run(
+            [APPTAINER_BIN, "build", "--fakeroot", "--ignore-fakeroot-command",
+             JAVA_STD_BASE_SIF, def_path],
+            stdout=stdout, stderr=stderr,
+        )
+        if result.returncode != 0:
+            return False, "apptainer build (java-std base) failed"
+        return True, "built"
+    finally:
+        os.unlink(def_path)
+
+
+# ---------------------------------------------------------------------------
 # Generic build
 # ---------------------------------------------------------------------------
 
@@ -221,6 +350,13 @@ def build_one(entry, force=False, debug=False):
         def_content = make_java_item_def(
             entry["item_id"], entry["source_path"], entry["test_path"],
         )
+    elif entry["lang"] == "java-std":
+        if not os.path.exists(JAVA_STD_BASE_SIF):
+            return False, f"Java-std base SIF missing: {JAVA_STD_BASE_SIF}"
+        def_content = make_java_std_item_def(
+            entry["item_id"], entry["technique"], entry["source"],
+            entry["source_path"], entry["test_path"],
+        )
     else:
         return False, f"unsupported lang: {entry['lang']}"
 
@@ -234,7 +370,7 @@ def build_one(entry, force=False, debug=False):
 
     # Java per-item SIFs use localimage bootstrap with no %post,
     # so --ignore-fakeroot-command avoids the fakeroot-lib issue in the Maven image.
-    extra_flags = ["--ignore-fakeroot-command"] if entry["lang"] == "java" else []
+    extra_flags = ["--ignore-fakeroot-command"] if entry["lang"] in ("java", "java-std") else []
 
     try:
         os.makedirs(SIF_DIR, exist_ok=True)
@@ -289,7 +425,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Build Apptainer SIF images for SALLM evaluation (no Docker required)."
     )
-    parser.add_argument("--lang", choices=["python", "java"], default="python")
+    parser.add_argument("--lang", choices=["python", "java", "java-std"], default="python")
     parser.add_argument("--force", action="store_true",
                         help="Rebuild even if .sif already exists")
     parser.add_argument("--debug", action="store_true",
@@ -332,7 +468,26 @@ def main():
         s, sk, f = _run_builds(entries, args.jobs, args.force, args.debug)
         print(f"\nDone. Built: {s}, Skipped: {sk}, Failed: {f}")
 
-    if args.lang in ("python", "java"):
+    elif args.lang == "java-std":
+        entries = collect_java_std_entries()
+        if not entries:
+            print("No standard-Java entries found.")
+            sys.exit(1)
+
+        # Stage 1: base SIF
+        print(f"Stage 1: Building shared standard-Java base SIF ({JAVA_STD_BASE_SIF}) ...")
+        ok, reason = build_java_std_base(force=args.force, debug=args.debug)
+        if not ok:
+            print(f"ERROR building Java-std base SIF: {reason}")
+            sys.exit(1)
+        print(f"  → {reason}")
+
+        # Stage 2: per-item SIFs
+        print(f"Stage 2: Building {len(entries)} standard-Java item SIF images ...")
+        s, sk, f = _run_builds(entries, args.jobs, args.force, args.debug)
+        print(f"\nDone. Built: {s}, Skipped: {sk}, Failed: {f}")
+
+    if args.lang in ("python", "java", "java-std"):
         print(f"SIF images in: {SIF_DIR}")
 
 
