@@ -1,0 +1,2 @@
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_76_Greek.py:13:15:13:19""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_76_Greek.py:17:12:17:16""]] validation.","/Refinement/GitHubDataset/cwe094_0_76_Greek.py","17","12","17","16"

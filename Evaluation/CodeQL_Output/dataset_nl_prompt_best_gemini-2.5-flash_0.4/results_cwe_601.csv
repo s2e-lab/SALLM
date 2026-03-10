@@ -1,0 +1,1 @@
+"URL redirection from remote source","URL redirection based on unvalidated user input may cause redirection to malicious web sites.","error","Untrusted URL redirection depends on a [[""user-provided value""|""relative:///Assertion/SonarSource/SS_cwe601_0_36_Italian.py:1:19:1:25""]].","/Assertion/SonarSource/SS_cwe601_0_36_Italian.py","23","21","23","30"

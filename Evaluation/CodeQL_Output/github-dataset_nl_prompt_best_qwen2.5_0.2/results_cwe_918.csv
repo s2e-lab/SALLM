@@ -1,0 +1,1 @@
+"Full server-side request forgery","Making a network request to a URL that is fully user-controlled allows for request forgery attacks.","error","The full URL of this request depends on a [[""user-provided value""|""relative:///Refinement/GitHubDataset/cwe601_0_45_Indonesian.py:1:26:1:32""]].","/Refinement/GitHubDataset/cwe601_0_45_Indonesian.py","24","20","24","43"

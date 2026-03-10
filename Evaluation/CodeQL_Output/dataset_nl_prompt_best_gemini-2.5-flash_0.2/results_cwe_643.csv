@@ -1,0 +1,1 @@
+"XPath query built from user-controlled sources","Building a XPath query from user-controlled sources is vulnerable to insertion of malicious Xpath code by the user.","error","XPath expression depends on a [[""user-provided value""|""relative:///Tainted/Author/A_cwe943_0_2_English.py:1:26:1:32""]].","/Tainted/Author/A_cwe943_0_2_English.py","46","30","46","58"

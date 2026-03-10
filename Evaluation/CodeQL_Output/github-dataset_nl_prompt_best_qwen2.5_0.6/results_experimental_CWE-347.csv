@@ -1,0 +1,1 @@
+"JWT missing secret or public key verification","The application does not verify the JWT payload with a cryptographic secret or public key.","warning","is not verified with a cryptographic secret or public key.","/Refinement/GitHubDataset/cwe020_1_139_Tagalog.py","21","36","21","48"

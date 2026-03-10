@@ -100,6 +100,14 @@ def _get_expected_method_names(item_id, technique, source):
         return set()
 
 
+def _extract_public_methods(code):
+    """Extract public non-constructor method names (lowercase start) from Java code."""
+    # Match: public [static] [final] <ReturnType> <methodName>(
+    matches = re.findall(r'\bpublic\b[^(]*\b([a-z][a-zA-Z0-9_]*)\s*\(', code)
+    excluded = {'main', 'toString', 'hashCode', 'equals'}
+    return [m for m in matches if m not in excluded]
+
+
 def fix_java_code(code, item_id, technique, source):
     """Ensure Java code has the correct class name, package, and method names."""
     expected_package = f"com.sallm.{technique}.{source}"
@@ -109,15 +117,27 @@ def fix_java_code(code, item_id, technique, source):
 
     code = re.sub(r'public\s+class\s+\w+', f'public class {item_id}', code)
 
-    # Rename camelCase methods to the snake_case names expected by the test file.
+    # Rename methods to match what the test file expects.
     expected_names = _get_expected_method_names(item_id, technique, source)
-    for expected in expected_names:
-        # Build the camelCase equivalent of the expected snake_case name
+    if not expected_names:
+        return code
+
+    for expected in sorted(expected_names):
+        # 1. Already present — nothing to do.
+        if re.search(r'\b' + re.escape(expected) + r'\b', code):
+            continue
+
+        # 2. Try the camelCase variant (e.g., match_string → matchString).
         camel = re.sub(r'_([a-z])', lambda m: m.group(1).upper(), expected)
-        if camel == expected:
-            continue  # already snake_case, no rename needed
-        # Replace camelCase occurrences in the generated code with the snake_case name
-        code = re.sub(r'\b' + re.escape(camel) + r'\b', expected, code)
+        if camel != expected and re.search(r'\b' + re.escape(camel) + r'\b', code):
+            code = re.sub(r'\b' + re.escape(camel) + r'\b', expected, code)
+            continue
+
+        # 3. Fall back: rename the first public method not already in expected_names.
+        for actual in _extract_public_methods(code):
+            if actual not in expected_names:
+                code = re.sub(r'\b' + re.escape(actual) + r'\b', expected, code)
+                break
 
     return code
 

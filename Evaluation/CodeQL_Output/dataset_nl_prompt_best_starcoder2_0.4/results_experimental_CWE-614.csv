@@ -1,0 +1,237 @@
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_105_Dutch.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_105_Dutch.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_105_Dutch.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_105_Dutch.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_10_Chinese.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_10_Chinese.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_10_Chinese.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_10_Chinese.py","12","30","12","35"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_119_French.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_119_French.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_119_French.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_119_French.py","13","35","13","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_142_Arabic.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_142_Arabic.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_142_Arabic.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_142_Arabic.py","12","35","12","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_147_Arabic.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_147_Arabic.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_147_Arabic.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_147_Arabic.py","13","35","13","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_153_Greek.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_153_Greek.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_153_Greek.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_153_Greek.py","12","30","12","35"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_158_Greek.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_158_Greek.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_158_Greek.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_158_Greek.py","8","35","8","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_163_Italian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_163_Italian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_163_Italian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_163_Italian.py","8","35","8","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_195_Tagalog.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_195_Tagalog.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_195_Tagalog.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_195_Tagalog.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_202_Hungarian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_202_Hungarian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_202_Hungarian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_202_Hungarian.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_203_Hungarian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_203_Hungarian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_203_Hungarian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_203_Hungarian.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_205_Hungarian.py:2:25:2:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_205_Hungarian.py:2:25:2:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_205_Hungarian.py:2:25:2:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_205_Hungarian.py","9","35","9","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_206_Hungarian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_206_Hungarian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_206_Hungarian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_206_Hungarian.py","8","35","8","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_208_Hungarian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_208_Hungarian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_208_Hungarian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_208_Hungarian.py","12","30","12","35"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_209_Hungarian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_209_Hungarian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_209_Hungarian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_209_Hungarian.py","8","31","8","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_220_Turkish.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_220_Turkish.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_220_Turkish.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_220_Turkish.py","13","35","13","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_221_Turkish.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_221_Turkish.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_221_Turkish.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_221_Turkish.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_224_Turkish.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_224_Turkish.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_224_Turkish.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_224_Turkish.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_226_Turkish.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_226_Turkish.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_226_Turkish.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_226_Turkish.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_30_German.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_30_German.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_30_German.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_30_German.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_33_German.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_33_German.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_33_German.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_33_German.py","8","35","8","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_35_German.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_35_German.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_35_German.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_35_German.py","8","35","8","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_36_German.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_36_German.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_36_German.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_36_German.py","11","30","11","35"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_37_German.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_37_German.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_37_German.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_37_German.py","12","35","12","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_41_Afrikaans.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_41_Afrikaans.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_41_Afrikaans.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_41_Afrikaans.py","13","31","13","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_53_Indonesian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_53_Indonesian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_53_Indonesian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_53_Indonesian.py","8","35","8","40"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_65_Russian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_65_Russian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_65_Russian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_65_Russian.py","12","31","12","36"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_67_Russian.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_67_Russian.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_67_Russian.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_67_Russian.py","12","30","12","35"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_76_Portuguese.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_76_Portuguese.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_76_Portuguese.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_76_Portuguese.py","13","39","13","44"
+"Construction of a cookie using user-supplied input.","Constructing cookies from user input may allow an attacker to perform a Cookie Poisoning attack.","error","Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_7_English.py:1:25:1:31""]],and its secure flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_7_English.py:1:25:1:31""]],and its samesite flag is not properly set.
+Cookie is constructed from a [[""user-supplied input""|""relative:///Tainted/CodeQL/codeql_cwe614_0_7_English.py:1:25:1:31""]],and its httponly flag is not properly set.","/Tainted/CodeQL/codeql_cwe614_0_7_English.py","8","28","8","33"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Assertion/Author/A_cwe319_0_104_French.py","39","1","39","48"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Assertion/Author/A_cwe319_0_110_Turkish.py","40","5","40","49"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Assertion/Author/A_cwe319_0_39_Persian.py","40","1","40","48"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Assertion/Author/A_cwe319_0_45_Italian.py","39","1","39","48"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Assertion/Author/A_cwe319_0_71_Estonian.py","44","9","44","53"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_105_Dutch.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_10_Chinese.py","12","1","12","36"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_119_French.py","13","5","13","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_140_Arabic.py","12","1","12","57"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_142_Arabic.py","12","5","12","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_143_Arabic.py","13","5","13","45"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_147_Arabic.py","13","5","13","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_148_Arabic.py","8","5","8","45"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_153_Greek.py","12","1","12","36"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_154_Greek.py","16","1","16","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_157_Greek.py","11","1","11","39"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_158_Greek.py","8","5","8","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_163_Italian.py","8","5","8","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_171_Vietnamese.py","12","5","12","43"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_175_Vietnamese.py","11","5","11","60"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_179_Vietnamese.py","12","5","12","35"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_195_Tagalog.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_202_Hungarian.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_203_Hungarian.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_205_Hungarian.py","9","5","9","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_206_Hungarian.py","8","5","8","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_208_Hungarian.py","12","1","12","36"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_209_Hungarian.py","8","5","8","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_220_Turkish.py","13","5","13","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_221_Turkish.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_224_Turkish.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_226_Turkish.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_25_Estonian.py","11","5","11","43"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_26_Estonian.py","12","5","12","42"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_30_German.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_33_German.py","8","5","8","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_35_German.py","8","5","8","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_36_German.py","11","5","11","36"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_37_German.py","12","5","12","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_41_Afrikaans.py","13","5","13","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_47_Afrikaans.py","13","5","13","47"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_53_Indonesian.py","8","5","8","41"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_60_Russian.py","11","1","11","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_65_Russian.py","12","1","12","37"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_67_Russian.py","12","1","12","36"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_76_Portuguese.py","13","5","13","45"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_78_Portuguese.py","12","5","12","64"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_7_English.py","8","5","8","34"
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added without the 'secure' flag properly set.
+Cookie is added without the 'httponly' flag properly set.
+Cookie is added without the 'samesite' flag properly set.","/Tainted/CodeQL/codeql_cwe614_0_97_Bulgarian.py","7","5","7","150"

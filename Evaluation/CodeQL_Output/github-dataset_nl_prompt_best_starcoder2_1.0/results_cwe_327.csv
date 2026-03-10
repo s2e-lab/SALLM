@@ -1,0 +1,10 @@
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES is broken or weak, and should not be used.","/Refinement/GitHubDataset/cwe327_1_128_Portuguese.py","10","8","10","69"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES is broken or weak, and should not be used.","/Refinement/GitHubDataset/cwe327_1_164_German.py","17","21","17","43"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES is broken or weak, and should not be used.","/Refinement/GitHubDataset/cwe327_1_164_German.py","21","17","21","49"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.
+The cryptographic algorithm DES is broken or weak, and should not be used.","/Refinement/GitHubDataset/cwe327_1_189_Vietnamese.py","25","8","25","31"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.","/Refinement/GitHubDataset/cwe327_1_207_Russian.py","10","8","10","47"
+"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The cryptographic algorithm DES is broken or weak, and should not be used.","/Refinement/GitHubDataset/cwe327_1_77_Chinese.py","11","12","11","37"

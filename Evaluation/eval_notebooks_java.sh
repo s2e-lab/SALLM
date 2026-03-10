@@ -1,0 +1,22 @@
+#!/bin/bash
+#$ -M msiddiq3@nd.edu
+#$ -m abe
+#$ -pe smp 4
+#$ -q long
+#$ -N eval_notebooks_java
+#$ -cwd
+
+module load python/3.12.12
+
+cd /groups/jdasilv2/Latif/SALLM/Evaluation
+
+echo "[1/3] Running Test_Evaluation (annotating TestResults/)..."
+python3 run_test_evaluation.py
+
+echo "[2/3] Running pass@k metrics (writing Result/ CSVs)..."
+python3 run_pass_at_k.py
+
+echo "[3/3] Running column_k_evaluation (language-family tables)..."
+python3 column_k_evaluation.py
+
+echo "Done."

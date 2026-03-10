@@ -1,0 +1,1 @@
+"Code injection","Interpreting unsanitized user input as code allows a malicious user to perform arbitrary code execution.","error","This code execution depends on a [[""user-provided value""|""relative:///Refinement/GitHubDataset/cwe094_0_100_Persian.py:1:26:1:32""]].","/Refinement/GitHubDataset/cwe094_0_100_Persian.py","13","16","13","35"

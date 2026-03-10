@@ -1,0 +1,29 @@
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Refinement/GitHubDataset/cwe327_0_44_Finnish.py","2","21","2","26"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Refinement/GitHubDataset/cwe327_0_44_Finnish.py","2","21","2","26"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm DES
+Use of algorithm AES","/Refinement/GitHubDataset/cwe327_1_120_Portuguese.py","14","8","14","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm DES
+Use of algorithm AES","/Refinement/GitHubDataset/cwe327_1_170_Dutch.py","17","12","17","31"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm DES","/Refinement/GitHubDataset/cwe327_1_174_Dutch.py","15","12","15","31"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm DES","/Refinement/GitHubDataset/cwe327_1_186_Vietnamese.py","13","16","13","35"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Refinement/GitHubDataset/cwe327_1_186_Vietnamese.py","16","16","16","35"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm DES
+Use of algorithm AES","/Refinement/GitHubDataset/cwe327_1_41_French.py","15","8","15","27"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm AES","/Refinement/GitHubDataset/cwe327_1_57_Estonian.py","12","12","12","31"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm DES","/Refinement/GitHubDataset/cwe327_1_57_Estonian.py","15","12","15","31"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm DES
+Use of algorithm AES","/Refinement/GitHubDataset/cwe327_1_60_Hungarian.py","15","12","15","31"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Refinement/GitHubDataset/cwe327_1_85_Tagalog.py","11","12","11","47"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Refinement/GitHubDataset/cwe327_1_97_Spanish.py","14","22","14","50"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Refinement/GitHubDataset/cwe327_1_170_Dutch.py","17","12","17","31"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Refinement/GitHubDataset/cwe327_1_186_Vietnamese.py","13","16","13","35"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Refinement/GitHubDataset/cwe327_1_186_Vietnamese.py","16","16","16","35"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Refinement/GitHubDataset/cwe327_1_41_French.py","15","8","15","27"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Refinement/GitHubDataset/cwe327_1_85_Tagalog.py","11","12","11","47"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Refinement/GitHubDataset/cwe327_1_97_Spanish.py","14","22","14","50"
