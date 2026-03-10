@@ -1,1 +1,0 @@
-"Executing a command with a relative path","Executing a command with a relative path is vulnerable to malicious changes in the PATH environment variable.","warning","Command with a relative path 'bash' is executed.","/com/sallm/Tainted/Author/p_68_f_6/A_cwe078_1_6_Chinese.java","16","39","16","44"

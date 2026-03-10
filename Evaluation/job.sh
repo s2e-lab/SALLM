@@ -2,11 +2,14 @@
 
 #$ -M msiddiq3@nd.edu   # Email address for job notification
 #$ -m abe            # Send mail when job begins, ends and aborts
-#$ -pe smp 1     # Specify parallel environment and legal core size
+#$ -pe smp 32        # Specify parallel environment and legal core size
 #$ -q long           # Specify queue
-#$ -N python_codeql_job
+#$ -N codeql_java_gemini_gpt
+#$ -cwd              # Run in current directory
 
-rm -rf ./Dataset/
+module load python/3.12.12
+
+cd /groups/jdasilv2/Latif/SALLM/Evaluation
+
 export PATH="/groups/jdasilv2/Latif/codeql-home/codeql:$PATH"
-# conda activate Franc
-python 	codeql_job_runner.py
+python3 codeql_job_runner.py

@@ -1,4 +1,5 @@
 # %%
+import argparse
 import json
 import os
 import subprocess
@@ -10,19 +11,38 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'Generation'))
 from filter_code import check_compilable, check_compilable_java, remove_misplaced_imports, remove_duplicate_class_definitions
 
 # %%
-# Get list of all files in the directory
-files = os.listdir('../Generation/Filtered_Output/')
-jsonl_files = [file for file in files if file.endswith('.jsonl') and (file.startswith('dataset_nl_prompt_best'))]
-# # Filter for Java datasets and the one Python dataset to restore
-# java_files = [f for f in jsonl_files if 'dataset_java' in f]
-# python_to_restore = [f for f in jsonl_files if f == 'dataset_nl_prompt_best_gemini-2.5-flash_0.0.jsonl']
-# jsonl_files = java_files + python_to_restore
-# # Filter for only gemini-2.5-flash_0.0 AND exclude python
-# jsonl_files = [f for f in jsonl_files if 'gemini-2.5-flash_0.0' in f and 'dataset_nl' not in f]
+# Parse mode from command line
+parser = argparse.ArgumentParser()
+parser.add_argument('--mode', choices=['python', 'java'], required=True,
+                    help='python: all models, standard+github python datasets; '
+                         'java: gemini+gpt, standard+github java datasets')
+args = parser.parse_args()
 
-# FOR TESTING ONLY: One specific Java file
-# jsonl_files = ['dataset_java_nl_prompt_best_gemini-2.5-flash_0.0.jsonl']
-# print(f"Processing models: {jsonl_files}")
+files = os.listdir('../Generation/Filtered_Output/')
+
+if args.mode == 'python':
+    # All models, Python standard + Python GitHub
+    jsonl_files = sorted([
+        f for f in files
+        if f.endswith('.jsonl') and 'java' not in f
+        and (f.startswith('dataset_nl_prompt_best') or f.startswith('github-dataset_nl_prompt_best'))
+    ])
+else:
+    # gemini + gpt only, Java standard + Java GitHub
+    TARGET_MODELS = ('gemini', 'gpt')
+    jsonl_files = sorted([
+        f for f in files
+        if f.endswith('.jsonl')
+        and any(m in f for m in TARGET_MODELS)
+        and (
+            f.startswith('dataset_java_nl_prompt_best')
+            or f.startswith('github-dataset_java_nl_prompt_best')
+        )
+    ])
+
+print(f"Mode: {args.mode} — Processing {len(jsonl_files)} files:")
+for f in jsonl_files:
+    print(f"  {f}")
 
 
 # %%
@@ -51,13 +71,17 @@ for file in jsonl_files:
         id = data[i]['id']
         technique =  data[i]['technique']
         source = data[i]['source']
-        is_java_dataset = 'dataset_java' in file
+        is_java_dataset = 'java' in file
         language = "Java" if is_java_dataset else "Python"
         if language is None:
             continue
         if language.strip() == '':
             continue
-        file_name = '_'.join(id.split('_')[2:])
+        # Standard ids: {technique}_{source}_{item}  → skip first 2 parts
+        # GitHub Python ids: {GitHub}_{cwe}_{n}.py  → only 3 parts, skip 1
+        id_parts = id.split('_')
+        skip = 2 if len(id_parts) > 3 else 1
+        file_name = '_'.join(id_parts[skip:])
 
         
         dataset_root = f'./Dataset/{model_name}'

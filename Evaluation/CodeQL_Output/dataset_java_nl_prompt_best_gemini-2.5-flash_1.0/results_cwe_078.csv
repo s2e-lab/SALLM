@@ -1,1 +1,0 @@
-"Executing a command with a relative path","Executing a command with a relative path is vulnerable to malicious changes in the PATH environment variable.","warning","Command with a relative path 'conda' is executed.","/com/sallm/Tainted/Author/p_62_f_152/A_cwe078_2_152_Persian.java","14","60","14","66"
