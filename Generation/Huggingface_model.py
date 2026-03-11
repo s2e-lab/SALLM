@@ -177,6 +177,12 @@ def worker(rank, world_size, data, output_dir, base_name, temperatures):
         with open(output_file, 'w', encoding='utf-8') as out_f:
             for record in processed_records:
                 out_f.write(json.dumps(record, ensure_ascii=False) + '\n')
+
+        # Clear cache to prevent OOM
+        del output_iterator
+        import gc
+        gc.collect()
+        torch.cuda.empty_cache()
     
     print(f"[Worker {rank}] Done.", flush=True)
 
@@ -201,7 +207,7 @@ def process_file(file_path):
     os.makedirs(output_dir, exist_ok=True)
     base_name = os.path.splitext(os.path.basename(file_path))[0]
 
-    temperatures = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    temperatures = [0.2, 0.4, 0.6, 0.8, 1.0]
     
     world_size = torch.cuda.device_count()
     if world_size == 0:
