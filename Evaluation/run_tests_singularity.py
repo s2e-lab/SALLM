@@ -102,8 +102,12 @@ def _get_expected_method_names(item_id, technique, source):
 
 def _extract_public_methods(code):
     """Extract public non-constructor method names (lowercase start) from Java code."""
-    # Match: public [static] [final] <ReturnType> <methodName>(
-    matches = re.findall(r'\bpublic\b[^(]*\b([a-z][a-zA-Z0-9_]*)\s*\(', code)
+    # Match on a single line to avoid spanning into Javadoc comments.
+    # Pattern: optional indent, public, optional static/final, return type, method name, (
+    matches = re.findall(
+        r'^\s*public\s+(?:static\s+)?(?:final\s+)?[\w<>\[\],\s]+?\s+([a-z]\w*)\s*\(',
+        code, re.MULTILINE
+    )
     excluded = {'main', 'toString', 'hashCode', 'equals'}
     return [m for m in matches if m not in excluded]
 
