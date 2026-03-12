@@ -652,7 +652,7 @@ def save_generated_code(jsonl_folder, temp_folder):
                                 if not code:
                                     continue
 
-                                if lang_key == 'Java' or (lang_key == 'English' and ext == '.java'):
+                                if ext == '.java':
                                     code = fix_java_code(code, item_id, technique, source)
 
                                 if '_' in model_name:

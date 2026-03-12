@@ -93,14 +93,19 @@ def prepare_batch_prompts(data):
 
 def worker(rank, world_size, data, output_dir, base_name, temperatures):
     # Set CUDA_VISIBLE_DEVICES so this worker only sees one exact GPU
+    # This must be set before ANY torch.cuda calls are made in this process
     os.environ["CUDA_VISIBLE_DEVICES"] = str(rank)
     
     # Load model and tokenizer AFTER setting CUDA_VISIBLE_DEVICES to ensure complete isolation
+    import torch
     from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
     from transformers import logging as hf_logging
     hf_logging.set_verbosity_error()
     
     print(f"[Worker {rank}] Initializing model on physical GPU {rank} (Mapped to 'cuda:0')...", flush=True)
+    # Verify mapping
+    if torch.cuda.is_available():
+        print(f"[Worker {rank}] Detected {torch.cuda.device_count()} GPUs. Using {torch.cuda.get_device_name(0)}", flush=True)
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, padding_side='left')
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
@@ -145,7 +150,8 @@ def worker(rank, world_size, data, output_dir, base_name, temperatures):
             }
 
         results_map = { idx: {} for idx in range(len(worker_data)) } 
-        batch_size = 8 
+        # Reduced batch_size to stay within memory limits for 3B model with 10 sequences
+        batch_size = 2 if temp != 0.0 else 8 
         
         output_iterator = generator(all_prompts, batch_size=batch_size, **gen_kwargs)
         
