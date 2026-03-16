@@ -1896,3 +1896,1295 @@ Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/
 Starting evaluation of codeql/java-queries/Security/CWE/CWE-501/TrustBoundaryViolation.ql.
 [1/1 eval 1.6s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-501/TrustBoundaryViolation.bqrs.
 Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-502/UnsafeDeserialization.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-502/UnsafeDeserialization.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-502/UnsafeDeserialization.ql.
+[1/1 eval 2.2s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-502/UnsafeDeserialization.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-522/InsecureBasicAuth.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-522/InsecureBasicAuth.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-522/InsecureLdapAuth.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-522/InsecureLdapAuth.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-522/InsecureBasicAuth.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-522/InsecureLdapAuth.ql.
+[1/2 eval 484ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-522/InsecureBasicAuth.bqrs.
+[2/2 eval 750ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-522/InsecureLdapAuth.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-532/SensitiveInfoLog.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-532/SensitiveInfoLog.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-532/SensitiveInfoLog.ql.
+[1/1 eval 2.6s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-532/SensitiveInfoLog.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-601/UrlRedirect.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-601/UrlRedirect.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-601/UrlRedirectLocal.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-601/UrlRedirectLocal.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-601/UrlRedirect.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-601/UrlRedirectLocal.ql.
+[1/2 eval 1.3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-601/UrlRedirect.bqrs.
+[2/2 eval 904ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-601/UrlRedirectLocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-611/XXE.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-611/XXELocal.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-611/XXELocal.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-611/XXELocal.ql.
+[1/2 eval 1.3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-611/XXE.bqrs.
+[2/2 eval 1.5s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-611/XXELocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-614/InsecureCookie.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-614/InsecureCookie.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-614/InsecureCookie.ql.
+[1/1 eval 703ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-614/InsecureCookie.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-643/XPathInjection.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-643/XPathInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-643/XPathInjection.ql.
+[1/1 eval 1.4s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-643/XPathInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/PolynomialReDoS.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/PolynomialReDoS.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/ReDoS.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/ReDoS.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/RegexInjection.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/RegexInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-730/PolynomialReDoS.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-730/ReDoS.ql.
+[1/3 eval 4s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-730/PolynomialReDoS.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-730/RegexInjection.ql.
+[2/3 eval 551ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-730/ReDoS.bqrs.
+[3/3 eval 138ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-730/RegexInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-732/ReadingFromWorldWritableFile.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-732/ReadingFromWorldWritableFile.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-732/ReadingFromWorldWritableFile.ql.
+[1/1 eval 760ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-732/ReadingFromWorldWritableFile.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsApiCall.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsApiCall.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsComparison.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsComparison.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsSourceCall.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsSourceCall.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedPasswordField.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedPasswordField.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsApiCall.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsComparison.ql.
+[1/4 eval 2.9s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsApiCall.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsSourceCall.ql.
+[2/4 eval 138ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsComparison.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-798/HardcodedPasswordField.ql.
+[3/4 eval 278ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsSourceCall.bqrs.
+[4/4 eval 60ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-798/HardcodedPasswordField.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-807/ConditionalBypass.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-807/ConditionalBypass.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-807/TaintedPermissionsCheck.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-807/TaintedPermissionsCheck.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-807/ConditionalBypass.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-807/TaintedPermissionsCheck.ql.
+[1/2 eval 2.1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-807/ConditionalBypass.bqrs.
+[2/2 eval 79ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-807/TaintedPermissionsCheck.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-917/OgnlInjection.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-917/OgnlInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-917/OgnlInjection.ql.
+[1/1 eval 1.7s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-917/OgnlInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-918/RequestForgery.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-918/RequestForgery.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-918/RequestForgery.ql.
+[1/1 eval 1.6s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-918/RequestForgery.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-927/ImplicitPendingIntents.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-927/ImplicitPendingIntents.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-927/SensitiveCommunication.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-927/SensitiveCommunication.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-927/SensitiveResultReceiver.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-927/SensitiveResultReceiver.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-927/ImplicitPendingIntents.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-927/SensitiveCommunication.ql.
+[1/3 eval 692ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-927/ImplicitPendingIntents.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-927/SensitiveResultReceiver.ql.
+[2/3 eval 1.1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-927/SensitiveCommunication.bqrs.
+[3/3 eval 161ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-927/SensitiveResultReceiver.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Removed Dataset and CodeQL Database
+Created CodeQL Output Directory
+Changed Directory to Dataset/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4
+Writing logs to /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4/log/database-create-20260316.142943.073.log.
+Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4.
+Calculating baseline information in /groups/jdasilv2/Latif/SALLM/Evaluation/Dataset/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4
+Calculated baseline information for languages: java (4.5s).
+Resolving extractor java.
+Successfully loaded extractor Java/Kotlin (java) from /groups/jdasilv2/Latif/codeql-home/codeql/java.
+Created skeleton CodeQL database at /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4. This in-progress database is ready to be populated by an extractor.
+Detected autobuild command for Java/Kotlin: /groups/jdasilv2/Latif/codeql-home/codeql/java/tools/autobuild.sh.
+Running build command: [/groups/jdasilv2/Latif/codeql-home/codeql/java/tools/autobuild.sh]
+Running command in /groups/jdasilv2/Latif/SALLM/Evaluation/Dataset/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4: [/groups/jdasilv2/Latif/codeql-home/codeql/java/tools/autobuild.sh]
+[2026-03-16 14:29:48] [build-stdout] [2026-03-16 14:29:48] Extracting Java in buildless mode.
+[2026-03-16 14:29:48] [build-stdout] [2026-03-16 14:29:48] No usable build tool found. Neither JDK version recommendation nor precise dependency recommendations will be available.
+[2026-03-16 14:29:48] [build-stdout] [2026-03-16 14:29:48] Found no Java toolchains in a toolchains file, inspecting environment variables...
+[2026-03-16 14:29:48] [build-stdout] [2026-03-16 14:29:48] No specific JDK inferred from the project being analysed; using the java on the PATH
+[2026-03-16 14:29:49] [build-stdout] [2026-03-16 14:29:49] [autobuild] Scanning for files in /groups/jdasilv2/Latif/SALLM/Evaluation/Dataset/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4...
+[2026-03-16 14:29:55] [build-stdout] [2026-03-16 14:29:55] [autobuild] /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4: Indexing files in in /groups/jdasilv2/Latif/SALLM/Evaluation/Dataset/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4...
+[2026-03-16 14:29:55] [build-stdout] [2026-03-16 14:29:55] [autobuild] Running command in /groups/jdasilv2/Latif/SALLM/Evaluation/Dataset/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4: [/groups/jdasilv2/Latif/codeql-home/codeql/java/tools/index-files.sh, /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4/working/files-to-index1247673670115804137.list]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4.
+Running pre-finalize script /groups/jdasilv2/Latif/codeql-home/codeql/java/tools/pre-finalize.sh in /groups/jdasilv2/Latif/SALLM/Evaluation/Dataset/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4.
+[2026-03-16 14:31:20] [build-stderr] Scanning for files in /groups/jdasilv2/Latif/SALLM/Evaluation/Dataset/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4...
+Running TRAP import for CodeQL database at /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4...
+TRAP import complete (6s).
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4.
+Finalizing CodeQL Database
+A fatal error occurred: Database /tmp/msiddiq3/CodeQL_Database/dataset_java_nl_prompt_best_gemini-2.5-flash_0.4 is already finalized.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-020/Log4jJndiInjection.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-020/Log4jJndiInjection.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-020/Log4jJndiInjection.ql.
+[1/1 eval 10.9s] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-020/Log4jJndiInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-078/ExecTainted.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-078/ExecTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-078/CommandInjectionRuntimeExec.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-078/CommandInjectionRuntimeExec.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-078/CommandInjectionRuntimeExecLocal.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-078/CommandInjectionRuntimeExecLocal.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-078/CommandInjectionRuntimeExec.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-078/CommandInjectionRuntimeExecLocal.ql.
+[1/3 eval 6.4s] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-078/CommandInjectionRuntimeExec.bqrs.
+[2/3 eval 221ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-078/CommandInjectionRuntimeExecLocal.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-078/ExecTainted.ql.
+[3/3 eval 733ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-078/ExecTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-089/MyBatisAnnotationSqlInjection.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-089/MyBatisAnnotationSqlInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-089/MyBatisMapperXmlSqlInjection.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-089/MyBatisMapperXmlSqlInjection.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-089/MyBatisAnnotationSqlInjection.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-089/MyBatisMapperXmlSqlInjection.ql.
+[1/2 eval 6.7s] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-089/MyBatisAnnotationSqlInjection.bqrs.
+[2/2 eval 131ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-089/MyBatisMapperXmlSqlInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/BeanShellInjection.ql.
+[1/8] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/BeanShellInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/InsecureDexLoading.ql.
+[2/8] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/InsecureDexLoading.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/JShellInjection.ql.
+[3/8] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/JShellInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/JakartaExpressionInjection.ql.
+[4/8] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/JakartaExpressionInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/JythonInjection.ql.
+[5/8] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/JythonInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/ScriptInjection.ql.
+[6/8] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/ScriptInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/SpringImplicitViewManipulation.ql.
+[7/8] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/SpringImplicitViewManipulation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/SpringViewManipulation.ql.
+[8/8] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-094/SpringViewManipulation.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-094/BeanShellInjection.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-094/InsecureDexLoading.ql.
+[1/8 eval 1.3s] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-094/BeanShellInjection.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-094/JShellInjection.ql.
+[2/8 eval 174ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-094/InsecureDexLoading.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-094/JakartaExpressionInjection.ql.
+[3/8 eval 81ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-094/JShellInjection.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-094/JythonInjection.ql.
+[4/8 eval 57ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-094/JakartaExpressionInjection.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-094/ScriptInjection.ql.
+[5/8 eval 59ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-094/JythonInjection.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-094/SpringImplicitViewManipulation.ql.
+[6/8 eval 882ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-094/ScriptInjection.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-094/SpringViewManipulation.ql.
+[7/8 eval 1ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-094/SpringImplicitViewManipulation.bqrs.
+[8/8 eval 148ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-094/SpringViewManipulation.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-208/PossibleTimingAttackAgainstSignature.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-208/PossibleTimingAttackAgainstSignature.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-208/TimingAttackAgainstSignature.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-208/TimingAttackAgainstSignature.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-208/TimingAttackAgainstHeader.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-208/TimingAttackAgainstHeader.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-208/PossibleTimingAttackAgainstSignature.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-208/TimingAttackAgainstHeader.ql.
+[1/3 eval 2.8s] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-208/PossibleTimingAttackAgainstSignature.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-208/TimingAttackAgainstSignature.ql.
+[2/3 eval 53ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-208/TimingAttackAgainstHeader.bqrs.
+[3/3 eval 467ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-208/TimingAttackAgainstSignature.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-295/JxBrowserWithoutCertValidation.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-295/JxBrowserWithoutCertValidation.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-295/JxBrowserWithoutCertValidation.ql.
+[1/1 eval 723ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-295/JxBrowserWithoutCertValidation.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-327/UnsafeTlsVersion.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-327/UnsafeTlsVersion.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-327/Azure/UnsafeUsageOfClientSideEncryptionVersion.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-327/Azure/UnsafeUsageOfClientSideEncryptionVersion.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-327/Azure/UnsafeUsageOfClientSideEncryptionVersion.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-327/UnsafeTlsVersion.ql.
+[1/2 eval 464ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-327/Azure/UnsafeUsageOfClientSideEncryptionVersion.bqrs.
+[2/2 eval 2.4s] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-327/UnsafeTlsVersion.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-352/JsonpInjection.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-352/JsonpInjection.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-352/JsonpInjection.ql.
+[1/1 eval 1.8s] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-352/JsonpInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-502/UnsafeDeserializationRmi.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-502/UnsafeDeserializationRmi.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-502/UnsafeSpringExporterInConfigurationClass.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-502/UnsafeSpringExporterInConfigurationClass.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-502/UnsafeSpringExporterInXMLConfiguration.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-502/UnsafeSpringExporterInXMLConfiguration.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-502/UnsafeDeserializationRmi.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-502/UnsafeSpringExporterInConfigurationClass.ql.
+[1/3 eval 968ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-502/UnsafeDeserializationRmi.bqrs.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-502/UnsafeSpringExporterInXMLConfiguration.ql.
+[2/3 eval 52ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-502/UnsafeSpringExporterInConfigurationClass.bqrs.
+[3/3 eval 13ms] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-502/UnsafeSpringExporterInXMLConfiguration.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-601/SpringUrlRedirect.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/experimental/Security/CWE/CWE-601/SpringUrlRedirect.ql.
+Starting evaluation of codeql/java-queries/experimental/Security/CWE/CWE-601/SpringUrlRedirect.ql.
+[1/1 eval 1.4s] Evaluation done; writing results to codeql/java-queries/experimental/Security/CWE/CWE-601/SpringUrlRedirect.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-020/ExternalAPIsUsedWithUntrustedData.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-020/ExternalAPIsUsedWithUntrustedData.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-020/OverlyLargeRange.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-020/OverlyLargeRange.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-020/ExternalAPIsUsedWithUntrustedData.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-020/OverlyLargeRange.ql.
+[1/3 eval 1.2s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-020/ExternalAPIsUsedWithUntrustedData.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[2/3 eval 1.6s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-020/OverlyLargeRange.bqrs.
+[3/3 eval 215ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+A fatal error occurred: Could not process query metadata for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-020/ExternalAPIsUsedWithUntrustedData.ql.
+Error was: Unknown kind "Table". [UNSUPPORTED_KIND]
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-022/TaintedPathLocal.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-022/TaintedPathLocal.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-022/ZipSlip.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-022/ZipSlip.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-022/TaintedPath.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-022/TaintedPathLocal.ql.
+[1/3 eval 2.9s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-022/TaintedPath.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-022/ZipSlip.ql.
+[2/3 eval 1.3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-022/TaintedPathLocal.bqrs.
+[3/3 eval 105ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-022/ZipSlip.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-074/JndiInjection.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-074/JndiInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-074/XsltInjection.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-074/XsltInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-074/JndiInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-074/XsltInjection.ql.
+[1/2 eval 1.6s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-074/JndiInjection.bqrs.
+[2/2 eval 161ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-074/XsltInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-078/ExecRelative.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-078/ExecRelative.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-078/ExecTaintedLocal.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-078/ExecTaintedLocal.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-078/ExecUnescaped.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-078/ExecUnescaped.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-078/ExecRelative.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-078/ExecTainted.ql.
+[1/4 eval 951ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-078/ExecRelative.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-078/ExecTaintedLocal.ql.
+[2/4 eval 2s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-078/ExecTainted.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-078/ExecUnescaped.ql.
+[3/4 eval 549ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-078/ExecTaintedLocal.bqrs.
+[4/4 eval 371ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-078/ExecUnescaped.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-079/XSS.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-079/XSS.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-079/XSSLocal.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-079/XSSLocal.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-079/AndroidWebViewAddJavascriptInterface.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-079/AndroidWebViewAddJavascriptInterface.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-079/AndroidWebViewSettingsEnabledJavaScript.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-079/AndroidWebViewSettingsEnabledJavaScript.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-079/AndroidWebViewAddJavascriptInterface.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-079/AndroidWebViewSettingsEnabledJavaScript.ql.
+[1/4 eval 236ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-079/AndroidWebViewAddJavascriptInterface.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-079/XSS.ql.
+[2/4 eval 92ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-079/AndroidWebViewSettingsEnabledJavaScript.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-079/XSSLocal.ql.
+[3/4 eval 1.2s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-079/XSS.bqrs.
+[4/4 eval 1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-079/XSSLocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-089/SqlTaintedLocal.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-089/SqlTaintedLocal.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-089/SqlConcatenated.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-089/SqlConcatenated.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-089/SqlConcatenated.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-089/SqlTainted.ql.
+[1/3 eval 3.5s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-089/SqlConcatenated.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-089/SqlTaintedLocal.ql.
+[2/3 eval 49ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-089/SqlTainted.bqrs.
+[3/3 eval 378ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-089/SqlTaintedLocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-090/LdapInjection.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-090/LdapInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-090/LdapInjection.ql.
+[1/1 eval 1.6s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-090/LdapInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/GroovyInjection.ql.
+[1/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/GroovyInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/InsecureBeanValidation.ql.
+[2/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/InsecureBeanValidation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/JexlInjection.ql.
+[3/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/JexlInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/MvelInjection.ql.
+[4/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/MvelInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/SpelInjection.ql.
+[5/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/SpelInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/ArbitraryApkInstallation.ql.
+[6/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/ArbitraryApkInstallation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/TemplateInjection.ql.
+[7/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-094/TemplateInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-094/ArbitraryApkInstallation.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-094/GroovyInjection.ql.
+[1/7 eval 1.4s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-094/ArbitraryApkInstallation.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-094/InsecureBeanValidation.ql.
+[2/7 eval 136ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-094/GroovyInjection.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-094/JexlInjection.ql.
+[3/7 eval 63ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-094/InsecureBeanValidation.bqrs.
+[4/7 eval 53ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-094/JexlInjection.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-094/MvelInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-094/SpelInjection.ql.
+[5/7 eval 235ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-094/MvelInjection.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-094/TemplateInjection.ql.
+[6/7 eval 54ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-094/SpelInjection.bqrs.
+[7/7 eval 88ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-094/TemplateInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-113/NettyResponseSplitting.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-113/NettyResponseSplitting.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-113/ResponseSplitting.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-113/ResponseSplitting.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-113/ResponseSplittingLocal.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-113/ResponseSplittingLocal.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-113/NettyResponseSplitting.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-113/ResponseSplitting.ql.
+[1/3 eval 741ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-113/NettyResponseSplitting.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-113/ResponseSplittingLocal.ql.
+[2/3 eval 924ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-113/ResponseSplitting.bqrs.
+[3/3 eval 1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-113/ResponseSplittingLocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-117/LogInjection.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-117/LogInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-117/LogInjection.ql.
+[1/1 eval 1.6s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-117/LogInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayConstruction.ql.
+[1/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayConstruction.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayConstructionCodeSpecified.ql.
+[2/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayConstructionCodeSpecified.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayConstructionLocal.ql.
+[3/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayConstructionLocal.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayIndex.ql.
+[4/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayIndex.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayIndexCodeSpecified.ql.
+[5/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayIndexCodeSpecified.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayIndexLocal.ql.
+[6/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-129/ImproperValidationOfArrayIndexLocal.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayConstruction.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayConstructionCodeSpecified.ql.
+[1/6 eval 1.3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayConstruction.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayConstructionLocal.ql.
+[2/6 eval 52ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayConstructionCodeSpecified.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayIndex.ql.
+[3/6 eval 42ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayConstructionLocal.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayIndexCodeSpecified.ql.
+[4/6 eval 1.2s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayIndex.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayIndexLocal.ql.
+[5/6 eval 960ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayIndexCodeSpecified.bqrs.
+[6/6 eval 139ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-129/ImproperValidationOfArrayIndexLocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-134/ExternallyControlledFormatString.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-134/ExternallyControlledFormatString.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-134/ExternallyControlledFormatStringLocal.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-134/ExternallyControlledFormatStringLocal.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-134/ExternallyControlledFormatString.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-134/ExternallyControlledFormatStringLocal.ql.
+[1/2 eval 2.2s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-134/ExternallyControlledFormatString.bqrs.
+[2/2 eval 622ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-134/ExternallyControlledFormatStringLocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+[1/5] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ArithmeticTaintedLocal.ql.
+[2/5] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ArithmeticTaintedLocal.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[3/5] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[4/5] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[5/5] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-190/ArithmeticTaintedLocal.ql.
+[1/5 eval 2.4s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-190/ArithmeticTainted.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[2/5 eval 1.1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-190/ArithmeticTaintedLocal.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[3/5 eval 193ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[4/5 eval 337ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.bqrs.
+[5/5 eval 56ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-190/ComparisonWithWiderType.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-200/AndroidWebViewSettingsAllowsContentAccess.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-200/AndroidWebViewSettingsAllowsContentAccess.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-200/AndroidWebViewSettingsFileAccess.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-200/AndroidWebViewSettingsFileAccess.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-200/TempDirLocalInformationDisclosure.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-200/TempDirLocalInformationDisclosure.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-200/AndroidWebViewSettingsAllowsContentAccess.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-200/AndroidWebViewSettingsFileAccess.ql.
+[1/3 eval 872ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-200/AndroidWebViewSettingsAllowsContentAccess.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-200/TempDirLocalInformationDisclosure.ql.
+[2/3 eval 37ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-200/AndroidWebViewSettingsFileAccess.bqrs.
+[3/3 eval 2.3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-200/TempDirLocalInformationDisclosure.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-209/StackTraceExposure.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-209/StackTraceExposure.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-209/StackTraceExposure.ql.
+[1/1 eval 2.3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-209/StackTraceExposure.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-295/InsecureTrustManager.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-295/InsecureTrustManager.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-295/AndroidMissingCertificatePinning.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-295/AndroidMissingCertificatePinning.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-295/ImproperWebViewCertificateValidation.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-295/ImproperWebViewCertificateValidation.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-295/AndroidMissingCertificatePinning.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-295/ImproperWebViewCertificateValidation.ql.
+[1/3 eval 100ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-295/AndroidMissingCertificatePinning.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-295/InsecureTrustManager.ql.
+[2/3 eval 561ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-295/ImproperWebViewCertificateValidation.bqrs.
+[3/3 eval 3.1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-295/InsecureTrustManager.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-297/InsecureJavaMail.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-297/InsecureJavaMail.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-297/UnsafeHostnameVerification.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-297/UnsafeHostnameVerification.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-297/InsecureJavaMail.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-297/UnsafeHostnameVerification.ql.
+[1/2 eval 430ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-297/InsecureJavaMail.bqrs.
+[2/2 eval 1.8s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-297/UnsafeHostnameVerification.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageAndroidDatabase.ql.
+[1/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageAndroidDatabase.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageAndroidFilesystem.ql.
+[2/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageAndroidFilesystem.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageClass.ql.
+[3/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageClass.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageCookie.ql.
+[4/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageCookie.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageProperties.ql.
+[5/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageProperties.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageSharedPrefs.ql.
+[6/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/CleartextStorageSharedPrefs.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/AllowBackupAttributeEnabled.ql.
+[7/7] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-312/AllowBackupAttributeEnabled.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-312/AllowBackupAttributeEnabled.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-312/CleartextStorageAndroidDatabase.ql.
+[1/7 eval 42ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-312/AllowBackupAttributeEnabled.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-312/CleartextStorageAndroidFilesystem.ql.
+[2/7 eval 560ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-312/CleartextStorageAndroidDatabase.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-312/CleartextStorageClass.ql.
+[3/7 eval 2.2s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-312/CleartextStorageAndroidFilesystem.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-312/CleartextStorageCookie.ql.
+[4/7 eval 40ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-312/CleartextStorageClass.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-312/CleartextStorageProperties.ql.
+[5/7 eval 264ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-312/CleartextStorageCookie.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-312/CleartextStorageSharedPrefs.ql.
+[6/7 eval 24ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-312/CleartextStorageProperties.bqrs.
+[7/7 eval 80ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-312/CleartextStorageSharedPrefs.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-319/HttpsUrls.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-319/HttpsUrls.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-319/UseSSL.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-319/UseSSL.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-319/UseSSLSocketFactories.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-319/UseSSLSocketFactories.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-319/HttpsUrls.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-319/UseSSL.ql.
+[1/3 eval 2.2s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-319/HttpsUrls.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-319/UseSSLSocketFactories.ql.
+[2/3 eval 84ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-319/UseSSL.bqrs.
+[3/3 eval 119ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-319/UseSSLSocketFactories.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1 eval 1.9s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-326/InsufficientKeySize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-327/MaybeBrokenCryptoAlgorithm.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-327/MaybeBrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-327/MaybeBrokenCryptoAlgorithm.ql.
+[1/2 eval 3.1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.bqrs.
+[2/2 eval 402ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-327/MaybeBrokenCryptoAlgorithm.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-338/JHipsterGeneratedPRNG.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-338/JHipsterGeneratedPRNG.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-338/JHipsterGeneratedPRNG.ql.
+[1/1 eval 459ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-338/JHipsterGeneratedPRNG.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-352/SpringCSRFProtection.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-352/SpringCSRFProtection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-352/SpringCSRFProtection.ql.
+[1/1 eval 360ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-352/SpringCSRFProtection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-367/TOCTOURace.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-367/TOCTOURace.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-367/TOCTOURace.ql.
+[1/1 eval 623ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-367/TOCTOURace.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-470/FragmentInjection.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-470/FragmentInjection.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-470/FragmentInjectionInPreferenceActivity.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-470/FragmentInjectionInPreferenceActivity.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-470/FragmentInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-470/FragmentInjectionInPreferenceActivity.ql.
+[1/2 eval 1.3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-470/FragmentInjection.bqrs.
+[2/2 eval 23ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-470/FragmentInjectionInPreferenceActivity.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-489/DebuggableAttributeEnabled.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-489/DebuggableAttributeEnabled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-489/WebviewDebuggingEnabled.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-489/WebviewDebuggingEnabled.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-489/DebuggableAttributeEnabled.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-489/WebviewDebuggingEnabled.ql.
+[1/2 eval 63ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-489/DebuggableAttributeEnabled.bqrs.
+[2/2 eval 2.5s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-489/WebviewDebuggingEnabled.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-501/TrustBoundaryViolation.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-501/TrustBoundaryViolation.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-501/TrustBoundaryViolation.ql.
+[1/1 eval 1.7s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-501/TrustBoundaryViolation.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-502/UnsafeDeserialization.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-502/UnsafeDeserialization.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-502/UnsafeDeserialization.ql.
+[1/1 eval 2.8s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-502/UnsafeDeserialization.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-522/InsecureBasicAuth.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-522/InsecureBasicAuth.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-522/InsecureLdapAuth.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-522/InsecureLdapAuth.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-522/InsecureBasicAuth.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-522/InsecureLdapAuth.ql.
+[1/2 eval 519ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-522/InsecureBasicAuth.bqrs.
+[2/2 eval 796ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-522/InsecureLdapAuth.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-532/SensitiveInfoLog.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-532/SensitiveInfoLog.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-532/SensitiveInfoLog.ql.
+[1/1 eval 2.6s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-532/SensitiveInfoLog.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-601/UrlRedirect.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-601/UrlRedirect.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-601/UrlRedirectLocal.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-601/UrlRedirectLocal.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-601/UrlRedirect.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-601/UrlRedirectLocal.ql.
+[1/2 eval 1.5s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-601/UrlRedirect.bqrs.
+[2/2 eval 1.1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-601/UrlRedirectLocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-611/XXE.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-611/XXELocal.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-611/XXELocal.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-611/XXELocal.ql.
+[1/2 eval 1.3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-611/XXE.bqrs.
+[2/2 eval 1.5s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-611/XXELocal.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-614/InsecureCookie.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-614/InsecureCookie.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-614/InsecureCookie.ql.
+[1/1 eval 711ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-614/InsecureCookie.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-643/XPathInjection.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-643/XPathInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-643/XPathInjection.ql.
+[1/1 eval 1.4s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-643/XPathInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/PolynomialReDoS.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/PolynomialReDoS.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/ReDoS.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/ReDoS.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/RegexInjection.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-730/RegexInjection.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-730/PolynomialReDoS.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-730/ReDoS.ql.
+[1/3 eval 4s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-730/PolynomialReDoS.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-730/RegexInjection.ql.
+[2/3 eval 609ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-730/ReDoS.bqrs.
+[3/3 eval 113ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-730/RegexInjection.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-732/ReadingFromWorldWritableFile.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-732/ReadingFromWorldWritableFile.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-732/ReadingFromWorldWritableFile.ql.
+[1/1 eval 739ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-732/ReadingFromWorldWritableFile.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsApiCall.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsApiCall.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsComparison.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsComparison.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsSourceCall.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedCredentialsSourceCall.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedPasswordField.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-798/HardcodedPasswordField.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsApiCall.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsComparison.ql.
+[1/4 eval 3s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsApiCall.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsSourceCall.ql.
+[2/4 eval 131ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsComparison.bqrs.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-798/HardcodedPasswordField.ql.
+[3/4 eval 311ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-798/HardcodedCredentialsSourceCall.bqrs.
+[4/4 eval 58ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-798/HardcodedPasswordField.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-807/ConditionalBypass.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-807/ConditionalBypass.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-807/TaintedPermissionsCheck.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-807/TaintedPermissionsCheck.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-807/ConditionalBypass.ql.
+Starting evaluation of codeql/java-queries/Security/CWE/CWE-807/TaintedPermissionsCheck.ql.
+[1/2 eval 2.1s] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-807/ConditionalBypass.bqrs.
+[2/2 eval 67ms] Evaluation done; writing results to codeql/java-queries/Security/CWE/CWE-807/TaintedPermissionsCheck.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Analysis produced the following diagnostic data:
+
+|                   Diagnostic                    |            Summary            |
++-------------------------------------------------+-------------------------------+
+| Java buildless mode found no usable build tool  | 1 result (1 unknown severity) |
+| Java buildless mode used the system default JDK | 1 result (1 unknown severity) |
+| Java was extracted in buildless mode            | 1 result (1 note)             |
+
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/java/ql/src/Security/CWE/CWE-917/OgnlInjection.ql.

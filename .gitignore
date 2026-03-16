@@ -188,3 +188,4 @@ Generation/bin/
 Generation/lib/
 Generation/ollama_starcoder.o*
 .ollama/Evaluation/TestResults/*.jsonl
+.ollama/models/
