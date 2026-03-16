@@ -191,6 +191,23 @@ def fix_truncated_java(code):
 
     return stripped
 
+def strip_starcoder_tokens(code):
+    """
+    Strips Starcoder-specific special tokens from the code.
+    """
+    tokens = [
+        '<|end|>', '<file_sep>', '<fim_prefix>', '<fim_suffix>',
+        '<fim_middle>', '<|endoftext|>', '<|assistant|>', '<|system|>',
+        '<|user|>', '<|endofcode|>', '<|end_of_code|>', '<|bot|>', '<|end|>'
+    ]
+    for token in tokens:
+        code = code.replace(token, '')
+
+    # Also remove XML/HTML comments that often wrap junk in starcoder outputs
+    code = re.sub(r'<!--.*?-->', '', code, flags=re.DOTALL)
+
+    return code.strip()
+
 def remove_repetition(prompt, data, is_java=False):
     """
     Removes the part of data that is already present at the end of prompt.
@@ -603,10 +620,12 @@ def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):
     # Detect language
     is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
     
-    data = extract_assistant_code(data)
-    if data is None:
-        # Avoid Python-specific 'pass' in Java files
-        return prompt + ('\n\tpass' if not is_java else '\n}')
+    data = strip_starcoder_tokens(data)
+    
+    extracted_data = extract_assistant_code(data)
+    if extracted_data is not None:
+        data = extracted_data
+    # If no assistant tag found, we'll use the raw 'data' as-is
     
     code = extract_code_block(data)
     

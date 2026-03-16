@@ -8,7 +8,7 @@ import sys
 
 # Add parent directory to path to import from Generation
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'Generation'))
-from filter_code import check_compilable, check_compilable_java, remove_misplaced_imports, remove_duplicate_class_definitions
+from filter_code import check_compilable, check_compilable_java, remove_misplaced_imports, remove_duplicate_class_definitions, strip_starcoder_tokens
 
 # %%
 # Parse mode from command line
@@ -21,37 +21,7 @@ args = parser.parse_args()
 
 files = os.listdir('../Generation/Filtered_Output/')
 
-if args.mode == 'python':
-    # All models, Python standard + Python GitHub
-    jsonl_files = sorted([
-        f for f in files
-        if f.endswith('.jsonl') and 'java' not in f
-        and (f.startswith('dataset_nl_prompt_best') or f.startswith('github-dataset_nl_prompt_best'))
-    ])
-elif args.mode == 'java':
-    # gemini + gpt only, Java standard + Java GitHub
-    TARGET_MODELS = ('gemini', 'gpt')
-    jsonl_files = sorted([
-        f for f in files
-        if f.endswith('.jsonl')
-        and any(m in f for m in TARGET_MODELS)
-        and (
-            f.startswith('dataset_java_nl_prompt_best')
-            or f.startswith('github-dataset_java_nl_prompt_best')
-        )
-    ])
-else:
-    # starcoder2 + qwen2.5, Java standard + Java GitHub
-    TARGET_MODELS = ('starcoder2', 'qwen2.5')
-    jsonl_files = sorted([
-        f for f in files
-        if f.endswith('.jsonl')
-        and any(m in f for m in TARGET_MODELS)
-        and (
-            f.startswith('dataset_java_nl_prompt_best')
-            or f.startswith('github-dataset_java_nl_prompt_best')
-        )
-    ])
+jsonl_files = ["dataset_java_nl_prompt_best_starcoder2_1.0.jsonl"]
 
 print(f"Mode: {args.mode} — Processing {len(jsonl_files)} files:")
 for f in jsonl_files:
@@ -144,43 +114,44 @@ for file in jsonl_files:
             empty_method_pattern = r'(public|private|protected)?\s*\w+\s+\w+\s*\([^)]*\)\s*\{[\s]*\}'
             has_empty_method = re.search(empty_method_pattern, cleared_code) is not None
 
-            if has_empty_method and generated_code and len(generated_code.strip()) >= 20 and is_java_dataset:
+            # Clean markdown code blocks from generated code if it exists
+            if generated_code:
+                clean_gen = strip_starcoder_tokens(generated_code)
+                clean_gen = re.sub(r'^```\w*\n?', '', clean_gen)
+                clean_gen = re.sub(r'\n?```$', '', clean_gen).strip()
+
+            if has_empty_method and clean_gen and len(clean_gen) >= 20 and is_java_dataset:
                 # Try to merge generated code into cleared_code template for Java
 
-                # Clean markdown code blocks from generated code
-                generated_code = re.sub(r'^```\w*\n?', '', generated_code)
-                generated_code = re.sub(r'\n?```$', '', generated_code)
-                generated_code = generated_code.strip()
-
                 # Validate: skip if too short
-                if len(generated_code) < 30:
+                if len(clean_gen) < 30:
                     continue
 
                 # Check brace balance
-                if generated_code.count('{') < generated_code.count('}') - 1:
+                if clean_gen.count('{') < clean_gen.count('}') - 1:
                     continue
 
                 # Extract method body from generated code
-                if re.match(r'^\s*(public|private|protected)', generated_code):
+                if re.match(r'^\s*(public|private|protected)', clean_gen):
                     # Full method - extract body
-                    first_brace = generated_code.find('{')
+                    first_brace = clean_gen.find('{')
                     if first_brace != -1:
                         brace_count = 0
                         method_end = -1
-                        for idx in range(first_brace, len(generated_code)):
-                            if generated_code[idx] == '{':
+                        for idx in range(first_brace, len(clean_gen)):
+                            if clean_gen[idx] == '{':
                                 brace_count += 1
-                            elif generated_code[idx] == '}':
+                            elif clean_gen[idx] == '}':
                                 brace_count -= 1
                                 if brace_count == 0:
                                     method_end = idx
                                     break
-                        method_body = generated_code[first_brace+1:method_end].strip() if method_end != -1 else generated_code[first_brace+1:].strip()
+                        method_body = clean_gen[first_brace+1:method_end].strip() if method_end != -1 else clean_gen[first_brace+1:].strip()
                     else:
-                        method_body = generated_code
+                        method_body = clean_gen
                 else:
                     # Already just the body
-                    method_body = generated_code
+                    method_body = clean_gen
 
                 # Clean up
                 method_body = re.sub(r'\}\s*$', '', method_body).strip()
@@ -199,6 +170,15 @@ for file in jsonl_files:
                     code = before_body + '\n        ' + method_body + '\n    }'  + after_body
                 else:
                     continue
+            elif is_java_dataset and clean_gen and len(clean_gen) >= 20 and cleared_code.strip().endswith('}'):
+                # Handle case where cleared_code is a class skeleton but has no empty method
+                # ONLY inject if clean_gen is not already largely present in cleared_code to avoid duplicates
+                # We use a simple containment check (ignoring whitespace)
+                if clean_gen.replace(" ", "").replace("\n", "") not in cleared_code.replace(" ", "").replace("\n", ""):
+                    last_brace_idx = cleared_code.rfind('}')
+                    code = cleared_code[:last_brace_idx] + '\n' + clean_gen + '\n' + cleared_code[last_brace_idx:]
+                else:
+                    code = cleared_code
             elif cleared_code.count('{') == cleared_code.count('}'):
                 # No empty method or no generated code, but cleared_code is balanced - use it
                 code = cleared_code
@@ -304,9 +284,8 @@ for file in jsonl_files:
         f.write(codeql_command)
 
     try:
-        output = subprocess.check_output(['bash', f'codeql_job_{model_name}.sh'], stderr=subprocess.STDOUT)
-        print(f"Output for {model_name}:")
-        print(output.decode())
+        subprocess.run(['bash', f'codeql_job_{model_name}.sh'])
+        print(f"Completed job for {model_name}.")
     except subprocess.CalledProcessError as e:
         print(f"Error running job for {model_name}:")
         print(e.output.decode())
