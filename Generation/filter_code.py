@@ -111,40 +111,43 @@ def fix_truncated_java(code):
     lines = stripped.split('\n')
     if not lines: return code
 
+    # Remove obviously conversational junk and HTML from Starcoder/Qwen
+    cleaned_lines = []
+    for line in lines:
+        s = line.strip()
+        # Skip HTML tags that are not part of code
+        if re.match(r'^<[a-z/].*?>$', s.lower()) and not any(c in s for c in '{};()='):
+            continue
+        # Skip common rambling phrases if they don't look like code
+        if re.match(r'^(I am|You can|How to|In this|This is|Please|Do you|Here is|Note:|The follow)', s) and not any(c in s for c in '{};()=.'):
+            continue
+        cleaned_lines.append(line)
+    lines = cleaned_lines
+
     # Remove trailing truncated lines
     while lines:
         last_line = lines[-1].strip()
-
-        # Empty line at end - remove
         if not last_line:
             lines = lines[:-1]
             continue
-
-        # Check if line is truncated (incomplete statement)
+        
         is_truncated = False
-
-        # Ends mid-word/mid-expression without proper terminator
         if re.search(r'[a-zA-Z0-9]$', last_line):
             if not last_line.endswith(';') and not last_line.endswith('{') and not last_line.endswith('}'):
                 is_truncated = True
-
-        # Incomplete method call or declaration
+        
         if last_line.count('(') > last_line.count(')'):
             is_truncated = True
-
-        # Incomplete string literal
         if last_line.count('"') % 2 == 1:
             is_truncated = True
-
-        # Starts with a Java keyword but incomplete
+            
         truncated_keywords = ['import', 'public', 'private', 'protected', 'static', 'final', 'class', 'interface']
         for kw in truncated_keywords:
             if last_line.startswith(kw + ' ') and not last_line.endswith(';') and not last_line.endswith('{'):
-                # Could be a method/class declaration, check if it has opening brace
                 if '{' not in last_line:
                     is_truncated = True
                     break
-
+        
         if is_truncated:
             lines = lines[:-1]
         else:
@@ -152,42 +155,37 @@ def fix_truncated_java(code):
 
     stripped = '\n'.join(lines).rstrip()
 
-    # Balance braces with proper indentation
+    # Balance braces
     open_braces = stripped.count('{')
     close_braces = stripped.count('}')
 
     if open_braces > close_braces:
         diff = open_braces - close_braces
-
-        # Calculate indentation by examining existing lines
         indent_level = 0
         for line in reversed(lines):
             if line.strip():
-                # Count leading spaces
                 match = re.match(r'^(\s*)', line)
-                if match:
-                    indent_level = len(match.group(1))
+                if match: indent_level = len(match.group(1))
                 break
-
-        # Add closing braces with decreasing indentation
         for i in range(diff):
             indent = max(0, indent_level - (i * 4))
             stripped += '\n' + (' ' * indent) + '}'
-
-    # Remove excessive closing braces
     elif close_braces > open_braces:
-        diff = close_braces - open_braces
-        lines = stripped.split('\n')
-
-        # Remove trailing '}' lines until balanced
-        while diff > 0 and lines:
-            if lines[-1].strip() == '}':
-                lines = lines[:-1]
-                diff -= 1
-            else:
-                break
-
-        stripped = '\n'.join(lines)
+        # If we have more closing braces, we might have junk after the class
+        # Try to find where the top-level class definitely ends
+        match = re.search(r'(public\s+)?(final\s+)?class\s+\w+', stripped)
+        if match:
+            start_pos = stripped.find('{', match.end())
+            if start_pos != -1:
+                brace_level = 1
+                pos = start_pos + 1
+                while pos < len(stripped) and brace_level > 0:
+                    if stripped[pos] == '{': brace_level += 1
+                    elif stripped[pos] == '}': brace_level -= 1
+                    pos += 1
+                if brace_level == 0:
+                    # Truncate strictly after the class ends
+                    stripped = stripped[:pos]
 
     return stripped
 
@@ -195,16 +193,22 @@ def strip_starcoder_tokens(code):
     """
     Strips Starcoder-specific special tokens from the code.
     """
+    # Specific known starcoder tokens
     tokens = [
         '<|end|>', '<file_sep>', '<fim_prefix>', '<fim_suffix>',
         '<fim_middle>', '<|endoftext|>', '<|assistant|>', '<|system|>',
-        '<|user|>', '<|endofcode|>', '<|end_of_code|>', '<|bot|>', '<|end|>'
+        '<|user|>', '<|endofcode|>', '<|end_of_code|>', '<|bot|>', '<|end|>',
+        '<|begin_of_code_for_user|>', '<|thought|>', '<|getURL|>', '<|endoftext|>'
     ]
     for token in tokens:
         code = code.replace(token, '')
 
+    # Generic tag stripping (e.g. <|any_tag|>)
+    code = re.sub(r'<\|.*?\|>', '', code)
+
     # Also remove XML/HTML comments that often wrap junk in starcoder outputs
-    code = re.sub(r'<!--.*?-->', '', code, flags=re.DOTALL)
+    # Improved to handle unclosed comments at the end of output
+    code = re.sub(r'<!--.*?(?:-->|$)', '', code, flags=re.DOTALL)
 
     return code.strip()
 

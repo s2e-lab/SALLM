@@ -8,7 +8,7 @@ import sys
 
 # Add parent directory to path to import from Generation
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'Generation'))
-from filter_code import check_compilable, check_compilable_java, remove_misplaced_imports, remove_duplicate_class_definitions, strip_starcoder_tokens
+from filter_code import check_compilable, check_compilable_java, remove_misplaced_imports, remove_duplicate_class_definitions, strip_starcoder_tokens, fix_truncated_java, extract_code_block
 
 # %%
 # Parse mode from command line
@@ -21,7 +21,18 @@ args = parser.parse_args()
 
 files = os.listdir('../Generation/Filtered_Output/')
 
-jsonl_files = ["dataset_java_nl_prompt_best_starcoder2_1.0.jsonl"]
+if args.mode == 'python':
+    jsonl_files = [f for f in files if 'java' not in f.lower() and f.endswith('.jsonl')]
+elif args.mode == 'java':
+    # Default Java mode: Gemini and GPT
+    jsonl_files = [f for f in files if 'java' in f.lower() and ('gemini' in f.lower() or 'gpt' in f.lower()) and f.endswith('.jsonl')]
+elif args.mode == 'java_sq':
+    # Starcoder2 and Qwen2.5
+    jsonl_files = [f for f in files if 'java' in f.lower() and ('starcoder2' in f.lower() or 'qwen2.5' in f.lower()) and f.endswith('.jsonl')]
+else:
+    jsonl_files = []
+
+jsonl_files.sort()
 
 print(f"Mode: {args.mode} — Processing {len(jsonl_files)} files:")
 for f in jsonl_files:
@@ -115,10 +126,10 @@ for file in jsonl_files:
             has_empty_method = re.search(empty_method_pattern, cleared_code) is not None
 
             # Clean markdown code blocks from generated code if it exists
+            clean_gen = ""
             if generated_code:
                 clean_gen = strip_starcoder_tokens(generated_code)
-                clean_gen = re.sub(r'^```\w*\n?', '', clean_gen)
-                clean_gen = re.sub(r'\n?```$', '', clean_gen).strip()
+                clean_gen = extract_code_block(clean_gen)
 
             if has_empty_method and clean_gen and len(clean_gen) >= 20 and is_java_dataset:
                 # Try to merge generated code into cleared_code template for Java
@@ -232,9 +243,8 @@ for file in jsonl_files:
                 import re
                 
                 def sanitize_code(code_content):
-                    # Remove Lombok imports
+                    # Remove Lombok stuff
                     code_content = re.sub(r'import\s+lombok\..*;', '', code_content)
-                    # Remove common Lombok annotations
                     lombok_annotations = [
                         r'@Data', r'@Builder', r'@AllArgsConstructor', r'@NoArgsConstructor', 
                         r'@RequiredArgsConstructor', r'@Getter', r'@Setter', r'@ToString', 
@@ -242,6 +252,13 @@ for file in jsonl_files:
                     ]
                     for annotation in lombok_annotations:
                         code_content = re.sub(annotation, '', code_content)
+                    
+                    # Robust cleaning and reconstruction
+                    code_content = strip_starcoder_tokens(code_content)
+                    code_content = fix_truncated_java(code_content)
+                    code_content = remove_duplicate_class_definitions(code_content)
+                    code_content = remove_misplaced_imports(code_content)
+                    
                     return code_content
 
                 code = sanitize_code(code)

@@ -1,3 +1,6 @@
+#!/bin/bash
+source /afs/crc.nd.edu/x86_64_linux/Modules/4.7.0/init/bash
+module load python/3.12.12
 export PATH="/groups/jdasilv2/Latif/codeql-home/codeql:$PATH"
 rm -rf ./CodeQL_Output/MODEL_NAME
 mkdir -p ./CodeQL_Output/MODEL_NAME

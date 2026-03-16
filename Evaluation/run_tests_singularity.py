@@ -11,6 +11,10 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
 from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, GITHUB_PYTHON_DATASET_PATH, GITHUB_JAVA_DATASET_PATH, GENERATED_CODE_PATH, TEST_RESULTS, TEST_FOLDER, SIF_DIR, BASE_DIR
 
+# Add parent directory to path to import from Generation
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'Generation'))
+from filter_code import strip_starcoder_tokens, fix_truncated_java, extract_code_block
+
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Singularity commands to stdout
 MAX_WORKERS = 32
@@ -111,9 +115,12 @@ def _extract_public_methods(code):
     excluded = {'main', 'toString', 'hashCode', 'equals'}
     return [m for m in matches if m not in excluded]
 
-
 def fix_java_code(code, item_id, technique, source):
     """Ensure Java code has the correct class name, package, and method names."""
+    # Robust cleaning and reconstruction
+    code = strip_starcoder_tokens(code)
+    code = fix_truncated_java(code)
+    
     expected_package = f"com.sallm.{technique}.{source}"
     if f"package {expected_package};" not in code:
         code = re.sub(r'package\s+[\w\.]+;\s*', '', code)
@@ -654,6 +661,10 @@ def save_generated_code(jsonl_folder, temp_folder):
 
                                 if ext == '.java':
                                     code = fix_java_code(code, item_id, technique, source)
+                                elif ext == '.py':
+                                    # Basic cleaning for Python too, especially for Starcoder
+                                    code = strip_starcoder_tokens(code)
+                                    code = extract_code_block(code)
 
                                 if '_' in model_name:
                                     parts = model_name.rsplit('_', 1)
@@ -684,6 +695,10 @@ def save_generated_code(jsonl_folder, temp_folder):
 
                             if ext == '.java':
                                 code = fix_java_code(code, item_id, technique, source)
+                            elif ext == '.py':
+                                # Basic cleaning for Python too, especially for Starcoder
+                                code = strip_starcoder_tokens(code)
+                                code = extract_code_block(code)
 
                             target_dir = os.path.join(temp_folder, f"{model_name}_R{idx+1}")
                             os.makedirs(target_dir, exist_ok=True)

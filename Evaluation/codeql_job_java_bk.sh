@@ -1,3 +1,6 @@
+#!/bin/bash
+source /afs/crc.nd.edu/x86_64_linux/Modules/4.7.0/init/bash
+module load python/3.12.12
 export PATH="/groups/jdasilv2/Latif/codeql-home/codeql:$PATH"
 export CODEQL_JAVA_EXTRACTOR_OPTS="-Xmx32G -Xss16M"
 rm -rf ./CodeQL_Output/MODEL_NAME
@@ -21,6 +24,9 @@ codeql database create /tmp/msiddiq3/CodeQL_Database/MODEL_NAME \
     -Ojava.buildless.annotation-processors=false \
     --skip-empty \
     --verbose
+
+echo "Finalizing CodeQL Database"
+codeql database finalize /tmp/msiddiq3/CodeQL_Database/MODEL_NAME
 
 echo "Created CodeQL Database"
 

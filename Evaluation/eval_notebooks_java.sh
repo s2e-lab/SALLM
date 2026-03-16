@@ -5,6 +5,7 @@
 #$ -q long
 #$ -N eval_notebooks_java
 #$ -cwd
+source /afs/crc.nd.edu/x86_64_linux/Modules/4.7.0/init/bash
 
 module load python/3.12.12
 

@@ -6,6 +6,7 @@
 #$ -q long              # Specify queue
 #$ -N codeql_java_gemini_gpt
 #$ -cwd                 # Run in current directory
+source /afs/crc.nd.edu/x86_64_linux/Modules/4.7.0/init/bash
 
 module load python/3.12.12
 

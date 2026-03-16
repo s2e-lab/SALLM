@@ -7,11 +7,8 @@
 #$ -cwd                 # Run in current directory
 
 # Fix for module command on some compute nodes
-if ! command -v module &> /dev/null; then
-    if [ -f /etc/profile.d/modules.sh ]; then
-        . /etc/profile.d/modules.sh
-    fi
-fi
+source /afs/crc.nd.edu/x86_64_linux/Modules/4.7.0/init/bash
+
 
 module load python/3.12.12
 

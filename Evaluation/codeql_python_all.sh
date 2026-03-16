@@ -7,6 +7,7 @@
 #$ -N codeql_python_all
 #$ -cwd                 # Run in current directory
 
+source /afs/crc.nd.edu/x86_64_linux/Modules/4.7.0/init/bash
 module load python/3.12.12
 
 cd /groups/jdasilv2/Latif/SALLM/Evaluation
