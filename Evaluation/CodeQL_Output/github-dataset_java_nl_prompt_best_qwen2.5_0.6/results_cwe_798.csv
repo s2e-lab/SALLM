@@ -1,1 +1,0 @@
-"Hard-coded credential in sensitive call","Using a hard-coded credential in a sensitive call may compromise security.","error","Hard-coded value flows to [[""sensitive call""|""relative:///com/sallm/GitHub/GitHub/p_5_f_62/GitHub_cwe079_0_62_Vietnamese.java:21:37:21:45""]].","/com/sallm/GitHub/GitHub/p_5_f_62/GitHub_cwe079_0_62_Vietnamese.java","20","28","20","72"

@@ -1,2 +1,0 @@
-"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe020_1_229_Arabic.py:9:13:9:24""]] validation.
-Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe020_1_229_Arabic.py:10:8:10:12""]] validation.","/Refinement/GitHubDataset/cwe020_1_229_Arabic.py","10","8","10","12"

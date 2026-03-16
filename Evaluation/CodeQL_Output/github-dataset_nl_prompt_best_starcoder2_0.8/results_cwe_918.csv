@@ -1,1 +1,0 @@
-"Partial server-side request forgery","Making a network request to a URL that is partially user-controlled allows for request forgery attacks.","error","Part of the URL of this request depends on a [[""user-provided value""|""relative:///Refinement/GitHubDataset/cwe798_0_119_Afrikaans.py:1:26:1:32""]].","/Refinement/GitHubDataset/cwe798_0_119_Afrikaans.py","18","12","18","28"

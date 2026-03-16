@@ -1,1 +1,0 @@
-"JWT missing secret or public key verification","The application does not verify the JWT payload with a cryptographic secret or public key.","warning","is not verified with a cryptographic secret or public key.","/Refinement/GitHubDataset/cwe327_0_98_Chinese.py","26","42","26","46"

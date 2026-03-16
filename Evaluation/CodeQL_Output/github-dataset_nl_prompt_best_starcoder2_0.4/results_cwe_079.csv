@@ -1,1 +1,0 @@
-"Reflected server-side cross-site scripting","Writing user input directly to a web page allows for a cross-site scripting vulnerability.","error","Cross-site scripting vulnerability due to a [[""user-provided value""|""relative:///Refinement/GitHubDataset/cwe798_0_47_Vietnamese.py:1:26:1:32""]].","/Refinement/GitHubDataset/cwe798_0_47_Vietnamese.py","15","12","15","21"

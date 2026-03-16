@@ -1,2 +1,0 @@
-"Hard-coded credential in API call","Using a hard-coded credential in a call to a sensitive Java API may compromise security.","error","Hard-coded value flows to [[""sensitive API call""|""relative:///com/sallm/GitHub/GitHub/p_16_f_197/GitHub_cwe327_1_197_Vietnamese.java:34:41:34:60""]].
-Hard-coded value flows to [[""sensitive API call""|""relative:///com/sallm/GitHub/GitHub/p_16_f_197/GitHub_cwe327_1_197_Vietnamese.java:51:41:51:60""]].","/com/sallm/GitHub/GitHub/p_16_f_197/GitHub_cwe327_1_197_Vietnamese.java","15","23","15","40"

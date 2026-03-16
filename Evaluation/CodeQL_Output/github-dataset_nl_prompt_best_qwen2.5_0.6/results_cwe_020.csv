@@ -1,1 +1,0 @@
-"Overly permissive regular expression range","Overly permissive regular expression ranges match a wider range of characters than intended. This may allow an attacker to bypass a filter or sanitizer.","warning","Suspicious character range that is empty.","/Refinement/GitHubDataset/cwe094_0_37_Afrikaans.py","17","38","17","40"

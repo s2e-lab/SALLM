@@ -1,1 +1,0 @@
-"Server Side Template Injection","Using user-controlled data to create a template can cause security issues.","error","This Template depends on [[""user-provided value""|""relative:///Refinement/GitHubDataset/cwe079_0_30_Hebrew.py:1:26:1:32""]].","/Refinement/GitHubDataset/cwe079_0_30_Hebrew.py","15","35","15","74"

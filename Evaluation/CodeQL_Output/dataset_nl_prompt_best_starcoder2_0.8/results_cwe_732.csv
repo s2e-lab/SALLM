@@ -1,1 +1,0 @@
-"Overly permissive file permissions","Allowing files to be readable or writable by users other than the owner may allow sensitive information to be accessed.","warning","Overly permissive mask in chmod sets file to world writable.","/Assertion/SonarSource/SS_cwe379_0_128_Dutch.py","21","1","21","26"

@@ -1,1 +1,0 @@
-"URL redirection from remote source","URL redirection based on unvalidated user input may cause redirection to malicious web sites.","error","Untrusted URL redirection depends on a [[""user-provided value""|""relative:///Refinement/GitHubDataset/cwe601_0_60_Malay.py:1:26:1:32""]].","/Refinement/GitHubDataset/cwe601_0_60_Malay.py","13","25","13","30"

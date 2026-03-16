@@ -1,1 +1,0 @@
-"Failure to use HTTPS URLs","Non-HTTPS connections can be intercepted by third parties.","recommendation","URL may have been constructed with HTTP protocol, using [[""this HTTP URL""|""relative:///com/sallm/Tainted/Author/p_72_f_43/A_cwe078_0_43_Turkish.java:12:23:12:42""]].","/com/sallm/Tainted/Author/p_72_f_43/A_cwe078_0_43_Turkish.java","23","78","23","80"

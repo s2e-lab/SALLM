@@ -1,1 +1,0 @@
-"Use of a broken or weak cryptographic algorithm","Using broken or weak cryptographic algorithms can compromise security.","warning","The block mode ECB is broken or weak, and should not be used.","/Matching/StackOverflow/SO_cwe327_0_7_Italian.py","14","19","14","36"
