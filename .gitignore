@@ -161,6 +161,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 Generation/config.json
+Generation/Filtered_Output/dataset_java_nl_prompt_best_starcoder2_0.2.jsonl
+Generation/Output/dataset_java_nl_prompt_best_starcoder2_0.2.jsonl
 Evaluation/Dataset/
 Evaluation/temp/
 Evaluation/temp_*/
@@ -180,4 +182,9 @@ Generation/starcoder_java.o*
 Generation/starcoder_github*.o*
 Generation/qwen_*.o*
 Generation/close_job*.o*
-Generation/pypackages
+Generation/pypackages/
+Generation/ollama.tar.zst
+Generation/bin/
+Generation/lib/
+Generation/ollama_starcoder.o*
+.ollama/

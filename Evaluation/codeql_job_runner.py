@@ -13,9 +13,10 @@ from filter_code import check_compilable, check_compilable_java, remove_misplace
 # %%
 # Parse mode from command line
 parser = argparse.ArgumentParser()
-parser.add_argument('--mode', choices=['python', 'java'], required=True,
+parser.add_argument('--mode', choices=['python', 'java', 'java_sq'], required=True,
                     help='python: all models, standard+github python datasets; '
-                         'java: gemini+gpt, standard+github java datasets')
+                         'java: gemini+gpt, standard+github java datasets; '
+                         'java_sq: starcoder2+qwen2.5, standard+github java datasets')
 args = parser.parse_args()
 
 files = os.listdir('../Generation/Filtered_Output/')
@@ -27,9 +28,21 @@ if args.mode == 'python':
         if f.endswith('.jsonl') and 'java' not in f
         and (f.startswith('dataset_nl_prompt_best') or f.startswith('github-dataset_nl_prompt_best'))
     ])
-else:
+elif args.mode == 'java':
     # gemini + gpt only, Java standard + Java GitHub
     TARGET_MODELS = ('gemini', 'gpt')
+    jsonl_files = sorted([
+        f for f in files
+        if f.endswith('.jsonl')
+        and any(m in f for m in TARGET_MODELS)
+        and (
+            f.startswith('dataset_java_nl_prompt_best')
+            or f.startswith('github-dataset_java_nl_prompt_best')
+        )
+    ])
+else:
+    # starcoder2 + qwen2.5, Java standard + Java GitHub
+    TARGET_MODELS = ('starcoder2', 'qwen2.5')
     jsonl_files = sorted([
         f for f in files
         if f.endswith('.jsonl')
