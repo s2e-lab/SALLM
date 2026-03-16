@@ -187,4 +187,4 @@ Generation/ollama.tar.zst
 Generation/bin/
 Generation/lib/
 Generation/ollama_starcoder.o*
-.ollama/
+.ollama/Evaluation/TestResults/*.jsonl
