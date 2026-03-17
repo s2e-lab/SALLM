@@ -1,0 +1,1 @@
+"Clear-text logging of sensitive information","Logging sensitive information without encryption or hashing can expose it to an attacker.","error","This expression logs [[""sensitive data (certificate)""|""relative:///Refinement/GitHubDataset/cwe295_0_15_German.py:11:19:11:38""]] as clear text.","/Refinement/GitHubDataset/cwe295_0_15_German.py","12","11","12","21"

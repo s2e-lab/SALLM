@@ -1,0 +1,1 @@
+"Local information disclosure in a temporary directory","Writing information without explicit permissions to a shared temporary directory may disclose it to other users.","warning","Local information disclosure vulnerability due to use of file readable by other local users.","/com/sallm/Matching/Author/p_5_f_216/A_cwe377_0_216_Chinese.java","20","21","20","58"

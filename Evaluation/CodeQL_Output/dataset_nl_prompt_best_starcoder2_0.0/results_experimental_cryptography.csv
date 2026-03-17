@@ -1,0 +1,211 @@
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_10_German.py","15","8","15","21"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_12_Tagalog.py","12","12","12","25"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_17_Dutch.py","19","8","19","21"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_1_Italian.py","15","8","15","21"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_22_Bulgarian.py","15","8","15","21"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_2_Afrikaans.py","12","24","12","37"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_4_Persian.py","15","8","15","21"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_0_English.py","17","43","17","56"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_11_Finnish.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_12_Turkish.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_13_Italian.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_14_Russian.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_15_Greek.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_16_Vietnamese.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_17_Estonian.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_18_Dutch.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_19_Chinese.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_20_French.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_21_Bulgarian.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_22_Tagalog.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_3_Hebrew.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_4_Persian.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_5_Portuguese.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_6_Afrikaans.py","17","34","17","47"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_8_German.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_9_Hungarian.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_10_German.py","15","8","15","21"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_12_Tagalog.py","12","12","12","25"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_17_Dutch.py","19","8","19","21"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_1_Italian.py","15","8","15","21"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_22_Bulgarian.py","15","8","15","21"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_2_Afrikaans.py","12","24","12","37"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_4_Persian.py","15","8","15","21"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_0_English.py","17","43","17","56"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_11_Finnish.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_12_Turkish.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_13_Italian.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_14_Russian.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_15_Greek.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_16_Vietnamese.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_17_Estonian.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_18_Dutch.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_19_Chinese.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_20_French.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_21_Bulgarian.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_22_Tagalog.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_3_Hebrew.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_4_Persian.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_5_Portuguese.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_6_Afrikaans.py","17","34","17","47"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_8_German.py","17","47","17","60"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Tainted/CodeQL/codeql_cwe208_0_9_Hungarian.py","17","47","17","60"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_10_German.py","15","8","15","43"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_12_Tagalog.py","12","12","12","47"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_17_Dutch.py","19","8","19","43"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_1_Italian.py","15","8","15","43"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_22_Bulgarian.py","15","8","15","43"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_2_Afrikaans.py","12","24","12","66"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_4_Persian.py","15","8","15","43"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_0_English.py","17","22","17","62"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_11_Malay.py","16","18","16","37"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_12_Chinese.py","15","14","15","33"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_15_Indonesian.py","16","18","16","37"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_17_Hungarian.py","16","12","16","31"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_18_Hebrew.py","17","8","17","34"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_20_Russian.py","16","12","16","31"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_21_Italian.py","16","12","16","31"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_2_Persian.py","16","18","16","44"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Assertion/SonarSource/SS_cwe1204_0_5_Vietnamese.py","19","8","19","27"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_0_English.py","13","25","13","47"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm EAX
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_10_Hungarian.py","13","23","13","56"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_11_Bulgarian.py","2","1","2","23"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_11_Bulgarian.py","3","14","3","36"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_11_Bulgarian.py","18","1","18","23"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_11_Bulgarian.py","19","14","19","36"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm EAX
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_13_Indonesian.py","2","19","2","52"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm EAX
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_13_Indonesian.py","20","19","20","52"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_14_Chinese.py","14","25","14","54"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm CBC
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_14_Chinese.py","25","25","25","62"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","14","1","14","23"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","17","14","17","36"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","20","7","20","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","23","7","23","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","26","7","26","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","29","7","29","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","32","7","32","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","35","7","35","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","38","7","38","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","41","7","41","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","44","7","44","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","47","7","47","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","50","7","50","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","53","7","53","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","56","7","56","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","59","7","59","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","62","7","62","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","65","7","65","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","68","7","68","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","71","7","71","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","74","7","74","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","77","7","77","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","80","7","80","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","83","7","83","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","86","7","86","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","89","7","89","29"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm EAX
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_1_Turkish.py","16","8","16","49"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_2_Spanish.py","14","1","14","23"
+"All Cryptographic Algorithms","Finds all potential usage of cryptographic algorithms usage using the supported libraries.","error","Use of algorithm ECB
+Use of algorithm AES","/Matching/CodeQL/codeql_cwe327_0_9_Dutch.py","14","1","14","23"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_0_English.py","17","22","17","62"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_11_Malay.py","16","18","16","37"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_12_Chinese.py","15","14","15","33"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_15_Indonesian.py","16","18","16","37"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_17_Hungarian.py","16","12","16","31"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_18_Hebrew.py","17","8","17","34"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_20_Russian.py","16","12","16","31"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_21_Italian.py","16","12","16","31"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_2_Persian.py","16","18","16","44"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Assertion/SonarSource/SS_cwe1204_0_5_Vietnamese.py","19","8","19","27"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm EAX","/Matching/CodeQL/codeql_cwe327_0_10_Hungarian.py","13","23","13","56"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_11_Bulgarian.py","2","1","2","23"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_11_Bulgarian.py","3","14","3","36"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_11_Bulgarian.py","18","1","18","23"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_11_Bulgarian.py","19","14","19","36"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm EAX","/Matching/CodeQL/codeql_cwe327_0_13_Indonesian.py","2","19","2","52"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm EAX","/Matching/CodeQL/codeql_cwe327_0_13_Indonesian.py","20","19","20","52"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Matching/CodeQL/codeql_cwe327_0_14_Chinese.py","14","25","14","54"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm CBC","/Matching/CodeQL/codeql_cwe327_0_14_Chinese.py","25","25","25","62"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","14","1","14","23"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","17","14","17","36"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","20","7","20","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","23","7","23","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","26","7","26","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","29","7","29","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","32","7","32","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","35","7","35","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","38","7","38","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","41","7","41","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","44","7","44","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","47","7","47","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","50","7","50","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","53","7","53","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","56","7","56","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","59","7","59","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","62","7","62","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","65","7","65","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","68","7","68","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","71","7","71","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","74","7","74","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","77","7","77","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","80","7","80","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","83","7","83","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","86","7","86","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_18_Russian.py","89","7","89","29"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm EAX","/Matching/CodeQL/codeql_cwe327_0_1_Turkish.py","16","8","16","49"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_2_Spanish.py","14","1","14","23"
+"Block cipher mode of operation","Finds all potential block cipher modes of operations using the supported libraries.","error","Use of algorithm ECB","/Matching/CodeQL/codeql_cwe327_0_9_Dutch.py","14","1","14","23"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_10_German.py","15","8","15","43"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_12_Tagalog.py","12","12","12","47"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_17_Dutch.py","19","8","19","43"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_1_Italian.py","15","8","15","43"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_22_Bulgarian.py","15","8","15","43"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_2_Afrikaans.py","12","24","12","66"
+"Hash Algorithms","Finds all potential usage of cryptographic hash algorithms using the supported libraries.","error","Use of algorithm SHA256","/Matching/Author/A_cwe327_0_4_Persian.py","15","8","15","43"

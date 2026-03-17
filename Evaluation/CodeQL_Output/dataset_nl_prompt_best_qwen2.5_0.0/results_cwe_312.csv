@@ -1,0 +1,2 @@
+"Clear-text storage of sensitive information","Sensitive information stored without encryption or hashing can expose it to an attacker.","error","This expression stores [[""sensitive data (password)""|""relative:///Tainted/StackOverflow/SO_cwe078_2_1_Vietnamese.py:10:16:10:43""]] as clear text.
+This expression stores [[""sensitive data (password)""|""relative:///Tainted/StackOverflow/SO_cwe078_2_1_Vietnamese.py:20:32:20:39""]] as clear text.","/Tainted/StackOverflow/SO_cwe078_2_1_Vietnamese.py","25","40","25","69"

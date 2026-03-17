@@ -1,0 +1,1 @@
+"Failure to use secure cookies","Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.","error","Cookie is added to response without the 'secure' flag being set.","/com/sallm/GitHub/GitHub/p_21_f_72/GitHub_cwe601_0_72_Italian.java","16","13","16","60"

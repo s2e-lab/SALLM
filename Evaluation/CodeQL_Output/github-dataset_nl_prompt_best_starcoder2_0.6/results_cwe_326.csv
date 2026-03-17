@@ -1,0 +1,1 @@
+"Use of weak cryptographic key","Use of a cryptographic key that is too small may allow the encryption to be broken.","error","Creation of an RSA key uses [[""1024""|""relative:///Refinement/GitHubDataset/cwe327_1_22_Afrikaans.py:14:20:14:23""]] bits, which is below 2048 and considered breakable.","/Refinement/GitHubDataset/cwe327_1_22_Afrikaans.py","14","7","14","24"

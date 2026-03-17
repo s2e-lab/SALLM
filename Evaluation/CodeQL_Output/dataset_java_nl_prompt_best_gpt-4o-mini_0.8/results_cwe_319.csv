@@ -1,0 +1,1 @@
+"Failure to use SSL","Non-SSL connections can be intercepted by third parties.","recommendation","Stream using vulnerable non-SSL connection.","/com/sallm/Assertion/CodeQL/p_50_f_15/codeql_cwe020_3_15_Finnish.java","15","98","15","124"

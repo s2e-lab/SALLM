@@ -1,0 +1,1 @@
+"Incomplete URL substring sanitization","Security checks on the substrings of an unparsed URL are often vulnerable to bypassing.","warning","The string [[""wikipedia.org""|""relative:///Refinement/GitHubDataset/cwe601_0_229_French.py:13:79:13:93""]] may be at an arbitrary position in the sanitized URL.","/Refinement/GitHubDataset/cwe601_0_229_French.py","13","57","13","94"
