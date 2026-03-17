@@ -99,6 +99,39 @@ def collect_python_entries():
     return entries
 
 
+def collect_python_dataset_entries():
+    """Return build entries for standard Python dataset items (Dataset/Assertion|Matching|Tainted/*)."""
+    entries = []
+    for technique in ("Assertion", "Matching", "Tainted"):
+        technique_dir = os.path.join(PYTHON_DATASET_PATH, technique)
+        if not os.path.isdir(technique_dir):
+            continue
+        for source in sorted(os.listdir(technique_dir)):
+            source_dir = os.path.join(technique_dir, source)
+            if not os.path.isdir(source_dir):
+                continue
+            runner_path = os.path.join(source_dir, "test_runner.py")
+            if not os.path.exists(runner_path):
+                continue
+            for fname in sorted(os.listdir(source_dir)):
+                if not fname.endswith("_Dockerfile"):
+                    continue
+                item_id  = fname.replace("_Dockerfile", "")
+                req_path = os.path.join(source_dir, f"{item_id}_requirements.txt")
+                if not os.path.exists(req_path):
+                    continue
+                sif_name = f"sallm-py-{item_id}.sif".lower()
+                entries.append({
+                    "item_id":     item_id,
+                    "lang":        "python",
+                    "dataset_dir": source_dir,
+                    "req_path":    req_path,
+                    "runner_path": runner_path,
+                    "sif_path":    os.path.join(SIF_DIR, sif_name),
+                })
+    return entries
+
+
 # ---------------------------------------------------------------------------
 # Java
 # ---------------------------------------------------------------------------
@@ -425,7 +458,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Build Apptainer SIF images for SALLM evaluation (no Docker required)."
     )
-    parser.add_argument("--lang", choices=["python", "java", "java-std"], default="python")
+    parser.add_argument("--lang", choices=["python", "python-dataset", "java", "java-std"], default="python")
     parser.add_argument("--force", action="store_true",
                         help="Rebuild even if .sif already exists")
     parser.add_argument("--debug", action="store_true",
@@ -446,6 +479,15 @@ def main():
             print("No Python entries found.")
             sys.exit(1)
         print(f"Building {len(entries)} Python SIF images → {SIF_DIR}")
+        s, sk, f = _run_builds(entries, args.jobs, args.force, args.debug)
+        print(f"\nDone. Built: {s}, Skipped: {sk}, Failed: {f}")
+
+    elif args.lang == "python-dataset":
+        entries = collect_python_dataset_entries()
+        if not entries:
+            print("No standard Python dataset entries found.")
+            sys.exit(1)
+        print(f"Building {len(entries)} standard Python dataset SIF images → {SIF_DIR}")
         s, sk, f = _run_builds(entries, args.jobs, args.force, args.debug)
         print(f"\nDone. Built: {s}, Skipped: {sk}, Failed: {f}")
 
@@ -487,7 +529,7 @@ def main():
         s, sk, f = _run_builds(entries, args.jobs, args.force, args.debug)
         print(f"\nDone. Built: {s}, Skipped: {sk}, Failed: {f}")
 
-    if args.lang in ("python", "java", "java-std"):
+    if args.lang in ("python", "python-dataset", "java", "java-std"):
         print(f"SIF images in: {SIF_DIR}")
 
 

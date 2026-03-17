@@ -1,0 +1,1 @@
+"Request without certificate validation","Making a request without certificate validation can allow man-in-the-middle attacks.","error","This request may run without certificate validation because [[""it is disabled""|""relative:///Refinement/GitHubDataset/cwe918_0_87_Spanish.py:9:33:9:37""]].","/Refinement/GitHubDataset/cwe918_0_87_Spanish.py","9","8","9","38"

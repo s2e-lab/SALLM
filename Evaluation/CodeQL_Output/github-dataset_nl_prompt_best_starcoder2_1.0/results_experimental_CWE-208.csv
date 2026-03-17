@@ -1,0 +1,115 @@
+"Timing attack against header value","Use of a non-constant-time verification routine to check the value of an HTTP header, possibly allowing a timing attack to infer the header's expected value.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe798_0_68_Arabic.py:11:9:11:40""]] validation.","/Refinement/GitHubDataset/cwe798_0_68_Arabic.py","13","4","13","8"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe020_1_71_Chinese.py:23:12:23:21""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe020_1_71_Chinese.py:26:12:26:21""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe020_1_71_Chinese.py:30:13:30:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe020_1_71_Chinese.py:31:17:31:26""]] validation.","/Refinement/GitHubDataset/cwe020_1_71_Chinese.py","31","17","31","29"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_10_Malay.py:15:26:15:31""]] validation.","/Refinement/GitHubDataset/cwe094_0_10_Malay.py","15","37","15","37"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_129_Russian.py:19:14:19:19""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_129_Russian.py:20:8:20:12""]] validation.","/Refinement/GitHubDataset/cwe094_0_129_Russian.py","20","8","20","12"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:20:18:20:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:21:18:21:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:15:23:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:49:23:54""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:13:24:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:31:24:36""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:26:29:26:34""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:17:27:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:35:27:40""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:29:17:29:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:32:31:37""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:13:31:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:35:15:35:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:38:15:38:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:9:41:14""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:27:41:32""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:46:41:51""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:30:42:35""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:51:42:56""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:9:42:14""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:20:18:20:23""]] validation.","/Refinement/GitHubDataset/cwe094_0_229_Dutch.py","20","18","20","23"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:20:18:20:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:21:18:21:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:15:23:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:49:23:54""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:13:24:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:31:24:36""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:26:29:26:34""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:17:27:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:35:27:40""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:29:17:29:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:32:31:37""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:13:31:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:35:15:35:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:38:15:38:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:9:41:14""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:27:41:32""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:46:41:51""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:30:42:35""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:51:42:56""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:9:42:14""]] validation.","/Refinement/GitHubDataset/cwe094_0_229_Dutch.py","23","15","23","30"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:20:18:20:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:21:18:21:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:15:23:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:49:23:54""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:13:24:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:31:24:36""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:26:29:26:34""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:17:27:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:35:27:40""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:29:17:29:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:32:31:37""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:13:31:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:35:15:35:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:38:15:38:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:9:41:14""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:27:41:32""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:46:41:51""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:30:42:35""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:51:42:56""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:9:42:14""]] validation.","/Refinement/GitHubDataset/cwe094_0_229_Dutch.py","23","49","23","64"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:20:18:20:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:21:18:21:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:15:23:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:49:23:54""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:13:24:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:31:24:36""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:26:29:26:34""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:17:27:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:35:27:40""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:29:17:29:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:32:31:37""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:13:31:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:35:15:35:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:38:15:38:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:9:41:14""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:27:41:32""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:46:41:51""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:30:42:35""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:51:42:56""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:9:42:14""]] validation.","/Refinement/GitHubDataset/cwe094_0_229_Dutch.py","35","15","35","30"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:20:18:20:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:21:18:21:23""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:15:23:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:23:49:23:54""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:13:24:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:24:31:24:36""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:26:29:26:34""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:17:27:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:27:35:27:40""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:29:17:29:22""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:32:31:37""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:31:13:31:18""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:35:15:35:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:38:15:38:20""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:9:41:14""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:27:41:32""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:41:46:41:51""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:30:42:35""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:51:42:56""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_229_Dutch.py:42:9:42:14""]] validation.","/Refinement/GitHubDataset/cwe094_0_229_Dutch.py","38","15","38","30"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe798_0_68_Arabic.py:13:4:13:8""]] validation.","/Refinement/GitHubDataset/cwe798_0_68_Arabic.py","13","4","13","8"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe798_0_68_Arabic.py:8:12:8:21""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe798_0_68_Arabic.py:12:25:12:34""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe798_0_68_Arabic.py:13:13:13:22""]] validation.","/Refinement/GitHubDataset/cwe798_0_68_Arabic.py","13","13","13","22"
+"Timing attack against secret","Use of a non-constant-time verification routine to check the value of an secret, possibly allowing a timing attack to retrieve sensitive information.","error","Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_129_Russian.py:19:14:19:19""]] validation.
+Timing attack against [[""client-supplied token""|""relative:///Refinement/GitHubDataset/cwe094_0_129_Russian.py:20:8:20:12""]] validation.","/Refinement/GitHubDataset/cwe094_0_129_Russian.py","20","8","20","12"

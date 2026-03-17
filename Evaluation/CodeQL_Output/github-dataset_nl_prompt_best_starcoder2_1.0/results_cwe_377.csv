@@ -1,0 +1,2 @@
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Refinement/GitHubDataset/cwe502_1_53_Afrikaans.py","15","24","15","40"
+"Insecure temporary file","Creating a temporary file using this method may be insecure.","error","Call to deprecated function tempfile.mktemp may be insecure.","/Refinement/GitHubDataset/cwe502_1_53_Afrikaans.py","19","25","19","41"
