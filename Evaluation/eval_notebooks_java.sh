@@ -26,7 +26,7 @@ python3 analyze_compilability_result.py
 echo "[5/7] Running Python vs Java comparison tables..."
 python3 compare_python_java.py
 
-echo "[6/7] Aggregating CodeQL results (Java)..."
+echo "[6/7] Aggregating CodeQL results (Java + Python)..."
 python3 aggregate_codeql.py
 
 echo "[7/7] Generating Result_Generation figures..."

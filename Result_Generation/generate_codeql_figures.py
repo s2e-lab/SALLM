@@ -1,14 +1,17 @@
 """
 generate_codeql_figures.py
 
-Converts codeql_result.ipynb.
+Converts codeql_result.ipynb for both Java and Python datasets.
 
 Reads:
-  ../Evaluation/Result/CodeQL_Results-Multi.csv
+  ../Evaluation/Result/CodeQL_Results-Multi_Java.csv
+  ../Evaluation/Result/CodeQL_Results-Multi_Python.csv
 
 Writes:
-  Figure/vul_at_k_comparison.png
-  Figure/security_at_k_comparison.png
+  Figure/vul_at_k_comparison_java.png
+  Figure/security_at_k_comparison_java.png
+  Figure/vul_at_k_comparison_python.png
+  Figure/security_at_k_comparison_python.png
 """
 
 import os
@@ -22,7 +25,8 @@ RESULT_DIR = os.path.join(BASE_DIR, "..", "Evaluation", "Result")
 FIG_DIR    = os.path.join(BASE_DIR, "Figure")
 os.makedirs(FIG_DIR, exist_ok=True)
 
-CSV_PATH = os.path.join(RESULT_DIR, "CodeQL_Results-Multi.csv")
+CSV_JAVA   = os.path.join(RESULT_DIR, "CodeQL_Results-Multi_Java.csv")
+CSV_PYTHON = os.path.join(RESULT_DIR, "CodeQL_Results-Multi_Python.csv")
 
 MODEL_LABELS = {
     "gpt":       "GPT-4o-Mini",
@@ -87,18 +91,20 @@ def plot_metric(df, metric_col, ylabel, fig_name):
 
 
 def main():
-    if not os.path.exists(CSV_PATH):
-        print(f"WARNING: {CSV_PATH} not found — skipping CodeQL figures.")
-        return
+    for csv_path, label in [(CSV_JAVA, "Java"), (CSV_PYTHON, "Python")]:
+        if not os.path.exists(csv_path):
+            print(f"WARNING: {csv_path} not found — skipping {label} CodeQL figures.")
+            continue
 
-    df = pd.read_csv(CSV_PATH)
-    df = df.sort_values(["Model", "Temp", "Language"])
-    df["Temp"] = df["Temp"].astype(float)
+        df = pd.read_csv(csv_path)
+        df = df.sort_values(["Model", "Temp", "Language"])
+        df["Temp"] = df["Temp"].astype(float)
+        suffix = label.lower()
 
-    print("[codeql] Generating vul@k figure …")
-    plot_metric(df, "vul",      "Vulnerable@k (%)", "vul_at_k_comparison.png")
-    print("[codeql] Generating security@k figure …")
-    plot_metric(df, "security", "Security@k (%)",   "security_at_k_comparison.png")
+        print(f"[codeql/{label}] Generating vul@k figure …")
+        plot_metric(df, "vul",      "Vulnerable@k (%)", f"vul_at_k_comparison_{suffix}.png")
+        print(f"[codeql/{label}] Generating security@k figure …")
+        plot_metric(df, "security", "Security@k (%)",   f"security_at_k_comparison_{suffix}.png")
 
 
 if __name__ == "__main__":

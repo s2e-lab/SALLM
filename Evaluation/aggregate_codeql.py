@@ -2,14 +2,15 @@
 aggregate_codeql.py
 
 Converts CodeQL_Result_Analysis.ipynb + pass_at_k_codeql.ipynb into a single
-script for the Java dataset.
+script for both Java and Python datasets.
 
 Reads:
-  - Generation/Filtered_Output/dataset_java_nl_prompt_best_*.jsonl
+  - Generation/Filtered_Output/dataset_{java_}nl_prompt_best_*.jsonl
   - Evaluation/CodeQL_Output/{model_temp}/*.csv   (raw CodeQL, no headers)
 
 Produces:
-  - Evaluation/Result/CodeQL_Results-Multi.csv
+  - Evaluation/Result/CodeQL_Results-Multi_Java.csv
+  - Evaluation/Result/CodeQL_Results-Multi_Python.csv
     columns: Model, Language, Temp, vul@1, vul@3, vul@5,
              in_vul@1, in_vul@3, in_vul@5,
              security@1, security@3, security@5,
@@ -64,20 +65,22 @@ def extract_cwe(file_stem):
 
 def parse_jsonl_name(fname):
     """
-    dataset_java_nl_prompt_best_gemini-2.5-flash_0.0.jsonl
-    → model = 'gemini-2.5-flash', temp = '0.0', dir_key = fname without .jsonl
+    dataset_java_nl_prompt_best_gemini-2.5-flash_0.0.jsonl  → is_java=True
+    dataset_nl_prompt_best_gemini-2.5-flash_0.0.jsonl       → is_java=False
+    Returns (model, temp, dir_key, is_java) or (None, None, None, None).
     """
     stem = fname.replace(".jsonl", "")
-    for prefix in (
-        "dataset_java_nl_prompt_best_",
-        "github-dataset_java_nl_prompt_best_",
+    for prefix, is_java in (
+        ("dataset_java_nl_prompt_best_",        True),
+        ("github-dataset_java_nl_prompt_best_", True),
+        ("dataset_nl_prompt_best_",             False),
+        ("github-dataset_nl_prompt_best_",      False),
     ):
         if stem.startswith(prefix):
             remain = stem[len(prefix):]
-            # last token is temperature
             model, temp = remain.rsplit("_", 1)
-            return model, temp, stem
-    return None, None, None
+            return model, temp, stem, is_java
+    return None, None, None, None
 
 
 # ---------------------------------------------------------------------------
@@ -124,10 +127,13 @@ def search(combined, current_cwe, file_name):
 # ---------------------------------------------------------------------------
 # Process one JSONL file → per-language results dict
 # ---------------------------------------------------------------------------
-def process_jsonl(jsonl_path, model_key, combined):
+def process_jsonl(jsonl_path, model_key, combined, is_java):
     """
     Returns dict: language → {id → [[direct_vul, indirect_vul], ...]}
+    is_java controls the generated file extension (.java vs .py).
     """
+    ext = ".java" if is_java else ".py"
+
     with open(jsonl_path, encoding="utf-8") as fh:
         data = [json.loads(l) for l in fh if l.strip()]
 
@@ -160,7 +166,7 @@ def process_jsonl(jsonl_path, model_key, combined):
             if not gen.get("compilable", False):
                 continue
 
-            cur_file = f"{base_stem}_{j}_{nat_lang}.java"
+            cur_file = f"{base_stem}_{j}_{nat_lang}{ext}"
             d_vul, i_vul = search(combined, current_cwe, cur_file)
 
             key = f"{technique}_{source}_{base_stem}"   # unique per prompt
@@ -230,17 +236,16 @@ def compute_metrics(results_by_lang, model, temp, ks=(1, 3, 5)):
 # Main
 # ---------------------------------------------------------------------------
 def main():
-    jsonl_files = sorted(
-        f for f in os.listdir(FILTERED_DIR)
-        if f.endswith(".jsonl") and "java" in f
+    all_files = sorted(
+        f for f in os.listdir(FILTERED_DIR) if f.endswith(".jsonl")
     )
-    print(f"Found {len(jsonl_files)} Java JSONL files")
 
-    all_rows = []
-    for fname in jsonl_files:
-        model, temp, dir_key = parse_jsonl_name(fname)
+    java_rows   = []
+    python_rows = []
+
+    for fname in all_files:
+        model, temp, dir_key, is_java = parse_jsonl_name(fname)
         if model is None:
-            print(f"  Skipping (unrecognised name): {fname}")
             continue
 
         codeql_dir = os.path.join(CODEQL_OUT_DIR, dir_key)
@@ -248,21 +253,30 @@ def main():
             print(f"  No CodeQL output for {dir_key}, skipping")
             continue
 
-        print(f"  Processing {dir_key} …")
-        combined     = load_codeql_findings(codeql_dir)
-        jsonl_path   = os.path.join(FILTERED_DIR, fname)
-        results      = process_jsonl(jsonl_path, model, combined)
-        rows         = compute_metrics(results, model, temp)
-        all_rows.extend(rows)
+        lang_label = "Java" if is_java else "Python"
+
+        # Skip dirs where all CSVs are empty — CodeQL job didn't produce output.
+        # Vacuously 0% vulnerable / 100% secure would be misleading.
+        combined = load_codeql_findings(codeql_dir)
+        if not combined:
+            print(f"  [{lang_label}] SKIP (empty CodeQL output — job may not have run): {dir_key}")
+            continue
+        jsonl_path = os.path.join(FILTERED_DIR, fname)
+        results    = process_jsonl(jsonl_path, model, combined, is_java)
+        rows       = compute_metrics(results, model, temp)
+        if is_java:
+            java_rows.extend(rows)
+        else:
+            python_rows.extend(rows)
         print(f"    → {len(rows)} language rows")
 
-    if not all_rows:
-        print("No data collected — exiting.")
-        return
-
-    out_path = os.path.join(RESULT_DIR, "CodeQL_Results-Multi.csv")
-    pd.DataFrame(all_rows).to_csv(out_path, index=False)
-    print(f"\nSaved → {out_path}  ({len(all_rows)} rows)")
+    for rows, label in [(java_rows, "Java"), (python_rows, "Python")]:
+        if not rows:
+            print(f"No {label} data collected — skipping.")
+            continue
+        out_path = os.path.join(RESULT_DIR, f"CodeQL_Results-Multi_{label}.csv")
+        pd.DataFrame(rows).to_csv(out_path, index=False)
+        print(f"\nSaved → {out_path}  ({len(rows)} rows)")
 
 
 if __name__ == "__main__":
