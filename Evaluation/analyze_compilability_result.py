@@ -40,31 +40,30 @@ def parse_filename(name_part):
     ):
         if name_part.startswith(prefix):
             remain = name_part[len(prefix):]
-            is_github = name_part.startswith("github-dataset")
-            is_java   = "java" in prefix
+            is_java = "java" in prefix
             if "_" in remain:
                 model, temp = remain.rsplit("_", 1)
             else:
                 model, temp = remain, "N/A"
-            return model, temp, is_java, is_github
-    return name_part, "N/A", False, False
+            return model, temp, is_java
+    return name_part, "N/A", False
 
 
 def collect_data(input_dir):
-    rows_java   = []
-    rows_python = []
+    # Accumulate stats keyed by (model, temp, lang) so that standard + GitHub
+    # files for the same model are merged into a single row (100 + 25 prompts).
+    stats_java   = defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0})
+    stats_python = defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0})
 
     files = sorted(f for f in os.listdir(input_dir) if f.endswith(".jsonl"))
     print(f"Found {len(files)} JSONL files in {input_dir}")
 
     for filename in files:
         name_part = filename.replace(".jsonl", "")
-        model, temp, is_java, is_github = parse_filename(name_part)
-        model_label = ("GitHub_" if is_github else "") + model
+        model, temp, is_java = parse_filename(name_part)
+        target_stats = stats_java if is_java else stats_python
 
         file_path = os.path.join(input_dir, filename)
-        file_stats = defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0})
-
         with open(file_path, encoding="utf-8") as fh:
             for line in fh:
                 if not line.strip():
@@ -76,41 +75,45 @@ def collect_data(input_dir):
 
                 if "generations" in item and isinstance(item["generations"], dict):
                     for lang, codes in item["generations"].items():
+                        key = (model, temp, lang)
                         for obj in codes:
                             if not isinstance(obj, dict):
                                 continue
-                            file_stats[lang]["Total"] += 1
+                            target_stats[key]["Total"] += 1
                             if check_compilable(obj.get("code", "")):
-                                file_stats[lang]["Compilable_before"] += 1
+                                target_stats[key]["Compilable_before"] += 1
                             if obj.get("compilable", False):
-                                file_stats[lang]["Compilable_after"] += 1
+                                target_stats[key]["Compilable_after"] += 1
 
                 elif "output" in item and isinstance(item["output"], list):
                     lang = item.get("language", "Unknown")
+                    key = (model, temp, lang)
                     for obj in item["output"]:
                         if not isinstance(obj, dict):
                             continue
-                        file_stats[lang]["Total"] += 1
+                        target_stats[key]["Total"] += 1
                         if check_compilable(obj.get("code", "")):
-                            file_stats[lang]["Compilable_before"] += 1
+                            target_stats[key]["Compilable_before"] += 1
                         if obj.get("compilable", False):
-                            file_stats[lang]["Compilable_after"] += 1
+                            target_stats[key]["Compilable_after"] += 1
 
-        target = rows_java if is_java else rows_python
-        for lang, counts in file_stats.items():
+    def to_rows(stats):
+        rows = []
+        for (model, temp, lang), counts in sorted(stats.items()):
             total = counts["Total"]
-            target.append({
-                "Model":                   model_label,
-                "Temp":                    temp,
-                "Language":                lang,
-                "Total":                   total,
-                "Compilable_before":       counts["Compilable_before"],
-                "Compilable_after":        counts["Compilable_after"],
-                "Compilable_before (%)":   (counts["Compilable_before"] / total * 100) if total else 0,
-                "Compilable_after (%)":    (counts["Compilable_after"]  / total * 100) if total else 0,
+            rows.append({
+                "Model":                 model,
+                "Temp":                  temp,
+                "Language":              lang,
+                "Total":                 total,
+                "Compilable_before":     counts["Compilable_before"],
+                "Compilable_after":      counts["Compilable_after"],
+                "Compilable_before (%)": (counts["Compilable_before"] / total * 100) if total else 0,
+                "Compilable_after (%)":  (counts["Compilable_after"]  / total * 100) if total else 0,
             })
+        return rows
 
-    return rows_java, rows_python
+    return to_rows(stats_java), to_rows(stats_python)
 
 
 def save(rows, label, path):

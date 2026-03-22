@@ -1,89 +1,45 @@
 language_family,Model,Java_pass@3,Python_pass@3,Delta (Python-Java)
-Afro-Asiatic,GitHub_gemini-2.5-flash,9.57±2.43,13.70±4.19,4.12
-Afro-Asiatic,GitHub_gpt-4o-mini,4.70±0.80,28.59±1.67,23.89
-Afro-Asiatic,GitHub_qwen2.5,18.90±2.39,23.28±11.63,4.38
-Afro-Asiatic,GitHub_starcoder2,1.38±1.70,1.11±1.26,-0.26
-Afro-Asiatic,gemini-2.5-flash,14.90±9.48,26.91±1.91,12.01
-Afro-Asiatic,gpt-4o-mini,20.82±2.03,34.38±1.24,13.56
-Afro-Asiatic,qwen2.5,12.22±2.52,21.05±10.10,8.83
-Afro-Asiatic,starcoder2,0.97±0.70,1.63±1.19,0.67
-Austro-Asiatic,GitHub_gemini-2.5-flash,8.56±1.85,9.92±3.52,1.36
-Austro-Asiatic,GitHub_gpt-4o-mini,4.00±0.00,28.16±3.15,24.16
-Austro-Asiatic,GitHub_qwen2.5,13.08±3.21,23.39±11.81,10.31
-Austro-Asiatic,GitHub_starcoder2,3.44±2.70,0.00±0.00,-3.44
-Austro-Asiatic,gemini-2.5-flash,19.81±1.39,26.98±2.96,7.16
-Austro-Asiatic,gpt-4o-mini,20.95±1.68,33.43±3.66,12.48
-Austro-Asiatic,qwen2.5,12.57±3.06,20.47±10.18,7.9
-Austro-Asiatic,starcoder2,1.65±0.82,2.86±1.97,1.21
-Austronesian,GitHub_gemini-2.5-flash,7.58±2.16,13.92±3.16,6.34
-Austronesian,GitHub_gpt-4o-mini,4.96±0.91,29.37±3.27,24.41
-Austronesian,GitHub_qwen2.5,13.91±2.41,22.73±11.29,8.82
-Austronesian,GitHub_starcoder2,1.10±1.13,0.65±0.98,-0.45
-Austronesian,gemini-2.5-flash,16.63±4.50,25.44±2.85,8.81
-Austronesian,gpt-4o-mini,23.17±1.52,33.84±1.89,10.67
-Austronesian,qwen2.5,14.76±1.98,20.66±9.86,5.89
-Austronesian,starcoder2,1.10±0.91,2.01±1.38,0.91
-Indo-European (Germanic),GitHub_gemini-2.5-flash,8.68±1.75,12.58±2.09,3.9
-Indo-European (Germanic),GitHub_gpt-4o-mini,5.00±1.45,30.11±3.55,25.11
-Indo-European (Germanic),GitHub_qwen2.5,16.73±2.30,21.47±11.33,4.74
-Indo-European (Germanic),GitHub_starcoder2,1.92±2.01,0.54±1.13,-1.38
-Indo-European (Germanic),gemini-2.5-flash,17.69±4.30,26.78±5.70,9.09
-Indo-European (Germanic),gpt-4o-mini,21.75±1.49,34.26±5.73,12.51
-Indo-European (Germanic),qwen2.5,13.88±3.44,22.04±10.42,8.16
-Indo-European (Germanic),starcoder2,1.52±1.33,2.21±1.40,0.69
-Indo-European (Greek),GitHub_gemini-2.5-flash,8.18±0.66,12.85±2.00,4.67
-Indo-European (Greek),GitHub_gpt-4o-mini,4.74±1.34,29.02±2.64,24.28
-Indo-European (Greek),GitHub_qwen2.5,14.56±1.23,18.99±9.38,4.43
-Indo-European (Greek),GitHub_starcoder2,2.03±1.76,0.87±1.13,-1.16
-Indo-European (Greek),gemini-2.5-flash,19.24±1.67,21.84±3.09,2.6
-Indo-European (Greek),gpt-4o-mini,20.79±1.69,33.19±1.97,12.4
-Indo-European (Greek),qwen2.5,13.74±2.55,18.09±9.03,4.35
-Indo-European (Greek),starcoder2,0.85±0.44,3.28±2.13,2.43
-Indo-European (Iranian),GitHub_gemini-2.5-flash,8.46±1.77,10.55±2.27,2.08
-Indo-European (Iranian),GitHub_gpt-4o-mini,4.00±0.00,24.43±3.52,20.43
-Indo-European (Iranian),GitHub_qwen2.5,13.96±1.77,22.31±11.16,8.34
-Indo-European (Iranian),GitHub_starcoder2,1.36±0.85,0.96±1.12,-0.4
-Indo-European (Iranian),gemini-2.5-flash,18.16±9.10,26.94±2.79,8.78
-Indo-European (Iranian),gpt-4o-mini,21.37±0.99,33.51±2.27,12.14
-Indo-European (Iranian),qwen2.5,11.09±2.33,20.45±10.57,9.36
-Indo-European (Iranian),starcoder2,0.20±0.25,2.50±1.95,2.29
-Indo-European (Romance),GitHub_gemini-2.5-flash,8.31±0.78,9.50±3.64,1.19
-Indo-European (Romance),GitHub_gpt-4o-mini,4.25±0.61,29.25±1.88,25.0
-Indo-European (Romance),GitHub_qwen2.5,15.54±2.36,24.58±11.76,9.05
-Indo-European (Romance),GitHub_starcoder2,2.48±2.51,1.52±1.58,-0.96
-Indo-European (Romance),gemini-2.5-flash,18.02±2.42,24.46±3.17,6.44
-Indo-European (Romance),gpt-4o-mini,22.11±1.85,34.05±2.38,11.94
-Indo-European (Romance),qwen2.5,13.87±2.63,22.13±10.29,8.26
-Indo-European (Romance),starcoder2,1.35±1.02,2.44±1.65,1.1
-Sino-Tibetan,GitHub_gemini-2.5-flash,7.63±1.89,15.12±2.24,7.49
-Sino-Tibetan,GitHub_gpt-4o-mini,5.19±1.51,29.87±1.80,24.67
-Sino-Tibetan,GitHub_qwen2.5,16.52±2.74,24.59±12.29,8.07
-Sino-Tibetan,GitHub_starcoder2,1.36±2.35,1.56±2.02,0.2
-Sino-Tibetan,gemini-2.5-flash,16.08±2.10,24.63±3.98,8.54
-Sino-Tibetan,gpt-4o-mini,21.99±0.99,38.00±0.64,16.0
-Sino-Tibetan,qwen2.5,14.48±1.64,26.22±13.30,11.74
-Sino-Tibetan,starcoder2,0.66±0.52,1.86±1.11,1.21
-Slavic,GitHub_gemini-2.5-flash,7.96±1.87,12.32±1.95,4.36
-Slavic,GitHub_gpt-4o-mini,4.93±1.13,29.87±1.77,24.94
-Slavic,GitHub_qwen2.5,16.03±2.43,22.52±10.82,6.49
-Slavic,GitHub_starcoder2,1.79±1.77,0.68±0.75,-1.11
-Slavic,gemini-2.5-flash,18.01±2.15,25.17±2.50,7.16
-Slavic,gpt-4o-mini,20.22±2.54,33.39±2.50,13.16
-Slavic,qwen2.5,13.80±2.49,23.09±11.19,9.29
-Slavic,starcoder2,1.41±1.10,3.03±1.98,1.62
-Turkic,GitHub_gemini-2.5-flash,8.18±2.46,13.86±3.80,5.68
-Turkic,GitHub_gpt-4o-mini,7.32±2.29,28.59±1.57,21.27
-Turkic,GitHub_qwen2.5,16.37±3.31,20.56±11.26,4.19
-Turkic,GitHub_starcoder2,2.67±2.73,0.80±0.98,-1.87
-Turkic,gemini-2.5-flash,17.14±8.42,24.53±3.22,7.39
-Turkic,gpt-4o-mini,23.72±1.68,31.95±1.65,8.23
-Turkic,qwen2.5,11.65±2.83,21.51±10.73,9.87
-Turkic,starcoder2,1.74±1.35,1.98±1.48,0.24
-Uralic,GitHub_gemini-2.5-flash,6.72±1.57,11.36±2.18,4.64
-Uralic,GitHub_gpt-4o-mini,5.94±2.16,23.73±3.11,17.79
-Uralic,GitHub_qwen2.5,16.66±3.32,20.94±10.28,4.28
-Uralic,GitHub_starcoder2,1.46±1.04,1.43±1.99,-0.03
-Uralic,gemini-2.5-flash,17.73±4.87,25.69±1.61,7.96
-Uralic,gpt-4o-mini,22.07±2.23,33.44±1.82,11.37
-Uralic,qwen2.5,11.73±2.44,18.18±8.83,6.45
-Uralic,starcoder2,1.04±0.77,1.99±1.52,0.95
+Afro-Asiatic,gemini-2.5-flash,13.38±8.35,24.27±1.88,10.88
+Afro-Asiatic,gpt-4o-mini,17.57±1.68,33.23±1.13,15.65
+Afro-Asiatic,qwen2.5,13.57±2.30,21.49±10.36,7.93
+Afro-Asiatic,starcoder2,1.05±0.76,1.53±1.10,0.48
+Austro-Asiatic,gemini-2.5-flash,17.55±1.00,23.57±3.00,6.02
+Austro-Asiatic,gpt-4o-mini,17.53±1.34,32.38±3.49,14.85
+Austro-Asiatic,qwen2.5,12.67±3.05,21.06±10.45,8.38
+Austro-Asiatic,starcoder2,2.01±1.08,2.28±1.57,0.28
+Austronesian,gemini-2.5-flash,14.72±4.05,23.14±2.39,8.42
+Austronesian,gpt-4o-mini,19.50±1.30,32.94±1.90,13.44
+Austronesian,qwen2.5,14.59±1.88,21.07±10.10,6.48
+Austronesian,starcoder2,1.10±0.82,1.74±1.13,0.64
+Indo-European (Germanic),gemini-2.5-flash,15.78±3.72,23.94±4.52,8.16
+Indo-European (Germanic),gpt-4o-mini,18.38±1.17,33.43±5.17,15.05
+Indo-European (Germanic),qwen2.5,14.46±3.00,21.93±10.39,7.47
+Indo-European (Germanic),starcoder2,1.60±1.22,1.87±1.20,0.27
+Indo-European (Greek),gemini-2.5-flash,17.01±1.33,20.04±2.53,3.03
+Indo-European (Greek),gpt-4o-mini,17.56±1.47,32.36±1.96,14.8
+Indo-European (Greek),qwen2.5,13.90±2.16,18.27±9.05,4.37
+Indo-European (Greek),starcoder2,1.09±0.58,2.80±1.79,1.71
+Indo-European (Iranian),gemini-2.5-flash,15.99±8.02,23.66±2.19,7.68
+Indo-European (Iranian),gpt-4o-mini,17.87±0.79,31.70±2.33,13.83
+Indo-European (Iranian),qwen2.5,11.67±2.01,20.82±10.65,9.16
+Indo-European (Iranian),starcoder2,0.43±0.27,2.19±1.67,1.75
+Indo-European (Romance),gemini-2.5-flash,16.07±1.97,21.47±2.85,5.4
+Indo-European (Romance),gpt-4o-mini,18.51±1.55,33.09±1.97,14.58
+Indo-European (Romance),qwen2.5,14.21±2.17,22.62±10.53,8.41
+Indo-European (Romance),starcoder2,1.57±1.09,2.26±1.49,0.69
+Sino-Tibetan,gemini-2.5-flash,14.38±1.73,22.73±2.87,8.35
+Sino-Tibetan,gpt-4o-mini,18.61±1.05,36.37±0.84,17.76
+Sino-Tibetan,qwen2.5,14.89±1.70,25.89±13.08,11.0
+Sino-Tibetan,starcoder2,0.80±0.65,1.80±1.21,1.0
+Slavic,gemini-2.5-flash,15.99±1.63,22.60±2.28,6.61
+Slavic,gpt-4o-mini,17.14±2.02,32.68±2.31,15.54
+Slavic,qwen2.5,14.25±2.00,22.98±11.00,8.72
+Slavic,starcoder2,1.48±1.03,2.56±1.69,1.07
+Turkic,gemini-2.5-flash,15.20±7.46,22.39±3.10,7.19
+Turkic,gpt-4o-mini,20.41±1.16,31.28±1.35,10.87
+Turkic,qwen2.5,12.60±2.70,21.32±10.77,8.72
+Turkic,starcoder2,1.93±1.30,1.75±1.18,-0.18
+Uralic,gemini-2.5-flash,15.42±4.25,22.82±1.47,7.4
+Uralic,gpt-4o-mini,18.82±2.14,31.50±1.98,12.68
+Uralic,qwen2.5,12.72±2.16,18.73±8.91,6.01
+Uralic,starcoder2,1.13±0.77,1.88±1.35,0.75
