@@ -8,9 +8,9 @@ and saves per-language CSVs to Result/.
 
 Inspired by Generation/analyze_compilability.py.
 """
-import ast
 import json
 import os
+import sys
 from collections import defaultdict
 
 import pandas as pd
@@ -20,15 +20,11 @@ INPUT_DIR   = os.path.join(BASE_DIR, "..", "Generation", "Filtered_Output")
 RESULT_DIR  = os.path.join(BASE_DIR, "Result")
 os.makedirs(RESULT_DIR, exist_ok=True)
 
-
-def check_compilable(code):
-    try:
-        ast.parse(code)
-        return True
-    except Exception:
-        if "public class" in code or ("class " in code and "{" in code and "}" in code):
-            return True
-        return False
+# Use the same strict checker from filter_code.py (handles Java brace balance,
+# duplicate classes, misplaced imports, etc.) so that "before" and "after"
+# are measured on the same scale.
+sys.path.insert(0, os.path.join(BASE_DIR, "..", "Generation"))
+from filter_code import check_compilable
 
 
 def parse_filename(name_part):
