@@ -1,0 +1,916 @@
+\documentclass[pdflatex,sn-mathphys-ay]{sn-jnl}
+
+% \IEEEoverridecommandlockouts
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+
+
+
+% \usepackage{cite}
+\usepackage{amsmath,amsfonts}
+
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+% \usepackage[finalizecache,cachedir=.]{minted}
+\usepackage{minted}
+
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{enumitem}           % for numbered enumerations and margins
+\usepackage[T1]{fontenc} % for extra fonts 
+\usepackage{tikz} % for paper drawings
+\usepackage{stfloats}
+\usepackage[utf8]{inputenc}
+\usepackage{soulutf8}
+% to help balance the last page
+\usepackage{balance}
+\usepackage[caption=false]{subfig} % https://tex.stackexchange.com/questions/169475/referencing-in-subfloat-not-working/169477#169477
+% \usepackage{inconsolata}
+
+
+% To help with references
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+\newcommand{\listref}[1]{Listing~\ref{#1}}
+\newcommand{\tblref}[1]{Table~\ref{#1}}
+
+
+% Custom commands for typesetting
+\newcommand{\ie}{\textit{i.e.},\ }
+\newcommand{\eg}{\textit{e.g.},\ }
+\newcommand{\etal}{\textit{et al.} }
+\newcommand{\etc}{{\em etc.}}
+
+\usepackage{booktabs}
+% \newcommand{\circled}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}}
+
+\definecolor{francBlue}{RGB}{64,76,87}
+\newcommand\circled[1]{%
+  \tikz[baseline=(X.base)] 
+    \node (X) [line width=0pt,draw, shape=circle, inner sep=0, fill=francBlue, text=white] {\strut  \bf #1};%
+}
+
+
+% \DeclareUnicodeCharacter{240A}{␊}
+\usepackage[most]{tcolorbox}
+\usepackage[parfill]{parskip}
+
+\tcbset{
+  parskip/.style={
+    before={\par\pagebreak[0]\parindent=0pt},
+    after={\parfillskip=0pt\par},
+  },
+}
+\newtcolorbox{resultbox}[1][]{%
+    colback=black!3,
+    colframe=black!3,
+    notitle,
+    sharp corners,
+    borderline west={2pt}{0pt}{gray!80!black},
+    enhanced,
+    breakable,
+    boxsep=0pt,
+    left=4pt,right=2pt,top=2pt,bottom=2pt,
+    }
+
+
+\newcommand{\rques}[1]{  
+\begin{tcolorbox}[enhanced jigsaw,colback=white,left=2pt,right=2pt,top=2pt,bottom=2pt]
+#1
+\end{tcolorbox}
+}
+%*************************************************************
+% BEGIN CUSTOMIZATION FOR MINTED PACKAGE                    *
+%*************************************************************
+% http://tug.ctan.org/macros/latex/contrib/minted/minted.pdf *
+%*************************************************************
+\usemintedstyle{tango}
+\definecolor{codebg}{rgb}{0.99,0.99,0.99}
+\definecolor{hiliteColor}{rgb}{1,0.92549019607,0.6}
+\definecolor{tainted}{rgb}{0,1,1}
+\newcommand{\highlight}[1]{\colorbox{hiliteColor}{#1}}
+\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{tainted}\hl{#1}}}
+\DeclareRobustCommand{\hlred}[1]{{\sethlcolor{red!25}\hl{#1}}}
+\setlength\fboxsep{0.5pt}
+
+
+
+
+\newmintinline{python}{fontsize=\normalsize}
+
+\newminted[PythonSourceCode]{python}{
+    labelposition=topline,
+    frame=single,
+    numbersep=2pt,
+    fontsize=\scriptsize,
+    xleftmargin=5pt,
+    framerule=0.5pt,
+    linenos,
+    escapeinside=||
+}
+
+
+\newminted[SQLSourceCode]{sql}{
+    labelposition=topline,
+    frame=single,
+    numbersep=2pt,
+    fontsize=\scriptsize,
+    xleftmargin=5pt,
+    framerule=0.5pt,
+    linenos,
+    escapeinside=||
+}
+\newminted[JavaSourceCode]{java}{
+    labelposition=topline,
+    frame=single,
+    numbersep=2pt,
+    fontsize=\scriptsize,
+    xleftmargin=5pt,
+    framerule=0.5pt,
+    linenos,
+    escapeinside=||
+}
+\newminted[TextSourceCode]{text}{
+    labelposition=topline,
+    frame=single,
+    numbersep=2pt,
+    fontsize=\scriptsize,
+    xleftmargin=5pt,
+    framerule=0.5pt,
+    linenos,
+    escapeinside=||
+}
+\newminted[MarkdownSourceCode]{markdown}{
+    labelposition=topline,
+    frame=single,
+    numbersep=2pt,
+    fontsize=\scriptsize,
+    xleftmargin=5pt,
+    framerule=0.5pt,
+    linenos,
+    escapeinside=||
+}
+
+
+\definecolor{skyblue1}{rgb}{0.447,0.624,0.812}
+\definecolor{skyblue2}{rgb}{0.204,0.396,0.643}
+\definecolor{skyblue3}{rgb}{0.125,0.290,0.529}
+
+\definecolor{magnolia}{rgb}{0.97, 0.96, 1.0}
+\definecolor{shadecolor}{rgb}{0.97, 0.96, 1.0}
+\newcommand{\code}[1]{\texttt{\small{#1}\normalsize}}
+\newcommand{\customKw}[1]{\textcolor{skyblue3}{\textbf{#1}}}
+\newmintinline[codePython]{python}{fontsize=\small}
+\newmintinline[codeJava]{java}{fontsize=\small}
+\newmintinline[snippetJava]{java}{fontsize=\small,bgcolor=magnolia}
+\newmintinline[snippetPython]{python}{fontsize=\small,bgcolor=magnolia}
+\newmintinline[snippetPerl]{perl}{fontsize=\small,bgcolor=magnolia}
+
+% Custom commands for comments
+\newcommand{\checkThis}[1]{\textcolor{magenta}{#1}}
+\newcommand{\joanna}[1]{\textcolor{magenta}{\hl{#1}}}
+\newcommand{\latif}[1]{\textcolor{red}{#1}}
+\newcommand{\beatrice}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\red}[1]{\textcolor{purple}{\textbf{#1}}}
+\newcommand{\green}[1]{\textcolor{teal}{\textbf{#1}}}
+
+
+\newcommand{\hlfancy}[1]{\sethlcolor{magnolia}\texttt{\small\hl{#1}}}
+
+
+% Custom commands for our paper
+\newcommand{\sandoval}[0]{\textsc{Multi-Sallm}}
+\newcommand{\nPrompts}[0]{{100}}
+\newcommand{\concept}[1]{\textbf{\textsl{#1}}}
+%-------------------------------------------------------------------------------
+\begin{document}
+%-------------------------------------------------------------------------------
+
+
+
+% make title bold and 14 pt font (Latex default is non-bold, 16 pt)
+% \title{\Large \bf A Framework for Evaluating the Security of Code Generated by LLMs}
+
+% \title{A Framework to Evaluate the Security of Generated Code}
+\title{\sandoval: A Multilingual Security Assessment of Generated Code}
+
+
+
+\author[1]{\fnm{Mohammed Latif } \sur{Siddiq}}
+% \equalcont{These authors contributed equally to this work.}
+\email{msiddiq3@nd.edu}
+\author[2]{\fnm{Noshin} \sur{Ulfat}}
+% \equalcont{These authors contributed equally to this work.}
+\email{ulfat.noshin.007@gmail.com}
+
+\author[3]{\fnm{Nishat} \sur{Raihan}}\email{mraihan2@gmu.edu}
+
+\author*[1]{\fnm{Joanna C. S.} \sur{Santos}}\email{joannacss@nd.edu}
+
+\author[3]{\fnm{Marcos} \sur{Zampieri}}\email{mzampier@gmu.edu}
+
+\affil[1]{\orgname{University of Notre Dame}, \orgaddress{\city{Notre Dame}, \postcode{46656}, \state{IN}, \country{USA}}}
+
+\affil[2]{ \orgname{IQVIA Inc.}, \orgaddress{\city{Dhaka}, \country{Bangladesh}}}
+
+\affil[3]{\orgname{George Mason University}, \orgaddress{\city{Fairfax}, \postcode{22030}, \state{VA}, \country{USA}}}
+
+
+%-------------------------------------------------------------------------------
+\abstract{
+
+
+As Large Language Models (LLMs) become increasingly integrated into software engineers' daily workflows, it is critical to ensure the code they generate is not just functionally correct but also secure. While LLMs can boost developer productivity, prior empirical studies have shown that they often produce insecure code. This issue stems from two key factors. First, the datasets commonly used to evaluate LLMs don't accurately reflect real-world software engineering tasks where security is a concern. Instead, they tend to focus on competitive programming problems or classroom-style exercises, which lack the complexity and security risks of production code integrated into larger systems. Second, current evaluation metrics mostly emphasize functional correctness and overlook security aspects altogether. To address these gaps, we introduce \sandoval, a benchmarking framework designed to systematically evaluate LLMs' ability to generate secure code. The framework includes three main components: (1) a novel dataset of security-focused Python and Java prompts translated into 23 natural languages, (2) configurable assessment techniques for analyzing generated code, and (3) new metrics that assess models from the perspective of secure code generation.
+}
+
+\keywords{security evaluation, large language models, pre-trained transformer model, metrics, multilingual}
+
+\maketitle
+
+\section{Introduction}
+
+A \textit{code LLM} is a Large Language Model (LLM) trained on large-scale datasets containing both natural language (NL) text and source code \cite{allamanis2018survey}. These models can generate code in a given programming language (PL) based on NL prompts provided by the developer — a high-level specification of intent \cite{Le_2021}. Prompts can range from code comments and expressions (\eg function definitions) to plain text or any combination thereof. Once given a prompt, an LLM generates tokens sequentially until it reaches a stop sequence or the maximum token limit.
+
+LLM-based code generation tools, such as GitHub Copilot~\cite{copilot} and ChatGPT~\cite{chatgpt}, have rapidly gained traction among developers looking to speed up software development~\cite{albert22}. A recent survey of 500 U.S.-based developers from large companies found that 92\% use LLMs to generate code for both work and personal projects~\cite{shani2023survey}. Much of this adoption is fueled by the productivity gains perceived by developers, who rely on LLMs to automate repetitive coding tasks and free up time for more complex challenges~\cite{albert22}.
+
+However, while LLMs often produce functionally correct code, prior research has shown that they frequently generate code with security vulnerabilities and smells \cite{pearce2021, perry2022users, sandoval2022security, siddiq2024devgpt}. One reason is that the training datasets themselves may contain insecure code patterns, which the models reproduce \cite{siddiq2022empirical}. Furthermore, a study involving 47 participants found that users of \textsf{codex-davinci-002} wrote less secure code than those who did not use the model, and, more concerningly, were more confident in the security of their output~\cite{perry2022users}.
+
+Three core issues contribute to this unsafe code generation. First, benchmarks used to evaluate code LLMs often fail to incorporate security-focused tasks~\cite{siddiq2022seceval, zan2023NL2Code}. These benchmarks typically target \textit{functional correctness}, not real-world software \textit{security}. Second, evaluation metrics such as \texttt{pass@k} \cite{HumanEval,raihan2025mhumaneval} and \texttt{CodeBLEU} \cite{CodeBLEU} focus almost exclusively on functional correctness as well. As a result, models are optimized to pass test cases without consideration for the security of their outputs. Third, most datasets are limited to English prompts, which hinders the ability to perform multilingual security evaluations of LLMs~\cite{peng-etal-2024-humaneval}.
+
+Given the widespread adoption of LLM-based code assistants in various domains \cite{raihan2025large}, ensuring \textit{secure} code generation is crucial. Vulnerable code generated by LLMs may be unknowingly accepted by developers, potentially compromising software systems. To address this need, we present a framework for conducting automated and systematic \textbf{Multi}lingual \textbf{S}ecurity \textbf{A}ssessment of \textbf{LLM}s (\sandoval).
+
+Our framework consists of three key components:
+\begin{itemize}[]
+    \item A manually curated dataset of Python and Java prompts translated into 23 languages, reflecting realistic developer use cases across linguistic contexts;
+    \item An automated evaluation pipeline using static and dynamic analysis to assess the security of LLM-generated Python code;
+     \item Two novel metrics: \texttt{security@k} and \texttt{vulnerable@k} that quantify how well an LLM avoids security issues in its code outputs.
+\end{itemize}
+
+The main contributions of our work are as follows:
+
+\begin{itemize}
+%[leftmargin=*, label=-,noitemsep,topsep=0pt]
+\item We introduce \sandoval, a novel framework to \textbf{\textit{systematically and automatically evaluate the security of LLM-generated code}} prompted with different languages.
+\item A publicly available dataset of Python and Java prompts in 23 different languages.\footnote{\url{https://github.com/s2e-lab/SALLM/tree/multi-sallm}}
+\item Two new evaluation metrics: \texttt{security@k} and \texttt{vulnerable@k}, along with a detailed demonstration of how to compute them using static and dynamic analysis.
+\item A benchmarking study of four prominent LLMs (StarCoder2, Qwen-2.5 Coder, GPT-4o-Mini, and Gemini-2.5-Flash) using our proposed framework.
+\end{itemize}
+
+The remainder of this paper is organized as follows:
+Section~\ref{sec:background} introduces the core concepts necessary to understand this paper.
+Section~\ref{sec:framework} describes our framework and experiment in detail.
+% Section~\ref{sec:experiments} describes the empirical investigation we performed to benchmark LLMs.
+Section
+~\ref{sec:results} presents the results of our experiments.
+Section~\ref{sec:discussion} includes a discussion about the implications of the work and explains \sandoval's limitations. 
+% Section~\ref{sec:relatedWork} presents related work.
+Section~\ref{sec:conclusion} concludes this paper. %while describing plans for future work. 
+
+
+\subsection{Extended Contribution}
+
+This manuscript is an extended version of our prior work~\cite{siddiq2024sallm}.
+% , originally published in the \textit{6th International Workshop on Automated and verifiable Software sYstem DEvelopment (ASYDE), co-located with ASE 2024}. 
+Our original workshop paper introduced the \textsc{SaLLM} framework and demonstrated how static and dynamic analyses could be automated to evaluate the security of LLM-generated Python code. While that work provided a foundation, this manuscript makes several substantial extensions that significantly broaden the scope, rigor, and impact of the framework:
+
+\begin{itemize}
+    \item \textbf{Multilingual Dataset:} We extend the original dataset of English-only prompts into a \textbf{multilingual dataset covering 23 natural languages}. Using a systematic translation pipeline with back-translation and BERTScore validation, we ensure semantic fidelity across diverse linguistic families. This enables, for the first time, \textit{cross-lingual benchmarking of LLMs from a security perspective}.
+
+    \item \textbf{Multi-Programming Dataset:} We extend the original Python-only benchmark to include \textbf{Java}, resulting in a multi-language dataset. The original set of 100 prompts targeting Python is complemented with corresponding Java prompts, enabling cross-language evaluation of LLM-generated code from a security perspective.
+
+    \item \textbf{Realistic Prompt Extension:} Beyond the initial 100 synthetic prompts, we incorporate \textbf{25 additional prompts derived from real-world vulnerabilities}, including Common Vulnerabilities and Exposures (CVEs) and code patterns mined from GitHub. This extension improves ecological validity by grounding the benchmark in realistic security scenarios.
+
+    \item \textbf{Expanded Benchmarking Study:} We broaden the empirical evaluation to include four prominent models from both open-source and proprietary families: StarCoder2, Qwen-2.5-Coder, GPT-4o-Mini, and Gemini-2.5-Flash. We systematically vary sampling temperatures and analyze results across both English and multilingual prompts, providing new insights into the trade-offs between correctness and security, as well as linguistic biases in model performance.
+    
+    \item \textbf{Public Release of Artifacts:} We release the multilingual dataset, code, and evaluation scripts\footnote{\url{https://github.com/s2e-lab/SALLM/tree/multi-sallm}} to support reproducibility, facilitate follow-up studies, and provide the community with a reusable benchmark for secure and multilingual code generation.
+\end{itemize}
+
+Together, these extensions elevate our initial framework into a comprehensive, multilingual and multi-programming benchmarking platform that enables systematic assessment of the security of LLM-generated code across languages, models, and evaluation settings.
+
+\section{Background and Related Work}\label{sec:background}
+
+% This section defines core concepts and terminology required to understand this work as well as the current research gaps being tackled by this paper.
+
+This section defines key concepts and terminology needed to understand this work and the research gaps we address.
+
+\subsection{Large Language Models (LLMs)}\label{subsec:LLM}
+
+\concept{LLMs} are advanced machine learning models trained to understand and generate language. They are typically trained on massive amounts of unlabeled text using self-supervised or semi-supervised learning, enabling them to capture language patterns, grammar, semantics, and contextual meaning~\cite{brown2020language}. Unlike models built for specific tasks (e.g., sentiment analysis), LLMs are general-purpose and capable of performing a wide range of natural language processing (NLP) tasks, such as machine translation, text generation, question answering, and summarization. Prominent examples include \textsf{GPT-4} (Generative Pre-trained Transformer) \cite{openai2023gpt4} and \textsf{BERT} (Bidirectional Encoder Representations from Transformers) \cite{bert2018}.
+
+While LLMs are primarily designed to process natural languages (NLs), they can be fine-tuned with source code to also understand and generate code. This capability enables their use in various software engineering tasks, including code completion~\cite{izadi2022codefill,kim2021code,svyatkovskiy2021fast}, code search~\cite{codebert}, code summarization~\cite{gao2022m2ts,mastropaolo2024evaluating}, and code generation~\cite{chen2021codex,raihan2025mojobench}. Examples of such \concept{code LLMs}—that is, LLMs trained on source code—include \textsf{CodeBERT} \cite{codebert}, \textsf{CodeT5} \cite{codet5}, and \textsf{Code Llama}~\cite{CodeLLAMA}.
+
+
+\subsection{Insecure Code Generation}
+
+Although code LLMs (henceforth referred to simply as “LLMs”) can assist developers in writing functionally correct code and reducing development effort~\cite{albert22}, the code they generate can often contain security issues. Prior studies~\cite{sandoval2022security,pearce2021,perry2022users,siddiq2022empirical,siddiq2023franc,siddiq2022seceval} have shown that LLM-based code generation tools frequently produce code with \concept{vulnerabilities} and \concept{security smells}.
+
+A \textit{\textbf{vulnerability}} refers to a flaw in a software system that can be exploited to compromise its security, while \textit{\textbf{security smells}} are recurring programming patterns that may lead to vulnerabilities~\cite{rahman_seven_2019}. Although security smells may not constitute vulnerabilities entirely by themselves, they serve as early warning signs of potentially insecure code~\cite{ghafari2017security}. Detecting and addressing these smells can help developers mitigate security risks before they become exploitable vulnerabilities.
+
+LLMs often generate multiple ranked suggestions ($k$ completions) for a given prompt. For instance, GitHub Copilot typically generates ten suggestions\footnote{The number and content of suggestions may vary based on the user's coding context and environment.} for a single prompt~\cite{copilot}. As shown in~\figref{fig:vuln_example}, the top-ranked suggestion is functionally correct but contains a classic SQL injection vulnerability—specifically, it constructs the query using a formatted string (line 9). However, if the generated code instead used a parameterized query (as shown in the callout), it would have avoided the vulnerability altogether.
+Since the output satisfies the desired functionality, developers, particularly those with limited security awareness~\cite{perry2022users}, may accept the insecure suggestion without realizing its implications, thereby introducing vulnerabilities into production systems.
+
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\linewidth]{figs/vuln_example.pdf}
+    \caption{Example of a generated code containing a SQL Injection vulnerability.}
+    \label{fig:vuln_example}
+\end{figure}
+
+
+
+
+\subsection{Research Gaps}\label{subsec:Gaps}
+
+
+
+
+% 
+First, \textbf{LLMs are evaluated on benchmark datasets that are not representative of \textit{real} software engineering usages, which are security-sensitive}~\cite{CoderEval}. These datasets are often competitive programming questions~\cite{APPS,alphaCode} or classroom-style programming exercises~\cite{MBPP,DS1000,DSP,HumanEval,MBXP,raihan2024cseprompts,raihan2025performance}. 
+In a real use, the generated code is integrated into a larger and complex code repository. Thus, we currently lack benchmark datasets that are \textbf{\textit{security-centric}}, \ie benchmarks that contain prompts that describe a problem in which there could be one or more possible solutions that are functionally correct but insecure. Such a benchmark aims to contrast the performance of LLMs with respect to generating secure code.
+
+Second, \textbf{existing metrics evaluate models with respect to their ability to produce \emph{functionally} correct code while ignoring \textit{security} concerns}. Code LLMs are commonly evaluated using the \texttt{pass@k} metric~\cite{HumanEval}, which measures the success rate of finding the functionally correct code within the top \textit{k} options. Other metrics (\eg \texttt{BLEU}~\cite{BLEU}, \texttt{CodeBLEU}~\cite{CodeBLEU}, \texttt{ROUGE}~\cite{ROUGE}, and \texttt{METEOR}~\cite{METEOR}) also only measure a model's ability to generate functionally correct code. 
+
+
+Third, \textbf{current benchmarks are focusing on prompts only on English} \cite{peng-etal-2024-humaneval,raihan2024cseprompts}, while there is a need for a diverse, cross-lingual, comprehensive analysis. There are efforts to create multilingual datasets for benchmarking code generation models from the perspective of functionality \cite{peng-etal-2024-humaneval,multiple,raihan2025mhumaneval}, but there is no dataset focusing on the security perspective.
+
+Given the aforementioned gaps, this work entails the creation of \textbf{a framework to systematically evaluate the security of an automatically generated code in different languages (other than English)}. This framework involves the creation of a  \textbf{\textit{security-centric} dataset of Python prompts} and  \textit{\textbf{novel metrics}} to evaluate a model's ability to generate safe code. 
+
+
+\subsection{Related Work}\label{sec:relatedWork}
+
+% In this section, we discuss works that focus on empirically investigating the capabilities of LLMs and works related to benchmarking LLMs.
+
+
+\subsubsection{Empirical Studies of Code Generation Models}
+
+Automated code generation techniques were initially focused on deducting the users' intent from a high-level specification or input-output examples \cite{gulwani2017program,green69, manna2017}. These approaches transform task specifications into constraints, and the program is extracted after demonstrating its ability to satisfy the constraints \cite{gulwani2017program}.
+With the rise of attention-based transformer models \cite{attention2017}, code generation has been treated as a sequence-to-sequence problem where the user intent comes in the form of natural language. Many LLMs have been produced to generate code, such as CodeBert \cite{codebert}, Codex \cite{chen2021codex}, and CodeT5 \cite{codet5}. 
+
+Though the performance of the code generation task is increasing daily and user end tools like GitHub Copilot are being adapted by users \cite{shani2023survey}, they are not free of security issues. Pearce \etal \cite{pearce2021} studied the output of GitHub Copilot with their early release. They found that 40\% of the outputs are vulnerable. Siddiq \etal \cite{siddiq2022empirical} explored the code generative models and their datasets by following standard coding practices and security issues. Sandoval \etal \cite{sandoval2022security} measured if an AI assistant generates more vulnerable codes than users. Siddiq \etal \cite{siddiq2023franc} suggested a static analyzer-based ranking system to have more secured code in the output. Hajipour \etal \cite{hajipour2023systematically} investigated finding the vulnerabilities in the black box code generation model.
+
+Recent work has further expanded our understanding of security risks in LLM-generated code. He and Vechev~\cite{he2023sven} proposed SVEN, a security-hardening approach through vulnerability-aware training, while He \etal~\cite{he2024safecoder} introduced SafeCoder for improved secure code generation. Fu \etal~\cite{fu2024codeguard} developed CodeGuard+, which employs constrained decoding to reduce security vulnerabilities. Nazzal \etal~\cite{nazzal2024promsec} proposed PromSec, using prompt optimization to guide models toward secure outputs.
+
+While there is a recent growing body of peer-reviewed literature that investigated the capabilities of code generation beyond their functional correctness but also security~\cite{dakhel2023github,sobania2022choose,nguyen2022empirical,pearce2021,sandoval2022security,perry2022users},  these existing studies only pinpoint the observed issues without proposing new metrics or a way to systematically benchmarking LLMs with respect to the security of the LLM generated code. Unlike these previous studies, in this paper, we release a dataset and an evaluation environment that can automatically benchmark code LLMs with respect to security.
+
+
+
+\subsubsection{Benchmarks for Code LLMs}
+
+Traditionally, deep learning models use a training set for learning and a test set to evaluate the model. For example, CodeXGlue \cite{codexglue} includes the Concode dataset \cite{iyer2018mapping}  for Java code generation, which contains a test set of 2,000 samples. 
+
+
+The authors of the Codex \cite{chen2021codex} model developed HumanEval for this purpose. HumanEval contains 164 simple programming problems with canonical solutions and test cases. Mostly Basic Python Problems Dataset (MBPP) dataset contains around 1,000 samples for a similar purpose \cite{austin2021program}. These datasets are later extended for different programming languages \cite{zheng2023codegeex, MBXP}. CoderEval dataset \cite{yu2023codereval} uses samples from real-world software. However, these datasets focus on functional correctness. 
+
+Pearce \etal \cite{pearce2021} provided a set of scenarios for testing the security of the generated code. SecurityEval \cite{siddiq2022seceval} formalized the prompts for testing security for many CWEs. Though these datasets focus on measuring security, they do not enable an automated and systematic approach for benchmarking LLMs provided by our framework. There are datasets for security evaluation from natural language prompts \cite{CodeLMSec}, but in their case, they only focus on finding the vulnerabilities in the generated code, not focusing on the functionality, whereas our focus is on both perspectives. 
+The meta-research team introduced \texttt{CyberSecEval} to benchmark LLMs from the perspective of security \cite{bhatt2023purple}, but their prompts are in natural language and used a static analyzer to detect the vulnerabilities in the generated code. The CyberSecEval framework has since been extended with additional test suites: CyberSecEval 2~\cite{bhatt2024cyberseceval2} added prompt injection and code interpreter abuse tests, while subsequent versions introduced visual prompt injection, spear phishing capability tests, and autonomous offensive cyber operations evaluations.
+
+Recent benchmarks have addressed various limitations in security evaluation. Hajipour \etal~\cite{hajipour2024codelmsec} proposed CodeLMSec, which systematically evaluates how sensitively code LLMs respond by producing vulnerable snippets. Wang \etal~\cite{wang2024codeseceval} introduced CodeSecEval, a dataset covering 44 vulnerability types with 180 samples, designed to evaluate both secure code generation and insecure code repair tasks. Peng \etal~\cite{peng2025cweval} developed CWEval, an outcome-driven evaluation framework that simultaneously assesses functionality and security using dynamic test oracles, addressing reproducibility concerns in previous benchmarks. Li \etal~\cite{li2025safegenbench} proposed SafeGenBench, which employs a dual-judge approach combining static application security testing (SAST) tools with LLM-based judgment to evaluate code security across eight programming languages.
+
+More recent work has focused on repository-level security evaluation. Dilgren \etal~\cite{dilgren2025secrepobench} introduced SecRepoBench, which benchmarks LLMs for secure code generation in real-world repository contexts rather than isolated function completion. SecureAgentBench~\cite{yang2025secureagentbench} evaluates code agents' ability to generate secure code under realistic vulnerability scenarios, requiring agents to analyze large codebases and modify multiple files.
+
+Li \etal \cite{li2025iris} created CWE-Bench-Java, which focused on finding vulnerabilities by LLMs in the real-world vulnerability.
+In our work, we manually created test cases that focus on functional correctness and vulnerability detection through dynamic analysis of LLM-generated code, not on detecting vulnerabilities with LLM.
+Other datasets and frameworks focused on specific vulnerabilities, such as regex denial-of-service attacks (ReDoS)~\cite{siddiq2024regex} and hardware-specific vulnerabilities \cite{kande2024security}. 
+There are also benchmarks for detecting LLM-generated code (\eg~GPTSniffer \cite{nguyen2024gptsniffer}), security vulnerability detection (\eg MSIVD \cite{yang2024securityvulnerabilitydetectionmultitask}), and improving reliability of the generated code (\eg Kouemo \etal~\cite{Ngassom2024}).
+
+
+
+
+
+
+\section{\sandoval~Framework}\label{sec:framework}
+
+\figref{fig:framework} shows an overview of our framework.
+\sandoval{} has four main components: a \textit{dataset of prompts}, a \textit{rule-based code repair} component, configurable \textit{assessment techniques}, and novel \textit{evaluation metrics}. Each of these components is further described in the next subsections.
+
+
+% an \textit{evaluation environment} to execute the code,
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{figs/Approach.pdf}
+  \caption{Framework overview}
+  \label{fig:framework}
+\end{figure}
+
+
+\subsection{Dataset of Prompts}
+
+To create an effective security benchmarking framework, we first needed a \textit{high-quality dataset of prompts}. Although there are two peer-reviewed datasets available (LLMSecEval and SecurityEval)~\cite{llmseceval, siddiq2022seceval} 
+%they have many problems. 
+they have a few limitations. 
+First, one of them (LLMSecEval~\cite{llmseceval}) is a dataset of natural language prompts, which is a format that not all code LLMs support, for example, CodeGen \cite{codegen}, SantaCoder \cite{allal2023santacoderdontreachstars} (\ie designed to complete partial code). Second, SecurityEval has several prompts that do not execute and lack test cases to verify both its functional correctness and the presence of vulnerabilities in the generated code.  Therefore, we aimed to create a manually curated and high-quality dataset of prompts to fulfill our needs. 
+
+The creation of our framework's dataset of prompts involved two steps. First, we retrieved code snippets and texts from different sources. Second, we manually crafted a prompt from the retrieved code snippets. In the following subsections, we present the approach to collecting and crafting the prompts for our framework.
+
+\subsubsection{Retrieving Security-Centric Code Snippets}
+
+Since our goal was to create a prompt dataset that reflects the real-life security-centric needs of software developers, we mined real code snippets from the following sources:
+
+\begin{itemize}[leftmargin=*, label=-,noitemsep,topsep=0pt]
+\item \textbf{StackOverflow}~\cite{StackOverflowDevSurvey} is a popular question-answering website among developers. We retrieved the top \textbf{500} most popular questions with an accepted answer containing the word ``unsafe'' or ``vulnerable'', and that is tagged as a Python-related question. From these 500 questions, we applied a set of \textit{inclusion} and \textit{exclusion} criteria. The inclusion criteria were: the question has to \textbf{(1)} explicitly ask \textit{``how to do X in Python''}, \textbf{(2)} include code in its body, and \textbf{(3)} have an accepted answer that includes code. We excluded questions that were \textbf{(1)} open-ended and asking for best practices/guidelines in Python, \textbf{(2)} related to finding a specific API/module for a given task, \textbf{(3)} related to errors due to environment configuration (\eg missing dependency library), \textbf{(4)} related to configuring libraries/API, and \textbf{(5)} syntax-specific/idioms types of questions.
+By applying the criteria above to these 500 questions, we obtained a total of \textbf{13} code snippets.
+
+\item The \textbf{Common Weakness Enumeration (CWE)}~\cite{mitre} is a community effort to create a list of vulnerability types (weaknesses). Each weakness not only has a \textit{unique identifier} and \textit{title} (CWE-ID) but it may also include \textit{demonstrative examples}. The demonstrative examples are code snippets written in different programming languages (\eg C, PHP, Java, Python, \etc) containing a vulnerability that an attacker can exploit. We retrieved the list of all CWEs and extracted all demonstrative examples written in Python. As a result, we retrieved a total of \textbf{1} code snippet. As not all CWEs have examples in Python, we also created examples ourselves based on the CWE descriptions. We created a total of \textbf{35} coding snippets for CWEs within the list of Top 25 Most Dangerous Software Weaknesses~\cite{top25} and that were applicable to Python. 
+
+\item \textbf{CodeQL}~\cite{codeql} is a static analyzer that detects vulnerabilities by making queries over a graph representation of code. Its documentation includes vulnerable examples in different programming languages. Thus, we retrieved a total of \textbf{35} vulnerable Python samples from CodeQL's documentation.
+
+\item \textbf{Sonar Rules}~\cite{sonar} is a set of pre-defined patterns used by the SonarQube tool to analyze and assess the quality of a code. These rules cover a wide range of coding standards, best practices, and vulnerabilities. Thus, we retrieved a total of \textbf{9} Python examples provided in the documentation for all Python-related vulnerability rules.
+
+\item \textbf{CVE \& GitHub (Real-World Prompts):} To improve ecological validity, we curate \textbf{25 additional prompts} derived from real-world vulnerabilities. Specifically, we extract representative scenarios from publicly disclosed \textbf{Common Vulnerabilities and Exposures (CVEs)} and corresponding vulnerable code patterns observed in GitHub repositories. These prompts capture realistic attack surfaces and developer misuse patterns, enabling evaluation of LLMs under practical, security-critical conditions.
+
+\end{itemize}
+
+As shown in Figure~\ref{fig:framework}, for each collected sample from these sources, we extract their \textit{title}, \textit{content} (\ie the raw text/code collected from the source), \textit{source URL}, and \textit{CWE-ID} (if available). 
+
+
+\subsubsection{Prompt Creation}
+
+After collecting the samples, we manually crafted a well-structured prompt that is a function/method signature that describes a security-relevant coding task, \ie a problem in which there are one or more possible solutions that are functionally correct but insecure. The prompt also includes the required relevant module imports.
+
+
+
+We assign a unique identifier for each prompt and label it with a CWE-ID. 
+% We followed ~\cite{CWEMappingGuidance}
+% 
+% 
+For each prompt, we also created an example of an \textit{insecure solution}, \ie a functionally correct solution, but that has a vulnerability. This way, our dataset is not only a collection of prompts but also includes executable, vulnerable programs. 
+
+
+This prompt creation step is performed by one of the authors with over 4 years of secure software engineering experience. The prompts and their associated metadata were then revised by the senior author, who has over 10 years of software engineering experience. We have a total of \textbf{125} prompts describing the task in English.
+
+
+\listref{lst:cwe_918} shows an example of a prompt in our dataset. 
+% (both in a textual format, and in a Python code format). 
+This prompt instructs the model to use the GitHub REST API to obtain the profile information for a given user, identified by their username. The prompt describes the task to complete. Our dataset also includes an example of a possible insecure solution that can be generated for this prompt. This solution is prone to \textit{server-side request forgery attacks} (CWE-918)~\cite{cwe_918}. 
+
+
+This vulnerability allows an attacker to control part of the URL used in a server-side request. The variable \texttt{u} is directly taken from user input (\texttt{request.args.get('username')}) and inserted into the URL for the GitHub API request. This means an attacker could set the variable \texttt{u} to a URL that points to internal services allowing them to access internal resources. Similarly, an attacker might try to exploit the URL to access local files or services by using paths like \textit{http://localhost:8080/admin} or \textit{http://127.0.0.1/}. The attacker might also manipulate the URL to include special characters or sequences that could alter the request in unexpected ways.
+
+
+\input{Codes/cwe_918}  
+
+
+\subsubsection{Multilingual Dataset Creation}
+
+In the previous section, we discussed the original prompt dataset in English and Python. In this extended study, we used a systematic approach to building a multilingual variant of the dataset. Our pipeline is adapted from Peng \etal~\cite{peng-etal-2024-humaneval}, which aimed to create an automated approach to generate a multi-lingual HumanEval dataset \cite{HumanEval}. Our framework involved prompt extraction, translation into multiple languages using GPT-4o-mini \cite{openai2023gpt4}, and quality evaluation through back-translation and BERTScore. The goal was to create high-quality, semantically consistent multilingual prompts for software engineering tasks. The methodology follows the key steps as illustrated in Figure \ref{fig:multi-sallm}. In addition, we extend the dataset beyond Python to include Java, enabling cross-language evaluation.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{figs/multi-sallm.pdf}
+  \caption{Multi-lingual Dataset creation.}
+  \label{fig:multi-sallm}
+\end{figure}
+
+
+\paragraph{\underline{Dataset Preprocessing}}
+
+To prepare the \textbf{Multi-SaLLM} dataset for translation, first, for each sample in the original prompt dataset, we extracted the natural language segments enclosed in triple-single or double quotes (\ie docstring). Then, the extracted text is cleaned by removing trailing whitespace. In our dataset, there is one target function, but there can be multiple other supporting functions. We extracted all the docstrings and concatenated them for translation.
+
+\paragraph{\underline{Multilingual Translation Workflow}}
+To create a multilingual version of the dataset, we leveraged the GPT-4o-mini model to translate natural language prompts into multiple languages. GPT-4o-mini\footnote{GPT-4o-mini-2024-07-18} is a fast and one of the advanced models in the GPT-4 family \cite{openai2023gpt4}. According to Sorato \etal \cite{sorato-zavala-rojas-2025-evaluating}, GPT-4o-mini achieves “acceptable performance” for the translation task, and it handles response intensities well in most cases.
+
+The translation process used the concatenated docstrings from the original dataset. For each docstring, the model generated translations into 22 typologically and geographically diverse languages as per the work from Peng \etal~\cite{peng-etal-2024-humaneval}\footnote{Including English, there are 23 languages, for which we already have the samples in the original prompt dataset.}. We generated 10 translations with low temperature (\ie 0.2) based on the previous study \cite{peng-etal-2024-humaneval}. The list of languages is presented in Table~\ref{tab:language_table}. 
+\begin{table}[h]
+  \centering
+  \caption{List of Language Families and their Corresponding Languages}
+  \label{tab:language_table}
+  \begin{tabular}{l|l}
+    \hline
+    \textbf{Language Family} & \textbf{Languages} \\ 
+    \hline
+    Afro-Asiatic & Arabic, Hebrew \\ 
+    \hline
+    Austro-Asiatic & Vietnamese \\ 
+    \hline
+    Austronesian & Indonesian, Malay, Tagalog \\ 
+    \hline
+    Indo-European (Germanic) & English, Dutch, German, Afrikaans \\ 
+    \hline
+    Indo-European (Romance) & Portuguese, Spanish, French, Italian \\ 
+    \hline
+    Indo-European (Greek) & Greek \\ 
+    \hline
+    Indo-European (Iranian) & Persian \\ 
+    \hline
+    Slavic & Russian, Bulgarian \\ 
+    \hline
+    Sino-Tibetan & Chinese (Simplified) \\ 
+    \hline
+    Turkic & Turkish \\ 
+    \hline
+    Uralic & Estonian, Finnish, Hungarian \\ 
+    \hline
+  \end{tabular}
+\end{table}
+
+\paragraph{\underline{Back Translation and BERT Score Evaluation}}
+To assess the quality of the multilingual translations, we apply a back-translation strategy using GPT-4o-mini. Each translated prompt candidate is retranslated from its target language back into English. This enables a semantic comparison with the original English prompt using the \textbf{BERTScore} metric \cite{zhang2020bertscoreevaluatingtextgeneration}. For each original prompt, the system selects the translation candidate with the highest back-translation BERTScore among the 10 generated candidates. Finally, we have \textbf{2,875} samples per programming languages, including original \textbf{125} English prompts.
+
+
+\paragraph{\underline{Multi-programming Dataset Extension.}}
+We extend the original Python-only dataset to include \textbf{Java}, resulting in a multi-programming benchmark. Specifically, for each of the 125 Python prompts, we \textbf{manually construct complementary Java prompts} that preserve the original task semantics and security context. This process includes (i) translating the problem specification, (ii) recreating corresponding \textbf{insecure code examples} that reflect equivalent vulnerability patterns in Java, and (iii) developing aligned \textbf{test cases} to ensure functional correctness and comparability across languages. By maintaining semantic and security equivalence between Python and Java instances, this extension enables controlled cross-language evaluation of LLM-generated code, allowing us to systematically analyze how models generalize security-relevant behaviors across programming ecosystems.
+
+\subsection{Code Generation}\label{subsec:CodeGeneration}
+To systematically evaluate a model, our framework provides the prompts in its dataset as input to the LLM. For each prompt, \sandoval{} requests the model to generate $k$ solutions to the prompt (where $k$ can be specified). 
+% Each generated code is saved in a Python script file. 
+
+As shown in prior works~\cite{ding2023static,siddiq2023exploring,siddiq2023franc}, LLMs can generate code with compilation errors. 
+Thus, \sandoval{} includes a \textit{rule-based code repair} component responsible for automatically fixing syntax errors and removing generated code snippets that are not compilable even after the repair attempt. 
+
+The rules used to repair compilation errors are:
+
+\begin{itemize}[leftmargin=*, label=-,noitemsep,topsep=0pt]
+
+\item\textbf{R1 - Code Block Extraction}:
+Removes natural language text and extracts code enclosed in backtick blocks (\ie \texttt{\small \textasciigrave\textasciigrave\textasciigrave code\textasciigrave\textasciigrave\textasciigrave}). Unclosed blocks (truncated outputs) are also handled by extracting everything after the opening fence.
+
+\item\textbf{R2 - Prompt Deduplication}:
+When the original prompt is absent from the generated code, it is prepended. Conversely, if the model repeated the prompt verbatim at the start of its output, the repeated portion is removed. For Java, duplicated \texttt{import}/\texttt{package} statements and repeated class declarations are also stripped.
+
+\item\textbf{R3 - Extra Code Removal}:
+Code after the following boundary tokens is discarded: \snippetPython{'\textbackslash ndef'}, \snippetPython{'\textbackslash nif'}, \snippetPython{'\textbackslash n@app'}, \snippetPython{"\textbackslash n'''"}, \snippetPython{'\textbackslash nclass'}, and \texttt{if \_\_name\_\_ == "\_\_main\_\_":}.
+
+\item\textbf{R4 - Java Structural Repair}:
+Three Java-specific sub-rules are applied: (a)~\textit{duplicate class removal}: only the first class declaration is retained; (b)~\textit{misplaced import removal}: \texttt{import}/\texttt{package} statements appearing inside a class body are deleted; and (c)~\textit{truncation repair}: incomplete trailing lines (unbalanced parentheses, unclosed strings, bare keywords) are dropped, and missing closing braces are appended to restore brace balance.
+
+\item\textbf{R5 - Model-Specific Token Removal}:
+StarCoder2 special tokens (\eg \texttt{<|end|>}, \texttt{<file\_sep>}, \texttt{<fim\_prefix>}) and generic \texttt{<|...|>} tags are stripped. For StarCoder2 and Qwen2.5, content between \texttt{<|assistant|>} tags is extracted, and repeated docstring delimiters (\texttt{'''}) at the start of generated code are removed.
+
+\item\textbf{R6 - Post-Processing}:
+For Java, the obfuscated class name (\texttt{ClassX}) is replaced with the original class name, and a missing \texttt{package} declaration is prepended if absent.
+
+\end{itemize}
+
+
+\subsection{Systematic Model Assessment}
+
+To systematically evaluate the security of the code produced by a model, \sandoval{} has two major components: a set of \textit{ assessment techniques} and \textit{novel evaluation metrics}.
+
+
+\subsubsection{Assessment Techniques}
+Our framework evaluates the security of the code generated by LLMs using two complementary assessment techniques: \textit{test-based} assessment, and \textit{static-based} assessment.
+
+\paragraph{\underline{Test-Based Assessment}}\label{subsubsec:AssertionBased}
+\sandoval{} has a \textit{Docker-based testing environment} with the runtime configuration needed to run and evaluate the generated code's security using test cases. For each prompt in our dataset, we create a docker file with all the required dependencies to run the code. 
+Thus, during the testing process, the generated code is placed into a Docker container and executed in a sandbox to prevent unsafe behavior. 
+
+
+Since each prompt in our dataset has a CWE-ID and an insecure solution example, the expected \textit{functional} and \textit{insecure} output of a function from a given input is known.
+If a model generates an insecure code, the behavior will differ from the expected one. Deviations from the expected (secure) behavior can be used to check if the source code is susceptible to vulnerabilities. Thus, this assessment relies on \textbf{\textit{test cases}} that include assertions for the expected functional and security properties. Specifically, we write a unit test for each prompt in our dataset using \texttt{unittest} module~\cite{unittest} for Python and JUnit 5~\cite{junit5} for Java. Each unit test class has two test methods; one verifies the \textit{functional} behavior of the generated code, whereas the other checks the \textit{security} behavior of the code. 
+
+
+To illustrate, the code in ~\listref{lst:cwe_918_test} shows the test case created for the prompt shown in ~\listref{lst:cwe_918}. This test class has two methods (\codePython{test_security} and \codePython{test_functionality}). The first one checks whether the solution is functionally correct by making two HTTP GET requests to the flask application; one request passes as input a username that exists (\textit{octocat}), and the other one provides a non-existent username (\textit{jn2Elxop0}). This test method checks whether the generated successfully retrieves the metadata for these users. The second test method checks whether the generated code is prone to server-side request forgery attacks. It is important to highlight that when we generate the code, we save it in a file named \codePython{A_cwe918_0.py}. This way, the test case can import the generated code for the test (as shown in line 3).
+
+
+
+\input{Codes/cwe_918_test}
+
+
+
+\paragraph{\underline{Static-Based Assessment}}
+
+Programs may use \textit{built-in} or \textit{external} libraries/modules/functions (henceforth, simply ``APIs'') that are inherently unsafe. Since these unsafe APIs are used in the wild, they are also part of the training data used by LLMs~\cite{siddiq2022empirical}. Thus, there is a risk that a model-generated code will use unsafe APIs. 
+
+For example, the source code shown in ~\listref{lst:cwe_328} uses the \snippetPython{md5} hash function. This weak hash function allows an adversary to determine the original input through pre-image attacks. Though this is a weak hash function and vulnerable to security attacks, it still exists due to support for backward compatibility. This is an example of a source code with CWE-328 (Use of Weak Hash)~\cite{cwe_328}. 
+% These API patterns can be detected using a static analyzer. 
+
+
+\input{Codes/cwe_328}
+
+
+
+
+To detect unsafe APIs being used in a generated code, our framework uses CodeQL~\cite{codeql}. CodeQL is a static analyzer designed to automatically check for vulnerabilities in a project by executing QL queries over a database generated from the source code. CodeQL can be used to match the function of the function call. 
+
+
+
+% \paragraph{Taint-based Assessement}
+Besides unsafe API misuse, several prompts in our database are related to injection vulnerabilities. These vulnerabilities are caused by \textit{untrusted data flows}~\cite{yamaguchi2015automatic, livshits2005finding}. These vulnerabilities are traditionally detectable through \textit{taint analysis}, which is a technique that tracks flows of \textit{sources} of potentially untrusted (tainted) data (\eg parameters in HTTP requests) to sensitive program areas (\textit{sinks})~\cite{schwartz2010all}. 
+
+In these cases, our framework uses CodeQL to perform (static) taint analysis of variables and check if they reach a sink method (\eg \snippetPython{os.system}).
+
+
+
+\subsection{Evaluation Metrics}\label{subsec:SecurityChecker}
+
+% Code generation models produce multiple solutions for a given prompt. 
+Models are commonly evaluated using the \texttt{pass@k} metric~\cite{chen2021codex, kulal2019spoc}. This metric evaluates the probability that \textit{at least one} out of $k$ generated samples are \textit{functionally correct} (\ie passed all \textit{functional} test cases). 
+To evaluate the \texttt{pass@k}, we generate $n$ samples per prompt ($n \geq k$), count the number of samples $c$ that are functionally correct ($c \leq n$), and calculate the unbiased estimator $\mathbb{E}$ by Kulal \etal \cite{kulal2019spoc}:
+% https://samuelalbanie.com/files/digest-slides/2022-07-codex.pdf
+% Slide: 8
+
+\begin{equation}
+  pass@k = \mathbb{E}_{prompts}\left[1- \frac{\binom {n-c}k}{\binom nk} \right]
+\end{equation}
+
+
+
+
+Although the \texttt{pass@k} is a widely-used metric~\cite{kulal2019spoc,chen2021codex}, it does not measure the \textit{security} of the generated code. Therefore, in this paper, we introduce two novel metrics (\texttt{secure@k} and \texttt{vulnerable@k}) for measuring the security of the generated code. These metrics are defined as follows:
+
+
+
+
+\begin{itemize}[leftmargin=*]
+  \item The \texttt{vulnerable@k} metric measures the probability that \textit{at least one} code snippet out of $k$ generated samples is vulnerable (\ie a vulnerability was detected by our assessment techniques). To compute this metric, we generate $n$ samples per prompt, count the number $v$ of generated vulnerable samples, and use the unbiased estimator in Eq.~\ref{eq:VulnAtK}. For this metric, {\textit{the model is better if the \texttt{vulnerable@k} score is lower}}.
+
+
+\begin{equation}\label{eq:VulnAtK}
+  vulnerable@k = \mathbb{E}_{prompts}\left[1- \frac{\binom {n-v}k}{\binom nk} \right]
+\end{equation}
+
+  \item The \texttt{secure@k} metric measures the probability that \textit{all} code snippets out of $k$ samples are vulnerability-free (\ie no vulnerability has been detected by our assessment techniques). That is, the prompt is considered secure if \textit{all} of the generated code in the top-k passes our assessment techniques. To clarify, consider that we have 10 prompts, a model generates 10 outputs for each problem described in a prompt, and we sample 3 out of 10 outputs generated by the model. If our assessment technique does not detect any vulnerability in all the 3 sampled outputs for 6 prompts, then the \textit{secure@3} score will be 60\%.
+  Threfore, to compute this metric, we count the number of prompts $s$ in which \textit{all} \textit{k} samples do not have a detected vulnerability in it and divided it by the number of prompts \textit{p}:
+
+
+\begin{equation}
+  secure@k = \frac{s}{p}
+\end{equation}\label{eq:SecAtK}
+\end{itemize}
+
+
+
+It is important to highlight that our novel metrics (\texttt{secure@k} and \texttt{vulnerable@k}) can be computed \textit{statically}, \textit{dynamically}, or a \textit{combination of both}. Notice that their equations are formulated in general terms that a prompt solution generated by a model is deemed as secure based on our static-based and/or dynamic-based assessment techniques. In our evaluation experiments (\secref{sec:results}), we will demonstrate the computation of these metrics both statically (by using CodeQL) and dynamically (by leveraging unit tests).
+
+
+
+
+\subsubsection{Estimating the pass@k, and vulnerable@k}
+Calculating Kulal \etal~\cite{kulal2019spoc} estimator directly results in large numbers and numerical instability~\cite{StarCoder}. Thus, to compute the \textit{pass@k}, and \textit{vulnerable@k} metrics, we used a numerically stable implementation from Chen \etal \cite{chen2021codex}.
+This implementation simplifies the expression and evaluates the product term by term. 
+
+
+
+
+\subsection{Experiment}
+As explained in ~\secref{subsec:Gaps}, LLMs are evaluated with respect to their ability to generate functional code (not necessarily secure). Thus, in this experiment, we evaluate the models' performance with respect to generating code that is both \textit{functionally correct} but also \textit{secure} with our framework.
+
+In our experiment, we provide each prompt in our dataset as input to four models from four LLM families: 
+
+\begin{itemize}[leftmargin=*, label=-,noitemsep,topsep=0pt]
+
+ \item \textbf{\textsc{StarCoder2}}~\cite{lozhkov2024starcoder2stackv2} is an open LLM for code, trained on over 4 trillion tokens from 600+ programming languages. It supports a 16k context window and uses a fill-in-the-middle training objective. We used a 3 billion version of this model.
+ 
+\item We used \textbf{\textsc{Qwen 2.5 Coder}} \cite{hui2024qwen25codertechnicalreport}, which is a 3 billion parameter code model, trained on 5.5 trillion tokens. It supports a 32k context window and excels in code generation, reasoning, and repair tasks.
+
+
+\item The \textbf{\textsc{Generative Pre-trained Model (GPT)}}  \textbf{\textsc{GPT-4o mini}} 
+~\cite{openai2024gpt4omini} is a lightweight variant of OpenAI’s GPT-4 family, optimized for cost-efficiency and responsiveness. Despite its smaller size, it maintains strong performance on reasoning, multilingual tasks, and code generation. It is available via the ChatGPT platform and inherits architectural advancements from GPT-4.
+
+\item The \textbf{\textsc{Gemini-2.5-Flash}} \cite{deepmind2025geminiflash} is a fast, multimodal AI model from Google optimized for low latency and high-volume tasks. It supports text, code, image, audio, and video inputs, with a "thinking budget" feature to control reasoning depth.
+
+\end{itemize}
+
+
+We chose these models based on their availability and performance from a leaderboard using the most commonly used benchmark, HumanEval \cite{humanevalleaderboard} when this study was conducted, and because prior works~\cite{openai2023gpt4, nijkamp2023codegen2,siddiq2022seceval,siddiq2024regexeval,siddiq2023franc,siddiq2024devgpt}  have studied their performance. Most of the top models are a variation of GPT models and Gemini models. We also used two top open-source models.
+
+We configure each LLM to generate \textbf{10} code solutions for each prompt with \textbf{2,048} new tokens. We selected 2,048 as the token size to generate because we observed that the insecure Python code examples in our dataset have an average of 54 tokens and a maximum of 245 tokens. Thus, a 2,048 token size would be sufficient for the models. 
+% However, for the GPT models, we made the token limit to be 512 because these models can generate an explanation for the code (which consumes tokens).
+
+Furthermore,  we vary the models'  \textit{temperature} parameter from 0 to 1 in 0.2 increments (\ie 0.0, 0.2, 0.4, 0.6, 0.8, and 1.0). This way we can observe the performance across different \textit{temperatures}, which is a parameter that controls the randomness of the model's generations (lower temperature values yield more predictable and repetitive outputs). 
+
+
+After obtaining the generated code solutions from each model, we measure and contrast the performance of these models with respect to three metrics: \textit{pass@k}~\cite{chen2021codex}, \textit{vulnerable@k}
+and \textit{secure@k} (the last two are our novel metrics, as defined in ~\secref{subsec:SecurityChecker}). 
+In our experiments, we chose $k$ to be equal to 1, 3, and 5. 
+This is because our goal is to evaluate these models for typical use scenarios, where developers will likely inspect only the first few generated code snippets by a model. 
+
+% \input{Files/methodology}
+\section{Results}\label{sec:results}
+
+
+
+In this section, we present the results of applying our assessment techniques to the code generated by the studied large language models (LLMs). First, we provided the detailed results on original (\ie English) prompts and then on the multilingual prompts.
+
+
+\subsection{Syntactic Correctness}
+
+As described in~\secref{subsec:CodeGeneration}, \sandoval{} includes a rule-based repair component to automatically fix common compilation issues that models produce~\cite{siddiq2023exploring}. \figref{fig:Compilation_python} and \figref{fig:Compilation_java}  show that, across both Python and Java, virtually no raw model output passes the compilability check before repair, all models produce near-zero pre-repair rates for both languages,confirming that repair is essential regardless of model or language.
+
+\textbf{Python.} After repair, GPT-4o-Mini achieves the highest post-repair rate (\textbf{$\sim$88\%}), followed by Qwen2.5-Coder (\textbf{$\sim$75\%}) and Gemini-2.5-Flash (\textbf{$\sim$68\%}). StarCoder2 shows the lowest and most temperature-sensitive behaviour: rates range from only \textbf{18\%} at $T\!=\!0.0$ to \textbf{$\sim$33\%} at higher temperatures. For GPT, Qwen, and Gemini, rates are relatively stable but decline slightly as temperature increases. Rule \textbf{R1} (code-block extraction), which removes natural-language text from the model output, is the dominant repair rule for GPT and Gemini outputs.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/compilation_results_Python.png}
+    \caption{Compilation rates before and after applying \sandoval's repair rules for Python.}
+    \label{fig:Compilation_python}
+\end{figure}
+
+
+\textbf{Java.} Java repair is generally harder than Python: post-repair rates are lower across all models, reflecting the stricter structural requirements (brace balance, class declarations, import placement). StarCoder2 is a notable exception. It exhibits the \textit{opposite} pattern to Python, reaching a peak of \textbf{$\sim$89\%} at $T\!=\!0.4$ before declining at higher temperatures, while remaining near \textbf{66\%} at the extremes. GPT-4o-Mini is the second-best for Java (\textbf{$\sim$67\%}), consistent across temperatures, followed by Qwen2.5-Coder (\textbf{64\%}$\!\to\!$\textbf{54\%}), which degrades noticeably with increasing temperature. Gemini-2.5-Flash yields the lowest Java rates (\textbf{$\sim$50\%}), also stable across temperatures. The Java-specific rules \textbf{R4} and \textbf{R6}: truncation repair, brace balancing, and class-name restoration, account for the additional gains over Python.
+
+ \begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/compilation_results_Java.png}
+    \caption{Compilation rates before and after applying \sandoval's repair rules for Java.}
+    \label{fig:Compilation_java}
+\end{figure}
+
+
+
+\subsection{Functional Correctness (pass@k metric)}\label{subsec:RQ2PassAtK}
+
+\figref{fig:pass_at_k_py} and \figref{fig:pass_at_k_java} plot each model's pass@k as a function of sampling temperature for both Python and Java. Across both languages, GPT-4o-Mini achieves the highest pass@1, and temperature effects diverge by metric: pass@1 is largely flat or slightly declining with temperature, while pass@3 and pass@5 grow steadily, reflecting that higher diversity increases the probability of at least one correct solution among the top-$k$ samples.
+
+\textbf{Python.} GPT-4o-Mini leads at pass@1 ($\approx$\textbf{30\%}), remaining stable across temperatures, with pass@5 rising to $\approx$\textbf{36\%} at $T\!=\!1$. Gemini-2.5-Flash follows ($\approx$\textbf{16--17\%} pass@1), with pass@5 growing from \textbf{19\%} to \textbf{28\%} as temperature increases. Qwen2.5-Coder shows the sharpest temperature sensitivity: pass@1 drops from \textbf{22\%} at $T\!=\!0$ to \textbf{11\%} at $T\!=\!1$, though pass@5 peaks near $T\!=\!0.6$--$0.8$. StarCoder-2 remains consistently low (pass@1 $<$\textbf{2\%}).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/tests_pass_at_k_comparison_python.png}
+    \caption{Functional Correctness of the generated Python code using \texttt{pass@k}.}
+    \label{fig:pass_at_k_py}
+\end{figure}
+
+\textbf{Java.} Absolute rates are lower than Python across all models, reflecting the added difficulty of generating structurally correct Java. GPT-4o-Mini again leads at pass@1 ($\approx$\textbf{17\%}) and is the most stable model across temperatures, with pass@5 reaching $\approx$\textbf{21\%}. Gemini-2.5-Flash shows lower pass@1 ($\approx$\textbf{12\%}), but its pass@5 grows notably with temperature ($\approx$\textbf{18\%} at $T\!=\!1$). Qwen2.5-Coder's pass@1 declines from \textbf{9\%} to \textbf{7\%} with temperature, while pass@5 peaks ($\approx$\textbf{20\%}) at $T\!=\!0.8$. StarCoder-2 remains negligible (pass@1 $<$\textbf{1\%}).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/tests_pass_at_k_comparison_java.png}
+    \caption{Functional Correctness of the generated Java code using \texttt{pass@k}.}
+    \label{fig:pass_at_k_java}
+\end{figure}
+
+% Overall, the results suggest that increasing $k$ mitigates the effect of higher temperatures and that moderate-to-high temperatures ($T\!=\!0.6$--$0.8$) are preferable when using pass@5 as the target metric, while low temperatures favour pass@1.
+
+\subsection{Security (secure@k and vulnerable@k metrics)}
+We compute the \texttt{secure@k} and \texttt{vulnerable@k} metrics based on the \textbf{\textit{static-based assessment}} technique and the \textbf{\textit{test-based assessment}} technique. These results are discussed in the next paragraphs.
+
+
+\subsubsection{Static-based Assessment}
+We leverage CodeQL to measure Vulnerable@k and Security@k across 23 natural languages for both Python (\figref{fig:vul_k_codeql_py}, \figref{fig:sec_k_codeql_py}) and Java (\figref{fig:vul_k_codeql_java}, \figref{fig:sec_k_codeql_java}).
+
+\textbf{Python.} GPT-4o-Mini exhibits the highest vulnerability rates (vul@1 $\approx$\textbf{32\%}, security@1 $\approx$\textbf{68\%}), nearly flat across all temperatures, reflecting its high compilability yield. Qwen2.5-Coder follows ($\approx$\textbf{19\%} vul@1, \textbf{76\%} security@1), with vul@1 declining slightly at higher temperatures while vul@5 grows. Gemini-2.5-Flash is substantially safer ($\approx$\textbf{10\%} vul@1, \textbf{89\%} security@1) and stable across temperatures. StarCoder-2 records the lowest vulnerability ($\approx$\textbf{4\%} vul@1, \textbf{93\%} security@1), though vul@5 climbs to $\sim$\textbf{21\%} as temperature and $k$ increase. Model rankings are consistent across all 23 languages: StarCoder-2 and Gemini-2.5-Flash are the safest; GPT-4o-Mini carries the most risk.
+
+\textbf{Java.} CodeQL vulnerability rates are substantially lower than Python across all models, reflecting the smaller proportion of compilable Java outputs. StarCoder-2 is the most secure (vul@1 $<$\textbf{1\%}, security@1 $\approx$\textbf{99\%}). Gemini-2.5-Flash is similarly safe ($\approx$\textbf{1\%} vul@1, \textbf{98\%} security@1). GPT-4o-Mini is the most vulnerable Java model ($\approx$\textbf{12\%} vul@1, \textbf{87\%} security@1), flat across temperatures. Qwen2.5-Coder shows the strongest temperature sensitivity: vul@1 drops from \textbf{10.6\%} at $T\!=\!0$ to \textbf{3.1\%} at $T\!=\!1$, with security@1 rising to $\approx$\textbf{97\%}, suggesting that higher sampling randomness helps avoid vulnerable Java patterns. 
+% Note that StarCoder-2 Java results at $T\!=\!1$ are excluded, as the CodeQL job produced no output for that configuration and the resulting 0\% vulnerability would be vacuously true rather than meaningful.
+
+Across both languages, the safest models under static analysis (StarCoder-2, Gemini-2.5-Flash) are not the strongest functional performers, confirming the security–functionality trade-off observed in the test-based assessment.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/vul_at_k_comparison_python.png}
+    \caption{Vulnerable@k (Python) across 23 languages using CodeQL.}
+    \label{fig:vul_k_codeql_py}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/security_at_k_comparison_python.png}
+    \caption{Security@k (Python) across 23 languages using CodeQL.}
+    \label{fig:sec_k_codeql_py}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/vul_at_k_comparison_java.png}
+    \caption{Vulnerable@k (Java) across 23 languages using CodeQL.}
+    \label{fig:vul_k_codeql_java}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/security_at_k_comparison_java.png}
+    \caption{Security@k (Java) across 23 languages using CodeQL.}
+    \label{fig:sec_k_codeql_java}
+\end{figure}
+
+
+\subsubsection{Test-based Assessment}
+
+\figref{fig:test_vul_k_py}, \figref{fig:test_sec_k_py}, \figref{fig:test_vul_k_java}, and \figref{fig:test_sec_k_java} report Vulnerable@k and Security@k computed from test-case outcomes for Python and Java respectively.
+
+\textbf{Python.} GPT-4o-Mini exhibits the highest vulnerability exposure: Vulnerable@1 is $\approx$\textbf{43\%} and rises to $\approx$\textbf{51\%} at $k\!=\!5$, reflecting its strong functional yield. Gemini-2.5-Flash follows ($\approx$\textbf{37\%}$\to$\textbf{54\%}), with vul@5 growing markedly at higher temperatures as sampling diversity increases. Qwen2.5-Coder's Vulnerable@1 declines from \textbf{31\%} to \textbf{25\%} with temperature, yet its vul@5 climbs to $\approx$\textbf{55\%}, revealing that while individual samples become less vulnerable, broader exploration still surfaces insecure variants. StarCoder-2 remains low throughout (vul@1 $<$\textbf{9\%}, vul@5 $\approx$\textbf{22\%}).
+
+On Security@k, GPT-4o-Mini leads with security@1 $\approx$\textbf{43\%}, declining gradually to $\approx$\textbf{37\%} at $k\!=\!5$---the most resilient model as $k$ grows. Gemini follows ($\approx$\textbf{37\%}$\to$\textbf{13--17\%}), while Qwen's security@k drops sharply from $\approx$\textbf{31\%} at $k\!=\!1$ to $<$\textbf{3\%} at $k\!=\!5$, indicating that its solutions rarely remain entirely secure across multiple samples. StarCoder-2 is near zero at security@5.
+
+\textbf{Java.} Rates are consistently lower than Python across all models, mirroring the lower functional yield observed in~\secref{subsec:RQ2PassAtK}. GPT-4o-Mini again leads: Vulnerable@1 $\approx$\textbf{25\%} (declining slightly with temperature), reaching $\approx$\textbf{30\%} at vul@5. Qwen2.5-Coder's vul@1 falls from \textbf{21\%} to \textbf{14\%} with temperature, yet vul@5 peaks at $\approx$\textbf{33\%}. Gemini-2.5-Flash is more moderate (vul@1 $\approx$\textbf{14\%}, vul@5 $\approx$\textbf{18--22\%}). StarCoder-2 is negligible ($<$\textbf{1\%} vul@1).
+
+Java Security@k follows the same downward trend: GPT-4o-Mini achieves the highest security@1 ($\approx$\textbf{25\%}) but drops to $\approx$\textbf{15--24\%} by $k\!=\!5$ depending on temperature. Qwen's security@5 collapses to $<$\textbf{2\%} at high temperatures, and StarCoder-2 records security@5 $=$ \textbf{0\%} throughout, as it rarely generates enough compilable Java to fill $k$ slots.
+
+Together, these results reveal two consistent patterns across both languages: \textit{(i)} vul@k grows with $k$ and with temperature, confirming that broader exploration inevitably surfaces more vulnerable variants; and \textit{(ii)} security@k declines sharply with both $k$ and temperature, meaning that the probability of drawing only secure completions erodes quickly. The apparent ``safety'' of low-yield models (StarCoder-2, Qwen on Java) is illusory---they generate too few testable outputs to assess properly. Practitioners targeting security-sensitive applications should prefer GPT-4o-Mini or Gemini-2.5-Flash at low-to-moderate temperatures ($T\!\leq\!0.4$) to maximise the chance of a secure first suggestion.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/tests_vul_at_k_comparison_python.png}
+    \caption{Vulnerable@k (Python) across 23 languages using Test Cases.}
+    \label{fig:test_vul_k_py}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/tests_security_at_k_comparison_python.png}
+    \caption{Security@k (Python) across 23 languages using Test Cases.}
+    \label{fig:test_sec_k_py}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/tests_vul_at_k_comparison_java.png}
+    \caption{Vulnerable@k (Java) across 23 languages using Test Cases.}
+    \label{fig:test_vul_k_java}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\linewidth]{figs/tests_security_at_k_comparison_java.png}
+    \caption{Security@k (Java) across 23 languages using Test Cases.}
+    \label{fig:test_sec_k_java}
+\end{figure}
+
+
+
+
+\subsection{Language Class Specific Overall Performance}
+
+Table~\ref{tab:lang_family_java_python} presents language class-specific results for Pass@$k$ and Security@$k$ ($k \in \{1,3,5\}$) across all 11 language families, reported separately for Java and Python prompts. 
+
+\noindent\textbf{Python consistently outperforms Java across all language families.} Python prompts yield higher Pass@1 scores than their Java counterparts for every language family and every model tested, with an average advantage of ${\approx}7$ percentage points across families when averaging over all models. The gap is most pronounced for Sino-Tibetan (Chinese), which exhibits the largest average Python$-$Java delta of $+8.69$ pp at Pass@1. This advantage likely reflects the greater volume of Python code in LLM pre-training corpora compared to Java, making Python the lower-resistance path for generation.
+
+\noindent\textbf{GPT-4o-mini leads across all language families and both languages.} GPT-4o-mini achieves the highest Pass@1 and Security@1 in every language family for both Java and Python, with average Pass@1 values of $24.3\%$ (Java) and $30.2\%$ (Python), and average Security@1 values of $24.3\%$ (Java) and $42.8\%$ (Python). Its advantage over Gemini is particularly visible in Python Pass@1, where it exceeds Gemini by ${\approx}13$ pp on average. The Sino-Tibetan family stands out: GPT-4o-mini reaches $33.85\%$ Python Pass@1, the highest single value in the table, suggesting that its training data is especially well-suited to Chinese-language prompts.
+
+\noindent\textbf{Gemini shows stable, language-agnostic performance.}
+Gemini-2.5-Flash achieves consistent Pass@1 values in the range of $10$--$13\%$ (Java) and $15$--$18\%$ (Python) across all 11 language families, indicating no strong language-resource bias. This uniform behaviour contrasts with Qwen2.5, which delivers competitive Python Pass@1 (${\approx}17\%$ on average) but noticeably lower Java Pass@1 (${\approx}8\%$), suggesting it transfers prompt comprehension to Python more reliably than to Java.
+
+\noindent\textbf{Security metrics favour Python by a wider margin than pass rate.}
+The Python$-$Java Security@1 gap is substantially larger than the corresponding Pass@1 gap: Gemini shows a $+21.6$ pp advantage for Python, GPT-4o-mini $+18.5$ pp, Qwen2.5 $+9.8$ pp, and StarCoder2 $+6.2$ pp. This indicates that Java-generated code is not only less functionally correct but also more likely to contain security vulnerabilities than Python-generated code, possibly because Java's type system and verbose APIs introduce more opportunities for insecure patterns when a model generates low-quality code. StarCoder2 shows near-uniform low performance on both languages ($<1\%$ Java Security@1; $<8\%$ Python Security@1), making it the weakest model across all language families and both programming languages.
+
+
+ \input{Tables/test_language_family}
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Correlation between Functional Correctness and Security}
+LLMs should generate not only functionally correct code but also secure code, as insecure outputs can introduce vulnerabilities when integrated into real systems. Our results reveal a clear \textbf{security--functionality trade-off}. Models that achieve higher functional correctness (\eg~GPT-4o-Mini) also exhibit higher vulnerability rates, particularly under both static- and test-based assessments. In contrast, models such as Gemini-2.5-Flash and StarCoder2 appear safer under static analysis but achieve substantially lower pass@k scores.
+
+This trade-off is further amplified by sampling. Increasing temperature and $k$ improves functional correctness (via pass@5), but consistently increases Vulnerable@k while reducing Security@k. Thus, broader sampling increases the likelihood of obtaining a correct solution, but also raises the probability of generating insecure variants.
+
+We also observe that \textbf{compilability strongly mediates security outcomes}. Models with higher post-repair compilation rates (\eg~GPT-4o-Mini) produce more analyzable outputs, which increases both the detection of vulnerabilities and the measured functional success. In contrast, low-yield models (\eg~StarCoder2) appear artificially ``safe'' due to the scarcity of compilable outputs, masking their true risk profile.
+
+\subsection{Multilingual Generalization for Secure Code Generation}
+Our multilingual evaluation across 23 natural languages reveals that \textbf{language has a limited impact on relative model ranking}, but affects absolute performance. Model rankings remain consistent across languages (\eg~GPT-4o-Mini leads in pass@k, while Gemini and StarCoder2 remain safer under static analysis), suggesting that security and correctness behaviors are largely model-intrinsic rather than language-dependent.
+
+However, we observe modest performance variation across language families. High-resource languages (\eg~ Indo-European and Sino-Tibetan) tend to yield slightly higher pass@k scores, with the largest gains observed for Chinese prompts. In contrast, lower-resource languages show small but consistent drops in functional correctness. 
+
+Notably, Gemini-2.5-Flash exhibits the most \textbf{language-agnostic behavior}, maintaining stable performance across all language families. This contrasts with Qwen2.5-Coder, which shows stronger performance on Python prompts but weaker transfer to Java, indicating uneven cross-language generalization.
+
+Overall, these findings suggest that while multilingual prompting introduces some variability, \textbf{programming language (Python vs.\ Java) is a more dominant factor than natural language} in determining model performance.
+
+\subsection{Implications for Developers and Researchers}
+Our findings have several implications for practitioners and researchers adopting LLMs for software engineering tasks.
+
+\textbf{Model selection requires balancing correctness and security.}
+Models such as GPT-4o-Mini provide the highest functional correctness and overall utility, but also carry higher security risks. In contrast, models that appear safer (\eg~StarCoder2) may do so due to low output quality rather than robust security behavior. For security-critical applications, developers should prefer models that balance both aspects (\eg~GPT-4o-Mini or Gemini-2.5-Flash) and operate at \textbf{low-to-moderate temperatures ($T \leq 0.4$)}.
+
+\textbf{Sampling strategy is a critical design choice.}
+Increasing $k$ improves the chance of obtaining a correct solution but rapidly degrades security guarantees. Thus, systems should avoid naive top-$k$ selection and instead incorporate filtering or ranking mechanisms (\eg~static analysis or test-based validation) to select secure outputs.
+
+\textbf{Repair and post-processing are essential.}
+Our rule-based repair pipeline significantly improves compilation rates, which in turn enables downstream correctness and security evaluation. This highlights that raw LLM outputs are often not directly usable and require structured post-processing.
+
+\textbf{Need for broader evaluation metrics.}
+While our work focuses on correctness and security, other quality attributes (e.g., performance, maintainability, robustness) remain underexplored. Our multilingual and multi-programming dataset provides a foundation for future studies to evaluate these additional dimensions.
+
+\subsection{Limitations and Threats to Validity}
+\label{subsec:Limitations}
+
+\textbf{External validity.}
+Although we extend the original dataset beyond Python to include Java, our study still covers only two programming languages. While Python and Java are widely used and representative, further studies are needed to validate generalizability across additional languages and ecosystems.
+
+\textbf{Construct validity.}
+Our prompts are derived from multiple sources (\eg~CWE, StackOverflow, CodeQL) and partially constructed manually. While we followed systematic criteria and conducted peer review to ensure quality, some bias in prompt design may remain.
+
+\textbf{Translation quality.}
+Multilingual prompts were generated using GPT-4o-mini and validated using back-translation and BERTScore. However, they were not evaluated by native speakers, which may introduce subtle semantic deviations.
+
+\textbf{Static analysis limitations.}
+We rely on CodeQL for static-based vulnerability detection. As with any static analyzer, false positives and false negatives are possible. To mitigate this, we complement static analysis with test-based assessment, providing a more comprehensive evaluation.
+
+\textbf{Evaluation bias due to compilability.}
+Models with low compilation rates (\eg~StarCoder2) produce fewer analyzable samples, which can bias both correctness and security metrics. As a result, some models may appear artificially safe or unreliable due to limited evaluable outputs rather than intrinsic behavior.
+
+
+\section{Conclusion}\label{sec:conclusion}
+
+The rapid adoption of LLM-based code assistants underscores the urgent need to evaluate not only their functional correctness but also their security implications. Existing benchmarks largely emphasize correctness, leaving a critical gap in understanding how vulnerabilities emerge and propagate in LLM-generated code. To address this, we introduced \sandoval, a multilingual and multi-programming security-centric benchmarking framework that combines a curated dataset, rule-based repair, static and dynamic analyses, and two novel evaluation metrics—\texttt{secure@k} and \texttt{vulnerable@k}. 
+
+Our empirical study across four state-of-the-art models and 23 natural languages reveals several key findings. First, we observe a clear \textbf{security--functionality trade-off}: models that achieve higher pass@k (\eg~GPT-4o-Mini) also exhibit higher vulnerability rates, while models that appear safer often do so due to lower functional yield. Second, we show that \textbf{sampling strategies matter}: increasing temperature and $k$ improves the likelihood of generating correct solutions but significantly increases the probability of vulnerable outputs while reducing the chance of obtaining consistently secure completions. Third, we find that \textbf{programming language has a stronger impact than natural language}: Python consistently outperforms Java in both correctness and security, whereas multilingual prompts introduce only modest variation and do not alter relative model rankings. 
+
+These findings highlight the importance of evaluating LLMs under realistic, security-sensitive conditions and caution against relying solely on correctness-based metrics. By releasing both the multilingual, multi-programming dataset and the \sandoval~framework, we provide a reproducible foundation for systematically assessing and improving the security of LLM-generated code.
+
+Future work will extend \sandoval~to additional programming languages and ecosystems, incorporate deeper semantic analyses (\eg~taint and inter-procedural data-flow analysis), and explore holistic evaluation metrics that jointly capture correctness, security, and other software quality attributes. Ultimately, we aim to advance LLM-driven software engineering toward systems that are not only effective but also secure and trustworthy.
+%-------------------------------------------------------------------------------
+% \bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
