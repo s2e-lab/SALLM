@@ -227,6 +227,7 @@
 
 
 As Large Language Models (LLMs) become increasingly integrated into software engineers' daily workflows, it is critical to ensure the code they generate is not just functionally correct but also secure. While LLMs can boost developer productivity, prior empirical studies have shown that they often produce insecure code. This issue stems from two key factors. First, the datasets commonly used to evaluate LLMs don't accurately reflect real-world software engineering tasks where security is a concern. Instead, they tend to focus on competitive programming problems or classroom-style exercises, which lack the complexity and security risks of production code integrated into larger systems. Second, current evaluation metrics mostly emphasize functional correctness and overlook security aspects altogether. To address these gaps, we introduce \sandoval, a benchmarking framework designed to systematically evaluate LLMs' ability to generate secure code. The framework includes three main components: (1) a novel dataset of security-focused Python and Java prompts translated into 23 natural languages, (2) configurable assessment techniques for analyzing generated code, and (3) new metrics that assess models from the perspective of secure code generation.
+Our empirical evaluation of four state-of-the-art LLMs (StarCoder2, Qwen2.5-Coder, GPT-4o-Mini, Gemini-2.5-Flash) reveals three key findings. First, there is a clear \textit{security--functionality trade-off}: GPT-4o-Mini achieves the highest pass@k but also the highest vulnerability rates, while models that appear safer often do so because of low code yield rather than robust security behavior. Second, \textit{programming language matters more than natural language}: Python consistently outperforms Java in both correctness and security, whereas the 23 natural languages introduce only modest variation and do not alter relative model rankings. Third, \textit{sampling strategy is a critical risk factor}: increasing temperature and $k$ improves the likelihood of a correct solution but sharply degrades security@k, meaning that broader exploration inevitably surfaces more vulnerable code variants.
 }
 
 \keywords{security evaluation, large language models, pre-trained transformer model, metrics, multilingual}
@@ -262,17 +263,6 @@ The main contributions of our work are as follows:
 \item A benchmarking study of four prominent LLMs (StarCoder2, Qwen-2.5 Coder, GPT-4o-Mini, and Gemini-2.5-Flash) using our proposed framework.
 \end{itemize}
 
-The remainder of this paper is organized as follows:
-Section~\ref{sec:background} introduces the core concepts necessary to understand this paper.
-Section~\ref{sec:framework} describes our framework and experiment in detail.
-% Section~\ref{sec:experiments} describes the empirical investigation we performed to benchmark LLMs.
-Section
-~\ref{sec:results} presents the results of our experiments.
-Section~\ref{sec:discussion} includes a discussion about the implications of the work and explains \sandoval's limitations. 
-% Section~\ref{sec:relatedWork} presents related work.
-Section~\ref{sec:conclusion} concludes this paper. %while describing plans for future work. 
-
-
 \subsection{Extended Contribution}
 
 This manuscript is an extended version of our prior work~\cite{siddiq2024sallm}.
@@ -292,6 +282,15 @@ Our original workshop paper introduced the \textsc{SaLLM} framework and demonstr
 \end{itemize}
 
 Together, these extensions elevate our initial framework into a comprehensive, multilingual and multi-programming benchmarking platform that enables systematic assessment of the security of LLM-generated code across languages, models, and evaluation settings.
+
+\subsection{Paper Organization}
+
+The remainder of this paper is organized as follows.
+Section~\ref{sec:background} introduces the core concepts necessary to understand this paper.
+Section~\ref{sec:framework} describes our framework and experiment in detail.
+Section~\ref{sec:results} presents the results of our experiments.
+Section~\ref{sec:discussion} includes a discussion about the implications of the work and explains \sandoval's limitations.
+Section~\ref{sec:conclusion} concludes this paper.
 
 \section{Background and Related Work}\label{sec:background}
 
@@ -376,6 +375,8 @@ Recent benchmarks have addressed various limitations in security evaluation. Haj
 
 More recent work has focused on repository-level security evaluation. Dilgren \etal~\cite{dilgren2025secrepobench} introduced SecRepoBench, which benchmarks LLMs for secure code generation in real-world repository contexts rather than isolated function completion. SecureAgentBench~\cite{yang2025secureagentbench} evaluates code agents' ability to generate secure code under realistic vulnerability scenarios, requiring agents to analyze large codebases and modify multiple files.
 
+Deng \etal~\cite{deng2024devaic} presented \textsc{DeVAIC}\footnote{\url{https://www.sciencedirect.com/science/article/pii/S0950584924001770}}, a tool that applies static analysis to assess the security of AI-generated code across multiple languages. Compared to \textsc{DeVAIC}, \sandoval{} differs in three ways: (i)~we jointly evaluate \textit{functional correctness} and security rather than security alone; (ii)~we introduce two novel, unbiased estimator-based metrics (security@k, vulnerable@k) rather than raw vulnerability counts; and (iii)~we evaluate models across 23 \textit{natural languages}, enabling the first cross-lingual security benchmarking study.
+
 Li \etal \cite{li2025iris} created CWE-Bench-Java, which focused on finding vulnerabilities by LLMs in the real-world vulnerability.
 In our work, we manually created test cases that focus on functional correctness and vulnerability detection through dynamic analysis of LLM-generated code, not on detecting vulnerabilities with LLM.
 Other datasets and frameworks focused on specific vulnerabilities, such as regex denial-of-service attacks (ReDoS)~\cite{siddiq2024regex} and hardware-specific vulnerabilities \cite{kande2024security}. 
@@ -429,7 +430,8 @@ By applying the criteria above to these 500 questions, we obtained a total of \t
 
 \end{itemize}
 
-As shown in Figure~\ref{fig:framework}, for each collected sample from these sources, we extract their \textit{title}, \textit{content} (\ie the raw text/code collected from the source), \textit{source URL}, and \textit{CWE-ID} (if available). 
+As shown in Figure~\ref{fig:framework}, for each collected sample from these sources, we extract their \textit{title}, \textit{content} (\ie the raw text/code collected from the source), \textit{source URL}, and \textit{CWE-ID} (if available).
+\textbf{CWE Coverage.} Our dataset covers \textbf{36 distinct CWE identifiers}, drawn from the MITRE Top 25 Most Dangerous Software Weaknesses~\cite{top25} as applicable to Python and Java, plus additional CWEs represented in CodeQL and Sonar Rules documentation. Each prompt is labeled with a CWE-ID; the full prompt-to-CWE mapping is available in the replication package. While no single benchmark covers all CWEs, our selection prioritizes the highest-impact and most frequently exploited weaknesses relevant to the two target programming languages.
 
 
 \subsubsection{Prompt Creation}
@@ -616,6 +618,9 @@ To evaluate the \texttt{pass@k}, we generate $n$ samples per prompt ($n \geq k$)
 
 
 Although the \texttt{pass@k} is a widely-used metric~\cite{kulal2019spoc,chen2021codex}, it does not measure the \textit{security} of the generated code. Therefore, in this paper, we introduce two novel metrics (\texttt{secure@k} and \texttt{vulnerable@k}) for measuring the security of the generated code. These metrics are defined as follows:
+
+\noindent\textbf{Relationship between functional correctness and security.}
+Our metrics treat functional correctness and security as \textit{orthogonal} properties. A code sample may be (i)~functionally correct and secure, (ii)~functionally correct but vulnerable, (iii)~functionally incorrect but not vulnerable, or (iv)~functionally incorrect and vulnerable. The pass@k metric captures only case~(i), while vulnerable@k and security@k capture the security dimension regardless of functional outcome. This explicit separation is intentional: it lets practitioners independently quantify how often a model generates \textit{working but insecure} code, which is the scenario of greatest practical concern. A sample is counted as functionally correct only if it passes all \textit{functional} test methods; it is counted as secure only if it passes all \textit{security} test methods and/or no vulnerability is detected by CodeQL.
 
 
 
@@ -889,10 +894,10 @@ Although we extend the original dataset beyond Python to include Java, our study
 Our prompts are derived from multiple sources (\eg~CWE, StackOverflow, CodeQL) and partially constructed manually. While we followed systematic criteria and conducted peer review to ensure quality, some bias in prompt design may remain.
 
 \textbf{Translation quality.}
-Multilingual prompts were generated using GPT-4o-mini and validated using back-translation and BERTScore. However, they were not evaluated by native speakers, which may introduce subtle semantic deviations.
+Multilingual prompts were generated using GPT-4o-mini and validated using back-translation and BERTScore. However, they were not evaluated by native speakers, which may introduce subtle semantic deviations. Conducting small-scale human evaluation by domain experts fluent in the target languages would further strengthen confidence in translation fidelity, and we plan to address this in future work.
 
 \textbf{Static analysis limitations.}
-We rely on CodeQL for static-based vulnerability detection. As with any static analyzer, false positives and false negatives are possible. To mitigate this, we complement static analysis with test-based assessment, providing a more comprehensive evaluation.
+We rely on CodeQL for static-based vulnerability detection. As with any static analyzer, false positives and false negatives are possible. To mitigate this, we complement static analysis with test-based assessment, providing a more comprehensive evaluation. Cross-validating CodeQL findings against additional analyzers (\eg Bandit for Python, SpotBugs for Java) would further reduce false-positive risk, and we plan to explore this in future extensions of \sandoval.
 
 \textbf{Evaluation bias due to compilability.}
 Models with low compilation rates (\eg~StarCoder2) produce fewer analyzable samples, which can bias both correctness and security metrics. As a result, some models may appear artificially safe or unreliable due to limited evaluable outputs rather than intrinsic behavior.
