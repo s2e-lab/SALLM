@@ -1,20 +1,19 @@
 """
 generate_codeql_figures.py
 
-Converts codeql_result.ipynb for both Java and Python datasets.
+2 rows (Java/Python) × 3 cols (k=1/3/5), mean ± std across languages.
 
 Reads:
   ../Evaluation/Result/CodeQL_Results-Multi_Java.csv
   ../Evaluation/Result/CodeQL_Results-Multi_Python.csv
 
 Writes:
-  Figure/vul_at_k_comparison_java.png
-  Figure/security_at_k_comparison_java.png
-  Figure/vul_at_k_comparison_python.png
-  Figure/security_at_k_comparison_python.png
+  Figure/vul_at_k_comparison.png
+  Figure/security_at_k_comparison.png
 """
 
 import os
+import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
@@ -31,9 +30,18 @@ CSV_PYTHON = os.path.join(RESULT_DIR, "CodeQL_Results-Multi_Python.csv")
 MODEL_LABELS = {
     "gpt":       "GPT-4o-Mini",
     "gemini":    "Gemini-2.5-Flash",
-    "Qwen":      "Qwen-2.5-Coder",
-    "starcoder": "Starcoder-2",
+    "qwen":      "Qwen-2.5-Coder",
+    "starcoder": "StarCoder-2",
 }
+
+MODEL_COLORS = {
+    "GPT-4o-Mini":       "#e07b39",
+    "Gemini-2.5-Flash":  "#4878cf",
+    "Qwen-2.5-Coder":    "#6acc65",
+    "StarCoder-2":       "#d43f3a",
+}
+
+K_VALUES = [1, 3, 5]
 
 
 def pretty_model(name):
@@ -43,68 +51,108 @@ def pretty_model(name):
     return name
 
 
-def plot_metric(df, metric_col, ylabel, fig_name):
-    languages   = df["Language"].unique()
-    cols        = 5
-    rows        = (len(languages) + cols - 1) // cols
+def load(csv_path):
+    if not os.path.exists(csv_path):
+        return None
+    df = pd.read_csv(csv_path)
+    df["Temp"] = df["Temp"].astype(float)
+    df["Model"] = df["Model"].apply(pretty_model)
+    return df
 
-    fig, axs = plt.subplots(rows, cols, figsize=(12, 2 * rows),
-                            sharex=True, sharey=True, dpi=300)
-    axs_flat = axs.flatten()
 
-    for idx, lang in enumerate(languages):
-        ax     = axs_flat[idx]
-        subset = df[df["Language"] == lang]
-        for model in subset["Model"].unique():
-            mdata  = subset[subset["Model"] == model]
-            label  = pretty_model(model)
-            ax.plot(mdata["Temp"], mdata[f"{metric_col}@1"],
-                    label=f"{label} - @1", linestyle="-",  marker="o")
-            ax.plot(mdata["Temp"], mdata[f"{metric_col}@3"],
-                    label=f"{label} - @3", linestyle="--", marker="x")
-            ax.plot(mdata["Temp"], mdata[f"{metric_col}@5"],
-                    label=f"{label} - @5", linestyle=":",  marker="s")
+def plot_metric_figure(df_java, df_python, metric_col, ylabel, fig_name):
+    """
+    2-row (Java, Python) × 3-col (k=1,3,5) figure.
+    Each panel: x=temperature, one line per model (mean over languages),
+    shaded ±1-std band.
+    """
+    datasets = [("Java", df_java), ("Python", df_python)]
+    models   = list(MODEL_LABELS.values())
+    ref_df   = next(d for _, d in datasets if d is not None)
+    temps    = sorted(ref_df["Temp"].unique())
 
-        ax.set_title(lang)
-        ax.set_xlabel("Temperature")
-        ax.set_ylabel(ylabel)
-        if idx % cols != 0:
-            ax.set_ylabel("")
-            ax.tick_params(labelleft=False)
-        if idx < (rows - 1) * cols:
-            ax.set_xlabel("")
-            ax.tick_params(labelbottom=False)
-        ax.grid(True)
+    n_rows = sum(1 for _, d in datasets if d is not None)
+    n_cols = len(K_VALUES)
 
-    for j in range(idx + 1, len(axs_flat)):
-        fig.delaxes(axs_flat[j])
+    fig, axs = plt.subplots(n_rows, n_cols,
+                            figsize=(4.5 * n_cols, 3.5 * n_rows),
+                            sharex=True, sharey=False, dpi=200)
+    axs = np.array(axs).reshape(n_rows, n_cols)
 
-    handles, labels = axs_flat[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="lower right", ncol=2, fontsize="small")
-    plt.tight_layout()
-    fig.subplots_adjust(bottom=0.1)
+    row_idx = 0
+    for lang_label, df in datasets:
+        if df is None:
+            continue
+        for col_idx, k in enumerate(K_VALUES):
+            ax  = axs[row_idx, col_idx]
+            col = f"{metric_col}@{k}"
 
+            for model in models:
+                mdf = df[df["Model"] == model]
+                if mdf.empty:
+                    continue
+                grp   = mdf.groupby("Temp")[col]
+                mean  = grp.mean()
+                std   = grp.std().fillna(0)
+                t     = mean.index.values
+                color = MODEL_COLORS.get(model, None)
+                ax.plot(t, mean.values, marker="o", label=model,
+                        color=color, linewidth=1.8, markersize=5)
+                ax.fill_between(t,
+                                (mean - std).values,
+                                (mean + std).values,
+                                alpha=0.15, color=color)
+
+            ax.set_xlim(temps[0] - 0.05, temps[-1] + 0.05)
+            ax.set_ylim(0, 100)
+            ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
+            ax.set_xticks(temps)
+            ax.tick_params(axis="x", labelsize=8, rotation=45)
+
+            if col_idx == 0:
+                ax.set_ylabel(f"{lang_label}\n{ylabel}", fontsize=9)
+            else:
+                ax.set_ylabel("")
+
+            if row_idx == 0:
+                ax.set_title(f"@k = {k}", fontsize=10, fontweight="bold")
+
+            if row_idx == n_rows - 1:
+                ax.set_xlabel("Temperature", fontsize=9)
+
+        row_idx += 1
+
+    handles, labels = axs[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels,
+               loc="lower center", ncol=len(models),
+               fontsize=9, frameon=True,
+               bbox_to_anchor=(0.5, -0.04))
+
+    plt.tight_layout(rect=[0, 0.04, 1, 1])
     out = os.path.join(FIG_DIR, fig_name)
-    plt.savefig(out, dpi=300)
+    plt.savefig(out, dpi=200, bbox_inches="tight")
     plt.close(fig)
     print(f"  Saved {out}")
 
 
 def main():
-    for csv_path, label in [(CSV_JAVA, "Java"), (CSV_PYTHON, "Python")]:
-        if not os.path.exists(csv_path):
-            print(f"WARNING: {csv_path} not found — skipping {label} CodeQL figures.")
-            continue
+    df_java   = load(CSV_JAVA)
+    df_python = load(CSV_PYTHON)
 
-        df = pd.read_csv(csv_path)
-        df = df.sort_values(["Model", "Temp", "Language"])
-        df["Temp"] = df["Temp"].astype(float)
-        suffix = label.lower()
+    if df_java is None and df_python is None:
+        print("ERROR: no CodeQL result CSVs found.")
+        return
 
-        print(f"[codeql/{label}] Generating vul@k figure …")
-        plot_metric(df, "vul",      "Vulnerable@k (%)", f"vul_at_k_comparison_{suffix}.png")
-        print(f"[codeql/{label}] Generating security@k figure …")
-        plot_metric(df, "security", "Security@k (%)",   f"security_at_k_comparison_{suffix}.png")
+    for metric, ylabel, base in [
+        ("vul",      "Vulnerable@k (%)", "vul_at_k_comparison"),
+        ("security", "Security@k (%)",   "security_at_k_comparison"),
+    ]:
+        print(f"[codeql] {metric}@k combined …")
+        plot_metric_figure(df_java, df_python, metric, ylabel, f"{base}.png")
+        print(f"[codeql] {metric}@k java …")
+        plot_metric_figure(df_java, None,      metric, ylabel, f"{base}_java.png")
+        print(f"[codeql] {metric}@k python …")
+        plot_metric_figure(None,    df_python, metric, ylabel, f"{base}_python.png")
 
 
 if __name__ == "__main__":
