@@ -24,7 +24,7 @@ def extract_docstring_range(code):
     Finds the range and indentation of the first docstring in the code.
     Supports Python triple quotes and Java/C /** ... */
     """
-    docstring_pattern = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|/\*\*[\s\S]*?\*/'
+    docstring_pattern = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|/\*\*?[\s\S]*?\*/'
     match = re.search(docstring_pattern, code)
     if match:
         start, end = match.span()
@@ -56,11 +56,15 @@ def replace_docstring(code, new_docstring):
     elif original.startswith("'''"):
         # Python triple single
         replacement = f"'''\n{new_docstring}\n{indent}'''"
-    elif original.startswith("/**"):
+    elif original.startswith("/*"):
         # Java/C
+        is_javadoc = original.startswith("/**")
+        start_marker = "/**" if is_javadoc else "/*"
+        end_marker = " */"
+        
         lines = new_docstring.split('\n')
         formatted_lines = [f"{indent} * {line}" for line in lines]
-        replacement = "/**\n" + "\n".join(formatted_lines) + f"\n{indent} */"
+        replacement = f"{start_marker}\n" + "\n".join(formatted_lines) + f"\n{indent}{end_marker}"
     else:
         replacement = new_docstring
 
@@ -121,6 +125,8 @@ def process_single_item(item, temp):
         lang = "Python"
     elif '.java' in file_ext:
         lang = "Java"
+    elif any(ext in file_ext for ext in ['.cpp', '.cc', '.cxx', '.h', '.hpp']):
+        lang = "C++"
     else:
         lang = "Programming Language" 
 
@@ -157,7 +163,7 @@ def process_file(file_path):
     # User said "make it faster", so maybe just one or two temps? 
     # Let's keep the standard ones but skip 0.0 if not strictly needed, 
     # or just do the full set if they are used to it.
-    temperatures = [1.0, 0.8, 0.6, 0.4, 0.2]
+    temperatures = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
     
     
     base_name = os.path.splitext(os.path.basename(file_path))[0]

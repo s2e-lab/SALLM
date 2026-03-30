@@ -5,13 +5,12 @@ import os
 input_file = '/groups/jdasilv2/Latif/SALLM/ProcessedFiles/dataset_nl_prompt_best.jsonl'
 output_file = '/groups/jdasilv2/Latif/SALLM/Translation/Translation_Evaluation.csv'
 
-# Select first 5 samples
+# Load all samples
 samples = []
 with open(input_file, 'r', encoding='utf-8') as f:
-    for i, line in enumerate(f):
-        if i >= 5:
-            break
-        samples.append(json.loads(line))
+    for line in f:
+        if line.strip():
+            samples.append(json.loads(line))
 
 # Header
 header = [

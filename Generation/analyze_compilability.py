@@ -15,30 +15,30 @@ def main():
     files = [f for f in os.listdir(input_dir) if f.endswith('.jsonl')]
     
     # helper for stats: [before_success, before_total, after_success, after_total]
-    # actually totals are same for before/after per file, so: [before_success, after_success, total_count]
-    stats_python = defaultdict(lambda: [0, 0, 0])
-    stats_java = defaultdict(lambda: [0, 0, 0])
-    stats_github_python = defaultdict(lambda: [0, 0, 0])
-    stats_github_java = defaultdict(lambda: [0, 0, 0])
+    stats_cpp = defaultdict(lambda: [0, 0, 0])
+    stats_github_cpp = defaultdict(lambda: [0, 0, 0])
     
     print(f"Analyzing {len(files)} files...")
     
     for filename in files:
-        is_java = 'dataset_java' in filename
+        is_java = 'java' in filename.lower()
+        is_cpp = 'cpp' in filename.lower()
         is_github = 'github-dataset' in filename
         
-        if is_github:
-            current_stats = stats_github_java if is_java else stats_github_python
-        else:
-            current_stats = stats_java if is_java else stats_python
+        if is_github: current_stats = stats_github_cpp
+        else: current_stats = stats_cpp
         
         name_part = filename.replace('.jsonl', '')
         if name_part.startswith('dataset_java_nl_prompt_best_'):
             remain = name_part.replace('dataset_java_nl_prompt_best_', '')
+        elif name_part.startswith('dataset_cpp_nl_prompt_best_'):
+            remain = name_part.replace('dataset_cpp_nl_prompt_best_', '')
         elif name_part.startswith('dataset_nl_prompt_best_'):
             remain = name_part.replace('dataset_nl_prompt_best_', '')
         elif name_part.startswith('github-dataset_java_nl_prompt_best_'):
             remain = name_part.replace('github-dataset_java_nl_prompt_best_', '')
+        elif name_part.startswith('github-dataset_cpp_nl_prompt_best_'):
+            remain = name_part.replace('github-dataset_cpp_nl_prompt_best_', '')
         elif name_part.startswith('github-dataset_nl_prompt_best_'):
             remain = name_part.replace('github-dataset_nl_prompt_best_', '')
         else:
@@ -69,7 +69,7 @@ def main():
                                 if isinstance(output_obj, dict):
                                     original_code = output_obj.get('code', '')
                                     after_compilable = output_obj.get('compilable', False)
-                                    before_compilable = check_compilable(original_code)
+                                    before_compilable = check_compilable(original_code, is_java=is_java, is_cpp=is_cpp)
                                     
                                     current_stats[key][0] += 1 if before_compilable else 0
                                     current_stats[key][1] += 1 if after_compilable else 0
@@ -81,7 +81,7 @@ def main():
                                 if isinstance(output_obj, dict):
                                     original_code = output_obj.get('code', '')
                                     after_compilable = output_obj.get('compilable', False)
-                                    before_compilable = check_compilable(original_code)
+                                    before_compilable = check_compilable(original_code, is_java=is_java, is_cpp=is_cpp)
                                     current_stats[key][0] += 1 if before_compilable else 0
                                     current_stats[key][1] += 1 if after_compilable else 0
                                     current_stats[key][2] += 1
@@ -92,6 +92,8 @@ def main():
                     pass
 
     # Print tables
+    print_table("Standard C++", stats_cpp)
+    print_table("GitHub C++", stats_github_cpp)
     def print_table(title, stats_dict):
         print(f"\n# {title} Analysis")
         header = f"{'Model':<20} | {'Temp':<5} | {'Before %':<10} | {'After %':<10} | {'Delta %':<10} | {'Samples':<8}"

@@ -500,17 +500,52 @@ def check_compilable_java(code):
 
     return True
 
-def check_compilable(data):
+def check_compilable_cpp(code):
     """
-    Checks if code is compilable (Python or Java).
+    Checks C++ compilability using g++.
+    """
+    if not code or len(code.strip()) < 20:
+        return False
+    
+    # Simple syntax heuristics first for speed
+    if code.count('{') != code.count('}'):
+        return False
+    if code.count('(') != code.count(')'):
+        return False
+    
+    # Create temp file
+    import tempfile
+    import subprocess
+    
+    with tempfile.NamedTemporaryFile(suffix='.cpp', mode='w', delete=False) as tmp:
+        tmp.write(code)
+        tmp_name = tmp.name
+        
+    try:
+        # Simple compile-only check
+        result = subprocess.run(
+            ['g++', '-std=c++17', '-fsyntax-only', tmp_name], 
+            capture_output=True, text=True, timeout=5
+        )
+        return result.returncode == 0
+    except Exception:
+        return False
+    finally:
+        if os.path.exists(tmp_name):
+            os.remove(tmp_name)
+
+def check_compilable(data, is_java=False, is_cpp=False):
+    """
+    Checks if code is compilable (Python, Java, or C++).
     """
     if not data or len(data.strip()) < 10:
         return False
 
-    # Check for Java class structure
-    if 'class ' in data and '{' in data:
-        # Likely Java
+    if is_java:
         return check_compilable_java(data)
+    
+    if is_cpp:
+        return check_compilable_cpp(data)
 
     # Try Python AST parse
     try:
@@ -683,7 +718,7 @@ def main():
         os.makedirs(output_dir)
         
     files = os.listdir(input_dir)
-    jsonl_files = [f for f in files if f.endswith('.jsonl') and (f.startswith('github-dataset') or f.startswith('dataset'))]
+    jsonl_files = [f for f in files if f.endswith('.jsonl') and 'cpp' in f.lower() and (f.startswith('github-dataset') or f.startswith('dataset'))]
 
     print(f"Found {len(jsonl_files)} files to process.")
     
@@ -693,6 +728,7 @@ def main():
         
         # Determine context from filename
         is_java_context = 'java' in filename.lower()
+        is_cpp_context = 'cpp' in filename.lower()
         
         data = []
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -734,7 +770,7 @@ def main():
                         new_codes.append({
                             'code': old_code,
                             'cleared_code': post_cleaned_code,
-                            'compilable': check_compilable(post_cleaned_code)
+                            'compilable': check_compilable(post_cleaned_code, is_java=is_java_context, is_cpp=is_cpp_context)
                         })
                     new_generations[lang] = new_codes
                 item['generations'] = new_generations
@@ -747,7 +783,7 @@ def main():
                     new_output.append({
                         'code': old_code,
                         'cleared_code': post_cleaned_code,
-                        'compilable': check_compilable(post_cleaned_code)
+                        'compilable': check_compilable(post_cleaned_code, is_java=is_java_context, is_cpp=is_cpp_context)
                     })
                 data[i]['output'] = new_output
                 cleaned_count += 1

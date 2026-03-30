@@ -34,7 +34,7 @@ def extract_docstring_range(code):
     Finds the range and indentation of the first docstring in the code.
     Supports Python triple quotes and Java/C /** ... */
     """
-    docstring_pattern = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|/\*\*[\s\S]*?\*/'
+    docstring_pattern = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|/\*\*?[\s\S]*?\*/'
     match = re.search(docstring_pattern, code)
     if match:
         start, end = match.span()
@@ -65,11 +65,15 @@ def replace_docstring(code, new_docstring):
     elif original.startswith("'''"):
         # Python triple single
         replacement = f"'''\n{new_docstring}\n{indent}'''"
-    elif original.startswith("/**"):
+    elif original.startswith("/*"):
         # Java/C
+        is_javadoc = original.startswith("/**")
+        start_marker = "/**" if is_javadoc else "/*"
+        end_marker = " */"
+        
         lines = new_docstring.split('\n')
         formatted_lines = [f"{indent} * {line}" for line in lines]
-        replacement = "/**\n" + "\n".join(formatted_lines) + f"\n{indent} */"
+        replacement = f"{start_marker}\n" + "\n".join(formatted_lines) + f"\n{indent}{end_marker}"
     else:
         replacement = new_docstring
 
@@ -125,12 +129,14 @@ def gemini_response(prompt_text, language, temperature, max_tokens):
 def process_single_item(item, temp):
     result_item = item.copy() 
     generations = {}
-    
+    # Identify language
     file_ext = os.path.splitext(item.get('main_path', ''))[-1].lower()
     if '.py' in file_ext:
         lang = "Python"
     elif '.java' in file_ext:
         lang = "Java"
+    elif any(ext in file_ext for ext in ['.cpp', '.cc', '.cxx', '.h', '.hpp']):
+        lang = "C++"
     else:
         lang = "Programming Language" 
 
