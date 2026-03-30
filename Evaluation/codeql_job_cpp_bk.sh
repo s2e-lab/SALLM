@@ -19,7 +19,7 @@ SOURCE_DIR="$(pwd)/Dataset/MODEL_NAME"
 BUILD_SCRIPT=$(mktemp /tmp/codeql_cpp_build_XXXXXX.sh)
 cat > "$BUILD_SCRIPT" << BUILDEOF
 #!/bin/bash
-find "$SOURCE_DIR" -name '*.cpp' -exec g++ -std=c++17 -fsyntax-only {} \; 2>/dev/null
+find "$SOURCE_DIR" -name '*.cpp' -exec g++ -std=c++17 -fsyntax-only {} + 2>/dev/null
 exit 0
 BUILDEOF
 chmod +x "$BUILD_SCRIPT"
@@ -35,7 +35,7 @@ rm -f "$BUILD_SCRIPT"
 echo "Created CodeQL Database"
 
 CODEQL_REPO=/groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE
-OUT=../../CodeQL_Output/MODEL_NAME
+OUT=./CodeQL_Output/MODEL_NAME
 DB=/tmp/msiddiq3/CodeQL_Database/MODEL_NAME
 
 codeql database analyze "$DB" $CODEQL_REPO/CWE-020 --format=csv --output="$OUT/results_cwe_020.csv"

@@ -1,30 +1,0 @@
-Loading python/3.12.12
-  Loading requirement: tcl/8.6.17
-Starting Parallel C++ Filtering and Analysis (Qwen only)...
-Found 12 files to process.
-  0%|          | 0/12 [00:00<?, ?it/s]  8%|▊         | 1/12 [00:00<00:03,  3.42it/s] 17%|█▋        | 2/12 [00:00<00:02,  3.33it/s] 25%|██▌       | 3/12 [00:00<00:02,  3.31it/s] 33%|███▎      | 4/12 [00:01<00:02,  3.31it/s] 42%|████▏     | 5/12 [00:01<00:02,  3.29it/s] 58%|█████▊    | 7/12 [00:01<00:00,  5.69it/s] 75%|███████▌  | 9/12 [00:01<00:00,  7.97it/s] 92%|█████████▏| 11/12 [00:01<00:00,  9.90it/s]100%|██████████| 12/12 [00:02<00:00,  5.62it/s]
-Unknown model in filename: dataset_cpp_nl_prompt_best_Qwen2.5_0.2.jsonl, skipping.
-Unknown model in filename: dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl, skipping.
-Unknown model in filename: dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl, skipping.
-Unknown model in filename: dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl, skipping.
-Unknown model in filename: dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl, skipping.
-Unknown model in filename: github-dataset_cpp_nl_prompt_best_Qwen2.5_0.0.jsonl, skipping.
-Unknown model in filename: github-dataset_cpp_nl_prompt_best_Qwen2.5_0.2.jsonl, skipping.
-Unknown model in filename: github-dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl, skipping.
-Unknown model in filename: github-dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl, skipping.
-Unknown model in filename: github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl, skipping.
-Unknown model in filename: github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl, skipping.
-Unknown model in filename: dataset_cpp_nl_prompt_best_Qwen2.5_0.0.jsonl, skipping.
-Processing complete.
-Analyzing 0 files...
-
-# Standard C++ Analysis
---------------------------------------------------------------------------------------------------
-Model                                    | Temp  | Before %   | After %    | Delta %    | Samples 
---------------------------------------------------------------------------------------------------
-
-# GitHub C++ Analysis
---------------------------------------------------------------------------------------------------
-Model                                    | Temp  | Before %   | After %    | Delta %    | Samples 
---------------------------------------------------------------------------------------------------
-C++ Filtering and Analysis complete.

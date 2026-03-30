@@ -783,7 +783,7 @@ def main():
                 cleaner_func = clear_generated_code_gemini
             elif 'gpt' in filename:
                 cleaner_func = clear_generated_code_gpt
-            elif 'qwen' in filename:
+            elif 'qwen' in filename.lower():
                 cleaner_func = clear_generated_code_qwen
             elif 'starcoder' in filename:
                 cleaner_func = clear_generated_code_starcoder

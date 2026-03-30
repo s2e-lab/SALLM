@@ -13,12 +13,13 @@ from filter_code import check_compilable, check_compilable_java, remove_misplace
 # %%
 # Parse mode from command line
 parser = argparse.ArgumentParser()
-parser.add_argument('--mode', choices=['python', 'java', 'java_sq', 'cpp_gpt', 'cpp_gemini'], required=True,
+parser.add_argument('--mode', choices=['python', 'java', 'java_sq', 'cpp_gpt', 'cpp_gemini', 'cpp_qwen'], required=True,
                     help='python: all models, standard+github python datasets; '
                          'java: gemini+gpt, standard+github java datasets; '
                          'java_sq: starcoder2+qwen2.5, standard+github java datasets; '
                          'cpp_gpt: gpt, standard+github cpp datasets; '
-                         'cpp_gemini: gemini, standard+github cpp datasets')
+                         'cpp_gemini: gemini, standard+github cpp datasets; '
+                         'cpp_qwen: qwen2.5, standard+github cpp datasets')
 args = parser.parse_args()
 
 files = os.listdir('../Generation/Filtered_Output/')
@@ -33,6 +34,8 @@ elif args.mode == 'cpp_gpt':
     jsonl_files = [f for f in files if 'cpp' in f.lower() and 'gpt' in f.lower() and f.endswith('.jsonl')]
 elif args.mode == 'cpp_gemini':
     jsonl_files = [f for f in files if 'cpp' in f.lower() and 'gemini' in f.lower() and f.endswith('.jsonl')]
+elif args.mode == 'cpp_qwen':
+    jsonl_files = [f for f in files if 'cpp' in f.lower() and 'qwen' in f.lower() and f.endswith('.jsonl')]
 else:
     jsonl_files = []
 
