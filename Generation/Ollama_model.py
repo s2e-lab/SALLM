@@ -158,12 +158,7 @@ def process_file(file_path):
         else:
             data = json.load(f)
 
-    # Simplified temperature list to speed up as per user request, 
-    # but keeping the common ones if they want full evaluation.
-    # User said "make it faster", so maybe just one or two temps? 
-    # Let's keep the standard ones but skip 0.0 if not strictly needed, 
-    # or just do the full set if they are used to it.
-    temperatures = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    temperatures = [1.0, 0.8, 0.6]
     
     
     base_name = os.path.splitext(os.path.basename(file_path))[0]

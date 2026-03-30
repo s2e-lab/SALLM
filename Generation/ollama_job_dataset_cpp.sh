@@ -5,7 +5,7 @@
 #$ -pe smp 4    # Specify parallel environment and legal core size
 #$ -q gpu        # Specify queue
 #$ -l gpu=2        # Ollama only needs 1 GPU for 3B model
-#$ -N ollama_starcoder
+#$ -N ollama_starcoder_dataset_cpp
 #$ -cwd
 #$ -V
 #$ -l h_rt=72:00:00
@@ -66,7 +66,7 @@ ollama pull starcoder2:3b
 
 # Run generation
 echo "Starting generation script..."
-python3 Ollama_model.py ../ProcessedFiles/dataset_java_nl_prompt_best.jsonl
+python3 Ollama_model.py ../ProcessedFiles/dataset_cpp_nl_prompt_best.jsonl
 
 # Cleanup
 echo "Cleaning up..."

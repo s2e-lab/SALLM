@@ -1,0 +1,5 @@
+Loading python/3.12.12
+  Loading requirement: tcl/8.6.17
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.
+Running build command: [/tmp/codeql_cpp_build_Yumc1r.sh]

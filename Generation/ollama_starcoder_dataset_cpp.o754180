@@ -1,0 +1,282 @@
+Loading python/3.12.12
+  Loading requirement: tcl/8.6.17
+Ollama not found in PATH. Checking local directory...
+Waiting for Ollama server to start...
+Still waiting...
+time=2026-03-30T19:09:09.726-04:00 level=INFO source=routes.go:1658 msg="server config" env="map[CUDA_VISIBLE_DEVICES: GGML_VK_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_CONTEXT_LENGTH:0 OLLAMA_DEBUG:INFO OLLAMA_EDITOR: OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/groups/jdasilv2/Latif/SALLM/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NEW_ENGINE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NO_CLOUD:false OLLAMA_NUM_PARALLEL:1 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false OLLAMA_VULKAN:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2026-03-30T19:09:09.727-04:00 level=INFO source=routes.go:1660 msg="Ollama cloud disabled: false"
+time=2026-03-30T19:09:09.745-04:00 level=INFO source=images.go:477 msg="total blobs: 5"
+time=2026-03-30T19:09:09.749-04:00 level=INFO source=images.go:484 msg="total unused blobs removed: 0"
+time=2026-03-30T19:09:09.751-04:00 level=INFO source=routes.go:1713 msg="Listening on 127.0.0.1:11434 (version 0.17.7)"
+time=2026-03-30T19:09:09.761-04:00 level=INFO source=runner.go:67 msg="discovering available GPUs..."
+time=2026-03-30T19:09:09.762-04:00 level=INFO source=runner.go:106 msg="experimental Vulkan support disabled.  To enable, set OLLAMA_VULKAN=1"
+time=2026-03-30T19:09:09.764-04:00 level=INFO source=server.go:430 msg="starting runner" cmd="/groups/jdasilv2/Latif/SALLM/Generation/bin/ollama runner --ollama-engine --port 41749"
+time=2026-03-30T19:09:12.244-04:00 level=INFO source=server.go:430 msg="starting runner" cmd="/groups/jdasilv2/Latif/SALLM/Generation/bin/ollama runner --ollama-engine --port 33013"
+time=2026-03-30T19:09:14.435-04:00 level=INFO source=server.go:430 msg="starting runner" cmd="/groups/jdasilv2/Latif/SALLM/Generation/bin/ollama runner --ollama-engine --port 46331"
+time=2026-03-30T19:09:14.437-04:00 level=INFO source=server.go:430 msg="starting runner" cmd="/groups/jdasilv2/Latif/SALLM/Generation/bin/ollama runner --ollama-engine --port 41697"
+time=2026-03-30T19:09:14.439-04:00 level=INFO source=server.go:430 msg="starting runner" cmd="/groups/jdasilv2/Latif/SALLM/Generation/bin/ollama runner --ollama-engine --port 36571"
+time=2026-03-30T19:09:14.439-04:00 level=INFO source=server.go:430 msg="starting runner" cmd="/groups/jdasilv2/Latif/SALLM/Generation/bin/ollama runner --ollama-engine --port 36485"
+time=2026-03-30T19:09:15.940-04:00 level=INFO source=types.go:42 msg="inference compute" id=GPU-90d99fc2-e227-b014-7f53-260ad9c6f1ef filter_id="" library=CUDA compute=7.5 name=CUDA0 description="Quadro RTX 6000" libdirs=ollama,cuda_v13 driver=13.0 pci_id=0000:2f:00.0 type=discrete total="22.5 GiB" available="22.1 GiB"
+time=2026-03-30T19:09:15.940-04:00 level=INFO source=types.go:42 msg="inference compute" id=GPU-5bb51bbc-f331-4ed8-4c2e-df1568e87327 filter_id="" library=CUDA compute=7.5 name=CUDA1 description="Quadro RTX 6000" libdirs=ollama,cuda_v13 driver=13.0 pci_id=0000:86:00.0 type=discrete total="22.5 GiB" available="22.0 GiB"
+time=2026-03-30T19:09:15.940-04:00 level=INFO source=routes.go:1763 msg="vram-based default context" total_vram="45.0 GiB" default_num_ctx=32768
+[GIN] 2026/03/30 - 19:09:15 | 200 |    5.635283ms |       127.0.0.1 | GET      "/api/tags"
+Ollama server is up!
+Pulling starcoder2:3b...
+[GIN] 2026/03/30 - 19:09:15 | 200 |     129.593µs |       127.0.0.1 | HEAD     "/"
+[?2026h[?25l[1Gpulling manifest ⠋ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠙ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠹ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠸ [K[?25h[?2026l[?2026h[?25l[1Gpulling manifest ⠼ [K[?25h[?2026l[GIN] 2026/03/30 - 19:09:16 | 200 |  521.242708ms |       127.0.0.1 | POST     "/api/pull"
+[?2026h[?25l[1Gpulling manifest [K
+pulling 28bfdfaeba9f: 100% ▕██████████████████▏ 1.7 GB                         [K
+pulling 4ec42cd966c9: 100% ▕██████████████████▏  12 KB                         [K
+pulling 3b190e68fefe: 100% ▕██████████████████▏  142 B                         [K
+pulling 37c99d4c7b60: 100% ▕██████████████████▏   41 B                         [K
+pulling 9211f2fea414: 100% ▕██████████████████▏  345 B                         [K
+verifying sha256 digest [K
+writing manifest [K
+success [K[?25h[?2026l
+Starting generation script...
+[2026-03-30 19:09:17.156859] Reading ../ProcessedFiles/dataset_cpp_nl_prompt_best.jsonl...
+[2026-03-30 19:09:17.273730] Processing Temperature: 1.0 with 12 workers...
+  0%|          | 0/100 [00:00<?, ?it/s]time=2026-03-30T19:09:17.503-04:00 level=INFO source=server.go:430 msg="starting runner" cmd="/groups/jdasilv2/Latif/SALLM/Generation/bin/ollama runner --ollama-engine --port 36725"
+llama_model_loader: loaded meta data with 19 key-value pairs and 483 tensors from /groups/jdasilv2/Latif/SALLM/.ollama/models/blobs/sha256-28bfdfaeba9f51611c00ed322ba684ce6db076756dbc46643f98a8a748c5199e (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = starcoder2
+llama_model_loader: - kv   1:                               general.name str              = starcoder2-3b
+llama_model_loader: - kv   2:                     starcoder2.block_count u32              = 30
+llama_model_loader: - kv   3:                  starcoder2.context_length u32              = 16384
+llama_model_loader: - kv   4:                starcoder2.embedding_length u32              = 3072
+llama_model_loader: - kv   5:             starcoder2.feed_forward_length u32              = 12288
+llama_model_loader: - kv   6:            starcoder2.attention.head_count u32              = 24
+llama_model_loader: - kv   7:         starcoder2.attention.head_count_kv u32              = 2
+llama_model_loader: - kv   8:                  starcoder2.rope.freq_base f32              = 999999.437500
+llama_model_loader: - kv   9:    starcoder2.attention.layer_norm_epsilon f32              = 0.000010
+llama_model_loader: - kv  10:                          general.file_type u32              = 2
+llama_model_loader: - kv  11:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  12:                      tokenizer.ggml.tokens arr[str,49152]   = ["<|endoftext|>", "<fim_prefix>", "<f...
+llama_model_loader: - kv  13:                  tokenizer.ggml.token_type arr[i32,49152]   = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ...
+llama_model_loader: - kv  14:                      tokenizer.ggml.merges arr[str,48872]   = ["Ġ Ġ", "ĠĠ ĠĠ", "ĠĠĠĠ ĠĠ...
+llama_model_loader: - kv  15:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  16:                tokenizer.ggml.eos_token_id u32              = 0
+llama_model_loader: - kv  17:            tokenizer.ggml.unknown_token_id u32              = 0
+llama_model_loader: - kv  18:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:  302 tensors
+llama_model_loader: - type q4_0:  181 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q4_0
+print_info: file size   = 1.59 GiB (4.51 BPW) 
+load: missing or unrecognized pre-tokenizer type, using: 'default'
+load: printing all EOG tokens:
+load:   - 0 ('<|endoftext|>')
+load:   - 4 ('<fim_pad>')
+load: special tokens cache size = 38
+load: token to piece cache size = 0.2828 MB
+print_info: arch             = starcoder2
+print_info: vocab_only       = 1
+print_info: no_alloc         = 0
+print_info: model type       = ?B
+print_info: model params     = 3.03 B
+print_info: general.name     = starcoder2-3b
+print_info: vocab type       = BPE
+print_info: n_vocab          = 49152
+print_info: n_merges         = 48872
+print_info: BOS token        = 0 '<|endoftext|>'
+print_info: EOS token        = 0 '<|endoftext|>'
+print_info: EOT token        = 0 '<|endoftext|>'
+print_info: UNK token        = 0 '<|endoftext|>'
+print_info: LF token         = 222 'Ċ'
+print_info: FIM PRE token    = 1 '<fim_prefix>'
+print_info: FIM SUF token    = 3 '<fim_suffix>'
+print_info: FIM MID token    = 2 '<fim_middle>'
+print_info: FIM PAD token    = 4 '<fim_pad>'
+print_info: EOG token        = 0 '<|endoftext|>'
+print_info: EOG token        = 4 '<fim_pad>'
+print_info: max token length = 512
+llama_model_load: vocab only - skipping tensors
+time=2026-03-30T19:09:19.130-04:00 level=WARN source=server.go:168 msg="requested context size too large for model" num_ctx=32768 n_ctx_train=16384
+time=2026-03-30T19:09:19.130-04:00 level=INFO source=server.go:430 msg="starting runner" cmd="/groups/jdasilv2/Latif/SALLM/Generation/bin/ollama runner --model /groups/jdasilv2/Latif/SALLM/.ollama/models/blobs/sha256-28bfdfaeba9f51611c00ed322ba684ce6db076756dbc46643f98a8a748c5199e --port 40249"
+time=2026-03-30T19:09:19.132-04:00 level=INFO source=sched.go:489 msg="system memory" total="188.1 GiB" free="181.9 GiB" free_swap="0 B"
+time=2026-03-30T19:09:19.132-04:00 level=INFO source=sched.go:496 msg="gpu memory" id=GPU-90d99fc2-e227-b014-7f53-260ad9c6f1ef library=CUDA available="21.7 GiB" free="22.1 GiB" minimum="457.0 MiB" overhead="0 B"
+time=2026-03-30T19:09:19.132-04:00 level=INFO source=sched.go:496 msg="gpu memory" id=GPU-5bb51bbc-f331-4ed8-4c2e-df1568e87327 library=CUDA available="21.5 GiB" free="22.0 GiB" minimum="457.0 MiB" overhead="0 B"
+time=2026-03-30T19:09:19.132-04:00 level=INFO source=server.go:497 msg="loading model" "model layers"=31 requested=-1
+time=2026-03-30T19:09:19.133-04:00 level=INFO source=device.go:240 msg="model weights" device=CUDA0 size="1.6 GiB"
+time=2026-03-30T19:09:19.133-04:00 level=INFO source=device.go:251 msg="kv cache" device=CUDA0 size="480.0 MiB"
+time=2026-03-30T19:09:19.133-04:00 level=INFO source=device.go:262 msg="compute graph" device=CUDA0 size="960.0 MiB"
+time=2026-03-30T19:09:19.133-04:00 level=INFO source=device.go:272 msg="total memory" size="3.0 GiB"
+time=2026-03-30T19:09:19.155-04:00 level=INFO source=runner.go:965 msg="starting go runner"
+load_backend: loaded CPU backend from /groups/jdasilv2/Latif/SALLM/Generation/lib/ollama/libggml-cpu-skylakex.so
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 2 CUDA devices:
+  Device 0: Quadro RTX 6000, compute capability 7.5, VMM: yes, ID: GPU-90d99fc2-e227-b014-7f53-260ad9c6f1ef
+  Device 1: Quadro RTX 6000, compute capability 7.5, VMM: yes, ID: GPU-5bb51bbc-f331-4ed8-4c2e-df1568e87327
+load_backend: loaded CUDA backend from /groups/jdasilv2/Latif/SALLM/Generation/lib/ollama/cuda_v13/libggml-cuda.so
+time=2026-03-30T19:09:20.469-04:00 level=INFO source=ggml.go:104 msg=system CPU.0.SSE3=1 CPU.0.SSSE3=1 CPU.0.AVX=1 CPU.0.AVX2=1 CPU.0.F16C=1 CPU.0.FMA=1 CPU.0.BMI2=1 CPU.0.AVX512=1 CPU.0.LLAMAFILE=1 CPU.1.LLAMAFILE=1 CUDA.0.ARCHS=750,800,860,870,890,900,1000,1030,1100,1200,1210 CUDA.0.USE_GRAPHS=1 CUDA.0.PEER_MAX_BATCH_SIZE=128 CUDA.1.ARCHS=750,800,860,870,890,900,1000,1030,1100,1200,1210 CUDA.1.USE_GRAPHS=1 CUDA.1.PEER_MAX_BATCH_SIZE=128 compiler=cgo(gcc)
+time=2026-03-30T19:09:20.476-04:00 level=INFO source=runner.go:1001 msg="Server listening on 127.0.0.1:40249"
+time=2026-03-30T19:09:20.483-04:00 level=INFO source=runner.go:895 msg=load request="{Operation:commit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Auto KvSize:16384 KvCacheType: NumThreads:24 GPULayers:31[ID:GPU-90d99fc2-e227-b014-7f53-260ad9c6f1ef Layers:31(0..30)] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:true}"
+time=2026-03-30T19:09:20.483-04:00 level=INFO source=server.go:1350 msg="waiting for llama runner to start responding"
+time=2026-03-30T19:09:20.484-04:00 level=INFO source=server.go:1384 msg="waiting for server to become available" status="llm server loading model"
+ggml_backend_cuda_device_get_memory device GPU-90d99fc2-e227-b014-7f53-260ad9c6f1ef utilizing NVML memory reporting free: 23783014400 total: 24159191040
+llama_model_load_from_file_impl: using device CUDA0 (Quadro RTX 6000) (0000:2f:00.0) - 22681 MiB free
+llama_model_loader: loaded meta data with 19 key-value pairs and 483 tensors from /groups/jdasilv2/Latif/SALLM/.ollama/models/blobs/sha256-28bfdfaeba9f51611c00ed322ba684ce6db076756dbc46643f98a8a748c5199e (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = starcoder2
+llama_model_loader: - kv   1:                               general.name str              = starcoder2-3b
+llama_model_loader: - kv   2:                     starcoder2.block_count u32              = 30
+llama_model_loader: - kv   3:                  starcoder2.context_length u32              = 16384
+llama_model_loader: - kv   4:                starcoder2.embedding_length u32              = 3072
+llama_model_loader: - kv   5:             starcoder2.feed_forward_length u32              = 12288
+llama_model_loader: - kv   6:            starcoder2.attention.head_count u32              = 24
+llama_model_loader: - kv   7:         starcoder2.attention.head_count_kv u32              = 2
+llama_model_loader: - kv   8:                  starcoder2.rope.freq_base f32              = 999999.437500
+llama_model_loader: - kv   9:    starcoder2.attention.layer_norm_epsilon f32              = 0.000010
+llama_model_loader: - kv  10:                          general.file_type u32              = 2
+llama_model_loader: - kv  11:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  12:                      tokenizer.ggml.tokens arr[str,49152]   = ["<|endoftext|>", "<fim_prefix>", "<f...
+llama_model_loader: - kv  13:                  tokenizer.ggml.token_type arr[i32,49152]   = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ...
+llama_model_loader: - kv  14:                      tokenizer.ggml.merges arr[str,48872]   = ["Ġ Ġ", "ĠĠ ĠĠ", "ĠĠĠĠ ĠĠ...
+llama_model_loader: - kv  15:                tokenizer.ggml.bos_token_id u32              = 0
+llama_model_loader: - kv  16:                tokenizer.ggml.eos_token_id u32              = 0
+llama_model_loader: - kv  17:            tokenizer.ggml.unknown_token_id u32              = 0
+llama_model_loader: - kv  18:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:  302 tensors
+llama_model_loader: - type q4_0:  181 tensors
+print_info: file format = GGUF V3 (latest)
+print_info: file type   = Q4_0
+print_info: file size   = 1.59 GiB (4.51 BPW) 
+load: missing or unrecognized pre-tokenizer type, using: 'default'
+load: printing all EOG tokens:
+load:   - 0 ('<|endoftext|>')
+load:   - 4 ('<fim_pad>')
+load: special tokens cache size = 38
+load: token to piece cache size = 0.2828 MB
+print_info: arch             = starcoder2
+print_info: vocab_only       = 0
+print_info: no_alloc         = 0
+print_info: n_ctx_train      = 16384
+print_info: n_embd           = 3072
+print_info: n_embd_inp       = 3072
+print_info: n_layer          = 30
+print_info: n_head           = 24
+print_info: n_head_kv        = 2
+print_info: n_rot            = 128
+print_info: n_swa            = 0
+print_info: is_swa_any       = 0
+print_info: n_embd_head_k    = 128
+print_info: n_embd_head_v    = 128
+print_info: n_gqa            = 12
+print_info: n_embd_k_gqa     = 256
+print_info: n_embd_v_gqa     = 256
+print_info: f_norm_eps       = 1.0e-05
+print_info: f_norm_rms_eps   = 0.0e+00
+print_info: f_clamp_kqv      = 0.0e+00
+print_info: f_max_alibi_bias = 0.0e+00
+print_info: f_logit_scale    = 0.0e+00
+print_info: f_attn_scale     = 0.0e+00
+print_info: n_ff             = 12288
+print_info: n_expert         = 0
+print_info: n_expert_used    = 0
+print_info: n_expert_groups  = 0
+print_info: n_group_used     = 0
+print_info: causal attn      = 1
+print_info: pooling type     = 0
+print_info: rope type        = 2
+print_info: rope scaling     = linear
+print_info: freq_base_train  = 999999.4
+print_info: freq_scale_train = 1
+print_info: n_ctx_orig_yarn  = 16384
+print_info: rope_yarn_log_mul= 0.0000
+print_info: rope_finetuned   = unknown
+print_info: model type       = 3B
+print_info: model params     = 3.03 B
+print_info: general.name     = starcoder2-3b
+print_info: vocab type       = BPE
+print_info: n_vocab          = 49152
+print_info: n_merges         = 48872
+print_info: BOS token        = 0 '<|endoftext|>'
+print_info: EOS token        = 0 '<|endoftext|>'
+print_info: EOT token        = 0 '<|endoftext|>'
+print_info: UNK token        = 0 '<|endoftext|>'
+print_info: LF token         = 222 'Ċ'
+print_info: FIM PRE token    = 1 '<fim_prefix>'
+print_info: FIM SUF token    = 3 '<fim_suffix>'
+print_info: FIM MID token    = 2 '<fim_middle>'
+print_info: FIM PAD token    = 4 '<fim_pad>'
+print_info: EOG token        = 0 '<|endoftext|>'
+print_info: EOG token        = 4 '<fim_pad>'
+print_info: max token length = 512
+load_tensors: loading model tensors, this can take a while... (mmap = true)
+load_tensors: offloading 30 repeating layers to GPU
+load_tensors: offloading output layer to GPU
+load_tensors: offloaded 31/31 layers to GPU
+load_tensors:   CPU_Mapped model buffer size =    81.00 MiB
+load_tensors:        CUDA0 model buffer size =  1629.01 MiB
+llama_context: constructing llama_context
+llama_context: n_seq_max     = 1
+llama_context: n_ctx         = 16384
+llama_context: n_ctx_seq     = 16384
+llama_context: n_batch       = 512
+llama_context: n_ubatch      = 512
+llama_context: causal_attn   = 1
+llama_context: flash_attn    = auto
+llama_context: kv_unified    = false
+llama_context: freq_base     = 999999.4
+llama_context: freq_scale    = 1
+llama_context:  CUDA_Host  output buffer size =     0.20 MiB
+llama_kv_cache:      CUDA0 KV buffer size =   480.00 MiB
+llama_kv_cache: size =  480.00 MiB ( 16384 cells,  30 layers,  1/1 seqs), K (f16):  240.00 MiB, V (f16):  240.00 MiB
+llama_context: Flash Attention was auto, set to enabled
+llama_context:      CUDA0 compute buffer size =   108.00 MiB
+llama_context:  CUDA_Host compute buffer size =    38.01 MiB
+llama_context: graph nodes  = 1148
+llama_context: graph splits = 2
+time=2026-03-30T19:09:26.004-04:00 level=INFO source=server.go:1388 msg="llama runner started in 6.87 seconds"
+time=2026-03-30T19:09:26.004-04:00 level=INFO source=sched.go:565 msg="loaded runners" count=1
+time=2026-03-30T19:09:26.004-04:00 level=INFO source=server.go:1350 msg="waiting for llama runner to start responding"
+time=2026-03-30T19:09:26.005-04:00 level=INFO source=server.go:1388 msg="llama runner started in 6.87 seconds"
+[GIN] 2026/03/30 - 19:09:26 | 200 |  8.842126599s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:09:38 | 200 | 21.590856778s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:09:49 | 200 | 32.268357351s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:09:49 | 200 | 32.332426162s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:09:49 | 200 | 32.417383337s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:09:50 | 200 | 33.187639931s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:09:59 | 200 |  42.34547512s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:00 | 200 | 42.703706751s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:00 | 200 | 42.856991169s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:02 | 200 | 45.010460466s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:15 | 200 | 57.717190057s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:16 | 200 | 59.671097642s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:17 | 200 | 51.689936252s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:17 | 200 | 39.011619333s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:30 | 200 | 41.004672552s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:30 | 200 | 41.000882873s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:43 | 200 | 53.673648897s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:43 | 200 | 53.069243579s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:56 | 200 |  56.59211295s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:10:56 | 200 | 56.334026543s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:09 | 200 |          1m8s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:09 | 200 |          1m6s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:09 | 200 | 54.375435385s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:09 | 200 | 52.544117071s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:10 | 200 | 52.354345545s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:10 | 200 | 52.395739624s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:11 | 200 | 40.476824558s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:16 | 200 |  46.06516176s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:16 | 200 | 33.492651745s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:17 | 200 |  33.69802268s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:29 | 200 | 33.710045638s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:30 | 200 | 33.718377593s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:33 | 200 | 24.140179199s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:41 | 200 | 32.676020321s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:42 | 200 | 32.650558314s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:42 | 200 | 32.626233877s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:42 | 200 | 32.151718293s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:42 | 200 | 32.412111991s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:55 | 200 | 44.356049997s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:55 | 200 | 38.829432759s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:11:55 | 200 | 38.732530313s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:12:08 | 200 | 51.041521166s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:12:08 | 200 | 38.403848689s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:12:21 | 200 | 50.971529872s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:12:33 | 200 |          1m0s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:12:37 | 200 |  55.24798433s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:12:49 | 200 |          1m7s |       127.0.0.1 | POST     "/api/generate"
+[GIN] 2026/03/30 - 19:12:55 | 200 |         1m12s |       127.0.0.1 | POST     "/api/generate"
