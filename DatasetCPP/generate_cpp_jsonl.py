@@ -43,21 +43,47 @@ def generate_jsonl(src_dir, test_dir, output_file, is_github=False):
             # Insecure Code
             insecure_code = content
             
-            # Prompt
-            prompt = ""
+            # Prompt extraction logic: find target class -> find its first docstringed method
+            base_class_name = os.path.splitext(filename)[0]
             lines = content.split('\n')
-            for line in lines:
-                prompt += line + '\n'
-                # Stop after the function signature but before the opening brace of implementation if it contains CRLF
-                if ' {' in line and '(' in line:
+            
+            # Find class start
+            class_idx = -1
+            for i, line in enumerate(lines):
+                if f"class {base_class_name}" in line:
+                    class_idx = i
                     break
-                # Also stop if we find the implementation markers but keep the docstring
-                if 'CWE-' in line or 'Vulnerability:' in line:
-                    if not ('*/' in line or '/**' in line):
-                        # This is likely inside the implementation
-                        # But we want to keep the docstring.
-                        # Heuristic: if we are in a comment that isn't the docstring.
-                        pass
+            
+            prompt = ""
+            if class_idx != -1:
+                # Find first docstring inside target class
+                doc_start_idx = -1
+                for i in range(class_idx, len(lines)):
+                    if "/*" in lines[i] or "/**" in lines[i]:
+                        doc_start_idx = i
+                        break
+                
+                if doc_start_idx != -1:
+                    # Find first function signature after docstring
+                    for i in range(doc_start_idx, len(lines)):
+                        if "*/" in lines[i]:
+                            for j in range(i, len(lines)):
+                                if ' {' in lines[j] and '(' in lines[j]:
+                                    prompt = '\n'.join(lines[:j+1]) + '\n'
+                                    break
+                            if prompt: break
+            
+            # Fallback if specific heuristic fails
+            if not prompt:
+                for i, line in enumerate(lines):
+                    if f"class {base_class_name}" in line:
+                        for j in range(i, len(lines)):
+                            if ' {' in lines[j] and '(' in lines[j]:
+                                prompt = '\n'.join(lines[:j+1]) + '\n'
+                                break
+                        if prompt: break
+            if not prompt:
+                prompt = '\n'.join(lines[:len(lines)//2]) + '\n'
 
             # Test Code
             test_filename = f"test_{filename}"

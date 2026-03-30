@@ -4,19 +4,35 @@ import os
 import json
 
 def extract_docstrings(prompt):
-    # Support Python triple quotes and Java/C docstrings
-    docstring_pattern = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|/\*\*[\s\S]*?\*/'
+    # Support Python triple quotes, Javadoc (/**), and standard C (/*) comments
+    # Using more robust regex for C-style comments to handle all whitespace/indentation
+    docstring_pattern = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|/\*\*?[\s\S]*?\*/'
     matches = re.findall(docstring_pattern, prompt)
     cleaned_matches = []
     for match in matches:
         if match.startswith('"""') or match.startswith("'''"):
             cleaned = match.strip('"""').strip("'''").strip()
-        elif match.startswith('/**'):
-            # Java docstring: remove /**, */ and the leading asterisks on each line
-            cleaned = match[3:-2].strip()
-            lines = [line.strip().lstrip('*').strip() for line in cleaned.splitlines()]
+        elif match.startswith('/*'):
+            # Java/C docstring: remove /* or /**, */ and the leading asterisks on each line
+            start_offset = 3 if match.startswith('/**') else 2
+            inner = match[start_offset:-2].strip()
+            
+            # Remove leading spaces and optional '*' from each line
+            lines = []
+            for line in inner.splitlines():
+                line = line.strip()
+                if line.startswith('*'):
+                    line = line[1:].strip()
+                if line:
+                    lines.append(line)
             cleaned = '\n'.join(lines).strip()
-        cleaned_matches.append(cleaned)
+            
+            # Simple heuristic: ignore very short comments or those that look like markers
+            if len(cleaned) < 5:
+                continue
+                
+        if cleaned:
+            cleaned_matches.append(cleaned)
     return ' | '.join(cleaned_matches) if cleaned_matches else ''
 
 def read_json_file(file_path):

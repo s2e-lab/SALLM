@@ -190,3 +190,4 @@ Generation/ollama_starcoder.o*
 .ollama/models/
 .ollama/
 Evaluation/TestResults/
+Translation/score_translations_llm.py
