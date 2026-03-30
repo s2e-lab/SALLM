@@ -2,6 +2,7 @@ import json
 import os
 import ast
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 from datetime import datetime
 import textwrap
@@ -420,18 +421,48 @@ def post_process_code(code, item):
 
 def extract_assistant_code(text):
     start_tag = "<|assistant|>\n"
-    system_tag = "<|system|>\n"
-    
+
     start_idx = text.find(start_tag)
     if start_idx == -1:
         return None  # No assistant tag found
 
     start_idx += len(start_tag)
-    end_idx = text.find(system_tag, start_idx)
+    return text[start_idx:].strip()
+
+def process_item(item, cleaner_func, is_java_context=False, is_cpp_context=False):
+    """
+    Processes a single dataset item (sample) across all its languages.
+    """
+    prompt_key = 'prompt'
+    if 'translated_prompt' in item:
+        prompt_key = 'translated_prompt'
     
-    if end_idx == -1:
-        return text[start_idx:].strip()
-    return text[start_idx:end_idx].strip()
+    if 'generations' in item and isinstance(item['generations'], dict):
+        new_generations = {}
+        for lang, codes in item['generations'].items():
+            new_codes = []
+            for old_code in codes:
+                cleaned_code = cleaner_func(old_code, item, prompt_key)
+                post_cleaned_code = post_process_code(cleaned_code, item)
+                new_codes.append({
+                    'code': old_code,
+                    'cleared_code': post_cleaned_code,
+                    'compilable': check_compilable(post_cleaned_code, is_java=is_java_context, is_cpp=is_cpp_context)
+                })
+            new_generations[lang] = new_codes
+        item['generations'] = new_generations
+    elif isinstance(item.get('output'), list):
+        new_output = []
+        for old_code in item['output']:
+            cleaned_code = cleaner_func(old_code, item, prompt_key)
+            post_cleaned_code = post_process_code(cleaned_code, item)
+            new_output.append({
+                'code': old_code,
+                'cleared_code': post_cleaned_code,
+                'compilable': check_compilable(post_cleaned_code, is_java=is_java_context, is_cpp=is_cpp_context)
+            })
+        item['output'] = new_output
+    return item
 
 def check_compilable_java(code):
     """
@@ -710,15 +741,23 @@ def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):
     return result
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model', type=str, default=None, help='Filter files by model name (e.g. gpt, gemini, qwen, starcoder)')
+    args = parser.parse_args()
+
     base_dir = os.path.dirname(os.path.abspath(__file__))
     input_dir = os.path.join(base_dir, 'Output')
     output_dir = os.path.join(base_dir, 'Filtered_Output')
-    
+
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-        
+
     files = os.listdir(input_dir)
     jsonl_files = [f for f in files if f.endswith('.jsonl') and 'cpp' in f.lower() and (f.startswith('github-dataset') or f.startswith('dataset'))]
+
+    if args.model:
+        jsonl_files = [f for f in jsonl_files if args.model.lower() in f.lower()]
 
     print(f"Found {len(jsonl_files)} files to process.")
     
@@ -738,60 +777,28 @@ def main():
                     item['_is_java_context'] = is_java_context
                     data.append(item)
         
-        # Determine model type from filename
-        cleaner_func = None
-        if 'gemini' in filename:
-            cleaner_func = clear_generated_code_gemini
-        elif 'gpt' in filename:
-            cleaner_func = clear_generated_code_gpt
-        elif 'qwen' in filename:
-            cleaner_func = clear_generated_code_qwen
-        elif 'starcoder' in filename:
-            cleaner_func = clear_generated_code_starcoder
-        else:
-            print(f"Unknown model in filename: {filename}, skipping.")
-            continue
-            
-        cleaned_count = 0
-        for i in range(len(data)):
-            item = data[i]
-            
-            prompt_key = 'prompt'
-            if 'translated_prompt' in item:
-                prompt_key = 'translated_prompt'
-            
-            if 'generations' in item and isinstance(item['generations'], dict):
-                new_generations = {}
-                for lang, codes in item['generations'].items():
-                    new_codes = []
-                    for old_code in codes:
-                        cleaned_code = cleaner_func(old_code, item, prompt_key)
-                        post_cleaned_code = post_process_code(cleaned_code, item)
-                        new_codes.append({
-                            'code': old_code,
-                            'cleared_code': post_cleaned_code,
-                            'compilable': check_compilable(post_cleaned_code, is_java=is_java_context, is_cpp=is_cpp_context)
-                        })
-                    new_generations[lang] = new_codes
-                item['generations'] = new_generations
-                cleaned_count += 1
-            elif isinstance(item.get('output'), list):
-                new_output = []
-                for old_code in item['output']:
-                    cleaned_code = cleaner_func(old_code, item, prompt_key)
-                    post_cleaned_code = post_process_code(cleaned_code, item)
-                    new_output.append({
-                        'code': old_code,
-                        'cleared_code': post_cleaned_code,
-                        'compilable': check_compilable(post_cleaned_code, is_java=is_java_context, is_cpp=is_cpp_context)
-                    })
-                data[i]['output'] = new_output
-                cleaned_count += 1
+            # Determine model type from filename
+            cleaner_func = None
+            if 'gemini' in filename:
+                cleaner_func = clear_generated_code_gemini
+            elif 'gpt' in filename:
+                cleaner_func = clear_generated_code_gpt
+            elif 'qwen' in filename:
+                cleaner_func = clear_generated_code_qwen
+            elif 'starcoder' in filename:
+                cleaner_func = clear_generated_code_starcoder
             else:
-                pass
+                print(f"Unknown model in filename: {filename}, skipping.")
+                continue
+
+            processed_data = []
+            with ThreadPoolExecutor(max_workers=32) as executor:
+                futures = [executor.submit(process_item, item, cleaner_func, is_java_context, is_cpp_context) for item in data]
+                for future in tqdm(as_completed(futures), total=len(futures), desc=f"Processing {filename}", leave=False):
+                    processed_data.append(future.result())
 
         with open(output_path, 'w', encoding='utf-8') as f:
-            for item in data:
+            for item in processed_data:
                 if '_is_java_context' in item:
                     del item['_is_java_context']
                 f.write(json.dumps(item, ensure_ascii=False) + '\n')

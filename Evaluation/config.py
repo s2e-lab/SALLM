@@ -13,6 +13,9 @@ GITHUB_PYTHON_DATASET_PATH = os.path.join(ROOT_DIR, "GitHubDataset")
 # where the github-java dataset is
 GITHUB_JAVA_DATASET_PATH = os.path.join(ROOT_DIR, "GitHubDatasetJava")
 
+# where the C++ dataset is (standard + GitHub are both under DatasetCPP/src/)
+CPP_DATASET_PATH = os.path.join(ROOT_DIR, "DatasetCPP")
+
 # where the filtered JSON output metadata was saved
 GENERATED_CODE_PATH = os.path.join(ROOT_DIR, "Generation", "Filtered_Output")
 

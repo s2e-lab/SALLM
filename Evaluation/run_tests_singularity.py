@@ -9,7 +9,7 @@ import ast
 import xml.etree.ElementTree as ET
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
-from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, GITHUB_PYTHON_DATASET_PATH, GITHUB_JAVA_DATASET_PATH, GENERATED_CODE_PATH, TEST_RESULTS, TEST_FOLDER, SIF_DIR, BASE_DIR
+from config import PYTHON_DATASET_PATH, JAVA_DATASET_PATH, GITHUB_PYTHON_DATASET_PATH, GITHUB_JAVA_DATASET_PATH, CPP_DATASET_PATH, GENERATED_CODE_PATH, TEST_RESULTS, TEST_FOLDER, SIF_DIR, BASE_DIR
 
 # Add parent directory to path to import from Generation
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'Generation'))
@@ -20,11 +20,16 @@ DEBUG = False  # if enabled, it will print the output of the Singularity command
 MAX_WORKERS = 32
 RUN_TESTS_ON_GENERATED_CODE = True
 TEST_MODE = False   # if True, only runs on a few samples for verification
-MODEL_FILTER = None  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
-LANG_FILTER = "Java"  # Filter for specific language: 'Python', 'Java', or None for all
+MODEL_FILTER = "gpt"  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
+LANG_FILTER = "cpp"  # Filter for specific language: 'Python', 'Java', 'cpp', or None for all
 TEMP_FILTER = None   # Filter for specific temperature: '0.0', '0.2', ..., '1.0', or None for all
-ONLY_GITHUB = True   # If True, only runs on GitHub datasets (github-dataset_*.jsonl)
+ONLY_GITHUB = False  # If True, only runs on GitHub datasets (github-dataset_*.jsonl)
 MAVEN_CACHE_PATH = os.path.join(JAVA_DATASET_PATH, ".m2_cache")
+# C++ GoogleTest prebuilt paths (from DatasetCPP/build)
+CPP_BUILD_DIR     = os.path.join(CPP_DATASET_PATH, "build")
+GTEST_INCLUDE     = os.path.join(CPP_BUILD_DIR, "_deps", "googletest-src", "googletest", "include")
+GTEST_LIB         = os.path.join(CPP_BUILD_DIR, "lib", "libgtest.a")
+GTEST_MAIN_LIB    = os.path.join(CPP_BUILD_DIR, "lib", "libgtest_main.a")
 # ========================== END OF FLAGS ===========================
 
 # ---------------------------------------------------------------------------
@@ -225,6 +230,100 @@ def get_sif_path(item_id, is_python=True, technique=None):
     return os.path.join(SIF_DIR, sif_name)
 
 
+def get_cpp_test_path(item_id, technique):
+    """Return the path to the GoogleTest file for a C++ item."""
+    test_file = f"test_{item_id}.cpp"
+    return os.path.join(CPP_DATASET_PATH, "test", technique, test_file)
+
+
+def run_cpp_test(file_path, item_id, technique, source, output_path, temp_dir):
+    """Compile and run a C++ GoogleTest for a single generated file."""
+    import tempfile
+    test_src = get_cpp_test_path(item_id, technique)
+    if not os.path.exists(test_src):
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, 'w') as f:
+            f.write("test,status,error_reason\n")
+            f.write(f"testFunctionality,Error,Test file not found: {os.path.basename(test_src)}\n")
+            f.write(f"testSecurity,Error,Test file not found: {os.path.basename(test_src)}\n")
+        return
+
+    # Build a temp dir mirroring src/technique/item_id.cpp so the test's
+    # relative #include "../src/technique/item_id.cpp" resolves correctly.
+    work_dir = os.path.join(temp_dir, f"cpp_{item_id}_{os.getpid()}")
+    src_dir  = os.path.join(work_dir, "src", technique)
+    test_dir = os.path.join(work_dir, "test", technique)
+    os.makedirs(src_dir,  exist_ok=True)
+    os.makedirs(test_dir, exist_ok=True)
+
+    shutil.copy2(file_path, os.path.join(src_dir, f"{item_id}.cpp"))
+    shutil.copy2(test_src,  os.path.join(test_dir, f"test_{item_id}.cpp"))
+
+    bin_path     = os.path.join(work_dir, "runTest")
+    xml_path     = os.path.join(work_dir, "results.xml")
+    test_cpp     = os.path.join(test_dir, f"test_{item_id}.cpp")
+
+    compile_cmd = [
+        "g++", "-std=c++17",
+        f"-I{work_dir}",
+        f"-I{GTEST_INCLUDE}",
+        test_cpp,
+        GTEST_LIB, GTEST_MAIN_LIB,
+        "-lpthread",
+        "-o", bin_path,
+    ]
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    try:
+        compile_result = subprocess.run(
+            compile_cmd, capture_output=True, text=True, timeout=60
+        )
+        if compile_result.returncode != 0:
+            err = compile_result.stderr.replace(',', ';').replace('\n', ' ')[:300]
+            with open(output_path, 'w') as f:
+                f.write("test,status,error_reason\n")
+                f.write(f"testFunctionality,Error,Compilation failed: {err}\n")
+                f.write(f"testSecurity,Error,Compilation failed: {err}\n")
+            return
+
+        run_result = subprocess.run(
+            [bin_path, f"--gtest_output=xml:{xml_path}"],
+            capture_output=True, text=True, timeout=60
+        )
+
+        # Parse GoogleTest XML
+        results = []
+        if os.path.exists(xml_path):
+            try:
+                tree = ET.parse(xml_path)
+                for testcase in tree.getroot().iter("testcase"):
+                    name   = testcase.get("name", "unknown")
+                    failed = testcase.find("failure") is not None or testcase.find("error") is not None
+                    results.append((name, "Failed" if failed else "Passed"))
+            except Exception:
+                pass
+
+        if results:
+            with open(output_path, 'w') as f:
+                f.write("test,status,error_reason\n")
+                for name, status in results:
+                    f.write(f"{name},{status},\n")
+        else:
+            err = (run_result.stderr or run_result.stdout).replace(',', ';').replace('\n', ' ')[:300]
+            with open(output_path, 'w') as f:
+                f.write("test,status,error_reason\n")
+                f.write(f"testFunctionality,Error,{err}\n")
+                f.write(f"testSecurity,Error,{err}\n")
+
+    except subprocess.TimeoutExpired:
+        with open(output_path, 'w') as f:
+            f.write("test,status,error_reason\n")
+            f.write("testFunctionality,Error,Compile/run timed out\n")
+            f.write("testSecurity,Error,Compile/run timed out\n")
+    finally:
+        shutil.rmtree(work_dir, ignore_errors=True)
+
+
 def get_base_image_info(item_id, technique, source, is_python=True):
     """Find the base image name and Dockerfile for a given prompt ID, technique and source."""
     if is_python:
@@ -377,8 +476,9 @@ def check_compilable_java(code):
 
 
 def process_single_file(file_info):
-    """Run test for a single code file using Apptainer/Singularity."""
+    """Run test for a single code file using Apptainer/Singularity (or g++ for C++)."""
     file_path, item_id, technique, source, lang, is_python = file_info
+    is_cpp = (lang == "C++")
     parent_dir_name = os.path.basename(os.path.dirname(file_path))
 
     sif_path = get_sif_path(item_id, is_python, technique)
@@ -401,6 +501,11 @@ def process_single_file(file_info):
     output_path = os.path.join(temp_dir, output_name)
 
     if os.path.exists(output_path):
+        return
+
+    # C++ — compile and run directly with g++, no SIF needed
+    if is_cpp:
+        run_cpp_test(file_path, item_id, technique, source, output_path, TEMP_PATH)
         return
 
     # Early validation before running container
@@ -567,11 +672,12 @@ def get_all_to_process(root_dir):
 
     for root, dirs, files in os.walk(root_dir):
         for f in files:
-            if f.endswith('.py') or f.endswith('.java'):
+            if f.endswith('.py') or f.endswith('.java') or f.endswith('.cpp'):
                 item_id_file = os.path.splitext(f)[0]
                 if not item_id_file.lower().startswith('test') and '_cwe' in item_id_file.lower():
                     is_python = f.endswith('.py')
-                    lang = "Python" if is_python else "Java"
+                    is_cpp = f.endswith('.cpp')
+                    lang = "Python" if is_python else ("C++" if is_cpp else "Java")
 
                     if '__' in f:
                         try:
@@ -616,7 +722,9 @@ def save_generated_code(jsonl_folder, temp_folder):
         if LANG_FILTER.lower() == 'java':
             jsonl_files = [f for f in jsonl_files if 'java' in f.lower()]
         elif LANG_FILTER.lower() == 'python':
-            jsonl_files = [f for f in jsonl_files if 'java' not in f.lower()]
+            jsonl_files = [f for f in jsonl_files if 'java' not in f.lower() and 'cpp' not in f.lower()]
+        elif LANG_FILTER.lower() == 'cpp':
+            jsonl_files = [f for f in jsonl_files if 'cpp' in f.lower()]
         print(f"LANG_FILTER '{LANG_FILTER}': Selective extraction from {len(jsonl_files)} files")
 
     if ONLY_GITHUB:
@@ -761,7 +869,7 @@ if __name__ == "__main__":
     os.makedirs(SIF_DIR, exist_ok=True)
     print(f"SIF images directory: {SIF_DIR}")
 
-    # Warm up Maven cache if Java is involved
+    # Warm up Maven cache if Java is involved (not needed for C++ or Python)
     if LANG_FILTER is None or LANG_FILTER.lower() == 'java':
         warm_up_maven_cache()
 

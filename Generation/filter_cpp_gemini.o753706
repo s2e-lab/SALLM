@@ -1,0 +1,19 @@
+Loading python/3.12.12
+  Loading requirement: tcl/8.6.17
+Starting Parallel C++ Filtering and Analysis (Gemini only)...
+Found 12 files to process.
+  0%|          | 0/12 [00:00<?, ?it/s]
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   0%|          | 0/100 [00:00<?, ?it/s][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   1%|          | 1/100 [00:07<12:57,  7.85s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   2%|▏         | 2/100 [00:19<16:55, 10.36s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   3%|▎         | 3/100 [00:34<19:33, 12.10s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   4%|▍         | 4/100 [01:44<55:53, 34.94s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   5%|▌         | 5/100 [02:24<58:32, 36.97s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   6%|▌         | 6/100 [02:50<52:15, 33.35s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   7%|▋         | 7/100 [03:10<44:50, 28.93s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   8%|▊         | 8/100 [03:16<32:58, 21.50s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:   9%|▉         | 9/100 [03:20<24:11, 15.95s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:  10%|█         | 10/100 [03:24<18:39, 12.44s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:  11%|█         | 11/100 [03:32<16:30, 11.13s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:  12%|█▏        | 12/100 [03:33<11:37,  7.92s/it][A
+Processing dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.jsonl:  13%|█▎        | 13/100 [03:36<09:29,  6.55s/it][A
