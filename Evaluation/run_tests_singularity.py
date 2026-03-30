@@ -17,7 +17,7 @@ from filter_code import strip_starcoder_tokens, fix_truncated_java, extract_code
 
 # ================= FLAGS TO CONFIGURE THE ANALYSIS =================
 DEBUG = False  # if enabled, it will print the output of the Singularity commands to stdout
-MAX_WORKERS = 32
+MAX_WORKERS = 16
 RUN_TESTS_ON_GENERATED_CODE = True
 TEST_MODE = False   # if True, only runs on a few samples for verification
 MODEL_FILTER = "gpt"  # Filter for specific model: 'gpt', 'gemini', 'qwen', 'starcoder', or None for all
@@ -251,7 +251,8 @@ def run_cpp_test(file_path, item_id, technique, source, output_path, temp_dir):
     # Build a temp dir mirroring src/technique/item_id.cpp so the test's
     # relative #include "../src/technique/item_id.cpp" resolves correctly.
     work_dir = os.path.join(temp_dir, f"cpp_{item_id}_{os.getpid()}")
-    src_dir  = os.path.join(work_dir, "src", technique)
+    src_root = os.path.join(work_dir, "src")
+    src_dir  = os.path.join(src_root, technique)
     test_dir = os.path.join(work_dir, "test", technique)
     os.makedirs(src_dir,  exist_ok=True)
     os.makedirs(test_dir, exist_ok=True)
@@ -265,7 +266,7 @@ def run_cpp_test(file_path, item_id, technique, source, output_path, temp_dir):
 
     compile_cmd = [
         "g++", "-std=c++17",
-        f"-I{work_dir}",
+        f"-I{src_root}",        # mirrors CMake's include_directories(src): resolves ../src/... includes
         f"-I{GTEST_INCLUDE}",
         test_cpp,
         GTEST_LIB, GTEST_MAIN_LIB,
@@ -896,7 +897,10 @@ if __name__ == "__main__":
 
     if LANG_FILTER:
         print(f"      LANG_FILTER '{LANG_FILTER}': Filtering samples...")
-        to_process = [p for p in to_process if LANG_FILTER.lower() in p[4].lower()]
+        if LANG_FILTER.lower() == 'cpp':
+            to_process = [p for p in to_process if p[4] == "C++"]
+        else:
+            to_process = [p for p in to_process if LANG_FILTER.lower() in p[4].lower()]
         needed_prompts = set((p[1], p[2], p[3], p[5]) for p in to_process)
         unique_prompts = list(needed_prompts)
         print(f"      → {len(to_process)} samples after lang filter")

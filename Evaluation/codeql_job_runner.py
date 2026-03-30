@@ -13,22 +13,26 @@ from filter_code import check_compilable, check_compilable_java, remove_misplace
 # %%
 # Parse mode from command line
 parser = argparse.ArgumentParser()
-parser.add_argument('--mode', choices=['python', 'java', 'java_sq'], required=True,
+parser.add_argument('--mode', choices=['python', 'java', 'java_sq', 'cpp_gpt', 'cpp_gemini'], required=True,
                     help='python: all models, standard+github python datasets; '
                          'java: gemini+gpt, standard+github java datasets; '
-                         'java_sq: starcoder2+qwen2.5, standard+github java datasets')
+                         'java_sq: starcoder2+qwen2.5, standard+github java datasets; '
+                         'cpp_gpt: gpt, standard+github cpp datasets; '
+                         'cpp_gemini: gemini, standard+github cpp datasets')
 args = parser.parse_args()
 
 files = os.listdir('../Generation/Filtered_Output/')
 
 if args.mode == 'python':
-    jsonl_files = [f for f in files if 'java' not in f.lower() and f.endswith('.jsonl')]
+    jsonl_files = [f for f in files if 'java' not in f.lower() and 'cpp' not in f.lower() and f.endswith('.jsonl')]
 elif args.mode == 'java':
-    # Default Java mode: Gemini and GPT
     jsonl_files = [f for f in files if 'java' in f.lower() and ('gemini' in f.lower() or 'gpt' in f.lower()) and f.endswith('.jsonl')]
 elif args.mode == 'java_sq':
-    # Starcoder2 and Qwen2.5
     jsonl_files = [f for f in files if 'java' in f.lower() and ('starcoder2' in f.lower() or 'qwen2.5' in f.lower()) and f.endswith('.jsonl')]
+elif args.mode == 'cpp_gpt':
+    jsonl_files = [f for f in files if 'cpp' in f.lower() and 'gpt' in f.lower() and f.endswith('.jsonl')]
+elif args.mode == 'cpp_gemini':
+    jsonl_files = [f for f in files if 'cpp' in f.lower() and 'gemini' in f.lower() and f.endswith('.jsonl')]
 else:
     jsonl_files = []
 
@@ -66,7 +70,8 @@ for file in jsonl_files:
         technique =  data[i]['technique']
         source = data[i]['source']
         is_java_dataset = 'java' in file
-        language = "Java" if is_java_dataset else "Python"
+        is_cpp_dataset = 'cpp' in file
+        language = "Java" if is_java_dataset else ("C++" if is_cpp_dataset else "Python")
         if language is None:
             continue
         if language.strip() == '':
@@ -77,10 +82,13 @@ for file in jsonl_files:
         skip = 2 if len(id_parts) > 3 else 1
         file_name = '_'.join(id_parts[skip:])
 
-        
         dataset_root = f'./Dataset/{model_name}'
         # Check if the folder exists, if not create it
-        if is_java_dataset:
+        if is_cpp_dataset:
+            base_dir = f'./Dataset/{model_name}/{technique}/{source}/'
+            if not os.path.exists(base_dir):
+                os.makedirs(base_dir)
+        elif is_java_dataset:
             # We use a unique package per file to avoid "duplicate class" errors from helper classes
             java_package_path = f"com/sallm/{technique}/{source}/"
             # We'll append a subfolder per file in the loop below
@@ -190,6 +198,9 @@ for file in jsonl_files:
                     code = cleared_code[:last_brace_idx] + '\n' + clean_gen + '\n' + cleared_code[last_brace_idx:]
                 else:
                     code = cleared_code
+            elif is_cpp_dataset:
+                # C++ — trust the compilable flag already set by filter_code.py; use cleared_code as-is
+                code = cleared_code
             elif cleared_code.count('{') == cleared_code.count('}'):
                 # No empty method or no generated code, but cleared_code is balanced - use it
                 code = cleared_code
@@ -202,13 +213,15 @@ for file in jsonl_files:
                 code = remove_duplicate_class_definitions(code)
                 code = remove_misplaced_imports(code)
 
-            # Final validation: use comprehensive compilability check from filter_code.py
+            # Final validation
             if is_java_dataset:
                 if not check_compilable_java(code):
                     continue
-            else:
+            elif not is_cpp_dataset:
+                # Python: AST check
                 if not check_compilable(code):
                     continue
+            # C++: already validated by filter_code.py (compilable flag), skip re-check
 
             # if technique == 'Assertion':
             #     with open(f'./Dataset/{technique}/{source}/{file_name}', 'w') as f:
@@ -226,18 +239,29 @@ for file in jsonl_files:
             #     if os.path.exists(f'./Dataset/{technique}/{source}/test_{file_name}'):
             #         os.remove(f'./Dataset/{technique}/{source}/test_{file_name}')
 
-            extension = '.java' if is_java_dataset else '.py'
-            current_file_extension = '.py' if not is_java_dataset else '.java'
-            
+            if is_cpp_dataset:
+                extension = '.cpp'
+            elif is_java_dataset:
+                extension = '.java'
+            else:
+                extension = '.py'
+
             # Remove existing extension from file_name if present to avoid double extensions or wrong ones
             base_file_name = file_name
-            if base_file_name.endswith('.py'):
-                base_file_name = base_file_name[:-3]
-            elif base_file_name.endswith('.java'):
-                base_file_name = base_file_name[:-5]
-                
+            for ext in ('.py', '.java', '.cpp'):
+                if base_file_name.endswith(ext):
+                    base_file_name = base_file_name[:-len(ext)]
+                    break
+
             current_file_name = f"{base_file_name}_{j}_{nat_lang}{extension}"
-            
+
+            # C++ — write cleared_code directly, no package/class manipulation needed
+            if is_cpp_dataset:
+                save_path = f'{base_dir}/{current_file_name}'
+                with open(save_path, 'w') as f:
+                    f.write(code)
+                continue
+
             # For Java, the public class name must match the filename and we need a package
             if is_java_dataset:
                 import re
@@ -291,7 +315,12 @@ for file in jsonl_files:
                     f.write(code)
 
 
-    template_file = 'codeql_job_java_bk.sh' if is_java_dataset else 'codeql_job_bk.sh'
+    if is_cpp_dataset:
+        template_file = 'codeql_job_cpp_bk.sh'
+    elif is_java_dataset:
+        template_file = 'codeql_job_java_bk.sh'
+    else:
+        template_file = 'codeql_job_bk.sh'
     with open(template_file, 'r') as f:
         codeql_command = f.read()
 

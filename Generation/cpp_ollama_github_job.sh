@@ -3,7 +3,7 @@
 #$ -pe smp 16
 #$ -q gpu
 #$ -l gpu=2
-#$ -N gen_all_cpp_ollama
+#$ -N gen_cpp_ollama_github
 #$ -cwd
 #$ -V
 #$ -l h_rt=72:00:00
@@ -46,8 +46,8 @@ echo "Pulling model starcoder2:3b..."
 ollama pull starcoder2:3b
 
 # Run Generations
-echo "Starting Ollama Generations (Starcoder2:3b) — standard dataset..."
-python3 Ollama_model.py ../ProcessedFiles/dataset_cpp_nl_prompt_best.jsonl
+echo "Starting Ollama Generations (Starcoder2:3b) — GitHub dataset..."
+python3 Ollama_model.py ../ProcessedFiles/github-dataset_cpp_nl_prompt_best.jsonl
 
 kill $SERVER_PID
 echo "Ollama Generation complete."
