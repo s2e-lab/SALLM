@@ -93,15 +93,15 @@ def plot_compilation(datasets, fig_name):
             std_after  = grp_after.std().fillna(0)
             t          = mean_after.index.values
             ax.plot(t, mean_after.values, marker="o", label=f"{model} (After)",
-                    color=color, linewidth=1.8, markersize=5, linestyle="-")
+                    color=color, linewidth=3.0, markersize=8, linestyle="-")
             ax.fill_between(t, (mean_after - std_after).values, (mean_after + std_after).values,
                             alpha=0.1, color=color)
 
-            # Plot Before repair (Dashed, same color)
+            # Plot Before repair (Dashed)
             grp_before  = mdf.groupby("Temp")["Compilable_before (%)"]
             mean_before = grp_before.mean()
             ax.plot(t, mean_before.values, marker="x", label=f"{model} (Before)",
-                    color=color, linewidth=1.2, markersize=4, linestyle="--", alpha=0.7)
+                    color=color, linewidth=3.0, markersize=8, linestyle="--", alpha=0.8)
 
         ax.set_xlim(temps[0] - 0.05, temps[-1] + 0.05)
         ax.set_ylim(0, 100)
@@ -120,7 +120,7 @@ def plot_compilation(datasets, fig_name):
     handles, labels = axs[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels,
                loc="lower center", ncol=2,
-               fontsize=11, frameon=True,
+               fontsize=18, frameon=True,
                bbox_to_anchor=(0.5, -0.1))
     plt.tight_layout(rect=[0, 0, 1, 1])
     out = os.path.join(FIG_DIR, fig_name)
@@ -168,27 +168,24 @@ def plot_nl_compilation_figure(df, ylabel, fig_name):
                 vals_after.append(ldf["Compilable_after (%)"].mean() if not ldf.empty else 0.0)
 
             # Plot lines
-            # 'After' is solid and thick
             ax.plot(x, vals_after, marker="o", color=color, label="After Repair",
-                    linewidth=2.0, markersize=4, linestyle="-", alpha=1.0)
-            
-            # 'Before' is dashed and thin
+                    linewidth=3.0, markersize=8, linestyle="-", alpha=1.0)
             ax.plot(x, vals_before, marker="x", color="gray", label="Before Repair",
-                    linewidth=1.2, markersize=3, linestyle="--", alpha=0.7)
+                    linewidth=3.0, markersize=8, linestyle="--", alpha=0.8)
 
             ax.set_ylim(0, 100)
             ax.set_xticks(x)
             ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.7)
 
             if row_idx == n_rows - 1:
-                ax.set_xticklabels(langs, rotation=90, fontsize=10, fontweight="bold")
+                ax.set_xticklabels(langs, rotation=90, fontsize=11, fontweight="bold")
             else:
                 ax.set_xticklabels([], fontsize=0)
 
-            ax.tick_params(axis="y", labelsize=10)
+            ax.tick_params(axis="y", labelsize=11)
 
             if col_idx == 0:
-                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=12, fontweight="bold")
+                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=13, fontweight="bold")
             else:
                 ax.set_ylabel("")
 
@@ -197,7 +194,7 @@ def plot_nl_compilation_figure(df, ylabel, fig_name):
 
     # Add a global legend for the whole figure
     handles, labels = axs[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="lower center", ncol=2, fontsize=11, frameon=True, bbox_to_anchor=(0.5, -0.02))
+    fig.legend(handles, labels, loc="lower center", ncol=2, fontsize=18, frameon=True, bbox_to_anchor=(0.5, -0.02))
 
     plt.tight_layout(rect=[0, 0.03, 1, 1])
     out = os.path.join(FIG_DIR, fig_name)

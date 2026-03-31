@@ -186,14 +186,14 @@ def plot_natural_language_figure(df, metric_col, ylabel, fig_name):
             ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.7)
 
             if row_idx == n_rows - 1:
-                ax.set_xticklabels(langs, rotation=90, fontsize=10, fontweight="bold")
+                ax.set_xticklabels(langs, rotation=90, fontsize=11, fontweight="bold")
             else:
                 ax.set_xticklabels([], fontsize=0)
 
-            ax.tick_params(axis="y", labelsize=10)
+            ax.tick_params(axis="y", labelsize=11)
 
             if col_idx == 0:
-                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=12, fontweight="bold")
+                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=13, fontweight="bold")
             else:
                 ax.set_ylabel("")
 
