@@ -18,6 +18,6 @@ export PYTHONPATH="$PWD/pypackages:$PYTHONPATH"
 
 echo "Starting Parallel C++ Filtering and Analysis (GPT only)..."
 python3 filter_code.py --model gpt
-python3 analyze_compilability.py --model gpt
+# python3 analyze_compilability.py --model gpt
 
 echo "C++ Filtering and Analysis complete."

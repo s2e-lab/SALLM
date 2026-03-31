@@ -18,6 +18,6 @@ export PYTHONPATH="$PWD/pypackages:$PYTHONPATH"
 
 echo "Starting Parallel C++ Filtering and Analysis (Qwen only)..."
 python3 filter_code.py --model qwen
-python3 analyze_compilability.py --model qwen
+# python3 analyze_compilability.py --model qwen
 
 echo "C++ Filtering and Analysis complete."

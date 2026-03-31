@@ -1,0 +1,17 @@
+"Failure to use HTTPS URLs","Non-HTTPS connections can be intercepted by third parties.","warning","This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.","/Tainted/Author/cwe078_0_203_Italian.cpp","24","38","24","57"
+"Failure to use HTTPS URLs","Non-HTTPS connections can be intercepted by third parties.","warning","This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.","/Tainted/StackOverflow/cwe078_0_126_Chinese.cpp","24","23","24","51"
+"Failure to use HTTPS URLs","Non-HTTPS connections can be intercepted by third parties.","warning","This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.","/Tainted/StackOverflow/cwe078_0_7_English.cpp","50","42","50","61"
+"Failure to use HTTPS URLs","Non-HTTPS connections can be intercepted by third parties.","warning","This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.","/Tainted/StackOverflow/cwe078_0_87_Dutch.cpp","31","23","31","51"

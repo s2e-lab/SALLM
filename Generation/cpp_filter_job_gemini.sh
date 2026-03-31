@@ -18,6 +18,6 @@ export PYTHONPATH="$PWD/pypackages:$PYTHONPATH"
 
 echo "Starting Parallel C++ Filtering and Analysis (Gemini only)..."
 python3 filter_code.py --model gemini
-python3 analyze_compilability.py --model gemini
+# python3 analyze_compilability.py --model gemini
 
 echo "C++ Filtering and Analysis complete."

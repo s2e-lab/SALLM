@@ -746,22 +746,27 @@ def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
 
     return result
 
-def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):    
+def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):
     prompt = item[prompt_key]
-    
-    # Detect language
+
     # Detect language
     is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
-    
+    is_cpp = item.get('_is_cpp_context', 'cpp' in item.get('id', '').lower())
+
     data = strip_starcoder_tokens(data)
-    
+
     extracted_data = extract_assistant_code(data)
     if extracted_data is not None:
         data = extracted_data
     # If no assistant tag found, we'll use the raw 'data' as-is
-    
+
     code = extract_code_block(data)
-    
+
+    # For C++: just use the extracted code block directly — no Python/Java-style
+    # function-name reconstruction (split_tokens are Python-specific and corrupt C++ output)
+    if is_cpp:
+        return code
+
     # Remove repetition of the prompt
     code = remove_repetition(prompt, code, is_java=is_java)
 
