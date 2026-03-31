@@ -38,20 +38,23 @@ def estimate_pass_at_k(
 
 
 def parse_file_meta(file_name):
-    """Returns (model_name, temp, is_java) — no GitHub_ prefix."""
+    """Returns (model_name, temp, is_java, is_cpp) — no GitHub_ prefix."""
     base = file_name.replace('.jsonl', '')
     parts = base.split('_')
     temp = parts[-1]
     is_java = 'dataset_java' in file_name
-    # dataset_nl_prompt_best_<model>_<temp>          → parts[4:-1]
-    # dataset_java_nl_prompt_best_<model>_<temp>     → parts[5:-1]
-    # github-dataset_nl_prompt_best_<model>_<temp>   → parts[4:-1]
-    # github-dataset_java_nl_prompt_best_<model>_<temp> → parts[5:-1]
-    if is_java:
+    is_cpp  = 'dataset_cpp'  in file_name
+    # dataset_nl_prompt_best_<model>_<temp>              → parts[4:-1]
+    # dataset_java_nl_prompt_best_<model>_<temp>         → parts[5:-1]
+    # dataset_cpp_nl_prompt_best_<model>_<temp>          → parts[5:-1]
+    # github-dataset_nl_prompt_best_<model>_<temp>       → parts[4:-1]
+    # github-dataset_java_nl_prompt_best_<model>_<temp>  → parts[5:-1]
+    # github-dataset_cpp_nl_prompt_best_<model>_<temp>   → parts[5:-1]
+    if is_java or is_cpp:
         model_name_parts = parts[5:-1]
     else:
         model_name_parts = parts[4:-1]
-    return '_'.join(model_name_parts), temp, is_java
+    return '_'.join(model_name_parts), temp, is_java, is_cpp
 
 
 def load_results(file_name):
@@ -158,19 +161,24 @@ all_files = sorted([
     if f.endswith('.jsonl') and (
         f.startswith('dataset_nl_prompt_best') or
         f.startswith('dataset_java_nl_prompt_best') or
-        (f.startswith('github-dataset_nl_prompt_best') and 'java' not in f) or
-        f.startswith('github-dataset_java_nl_prompt_best')
+        f.startswith('dataset_cpp_nl_prompt_best') or
+        (f.startswith('github-dataset_nl_prompt_best') and 'java' not in f and 'cpp' not in f) or
+        f.startswith('github-dataset_java_nl_prompt_best') or
+        f.startswith('github-dataset_cpp_nl_prompt_best')
     )
 ])
 print(f"Found {len(all_files)} annotated JSONL files in TestResults/")
 
-# ── Group by (model, temp, is_java) ───────────────────────────────────────
+# ── Group by (model, temp, lang) ──────────────────────────────────────────
 groups_java   = defaultdict(list)
 groups_python = defaultdict(list)
+groups_cpp    = defaultdict(list)
 for f in all_files:
-    model, temp, is_java = parse_file_meta(f)
+    model, temp, is_java, is_cpp = parse_file_meta(f)
     if is_java:
         groups_java[(model, temp)].append(f)
+    elif is_cpp:
+        groups_cpp[(model, temp)].append(f)
     else:
         groups_python[(model, temp)].append(f)
 
@@ -211,3 +219,22 @@ df_java = pd.DataFrame(java_rows, columns=COLUMNS)
 df_java = df_java.sort_values(['Model', 'Temp', 'Language'])
 df_java.to_csv('./Result/Tests_Results_Java.csv', index=False)
 print("Saved Result/Tests_Results_Java.csv")
+
+# ── C++ ────────────────────────────────────────────────────────────────────
+print(f"\n=== C++ — {len(groups_cpp)} model/temp groups "
+      f"({sum(len(v) for v in groups_cpp.values())} files, merged) ===")
+cpp_rows = []
+for (model, temp), files in sorted(groups_cpp.items()):
+    print(f"  Merging: {files}")
+    combined = {}
+    for f in files:
+        for lang, items in load_results(f).items():
+            if lang not in combined:
+                combined[lang] = {}
+            combined[lang].update(items)
+    cpp_rows.extend(compute_metrics_from_results(model, temp, combined))
+
+df_cpp = pd.DataFrame(cpp_rows, columns=COLUMNS)
+df_cpp = df_cpp.sort_values(['Model', 'Temp', 'Language'])
+df_cpp.to_csv('./Result/Tests_Results_Cpp.csv', index=False)
+print("Saved Result/Tests_Results_Cpp.csv")

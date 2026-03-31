@@ -2,15 +2,16 @@
 aggregate_codeql.py
 
 Converts CodeQL_Result_Analysis.ipynb + pass_at_k_codeql.ipynb into a single
-script for both Java and Python datasets.
+script for Java, Python, and C++ datasets.
 
 Reads:
-  - Generation/Filtered_Output/dataset_{java_}nl_prompt_best_*.jsonl
+  - Generation/Filtered_Output/dataset_{java_|cpp_}nl_prompt_best_*.jsonl
   - Evaluation/CodeQL_Output/{model_temp}/*.csv   (raw CodeQL, no headers)
 
 Produces:
   - Evaluation/Result/CodeQL_Results-Multi_Java.csv
   - Evaluation/Result/CodeQL_Results-Multi_Python.csv
+  - Evaluation/Result/CodeQL_Results-Multi_Cpp.csv
     columns: Model, Language, Temp, vul@1, vul@3, vul@5,
              in_vul@1, in_vul@3, in_vul@5,
              security@1, security@3, security@5,
@@ -65,21 +66,24 @@ def extract_cwe(file_stem):
 
 def parse_jsonl_name(fname):
     """
-    dataset_java_nl_prompt_best_gemini-2.5-flash_0.0.jsonl  → is_java=True
-    dataset_nl_prompt_best_gemini-2.5-flash_0.0.jsonl       → is_java=False
-    Returns (model, temp, dir_key, is_java) or (None, None, None, None).
+    dataset_java_nl_prompt_best_gemini-2.5-flash_0.0.jsonl  → lang='java'
+    dataset_cpp_nl_prompt_best_starcoder2_0.0.jsonl         → lang='cpp'
+    dataset_nl_prompt_best_gemini-2.5-flash_0.0.jsonl       → lang='python'
+    Returns (model, temp, dir_key, lang) or (None, None, None, None).
     """
     stem = fname.replace(".jsonl", "")
-    for prefix, is_java in (
-        ("dataset_java_nl_prompt_best_",        True),
-        ("github-dataset_java_nl_prompt_best_", True),
-        ("dataset_nl_prompt_best_",             False),
-        ("github-dataset_nl_prompt_best_",      False),
+    for prefix, lang in (
+        ("dataset_java_nl_prompt_best_",        "java"),
+        ("github-dataset_java_nl_prompt_best_", "java"),
+        ("dataset_cpp_nl_prompt_best_",         "cpp"),
+        ("github-dataset_cpp_nl_prompt_best_",  "cpp"),
+        ("dataset_nl_prompt_best_",             "python"),
+        ("github-dataset_nl_prompt_best_",      "python"),
     ):
         if stem.startswith(prefix):
             remain = stem[len(prefix):]
             model, temp = remain.rsplit("_", 1)
-            return model, temp, stem, is_java
+            return model, temp, stem, lang
     return None, None, None, None
 
 
@@ -127,12 +131,12 @@ def search(combined, current_cwe, file_name):
 # ---------------------------------------------------------------------------
 # Process one JSONL file → per-language results dict
 # ---------------------------------------------------------------------------
-def process_jsonl(jsonl_path, model_key, combined, is_java):
+def process_jsonl(jsonl_path, model_key, combined, lang):
     """
     Returns dict: language → {id → [[direct_vul, indirect_vul], ...]}
-    is_java controls the generated file extension (.java vs .py).
+    lang controls the generated file extension ('java' → .java, 'cpp' → .cpp, else .py).
     """
-    ext = ".java" if is_java else ".py"
+    ext = ".java" if lang == "java" else (".cpp" if lang == "cpp" else ".py")
 
     with open(jsonl_path, encoding="utf-8") as fh:
         data = [json.loads(l) for l in fh if l.strip()]
@@ -148,7 +152,7 @@ def process_jsonl(jsonl_path, model_key, combined, is_java):
         id_parts  = id_val.split("_")
         skip      = 2 if len(id_parts) > 3 else 1
         file_name = "_".join(id_parts[skip:])
-        base_stem = re.sub(r"\.(java|py)$", "", file_name, flags=re.IGNORECASE)
+        base_stem = re.sub(r"\.(java|py|cpp)$", "", file_name, flags=re.IGNORECASE)
 
         current_cwe = extract_cwe(base_stem)
 
@@ -242,9 +246,10 @@ def main():
 
     java_rows   = []
     python_rows = []
+    cpp_rows    = []
 
     for fname in all_files:
-        model, temp, dir_key, is_java = parse_jsonl_name(fname)
+        model, temp, dir_key, lang = parse_jsonl_name(fname)
         if model is None:
             continue
 
@@ -253,7 +258,7 @@ def main():
             print(f"  No CodeQL output for {dir_key}, skipping")
             continue
 
-        lang_label = "Java" if is_java else "Python"
+        lang_label = {"java": "Java", "cpp": "C++", "python": "Python"}.get(lang, lang)
 
         # Skip dirs where all CSVs are empty — CodeQL job didn't produce output.
         # Vacuously 0% vulnerable / 100% secure would be misleading.
@@ -262,15 +267,17 @@ def main():
             print(f"  [{lang_label}] SKIP (empty CodeQL output — job may not have run): {dir_key}")
             continue
         jsonl_path = os.path.join(FILTERED_DIR, fname)
-        results    = process_jsonl(jsonl_path, model, combined, is_java)
+        results    = process_jsonl(jsonl_path, model, combined, lang)
         rows       = compute_metrics(results, model, temp)
-        if is_java:
+        if lang == "java":
             java_rows.extend(rows)
+        elif lang == "cpp":
+            cpp_rows.extend(rows)
         else:
             python_rows.extend(rows)
         print(f"    → {len(rows)} language rows")
 
-    for rows, label in [(java_rows, "Java"), (python_rows, "Python")]:
+    for rows, label in [(java_rows, "Java"), (python_rows, "Python"), (cpp_rows, "Cpp")]:
         if not rows:
             print(f"No {label} data collected — skipping.")
             continue

@@ -1,14 +1,18 @@
 """
 generate_compilation_figures.py
 
-2 rows (Java/Python) × 2 cols (Before/After repair), mean ± std across languages.
+N rows (Java/Python/C++) × 2 cols (Before/After repair), mean ± std across languages.
 
 Reads:
   ../Evaluation/Result/compilation_results_Java.csv
   ../Evaluation/Result/compilation_results_Python.csv
+  ../Evaluation/Result/compilation_results_Cpp.csv
 
 Writes:
   Figure/compilation_results.png
+  Figure/compilation_results_java.png
+  Figure/compilation_results_python.png
+  Figure/compilation_results_cpp.png
 """
 
 import os
@@ -54,8 +58,8 @@ def load(csv_path):
     return df
 
 
-def plot_compilation(df_java, df_python, fig_name):
-    datasets = [("Java", df_java), ("Python", df_python)]
+def plot_compilation(datasets, fig_name):
+    """datasets: list of (label, df) pairs; None dfs are skipped."""
     phases   = [("Before repair", "Compilable_before (%)"),
                 ("After repair",  "Compilable_after (%)")]
     models   = list(MODEL_LABELS.values())
@@ -118,20 +122,98 @@ def plot_compilation(df_java, df_python, fig_name):
     print(f"  Saved {out}")
 
 
+def plot_nl_compilation_figure(df, phase_col, ylabel, fig_name):
+    """
+    6 rows (temperatures) x 4 cols (models).
+    x-axis: natural languages (bar chart, rotated labels).
+    y-axis: compilable (%).
+    One figure per (programming language x phase).
+    """
+    models = list(MODEL_LABELS.values())
+    temps  = sorted(df["Temp"].unique())
+    langs  = sorted(df["Language"].unique())
+    x      = np.arange(len(langs))
+
+    n_rows = len(temps)
+    n_cols = len(models)
+
+    fig, axs = plt.subplots(n_rows, n_cols,
+                            figsize=(4.5 * n_cols, 3.0 * n_rows),
+                            sharey=False, dpi=200)
+    axs = np.array(axs).reshape(n_rows, n_cols)
+
+    for row_idx, temp in enumerate(temps):
+        for col_idx, model in enumerate(models):
+            ax  = axs[row_idx, col_idx]
+            mdf = df[(df["Model"] == model) & (df["Temp"] == temp)]
+            color = MODEL_COLORS.get(model, None)
+
+            vals = []
+            for lang in langs:
+                ldf = mdf[mdf["Language"] == lang]
+                vals.append(ldf[phase_col].mean() if not ldf.empty else 0.0)
+
+            ax.bar(x, vals, color=color, alpha=0.8)
+            ax.set_ylim(0, 100)
+            ax.set_xticks(x)
+            ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.7)
+
+            if row_idx == n_rows - 1:
+                ax.set_xticklabels(langs, rotation=90, fontsize=6)
+            else:
+                ax.set_xticklabels([], fontsize=0)
+
+            if col_idx == 0:
+                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=8)
+            else:
+                ax.set_ylabel("")
+
+            if row_idx == 0:
+                ax.set_title(model, fontsize=9, fontweight="bold")
+
+    plt.tight_layout()
+    out = os.path.join(FIG_DIR, fig_name)
+    plt.savefig(out, dpi=200, bbox_inches="tight")
+    plt.close(fig)
+    print(f"  Saved {out}")
+
+
 def main():
     df_java   = load(os.path.join(RESULT_DIR, "compilation_results_Java.csv"))
     df_python = load(os.path.join(RESULT_DIR, "compilation_results_Python.csv"))
+    df_cpp    = load(os.path.join(RESULT_DIR, "compilation_results_Cpp.csv"))
 
-    if df_java is None and df_python is None:
+    all_datasets = [("Java", df_java), ("Python", df_python), ("C++", df_cpp)]
+    if all(d is None for _, d in all_datasets):
         print("ERROR: no compilation CSVs found.")
         return
 
     print("[compilation] combined …")
-    plot_compilation(df_java, df_python, "compilation_results.png")
+    plot_compilation(all_datasets, "compilation_results.png")
     print("[compilation] java …")
-    plot_compilation(df_java, None,      "compilation_results_java.png")
+    plot_compilation([("Java", df_java)], "compilation_results_java.png")
     print("[compilation] python …")
-    plot_compilation(None,    df_python, "compilation_results_python.png")
+    plot_compilation([("Python", df_python)], "compilation_results_python.png")
+    print("[compilation] cpp …")
+    plot_compilation([("C++", df_cpp)], "compilation_results_cpp.png")
+
+    # Per-natural-language figures: 6 temps x 4 models, x=NL, one per (prog_lang, phase)
+    nl_datasets = [
+        ("Java",   df_java),
+        ("Python", df_python),
+        ("Cpp",    df_cpp),
+    ]
+    phases = [
+        ("before", "Compilable_before (%)", "Compilable Before Repair (%)"),
+        ("after",  "Compilable_after (%)",  "Compilable After Repair (%)"),
+    ]
+    for prog_label, df in nl_datasets:
+        if df is None:
+            continue
+        for phase_key, phase_col, ylabel in phases:
+            fig_name = f"nl_{prog_label}_compilable_{phase_key}.png"
+            print(f"[nl-compilation] {prog_label} {phase_key} …")
+            plot_nl_compilation_figure(df, phase_col, ylabel, fig_name)
 
 
 if __name__ == "__main__":

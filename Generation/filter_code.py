@@ -279,6 +279,68 @@ def remove_repetition(prompt, data, is_java=False):
 
 split_tokens = ['\ndef', '\nif', '\n@app', "\n'''", '\nclass',"if __name__ == '__main__':", 'if __name__ == "__main__":']
 
+# C++-specific boundary tokens: discard test harnesses appended after the class/function
+cpp_split_tokens = ['\nint main(', '\nint main (']
+
+
+def fix_truncated_cpp(code):
+    """
+    R4 (C++ variant): closes unbalanced braces and removes trailing incomplete lines.
+    """
+    if not code:
+        return code
+
+    lines = code.rstrip().split('\n')
+
+    # Remove trailing truncated lines
+    while lines:
+        last = lines[-1].strip()
+        if not last:
+            lines.pop()
+            continue
+        is_truncated = False
+        if re.search(r'[a-zA-Z0-9_]$', last):
+            if not last.endswith((';', '{', '}', ',')):
+                is_truncated = True
+        if last.count('(') > last.count(')'):
+            is_truncated = True
+        if last.count('"') % 2 == 1:
+            is_truncated = True
+        if is_truncated:
+            lines.pop()
+        else:
+            break
+
+    stripped = '\n'.join(lines).rstrip()
+
+    # Balance braces
+    diff = stripped.count('{') - stripped.count('}')
+    for _ in range(diff):
+        stripped += '\n}'
+
+    return stripped
+
+
+def clear_cpp_code(code, prompt):
+    """
+    Applies C++-specific rules to already-extracted code:
+      R2 - remove prompt repetition
+      R3 - discard content after int main() test harnesses
+      R4 - close unbalanced braces / remove truncated trailing lines
+    """
+    # R2: remove prompt repetition
+    code = remove_repetition(prompt, code)
+
+    # R3: cut at C++ boundary tokens
+    for token in cpp_split_tokens:
+        if token in code:
+            code = code.split(token)[0]
+
+    # R4: repair truncation
+    code = fix_truncated_cpp(code)
+
+    return code
+
 def get_last_function_name_from_code(code, is_java=False):
     """
     Extracts the LAST function name or method signature from the given code string.
@@ -306,15 +368,19 @@ def get_last_function_name_from_code(code, is_java=False):
 
 def clear_generated_code_gemini(data, item, prompt_key = "prompt"):
     """Gemini cleaner."""
-    data = data.split('<|endoftext|>')[0]   
+    data = data.split('<|endoftext|>')[0]
     prompt = item[prompt_key]
-    
-    # Use extract_code_block to handle any markdown fencing
+
+    # Use extract_code_block to handle any markdown fencing (R1)
     data = extract_code_block(data, dedent=True)
 
     # Detect language
-    # Detect language
     is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
+    is_cpp = item.get('_is_cpp_context', 'cpp' in item.get('id', '').lower())
+
+    # C++: apply R2 + R3 + R4-cpp then return; skip Python/Java-specific logic
+    if is_cpp:
+        return clear_cpp_code(data, prompt)
     
     # Remove repetition of the prompt
     data = remove_repetition(prompt, data, is_java=is_java)
@@ -644,19 +710,23 @@ def check_compilable(data, is_java=False, is_cpp=False):
         return False
 
 def clear_generated_code_gpt(data, item, prompt_key = "prompt"):
-    data = data.split('<|endoftext|>')[0]   
+    data = data.split('<|endoftext|>')[0]
     prompt = item[prompt_key]
-    
-    # Use extract with dedent=False to preserve relative indentation
+
+    # R1: extract code block
     new_data = extract_code_block(data, dedent=False)
-    
-    # Detect language
+
     # Detect language
     is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
-    
+    is_cpp = item.get('_is_cpp_context', 'cpp' in item.get('id', '').lower())
+
+    # C++: apply R2 + R3 + R4-cpp then return; skip Python/Java-specific logic
+    if is_cpp:
+        return clear_cpp_code(new_data, prompt)
+
     # Remove repetition of the prompt
     new_data = remove_repetition(prompt, new_data, is_java=is_java)
-    
+
     # Enforce indentation if lines don't start with space (heuristic from notebook)
     lines = new_data.split('\n')
     indented_lines = []
@@ -665,12 +735,12 @@ def clear_generated_code_gpt(data, item, prompt_key = "prompt"):
             line = '    ' + line
         indented_lines.append(line)
     new_data = '\n'.join(indented_lines)
-    
+
     # Ensure tokens are removed if present in the extracted code
     for token in split_tokens:
         if token in new_data:
             new_data = new_data.split(token)[0]
-            
+
     result = prompt + '\n' + new_data
     
     # Fix truncated code
@@ -699,10 +769,9 @@ def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
     is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
     is_cpp = item.get('_is_cpp_context', 'cpp' in item.get('id', '').lower())
 
-    # For C++: just use the extracted code block directly — no Python/Java-style
-    # function-name reconstruction (split_tokens are Python-specific and corrupt C++ output)
+    # C++: apply R2 + R3 + R4-cpp then return; skip Python/Java-specific logic
     if is_cpp:
-        return code
+        return clear_cpp_code(code, prompt)
 
     # Remove repetition of the prompt
     code = remove_repetition(prompt, code, is_java=is_java)
@@ -762,10 +831,14 @@ def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):
 
     code = extract_code_block(data)
 
-    # For C++: starcoder outputs completion continuations to be appended to the prompt.
-    # Do not extract code blocks or apply split_tokens (Python-specific logic).
+    # For C++: starcoder is completion mode — append completion to prompt,
+    # then apply R3 (remove int main harness) and R4-cpp (brace repair).
     if is_cpp:
-        return prompt + '\n' + data
+        result = prompt + '\n' + data
+        for token in cpp_split_tokens:
+            if token in result:
+                result = result.split(token)[0]
+        return fix_truncated_cpp(result)
 
     # Remove repetition of the prompt
     code = remove_repetition(prompt, code, is_java=is_java)

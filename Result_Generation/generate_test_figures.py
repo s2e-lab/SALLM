@@ -1,16 +1,18 @@
 """
 generate_test_figures.py
 
-2 rows (Java/Python) × 3 cols (k=1/3/5), mean ± std across languages.
+N rows (Java/Python/C++) × 3 cols (k=1/3/5), mean ± std across languages.
 
 Reads:
   ../Evaluation/Result/Tests_Results_Java.csv
   ../Evaluation/Result/Tests_Results_Python.csv
+  ../Evaluation/Result/Tests_Results_Cpp.csv
 
 Writes:
   Figure/tests_pass_at_k_comparison.png
   Figure/tests_vul_at_k_comparison.png
   Figure/tests_security_at_k_comparison.png
+  (+ per-language variants)
 """
 
 import os
@@ -58,16 +60,16 @@ def load(csv_path):
     return df
 
 
-def plot_metric_figure(df_java, df_python, metric_col, ylabel, fig_name):
+def plot_metric_figure(datasets, metric_col, ylabel, fig_name):
     """
-    2-row (Java, Python) × 3-col (k=1,3,5) figure.
+    N-row (Java/Python/C++) × 3-col (k=1,3,5) figure.
+    datasets: list of (label, df) pairs; None dfs are skipped.
     Each panel: x=temperature, one line per model (mean over languages),
     shaded ±1-std band.
     """
-    datasets = [("Java", df_java), ("Python", df_python)]
-    models   = list(MODEL_LABELS.values())
-    temps    = sorted(df_java["Temp"].unique()) if df_java is not None \
-               else sorted(df_python["Temp"].unique())
+    models = list(MODEL_LABELS.values())
+    ref_df = next(d for _, d in datasets if d is not None)
+    temps  = sorted(ref_df["Temp"].unique())
 
     n_rows = sum(1 for _, d in datasets if d is not None)
     n_cols = len(K_VALUES)
@@ -135,11 +137,69 @@ def plot_metric_figure(df_java, df_python, metric_col, ylabel, fig_name):
     print(f"  Saved {out}")
 
 
+def plot_natural_language_figure(df, metric_col, ylabel, fig_name):
+    """
+    6 rows (temperatures) x 4 cols (models).
+    x-axis: natural languages (bar chart, rotated labels).
+    y-axis: metric value.
+    One figure per (programming language x metric x k).
+    """
+    models = list(MODEL_LABELS.values())
+    temps  = sorted(df["Temp"].unique())
+    langs  = sorted(df["Language"].unique())
+    x      = np.arange(len(langs))
+
+    n_rows = len(temps)
+    n_cols = len(models)
+
+    fig, axs = plt.subplots(n_rows, n_cols,
+                            figsize=(4.5 * n_cols, 3.0 * n_rows),
+                            sharey=False, dpi=200)
+    axs = np.array(axs).reshape(n_rows, n_cols)
+
+    for row_idx, temp in enumerate(temps):
+        for col_idx, model in enumerate(models):
+            ax  = axs[row_idx, col_idx]
+            mdf = df[(df["Model"] == model) & (df["Temp"] == temp)]
+            color = MODEL_COLORS.get(model, None)
+
+            vals = []
+            for lang in langs:
+                ldf = mdf[mdf["Language"] == lang]
+                vals.append(ldf[metric_col].mean() if not ldf.empty else 0.0)
+
+            ax.bar(x, vals, color=color, alpha=0.8)
+            ax.set_ylim(0, 100)
+            ax.set_xticks(x)
+            ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.7)
+
+            if row_idx == n_rows - 1:
+                ax.set_xticklabels(langs, rotation=90, fontsize=6)
+            else:
+                ax.set_xticklabels([], fontsize=0)
+
+            if col_idx == 0:
+                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=8)
+            else:
+                ax.set_ylabel("")
+
+            if row_idx == 0:
+                ax.set_title(model, fontsize=9, fontweight="bold")
+
+    plt.tight_layout()
+    out = os.path.join(FIG_DIR, fig_name)
+    plt.savefig(out, dpi=200, bbox_inches="tight")
+    plt.close(fig)
+    print(f"  Saved {out}")
+
+
 def main():
     df_java   = load(os.path.join(RESULT_DIR, "Tests_Results_Java.csv"))
     df_python = load(os.path.join(RESULT_DIR, "Tests_Results_Python.csv"))
+    df_cpp    = load(os.path.join(RESULT_DIR, "Tests_Results_Cpp.csv"))
 
-    if df_java is None and df_python is None:
+    all_datasets = [("Java", df_java), ("Python", df_python), ("C++", df_cpp)]
+    if all(d is None for _, d in all_datasets):
         print("ERROR: no test result CSVs found.")
         return
 
@@ -149,11 +209,34 @@ def main():
         ("security", "Security@k (%)",    "tests_security_at_k_comparison"),
     ]:
         print(f"[tests] {metric}@k combined …")
-        plot_metric_figure(df_java, df_python, metric, ylabel, f"{base}.png")
+        plot_metric_figure(all_datasets, metric, ylabel, f"{base}.png")
         print(f"[tests] {metric}@k java …")
-        plot_metric_figure(df_java, None,      metric, ylabel, f"{base}_java.png")
+        plot_metric_figure([("Java", df_java)], metric, ylabel, f"{base}_java.png")
         print(f"[tests] {metric}@k python …")
-        plot_metric_figure(None,    df_python, metric, ylabel, f"{base}_python.png")
+        plot_metric_figure([("Python", df_python)], metric, ylabel, f"{base}_python.png")
+        print(f"[tests] {metric}@k cpp …")
+        plot_metric_figure([("C++", df_cpp)], metric, ylabel, f"{base}_cpp.png")
+
+    # Per-natural-language figures: 6 temps x 4 models, x=NL, one per (prog_lang, metric, k)
+    nl_datasets = [
+        ("Java",   df_java),
+        ("Python", df_python),
+        ("Cpp",    df_cpp),
+    ]
+    for prog_label, df in nl_datasets:
+        if df is None:
+            continue
+        for metric, ylabel, mbase in [
+            ("pass",     "Pass@k (%)",       "pass"),
+            ("vul",      "Vulnerable@k (%)", "vul"),
+            ("security", "Security@k (%)",   "security"),
+        ]:
+            for k in K_VALUES:
+                col      = f"{metric}@{k}"
+                fig_name = f"nl_{prog_label}_{mbase}_at_{k}.png"
+                ylbl     = ylabel.replace("@k", f"@{k}")
+                print(f"[nl] {prog_label} {col} …")
+                plot_natural_language_figure(df, col, ylbl, fig_name)
 
 
 if __name__ == "__main__":

@@ -13,15 +13,17 @@ GENERATION_DIR = './../Generation/Filtered_Output/'
 
 os.makedirs('./TestResults', exist_ok=True)
 
-# All dataset files (Python std, Python GitHub, Java std, Java GitHub)
+# All dataset files (Python std, Python GitHub, Java std, Java GitHub, C++ std, C++ GitHub)
 files = os.listdir(GENERATION_DIR)
 jsonl_files = sorted([
     f for f in files
     if f.endswith('.jsonl') and (
         f.startswith('dataset_nl_prompt_best') or
         f.startswith('dataset_java_nl_prompt_best') or
-        (f.startswith('github-dataset_nl_prompt_best') and 'java' not in f) or
-        f.startswith('github-dataset_java_nl_prompt_best')
+        f.startswith('dataset_cpp_nl_prompt_best') or
+        (f.startswith('github-dataset_nl_prompt_best') and 'java' not in f and 'cpp' not in f) or
+        f.startswith('github-dataset_java_nl_prompt_best') or
+        f.startswith('github-dataset_cpp_nl_prompt_best')
     )
 ])
 print(f"Found {len(jsonl_files)} JSONL files")
@@ -57,13 +59,18 @@ def get_result(file_path):
 
 
 for file_name in jsonl_files:
-    is_java = 'dataset_java' in file_name
+    is_java   = 'dataset_java' in file_name
+    is_cpp    = 'dataset_cpp'  in file_name
     is_github = file_name.startswith('github-dataset')
 
     if is_java and is_github:
         TEST_MODELS_RESULTS_DIR = './TestModelsResults_GitHub_Java'
     elif is_java:
         TEST_MODELS_RESULTS_DIR = './TestModelsResults_Java'
+    elif is_cpp and is_github:
+        TEST_MODELS_RESULTS_DIR = './TestModelsResults_GitHub_Cpp'
+    elif is_cpp:
+        TEST_MODELS_RESULTS_DIR = './TestModelsResults_Cpp'
     elif is_github:
         TEST_MODELS_RESULTS_DIR = './TestModelsResults_GitHub_Python'
     else:
@@ -97,7 +104,7 @@ for file_name in jsonl_files:
         if item_id.startswith(prefix):
             item_id = item_id[len(prefix):]
 
-        language = "Java" if is_java else "Python"
+        language = "Java" if is_java else ("C++" if is_cpp else "Python")
 
         generations = item.get('generations', {})
 

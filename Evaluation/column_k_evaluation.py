@@ -24,6 +24,7 @@ lang_to_family = {
 for dataset_name, csv_file in [
     ('Java',   './Result/Tests_Results_Java.csv'),
     ('Python', './Result/Tests_Results_Python.csv'),
+    ('Cpp',    './Result/Tests_Results_Cpp.csv'),
 ]:
     df = pd.read_csv(csv_file)
     df['language_family'] = df['Language'].map(lang_to_family).fillna('Unknown')

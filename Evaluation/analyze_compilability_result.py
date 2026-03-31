@@ -5,6 +5,7 @@ and saves per-language CSVs to Result/.
 
   Result/compilation_results_Java.csv
   Result/compilation_results_Python.csv
+  Result/compilation_results_Cpp.csv
 
 Inspired by Generation/analyze_compilability.py.
 """
@@ -30,19 +31,22 @@ from filter_code import check_compilable
 def parse_filename(name_part):
     for prefix in (
         "github-dataset_java_nl_prompt_best_",
+        "github-dataset_cpp_nl_prompt_best_",
         "github-dataset_nl_prompt_best_",
         "dataset_java_nl_prompt_best_",
+        "dataset_cpp_nl_prompt_best_",
         "dataset_nl_prompt_best_",
     ):
         if name_part.startswith(prefix):
             remain = name_part[len(prefix):]
             is_java = "java" in prefix
+            is_cpp  = "cpp"  in prefix
             if "_" in remain:
                 model, temp = remain.rsplit("_", 1)
             else:
                 model, temp = remain, "N/A"
-            return model, temp, is_java
-    return name_part, "N/A", False
+            return model, temp, is_java, is_cpp
+    return name_part, "N/A", False, False
 
 
 def collect_data(input_dir):
@@ -50,14 +54,20 @@ def collect_data(input_dir):
     # files for the same model are merged into a single row (100 + 25 prompts).
     stats_java   = defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0})
     stats_python = defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0})
+    stats_cpp    = defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0})
 
     files = sorted(f for f in os.listdir(input_dir) if f.endswith(".jsonl"))
     print(f"Found {len(files)} JSONL files in {input_dir}")
 
     for filename in files:
         name_part = filename.replace(".jsonl", "")
-        model, temp, is_java = parse_filename(name_part)
-        target_stats = stats_java if is_java else stats_python
+        model, temp, is_java, is_cpp = parse_filename(name_part)
+        if is_java:
+            target_stats = stats_java
+        elif is_cpp:
+            target_stats = stats_cpp
+        else:
+            target_stats = stats_python
 
         file_path = os.path.join(input_dir, filename)
         with open(file_path, encoding="utf-8") as fh:
@@ -76,7 +86,7 @@ def collect_data(input_dir):
                             if not isinstance(obj, dict):
                                 continue
                             target_stats[key]["Total"] += 1
-                            if check_compilable(obj.get("code", "")):
+                            if check_compilable(obj.get("code", ""), is_java=is_java, is_cpp=is_cpp):
                                 target_stats[key]["Compilable_before"] += 1
                             if obj.get("compilable", False):
                                 target_stats[key]["Compilable_after"] += 1
@@ -88,7 +98,7 @@ def collect_data(input_dir):
                         if not isinstance(obj, dict):
                             continue
                         target_stats[key]["Total"] += 1
-                        if check_compilable(obj.get("code", "")):
+                        if check_compilable(obj.get("code", ""), is_java=is_java, is_cpp=is_cpp):
                             target_stats[key]["Compilable_before"] += 1
                         if obj.get("compilable", False):
                             target_stats[key]["Compilable_after"] += 1
@@ -109,7 +119,7 @@ def collect_data(input_dir):
             })
         return rows
 
-    return to_rows(stats_java), to_rows(stats_python)
+    return to_rows(stats_java), to_rows(stats_python), to_rows(stats_cpp)
 
 
 def save(rows, label, path):
@@ -123,9 +133,10 @@ def save(rows, label, path):
 
 
 def main():
-    rows_java, rows_python = collect_data(INPUT_DIR)
+    rows_java, rows_python, rows_cpp = collect_data(INPUT_DIR)
     save(rows_java,   "Java",   os.path.join(RESULT_DIR, "compilation_results_Java.csv"))
     save(rows_python, "Python", os.path.join(RESULT_DIR, "compilation_results_Python.csv"))
+    save(rows_cpp,    "C++",    os.path.join(RESULT_DIR, "compilation_results_Cpp.csv"))
 
 
 if __name__ == "__main__":
