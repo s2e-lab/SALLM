@@ -1,266 +1,0 @@
-Loading python/3.12.12
-  Loading requirement: tcl/8.6.17
-Starting Parallel C++ Filtering and Analysis (Qwen only)...
-Found 12 files to process.
-  0%|          | 0/12 [00:00<?, ?it/s]
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.2.jsonl:   0%|          | 0/100 [00:00<?, ?it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.2.jsonl:  49%|████▉     | 49/100 [00:00<00:00, 479.71it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.2.jsonl:  97%|█████████▋| 97/100 [00:01<00:00, 66.95it/s] [A
-                                                                                                         [A  8%|▊         | 1/12 [00:05<00:55,  5.00s/it]
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:   0%|          | 0/100 [00:00<?, ?it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  10%|█         | 10/100 [00:00<00:01, 54.15it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  16%|█▌        | 16/100 [00:00<00:04, 20.32it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  19%|█▉        | 19/100 [00:00<00:04, 17.78it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  22%|██▏       | 22/100 [00:01<00:04, 18.49it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  25%|██▌       | 25/100 [00:01<00:03, 19.64it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  28%|██▊       | 28/100 [00:01<00:06, 11.43it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  33%|███▎      | 33/100 [00:01<00:04, 16.15it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  36%|███▌      | 36/100 [00:02<00:04, 14.39it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  39%|███▉      | 39/100 [00:02<00:04, 14.54it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  41%|████      | 41/100 [00:02<00:04, 12.55it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  45%|████▌     | 45/100 [00:02<00:03, 16.23it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  53%|█████▎    | 53/100 [00:02<00:01, 26.14it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  57%|█████▋    | 57/100 [00:03<00:01, 23.99it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  61%|██████    | 61/100 [00:03<00:01, 25.48it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  64%|██████▍   | 64/100 [00:03<00:01, 23.85it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  69%|██████▉   | 69/100 [00:03<00:01, 22.30it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  72%|███████▏  | 72/100 [00:03<00:01, 19.97it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  75%|███████▌  | 75/100 [00:03<00:01, 19.66it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  78%|███████▊  | 78/100 [00:04<00:01, 19.20it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  80%|████████  | 80/100 [00:04<00:01, 18.00it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  82%|████████▏ | 82/100 [00:04<00:01, 17.83it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  85%|████████▌ | 85/100 [00:04<00:00, 16.26it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  87%|████████▋ | 87/100 [00:04<00:00, 13.62it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  89%|████████▉ | 89/100 [00:04<00:00, 14.28it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  91%|█████████ | 91/100 [00:05<00:00, 11.64it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  94%|█████████▍| 94/100 [00:05<00:00, 10.73it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  96%|█████████▌| 96/100 [00:06<00:00,  5.39it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  98%|█████████▊| 98/100 [00:06<00:00,  4.99it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  99%|█████████▉| 99/100 [00:07<00:00,  4.70it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl: 100%|██████████| 100/100 [00:08<00:00,  2.21it/s][A
-                                                                                                          [A 17%|█▋        | 2/12 [00:14<01:18,  7.85s/it]
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:   0%|          | 0/100 [00:00<?, ?it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:   4%|▍         | 4/100 [00:00<00:03, 25.33it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:   7%|▋         | 7/100 [00:00<00:08, 11.19it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:   9%|▉         | 9/100 [00:00<00:09,  9.69it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  11%|█         | 11/100 [00:01<00:10,  8.80it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  12%|█▏        | 12/100 [00:01<00:21,  4.02it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  16%|█▌        | 16/100 [00:02<00:17,  4.73it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  18%|█▊        | 18/100 [00:03<00:19,  4.16it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  20%|██        | 20/100 [00:03<00:16,  4.85it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  21%|██        | 21/100 [00:03<00:16,  4.93it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  24%|██▍       | 24/100 [00:03<00:11,  6.73it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  31%|███       | 31/100 [00:04<00:05, 11.60it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  33%|███▎      | 33/100 [00:04<00:05, 12.00it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  35%|███▌      | 35/100 [00:04<00:05, 12.72it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  37%|███▋      | 37/100 [00:04<00:05, 10.74it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  40%|████      | 40/100 [00:05<00:06,  9.81it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  42%|████▏     | 42/100 [00:05<00:07,  7.81it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  43%|████▎     | 43/100 [00:05<00:08,  6.79it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  44%|████▍     | 44/100 [00:06<00:09,  6.19it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  45%|████▌     | 45/100 [00:06<00:11,  4.77it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  47%|████▋     | 47/100 [00:06<00:10,  4.85it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  50%|█████     | 50/100 [00:07<00:07,  6.47it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  55%|█████▌    | 55/100 [00:07<00:04, 10.74it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  58%|█████▊    | 58/100 [00:07<00:04,  9.66it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  60%|██████    | 60/100 [00:07<00:04,  8.65it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  62%|██████▏   | 62/100 [00:08<00:04,  8.49it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  64%|██████▍   | 64/100 [00:08<00:03,  9.85it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  66%|██████▌   | 66/100 [00:08<00:03, 10.27it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  69%|██████▉   | 69/100 [00:08<00:02, 12.71it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  72%|███████▏  | 72/100 [00:08<00:02, 13.81it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  75%|███████▌  | 75/100 [00:08<00:01, 15.86it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  77%|███████▋  | 77/100 [00:09<00:01, 15.52it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  79%|███████▉  | 79/100 [00:09<00:01, 15.33it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  81%|████████  | 81/100 [00:09<00:01, 10.55it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  83%|████████▎ | 83/100 [00:10<00:03,  5.38it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  84%|████████▍ | 84/100 [00:10<00:02,  5.36it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  85%|████████▌ | 85/100 [00:10<00:03,  4.88it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  87%|████████▋ | 87/100 [00:11<00:02,  6.42it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  89%|████████▉ | 89/100 [00:11<00:01,  6.27it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  90%|█████████ | 90/100 [00:11<00:01,  5.46it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  91%|█████████ | 91/100 [00:11<00:01,  5.48it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  92%|█████████▏| 92/100 [00:11<00:01,  6.05it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  94%|█████████▍| 94/100 [00:12<00:01,  4.57it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  96%|█████████▌| 96/100 [00:12<00:00,  5.77it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  97%|█████████▋| 97/100 [00:14<00:01,  2.35it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  98%|█████████▊| 98/100 [00:14<00:00,  2.22it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  99%|█████████▉| 99/100 [00:14<00:00,  2.47it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl: 100%|██████████| 100/100 [00:19<00:00,  1.43s/it][A
-                                                                                                          [A 25%|██▌       | 3/12 [00:35<02:01, 13.49s/it]
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   0%|          | 0/100 [00:00<?, ?it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   1%|          | 1/100 [00:00<00:16,  6.18it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   2%|▏         | 2/100 [00:00<00:16,  5.90it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   3%|▎         | 3/100 [00:00<00:17,  5.53it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   5%|▌         | 5/100 [00:00<00:15,  6.20it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   6%|▌         | 6/100 [00:01<00:18,  4.99it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   8%|▊         | 8/100 [00:01<00:12,  7.54it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  10%|█         | 10/100 [00:01<00:19,  4.58it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  11%|█         | 11/100 [00:02<00:30,  2.94it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  13%|█▎        | 13/100 [00:02<00:20,  4.15it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  14%|█▍        | 14/100 [00:03<00:26,  3.25it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  15%|█▌        | 15/100 [00:03<00:24,  3.42it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  17%|█▋        | 17/100 [00:04<00:24,  3.37it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  19%|█▉        | 19/100 [00:04<00:17,  4.62it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  20%|██        | 20/100 [00:04<00:16,  4.86it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  21%|██        | 21/100 [00:04<00:15,  5.19it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  22%|██▏       | 22/100 [00:05<00:19,  4.08it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  23%|██▎       | 23/100 [00:05<00:19,  3.96it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  24%|██▍       | 24/100 [00:05<00:22,  3.31it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  27%|██▋       | 27/100 [00:06<00:13,  5.25it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  28%|██▊       | 28/100 [00:06<00:15,  4.52it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  30%|███       | 30/100 [00:07<00:17,  4.09it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  32%|███▏      | 32/100 [00:07<00:12,  5.46it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  34%|███▍      | 34/100 [00:07<00:09,  7.04it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  36%|███▌      | 36/100 [00:07<00:08,  7.27it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  38%|███▊      | 38/100 [00:07<00:07,  7.88it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  39%|███▉      | 39/100 [00:07<00:08,  7.56it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  40%|████      | 40/100 [00:08<00:09,  6.09it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  42%|████▏     | 42/100 [00:08<00:14,  4.11it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  46%|████▌     | 46/100 [00:09<00:11,  4.78it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  47%|████▋     | 47/100 [00:09<00:10,  5.12it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  49%|████▉     | 49/100 [00:10<00:08,  5.86it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  51%|█████     | 51/100 [00:10<00:07,  6.60it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  52%|█████▏    | 52/100 [00:10<00:07,  6.09it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  54%|█████▍    | 54/100 [00:10<00:06,  6.69it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  55%|█████▌    | 55/100 [00:11<00:08,  5.40it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  56%|█████▌    | 56/100 [00:11<00:08,  5.45it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  58%|█████▊    | 58/100 [00:11<00:06,  6.58it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  60%|██████    | 60/100 [00:11<00:04,  8.24it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  62%|██████▏   | 62/100 [00:11<00:04,  8.69it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  66%|██████▌   | 66/100 [00:11<00:02, 12.84it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  68%|██████▊   | 68/100 [00:12<00:02, 12.06it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  70%|███████   | 70/100 [00:13<00:07,  4.15it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  72%|███████▏  | 72/100 [00:13<00:05,  5.28it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  74%|███████▍  | 74/100 [00:13<00:04,  5.92it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  76%|███████▌  | 76/100 [00:14<00:04,  5.09it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  79%|███████▉  | 79/100 [00:14<00:03,  6.53it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  80%|████████  | 80/100 [00:14<00:03,  5.09it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  81%|████████  | 81/100 [00:15<00:03,  5.35it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  82%|████████▏ | 82/100 [00:15<00:03,  4.70it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  83%|████████▎ | 83/100 [00:15<00:03,  4.89it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  85%|████████▌ | 85/100 [00:15<00:02,  6.44it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  86%|████████▌ | 86/100 [00:17<00:06,  2.26it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  87%|████████▋ | 87/100 [00:17<00:04,  2.63it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  89%|████████▉ | 89/100 [00:17<00:03,  3.43it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  90%|█████████ | 90/100 [00:18<00:03,  3.16it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  92%|█████████▏| 92/100 [00:18<00:02,  3.98it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  93%|█████████▎| 93/100 [00:18<00:01,  3.94it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  95%|█████████▌| 95/100 [00:19<00:01,  3.10it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  96%|█████████▌| 96/100 [00:19<00:01,  3.02it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  97%|█████████▋| 97/100 [00:22<00:02,  1.29it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  98%|█████████▊| 98/100 [00:22<00:01,  1.50it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  99%|█████████▉| 99/100 [00:23<00:00,  1.53it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl: 100%|██████████| 100/100 [00:34<00:00,  3.57s/it][A
-                                                                                                          [A 33%|███▎      | 4/12 [01:10<02:56, 22.11s/it]
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:   0%|          | 0/100 [00:00<?, ?it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:   1%|          | 1/100 [00:00<00:29,  3.31it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:   2%|▏         | 2/100 [00:01<01:07,  1.46it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:   5%|▌         | 5/100 [00:01<00:29,  3.17it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:   7%|▋         | 7/100 [00:01<00:20,  4.62it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:   8%|▊         | 8/100 [00:02<00:22,  4.18it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:   9%|▉         | 9/100 [00:02<00:29,  3.05it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  12%|█▏        | 12/100 [00:03<00:26,  3.31it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  13%|█▎        | 13/100 [00:03<00:25,  3.36it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  14%|█▍        | 14/100 [00:04<00:32,  2.61it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  15%|█▌        | 15/100 [00:05<00:34,  2.47it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  16%|█▌        | 16/100 [00:05<00:31,  2.64it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  17%|█▋        | 17/100 [00:05<00:29,  2.83it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  18%|█▊        | 18/100 [00:05<00:23,  3.50it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  22%|██▏       | 22/100 [00:06<00:11,  6.76it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  23%|██▎       | 23/100 [00:06<00:12,  6.12it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  25%|██▌       | 25/100 [00:06<00:16,  4.44it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  28%|██▊       | 28/100 [00:07<00:12,  5.82it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  31%|███       | 31/100 [00:07<00:09,  7.63it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  33%|███▎      | 33/100 [00:07<00:08,  7.77it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  34%|███▍      | 34/100 [00:07<00:10,  6.42it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  36%|███▌      | 36/100 [00:08<00:12,  5.26it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  37%|███▋      | 37/100 [00:08<00:11,  5.39it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  39%|███▉      | 39/100 [00:08<00:08,  6.84it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  42%|████▏     | 42/100 [00:09<00:06,  8.65it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  44%|████▍     | 44/100 [00:09<00:08,  6.62it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  45%|████▌     | 45/100 [00:10<00:14,  3.81it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  47%|████▋     | 47/100 [00:10<00:12,  4.09it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  49%|████▉     | 49/100 [00:10<00:10,  5.08it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  50%|█████     | 50/100 [00:11<00:10,  4.74it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  51%|█████     | 51/100 [00:11<00:09,  5.20it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  52%|█████▏    | 52/100 [00:11<00:08,  5.78it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  55%|█████▌    | 55/100 [00:11<00:07,  6.06it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  56%|█████▌    | 56/100 [00:12<00:08,  5.05it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  57%|█████▋    | 57/100 [00:12<00:08,  5.05it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  58%|█████▊    | 58/100 [00:12<00:08,  4.98it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  60%|██████    | 60/100 [00:13<00:08,  4.49it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  62%|██████▏   | 62/100 [00:13<00:06,  5.73it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  64%|██████▍   | 64/100 [00:13<00:07,  5.03it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  66%|██████▌   | 66/100 [00:13<00:05,  6.33it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  67%|██████▋   | 67/100 [00:14<00:07,  4.68it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  69%|██████▉   | 69/100 [00:14<00:05,  5.54it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  71%|███████   | 71/100 [00:14<00:04,  6.74it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  73%|███████▎  | 73/100 [00:15<00:03,  7.68it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  74%|███████▍  | 74/100 [00:15<00:04,  6.02it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  78%|███████▊  | 78/100 [00:16<00:04,  4.86it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  80%|████████  | 80/100 [00:16<00:04,  4.45it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  81%|████████  | 81/100 [00:17<00:04,  4.52it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  82%|████████▏ | 82/100 [00:17<00:04,  4.45it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  83%|████████▎ | 83/100 [00:17<00:03,  4.90it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  84%|████████▍ | 84/100 [00:17<00:03,  5.08it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  85%|████████▌ | 85/100 [00:17<00:03,  4.47it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  87%|████████▋ | 87/100 [00:18<00:02,  6.31it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  88%|████████▊ | 88/100 [00:19<00:05,  2.34it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  89%|████████▉ | 89/100 [00:19<00:03,  2.76it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  90%|█████████ | 90/100 [00:20<00:03,  2.53it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  93%|█████████▎| 93/100 [00:20<00:01,  4.37it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  94%|█████████▍| 94/100 [00:21<00:02,  2.07it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  95%|█████████▌| 95/100 [00:21<00:02,  2.39it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  96%|█████████▌| 96/100 [00:22<00:02,  1.79it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  97%|█████████▋| 97/100 [00:25<00:02,  1.02it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  98%|█████████▊| 98/100 [00:27<00:02,  1.27s/it][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  99%|█████████▉| 99/100 [00:27<00:00,  1.01it/s][A
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl: 100%|██████████| 100/100 [00:32<00:00,  2.13s/it][A
-                                                                                                          [A 42%|████▏     | 5/12 [01:43<03:03, 26.18s/it]
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.0.jsonl:   0%|          | 0/25 [00:00<?, ?it/s][A
-                                                                                                      [A 50%|█████     | 6/12 [01:44<01:44, 17.44s/it]
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.2.jsonl:   0%|          | 0/25 [00:00<?, ?it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.2.jsonl:  96%|█████████▌| 24/25 [00:00<00:00, 107.05it/s][A
-                                                                                                                [A 58%|█████▊    | 7/12 [01:45<01:00, 12.04s/it]
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:   0%|          | 0/25 [00:00<?, ?it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.4.jsonl:  60%|██████    | 15/25 [00:00<00:00, 122.90it/s][A
-                                                                                                                [A 67%|██████▋   | 8/12 [01:49<00:37,  9.47s/it]
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:   0%|          | 0/25 [00:00<?, ?it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  28%|██▊       | 7/25 [00:00<00:00, 56.31it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  52%|█████▏    | 13/25 [00:00<00:00, 29.25it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  68%|██████▊   | 17/25 [00:00<00:00, 15.19it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  84%|████████▍ | 21/25 [00:01<00:00, 14.90it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl:  92%|█████████▏| 23/25 [00:01<00:00, 15.51it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.6.jsonl: 100%|██████████| 25/25 [00:02<00:00,  5.81it/s][A
-                                                                                                               [A 75%|███████▌  | 9/12 [01:51<00:22,  7.36s/it]
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   0%|          | 0/25 [00:00<?, ?it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:   8%|▊         | 2/25 [00:00<00:01, 13.98it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  28%|██▊       | 7/25 [00:00<00:00, 21.78it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  40%|████      | 10/25 [00:00<00:00, 17.13it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  48%|████▊     | 12/25 [00:00<00:00, 15.40it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  56%|█████▌    | 14/25 [00:01<00:01,  7.63it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  64%|██████▍   | 16/25 [00:01<00:01,  7.48it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  68%|██████▊   | 17/25 [00:01<00:01,  7.27it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  80%|████████  | 20/25 [00:02<00:00,  7.13it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  88%|████████▊ | 22/25 [00:02<00:00,  8.48it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl:  96%|█████████▌| 24/25 [00:02<00:00,  7.20it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_0.8.jsonl: 100%|██████████| 25/25 [00:07<00:00,  1.12it/s][A
-                                                                                                               [A 83%|████████▎ | 10/12 [01:59<00:14,  7.39s/it]
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:   0%|          | 0/25 [00:00<?, ?it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  16%|█▌        | 4/25 [00:00<00:00, 23.71it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  28%|██▊       | 7/25 [00:00<00:01, 15.49it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  36%|███▌      | 9/25 [00:00<00:01, 10.15it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  48%|████▊     | 12/25 [00:01<00:01,  9.08it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  56%|█████▌    | 14/25 [00:01<00:01,  8.86it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  64%|██████▍   | 16/25 [00:01<00:01,  8.23it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  72%|███████▏  | 18/25 [00:01<00:00,  8.68it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  76%|███████▌  | 19/25 [00:02<00:00,  7.28it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  80%|████████  | 20/25 [00:02<00:00,  5.87it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  84%|████████▍ | 21/25 [00:02<00:00,  5.31it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl:  96%|█████████▌| 24/25 [00:06<00:00,  1.28it/s][A
-Processing github-dataset_cpp_nl_prompt_best_Qwen2.5_1.0.jsonl: 100%|██████████| 25/25 [00:09<00:00,  1.13s/it][A
-                                                                                                               [A 92%|█████████▏| 11/12 [02:09<00:08,  8.13s/it]
-Processing dataset_cpp_nl_prompt_best_Qwen2.5_0.0.jsonl:   0%|          | 0/100 [00:00<?, ?it/s][A
-                                                                                                [A100%|██████████| 12/12 [02:11<00:00,  6.32s/it]100%|██████████| 12/12 [02:11<00:00, 10.94s/it]
-Processing complete.
