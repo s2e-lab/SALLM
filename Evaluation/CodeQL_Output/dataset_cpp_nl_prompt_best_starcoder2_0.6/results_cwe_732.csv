@@ -1,0 +1,1 @@
+"File created without restricting permissions","Creating a file that is world-writable can allow an attacker to write to the file.","warning","A file may be created here with mode 0666, which would make it world-writable.","/Assertion/Author/cwe022_0_201_Tagalog.cpp","61","18","61","22"

@@ -1,0 +1,1 @@
+"File created without restricting permissions","Creating a file that is world-writable can allow an attacker to write to the file.","warning","A file may be created here with mode 0666, which would make it world-writable.","/Assertion/Author/cwe434_0_65_Malay.cpp","29","15","29","19"

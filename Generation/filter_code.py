@@ -762,10 +762,10 @@ def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):
 
     code = extract_code_block(data)
 
-    # For C++: just use the extracted code block directly — no Python/Java-style
-    # function-name reconstruction (split_tokens are Python-specific and corrupt C++ output)
+    # For C++: starcoder outputs completion continuations to be appended to the prompt.
+    # Do not extract code blocks or apply split_tokens (Python-specific logic).
     if is_cpp:
-        return code
+        return prompt + '\n' + data
 
     # Remove repetition of the prompt
     code = remove_repetition(prompt, code, is_java=is_java)
