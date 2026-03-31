@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -M msiddiq3@nd.edu
 #$ -m abe
-#$ -pe smp 4
+#$ -pe smp 32
 #$ -q long
 #$ -N eval_notebooks_cpp
 #$ -cwd
@@ -21,7 +21,7 @@ python3 run_pass_at_k.py
 echo "[3/5] Running column_k language-family tables (C++)..."
 python3 column_k_evaluation.py
 
-echo "[4/5] Running compilability analysis (C++)..."
+echo "[4/5] Running compilability analysis (C++ - optimized)..."
 python3 analyze_compilability_result.py
 
 echo "[5/5] Aggregating CodeQL + generating figures..."

@@ -43,8 +43,9 @@ MODEL_COLORS = {
 
 
 def pretty_model(name):
+    low_name = name.lower()
     for key, label in MODEL_LABELS.items():
-        if key in name:
+        if key.lower() in low_name:
             return label
     return name
 
@@ -65,12 +66,12 @@ def plot_compilation(datasets, fig_name):
     models   = list(MODEL_LABELS.values())
 
     n_rows = sum(1 for _, d in datasets if d is not None)
-    n_cols = len(phases)
+    n_cols = 1  # Combined into 1 column
     ref_df = next(d for _, d in datasets if d is not None)
     temps  = sorted(ref_df["Temp"].unique())
 
     fig, axs = plt.subplots(n_rows, n_cols,
-                            figsize=(4.5 * n_cols, 3.5 * n_rows),
+                            figsize=(6.0 * n_cols, 4.0 * n_rows),
                             sharex=True, sharey=False, dpi=200)
     axs = np.array(axs).reshape(n_rows, n_cols)
 
@@ -78,56 +79,63 @@ def plot_compilation(datasets, fig_name):
     for lang_label, df in datasets:
         if df is None:
             continue
-        for col_idx, (phase_label, col) in enumerate(phases):
-            ax = axs[row_idx, col_idx]
-            for model in models:
-                mdf = df[df["Model"] == model]
-                if mdf.empty:
-                    continue
-                grp   = mdf.groupby("Temp")[col]
-                mean  = grp.mean()
-                std   = grp.std().fillna(0)
-                t     = mean.index.values
-                color = MODEL_COLORS.get(model, None)
-                ax.plot(t, mean.values, marker="o", label=model,
-                        color=color, linewidth=1.8, markersize=5)
-                ax.fill_between(t,
-                                (mean - std).values,
-                                (mean + std).values,
-                                alpha=0.15, color=color)
-            ax.set_xlim(temps[0] - 0.05, temps[-1] + 0.05)
-            ax.set_ylim(0, 100)
-            ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
-            ax.set_xticks(temps)
-            ax.tick_params(axis="x", labelsize=8, rotation=45)
-            if col_idx == 0:
-                ax.set_ylabel(f"{lang_label}\nCompilable (%)", fontsize=9)
-            else:
-                ax.set_ylabel("")
-            if row_idx == 0:
-                ax.set_title(phase_label, fontsize=10, fontweight="bold")
-            if row_idx == n_rows - 1:
-                ax.set_xlabel("Temperature", fontsize=9)
+        ax = axs[row_idx, 0]
+        for model in models:
+            mdf = df[df["Model"] == model]
+            if mdf.empty:
+                continue
+            
+            color = MODEL_COLORS.get(model, None)
+            
+            # Plot After repair (Solid)
+            grp_after  = mdf.groupby("Temp")["Compilable_after (%)"]
+            mean_after = grp_after.mean()
+            std_after  = grp_after.std().fillna(0)
+            t          = mean_after.index.values
+            ax.plot(t, mean_after.values, marker="o", label=f"{model} (After)",
+                    color=color, linewidth=1.8, markersize=5, linestyle="-")
+            ax.fill_between(t, (mean_after - std_after).values, (mean_after + std_after).values,
+                            alpha=0.1, color=color)
+
+            # Plot Before repair (Dashed, same color)
+            grp_before  = mdf.groupby("Temp")["Compilable_before (%)"]
+            mean_before = grp_before.mean()
+            ax.plot(t, mean_before.values, marker="x", label=f"{model} (Before)",
+                    color=color, linewidth=1.2, markersize=4, linestyle="--", alpha=0.7)
+
+        ax.set_xlim(temps[0] - 0.05, temps[-1] + 0.05)
+        ax.set_ylim(0, 100)
+        ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
+        ax.set_xticks(temps)
+        ax.tick_params(axis="x", labelsize=8, rotation=45)
+        ax.set_ylabel(f"{lang_label}\nCompilable (%)", fontsize=9)
+        
+        if row_idx == 0:
+            ax.set_title("Compilation Rate: Before vs After Repair", fontsize=11, fontweight="bold")
+        if row_idx == n_rows - 1:
+            ax.set_xlabel("Temperature", fontsize=9)
         row_idx += 1
 
     handles, labels = axs[0, 0].get_legend_handles_labels()
+    # Filter legend to avoid clutter? Or show all?
+    # Let's show all for now, but formatted
     fig.legend(handles, labels,
-               loc="lower center", ncol=len(models),
-               fontsize=9, frameon=True,
-               bbox_to_anchor=(0.5, -0.04))
-    plt.tight_layout(rect=[0, 0.04, 1, 1])
+               loc="lower center", ncol=2,
+               fontsize=8, frameon=True,
+               bbox_to_anchor=(0.5, -0.1))
+    plt.tight_layout(rect=[0, 0, 1, 1])
     out = os.path.join(FIG_DIR, fig_name)
     plt.savefig(out, dpi=200, bbox_inches="tight")
     plt.close(fig)
     print(f"  Saved {out}")
 
 
-def plot_nl_compilation_figure(df, phase_col, ylabel, fig_name):
+def plot_nl_compilation_figure(df, ylabel, fig_name):
     """
     6 rows (temperatures) x 4 cols (models).
-    x-axis: natural languages (bar chart, rotated labels).
+    x-axis: natural languages (line chart, rotated labels).
     y-axis: compilable (%).
-    One figure per (programming language x phase).
+    One figure per programming language (Java/Python/C++).
     """
     models = list(MODEL_LABELS.values())
     temps  = sorted(df["Temp"].unique())
@@ -138,7 +146,7 @@ def plot_nl_compilation_figure(df, phase_col, ylabel, fig_name):
     n_cols = len(models)
 
     fig, axs = plt.subplots(n_rows, n_cols,
-                            figsize=(4.5 * n_cols, 3.0 * n_rows),
+                            figsize=(5.0 * n_cols, 3.5 * n_rows),
                             sharey=False, dpi=200)
     axs = np.array(axs).reshape(n_rows, n_cols)
 
@@ -148,12 +156,27 @@ def plot_nl_compilation_figure(df, phase_col, ylabel, fig_name):
             mdf = df[(df["Model"] == model) & (df["Temp"] == temp)]
             color = MODEL_COLORS.get(model, None)
 
-            vals = []
+            # Data for Before repair
+            vals_before = []
             for lang in langs:
                 ldf = mdf[mdf["Language"] == lang]
-                vals.append(ldf[phase_col].mean() if not ldf.empty else 0.0)
+                vals_before.append(ldf["Compilable_before (%)"].mean() if not ldf.empty else 0.0)
+            
+            # Data for After repair
+            vals_after = []
+            for lang in langs:
+                ldf = mdf[mdf["Language"] == lang]
+                vals_after.append(ldf["Compilable_after (%)"].mean() if not ldf.empty else 0.0)
 
-            ax.bar(x, vals, color=color, alpha=0.8)
+            # Plot lines
+            # 'After' is solid and thick
+            ax.plot(x, vals_after, marker="o", color=color, label="After Repair",
+                    linewidth=2.0, markersize=4, linestyle="-", alpha=1.0)
+            
+            # 'Before' is dashed and thin
+            ax.plot(x, vals_before, marker="x", color="gray", label="Before Repair",
+                    linewidth=1.2, markersize=3, linestyle="--", alpha=0.7)
+
             ax.set_ylim(0, 100)
             ax.set_xticks(x)
             ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.7)
@@ -169,9 +192,13 @@ def plot_nl_compilation_figure(df, phase_col, ylabel, fig_name):
                 ax.set_ylabel("")
 
             if row_idx == 0:
-                ax.set_title(model, fontsize=9, fontweight="bold")
+                ax.set_title(model, fontsize=10, fontweight="bold")
+            
+    # Add a global legend for the whole figure
+    handles, labels = axs[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=2, fontsize=9, frameon=True, bbox_to_anchor=(0.5, -0.02))
 
-    plt.tight_layout()
+    plt.tight_layout(rect=[0, 0.03, 1, 1])
     out = os.path.join(FIG_DIR, fig_name)
     plt.savefig(out, dpi=200, bbox_inches="tight")
     plt.close(fig)
@@ -197,23 +224,18 @@ def main():
     print("[compilation] cpp …")
     plot_compilation([("C++", df_cpp)], "compilation_results_cpp.png")
 
-    # Per-natural-language figures: 6 temps x 4 models, x=NL, one per (prog_lang, phase)
+    # Per-natural-language figures: 6 temps x 4 models, x=NL, combined (Before & After)
     nl_datasets = [
         ("Java",   df_java),
         ("Python", df_python),
         ("Cpp",    df_cpp),
     ]
-    phases = [
-        ("before", "Compilable_before (%)", "Compilable Before Repair (%)"),
-        ("after",  "Compilable_after (%)",  "Compilable After Repair (%)"),
-    ]
     for prog_label, df in nl_datasets:
         if df is None:
             continue
-        for phase_key, phase_col, ylabel in phases:
-            fig_name = f"nl_{prog_label}_compilable_{phase_key}.png"
-            print(f"[nl-compilation] {prog_label} {phase_key} …")
-            plot_nl_compilation_figure(df, phase_col, ylabel, fig_name)
+        fig_name = f"nl_{prog_label}_compilable.png"
+        print(f"[nl-compilation] {prog_label} combined comparison …")
+        plot_nl_compilation_figure(df, "Compilable (%)", fig_name)
 
 
 if __name__ == "__main__":

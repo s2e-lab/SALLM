@@ -13,6 +13,7 @@ import json
 import os
 import sys
 from collections import defaultdict
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import pandas as pd
 
@@ -49,6 +50,68 @@ def parse_filename(name_part):
     return name_part, "N/A", False, False
 
 
+def process_one_file(args):
+    """
+    Worker function to process a single JSONL file and return language-specific stats.
+    """
+    input_dir, filename = args
+    name_part = filename.replace(".jsonl", "")
+    model, temp, is_java, is_cpp = parse_filename(name_part)
+
+    # Local stats for this file
+    file_stats = {
+        "java":   defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0}),
+        "python": defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0}),
+        "cpp":    defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0}),
+    }
+
+    if is_java:
+        lang_key = "java"
+    elif is_cpp:
+        lang_key = "cpp"
+    else:
+        lang_key = "python"
+
+    file_path = os.path.join(input_dir, filename)
+    with open(file_path, encoding="utf-8") as fh:
+        for line in fh:
+            if not line.strip():
+                continue
+            try:
+                item = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+
+            if "generations" in item and isinstance(item["generations"], dict):
+                for lang, codes in item["generations"].items():
+                    key = (model, temp, lang)
+                    for obj in codes:
+                        if not isinstance(obj, dict):
+                            continue
+                        file_stats[lang_key][key]["Total"] += 1
+                        if check_compilable(obj.get("code", ""), is_java=is_java, is_cpp=is_cpp):
+                            file_stats[lang_key][key]["Compilable_before"] += 1
+                        if obj.get("compilable", False):
+                            file_stats[lang_key][key]["Compilable_after"] += 1
+
+            elif "output" in item and isinstance(item["output"], list):
+                lang = item.get("language", "Unknown")
+                key = (model, temp, lang)
+                for obj in item["output"]:
+                    if not isinstance(obj, dict):
+                        continue
+                    file_stats[lang_key][key]["Total"] += 1
+                    if check_compilable(obj.get("code", ""), is_java=is_java, is_cpp=is_cpp):
+                        file_stats[lang_key][key]["Compilable_before"] += 1
+                    if obj.get("compilable", False):
+                        file_stats[lang_key][key]["Compilable_after"] += 1
+
+    # Convert defaultdict to regular dict for pickling (ProcessPoolExecutor restriction)
+    for lang in file_stats:
+        file_stats[lang] = {k: dict(v) for k, v in file_stats[lang].items()}
+    return file_stats
+
+
 def collect_data(input_dir):
     # Accumulate stats keyed by (model, temp, lang) so that standard + GitHub
     # files for the same model are merged into a single row (100 + 25 prompts).
@@ -57,51 +120,25 @@ def collect_data(input_dir):
     stats_cpp    = defaultdict(lambda: {"Total": 0, "Compilable_before": 0, "Compilable_after": 0})
 
     files = sorted(f for f in os.listdir(input_dir) if f.endswith(".jsonl"))
-    print(f"Found {len(files)} JSONL files in {input_dir}")
+    print(f"Found {len(files)} JSONL files in {input_dir}. Processing in parallel...")
 
-    for filename in files:
-        name_part = filename.replace(".jsonl", "")
-        model, temp, is_java, is_cpp = parse_filename(name_part)
-        if is_java:
-            target_stats = stats_java
-        elif is_cpp:
-            target_stats = stats_cpp
-        else:
-            target_stats = stats_python
-
-        file_path = os.path.join(input_dir, filename)
-        with open(file_path, encoding="utf-8") as fh:
-            for line in fh:
-                if not line.strip():
-                    continue
-                try:
-                    item = json.loads(line)
-                except json.JSONDecodeError:
-                    continue
-
-                if "generations" in item and isinstance(item["generations"], dict):
-                    for lang, codes in item["generations"].items():
-                        key = (model, temp, lang)
-                        for obj in codes:
-                            if not isinstance(obj, dict):
-                                continue
-                            target_stats[key]["Total"] += 1
-                            if check_compilable(obj.get("code", ""), is_java=is_java, is_cpp=is_cpp):
-                                target_stats[key]["Compilable_before"] += 1
-                            if obj.get("compilable", False):
-                                target_stats[key]["Compilable_after"] += 1
-
-                elif "output" in item and isinstance(item["output"], list):
-                    lang = item.get("language", "Unknown")
-                    key = (model, temp, lang)
-                    for obj in item["output"]:
-                        if not isinstance(obj, dict):
-                            continue
-                        target_stats[key]["Total"] += 1
-                        if check_compilable(obj.get("code", ""), is_java=is_java, is_cpp=is_cpp):
-                            target_stats[key]["Compilable_before"] += 1
-                        if obj.get("compilable", False):
-                            target_stats[key]["Compilable_after"] += 1
+    # Use ProcessPoolExecutor to speed up (C++ check starts a new g++ process every time)
+    # Automatically uses all available CPU cores.
+    with ProcessPoolExecutor(max_workers=32) as executor:
+        futures = {executor.submit(process_one_file, (input_dir, f)): f for f in files}
+        for future in as_completed(futures):
+            filename = futures[future]
+            try:
+                file_results = future.result()
+                # Merge stats
+                for lang_key, data in file_results.items():
+                    target = stats_java if lang_key == "java" else (stats_cpp if lang_key == "cpp" else stats_python)
+                    for key, counts in data.items():
+                        target[key]["Total"] += counts["Total"]
+                        target[key]["Compilable_before"] += counts["Compilable_before"]
+                        target[key]["Compilable_after"] += counts["Compilable_after"]
+            except Exception as exc:
+                print(f"File {filename} generated an exception: {exc}")
 
     def to_rows(stats):
         rows = []

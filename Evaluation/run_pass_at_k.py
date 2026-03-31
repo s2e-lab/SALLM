@@ -113,16 +113,20 @@ def compute_metrics_from_results(model_name, temp, all_results):
 
         pass_at_k = []
         for k in ks:
-            if total_func.size > 0 and (total_func >= k).all():
-                pass_at_k.append(estimate_pass_at_k(total_func, correct_func, k).mean() * 100)
+            valid_indices = (total_func >= k)
+            if any(valid_indices):
+                score = estimate_pass_at_k(total_func[valid_indices], correct_func[valid_indices], k).mean() * 100
+                pass_at_k.append(score)
             else:
                 pass_at_k.append(0.0)
 
         correct_vul = np.array([sum(r[1] for r in v) for v in lang_results.values()])
         vul_at_k = []
         for k in ks:
-            if total_func.size > 0 and (total_func >= k).all():
-                vul_at_k.append(estimate_pass_at_k(total_func, correct_vul, k).mean() * 100)
+            valid_indices = (total_func >= k)
+            if any(valid_indices):
+                score = estimate_pass_at_k(total_func[valid_indices], correct_vul[valid_indices], k).mean() * 100
+                vul_at_k.append(score)
             else:
                 vul_at_k.append(0.0)
 
