@@ -111,25 +111,26 @@ def plot_metric_figure(datasets, metric_col, ylabel, fig_name):
             ax.set_ylim(0, 100)
             ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
             ax.set_xticks(temps)
-            ax.tick_params(axis="x", labelsize=8, rotation=45)
+            ax.tick_params(axis="x", labelsize=11, rotation=45)
+            ax.tick_params(axis="y", labelsize=11)
 
             if col_idx == 0:
-                ax.set_ylabel(f"{lang_label}\n{ylabel}", fontsize=9)
+                ax.set_ylabel(f"{lang_label}\n{ylabel}", fontsize=13, fontweight="bold")
             else:
                 ax.set_ylabel("")
 
             if row_idx == 0:
-                ax.set_title(f"@k = {k}", fontsize=10, fontweight="bold")
+                ax.set_title(f"@k = {k}", fontsize=13, fontweight="bold")
 
             if row_idx == n_rows - 1:
-                ax.set_xlabel("Temperature", fontsize=9)
+                ax.set_xlabel("Temperature", fontsize=13, fontweight="bold")
 
         row_idx += 1
 
     handles, labels = axs[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels,
                loc="lower center", ncol=len(models),
-               fontsize=9, frameon=True,
+               fontsize=11, frameon=True,
                bbox_to_anchor=(0.5, -0.04))
 
     plt.tight_layout(rect=[0, 0.04, 1, 1])
@@ -185,17 +186,19 @@ def plot_natural_language_figure(df, metric_col, ylabel, fig_name):
             ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.7)
 
             if row_idx == n_rows - 1:
-                ax.set_xticklabels(langs, rotation=90, fontsize=6)
+                ax.set_xticklabels(langs, rotation=90, fontsize=10, fontweight="bold")
             else:
                 ax.set_xticklabels([], fontsize=0)
 
+            ax.tick_params(axis="y", labelsize=10)
+
             if col_idx == 0:
-                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=8)
+                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=12, fontweight="bold")
             else:
                 ax.set_ylabel("")
 
             if row_idx == 0:
-                ax.set_title(model, fontsize=9, fontweight="bold")
+                ax.set_title(model, fontsize=13, fontweight="bold")
 
     plt.tight_layout()
     out = os.path.join(FIG_DIR, fig_name)

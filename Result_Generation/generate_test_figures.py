@@ -109,18 +109,19 @@ def plot_metric_figure(datasets, metric_col, ylabel, fig_name):
             ax.set_ylim(0, 100)
             ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
             ax.set_xticks(temps)
-            ax.tick_params(axis="x", labelsize=8, rotation=45)
+            ax.tick_params(axis="x", labelsize=11, rotation=45)
+            ax.tick_params(axis="y", labelsize=11)
 
             if col_idx == 0:
-                ax.set_ylabel(f"{lang_label}\n{ylabel}", fontsize=9)
+                ax.set_ylabel(f"{lang_label}\n{ylabel}", fontsize=13, fontweight="bold")
             else:
                 ax.set_ylabel("")
 
             if row_idx == 0:
-                ax.set_title(f"@k = {k}", fontsize=10, fontweight="bold")
+                ax.set_title(f"@k = {k}", fontsize=13, fontweight="bold")
 
             if row_idx == n_rows - 1:
-                ax.set_xlabel("Temperature", fontsize=9)
+                ax.set_xlabel("Temperature", fontsize=13, fontweight="bold")
 
         row_idx += 1
 
@@ -128,7 +129,7 @@ def plot_metric_figure(datasets, metric_col, ylabel, fig_name):
     handles, labels = axs[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels,
                loc="lower center", ncol=len(models),
-               fontsize=9, frameon=True,
+               fontsize=11, frameon=True,
                bbox_to_anchor=(0.5, -0.04))
 
     plt.tight_layout(rect=[0, 0.04, 1, 1])
@@ -158,6 +159,10 @@ def plot_natural_language_figure(df, metric_col, ylabel, fig_name):
                             sharey=False, dpi=200)
     axs = np.array(axs).reshape(n_rows, n_cols)
 
+    # Derive the k=1 column for imputation (e.g., "pass@3" -> "pass@1")
+    base_metric = metric_col.rsplit("@", 1)[0]
+    metric_at_1 = f"{base_metric}@1"
+
     for row_idx, temp in enumerate(temps):
         for col_idx, model in enumerate(models):
             ax  = axs[row_idx, col_idx]
@@ -168,7 +173,14 @@ def plot_natural_language_figure(df, metric_col, ylabel, fig_name):
             for lang in langs:
                 ldf = mdf[mdf["Language"] == lang]
                 val = ldf[metric_col].mean() if not ldf.empty else 0.0
-                
+
+                # At T=0, models are deterministic so pass@k == pass@1 for all k.
+                # If pass@k (k>1) is missing/zero but pass@1 has data, impute with pass@1.
+                if temp == 0.0 and val == 0.0 and metric_col != metric_at_1 and metric_at_1 in df.columns:
+                    val_at_1 = ldf[metric_at_1].mean() if not ldf.empty else 0.0
+                    if val_at_1 > 0.0:
+                        val = val_at_1
+
                 # Special Case: Impute StarCoder Java Temp 1.0 if missing or requested
                 if model == "StarCoder-2" and temp == 1.0 and "Java" in fig_name and val < 1.0:
                     other_temps = df[(df["Model"] == model) & (df["Temp"] < 1.0) & (df["Language"] == lang)]
@@ -184,17 +196,19 @@ def plot_natural_language_figure(df, metric_col, ylabel, fig_name):
             ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.7)
 
             if row_idx == n_rows - 1:
-                ax.set_xticklabels(langs, rotation=90, fontsize=6)
+                ax.set_xticklabels(langs, rotation=90, fontsize=11, fontweight="bold")
             else:
                 ax.set_xticklabels([], fontsize=0)
 
+            ax.tick_params(axis="y", labelsize=11)
+
             if col_idx == 0:
-                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=8)
+                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=13, fontweight="bold")
             else:
                 ax.set_ylabel("")
 
             if row_idx == 0:
-                ax.set_title(model, fontsize=9, fontweight="bold")
+                ax.set_title(model, fontsize=13, fontweight="bold")
 
     plt.tight_layout()
     out = os.path.join(FIG_DIR, fig_name)

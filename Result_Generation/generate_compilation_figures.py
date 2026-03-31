@@ -107,21 +107,20 @@ def plot_compilation(datasets, fig_name):
         ax.set_ylim(0, 100)
         ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
         ax.set_xticks(temps)
-        ax.tick_params(axis="x", labelsize=8, rotation=45)
-        ax.set_ylabel(f"{lang_label}\nCompilable (%)", fontsize=9)
-        
+        ax.tick_params(axis="x", labelsize=11, rotation=45)
+        ax.tick_params(axis="y", labelsize=11)
+        ax.set_ylabel(f"{lang_label}\nCompilable (%)", fontsize=13, fontweight="bold")
+
         if row_idx == 0:
-            ax.set_title("Compilation Rate: Before vs After Repair", fontsize=11, fontweight="bold")
+            ax.set_title("Compilation Rate: Before vs After Repair", fontsize=13, fontweight="bold")
         if row_idx == n_rows - 1:
-            ax.set_xlabel("Temperature", fontsize=9)
+            ax.set_xlabel("Temperature", fontsize=13, fontweight="bold")
         row_idx += 1
 
     handles, labels = axs[0, 0].get_legend_handles_labels()
-    # Filter legend to avoid clutter? Or show all?
-    # Let's show all for now, but formatted
     fig.legend(handles, labels,
                loc="lower center", ncol=2,
-               fontsize=8, frameon=True,
+               fontsize=11, frameon=True,
                bbox_to_anchor=(0.5, -0.1))
     plt.tight_layout(rect=[0, 0, 1, 1])
     out = os.path.join(FIG_DIR, fig_name)
@@ -182,21 +181,23 @@ def plot_nl_compilation_figure(df, ylabel, fig_name):
             ax.grid(True, axis="y", linestyle="--", linewidth=0.5, alpha=0.7)
 
             if row_idx == n_rows - 1:
-                ax.set_xticklabels(langs, rotation=90, fontsize=6)
+                ax.set_xticklabels(langs, rotation=90, fontsize=10, fontweight="bold")
             else:
                 ax.set_xticklabels([], fontsize=0)
 
+            ax.tick_params(axis="y", labelsize=10)
+
             if col_idx == 0:
-                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=8)
+                ax.set_ylabel(f"T={temp:.1f}\n{ylabel}", fontsize=12, fontweight="bold")
             else:
                 ax.set_ylabel("")
 
             if row_idx == 0:
-                ax.set_title(model, fontsize=10, fontweight="bold")
-            
+                ax.set_title(model, fontsize=13, fontweight="bold")
+
     # Add a global legend for the whole figure
     handles, labels = axs[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="lower center", ncol=2, fontsize=9, frameon=True, bbox_to_anchor=(0.5, -0.02))
+    fig.legend(handles, labels, loc="lower center", ncol=2, fontsize=11, frameon=True, bbox_to_anchor=(0.5, -0.02))
 
     plt.tight_layout(rect=[0, 0.03, 1, 1])
     out = os.path.join(FIG_DIR, fig_name)
