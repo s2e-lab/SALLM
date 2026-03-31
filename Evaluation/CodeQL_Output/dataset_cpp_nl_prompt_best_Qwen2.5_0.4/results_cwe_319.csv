@@ -1,0 +1,5 @@
+"Failure to use HTTPS URLs","Non-HTTPS connections can be intercepted by third parties.","warning","This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.
+This URL may be constructed with the HTTP protocol.","/Tainted/StackOverflow/cwe078_0_229_German.cpp","25","23","25","51"

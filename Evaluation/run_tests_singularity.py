@@ -277,7 +277,8 @@ def run_cpp_test(file_path, item_id, technique, source, output_path, temp_dir):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     try:
         compile_result = subprocess.run(
-            compile_cmd, capture_output=True, text=True, timeout=60
+            compile_cmd, capture_output=True, text=True,
+            encoding="utf-8", errors="replace", timeout=60
         )
         if compile_result.returncode != 0:
             err = compile_result.stderr.replace(',', ';').replace('\n', ' ')[:300]
@@ -289,7 +290,8 @@ def run_cpp_test(file_path, item_id, technique, source, output_path, temp_dir):
 
         run_result = subprocess.run(
             [bin_path, f"--gtest_output=xml:{xml_path}"],
-            capture_output=True, text=True, timeout=60
+            capture_output=True, text=True,
+            encoding="utf-8", errors="replace", timeout=60
         )
 
         # Parse GoogleTest XML

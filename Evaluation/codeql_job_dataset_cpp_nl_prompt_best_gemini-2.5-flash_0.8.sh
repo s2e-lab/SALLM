@@ -14,18 +14,21 @@ mkdir -p /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-fla
 
 SOURCE_DIR="$(pwd)/Dataset/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.8"
 
-codeql database init /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.8 \
-    --language=cpp \
-    --source-root="$SOURCE_DIR"
+BUILD_SCRIPT=$(mktemp /tmp/codeql_cpp_build_XXXXXX.sh)
+cat > "$BUILD_SCRIPT" << BUILDEOF
+#!/bin/bash
+find "$SOURCE_DIR" -name '*.cpp' -print0 | xargs -0 -P 16 -n 1 g++ -std=c++17 -fsyntax-only 2>/dev/null
+exit 0
+BUILDEOF
+chmod +x "$BUILD_SCRIPT"
 
-codeql database index-files \
+codeql database create /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.8 \
     --language=cpp \
-    --include='**/*.cpp' \
-    --working-dir="$SOURCE_DIR" \
-    -- /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.8
-
-codeql database finalize /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.8 \
+    --source-root="$SOURCE_DIR" \
+    --command="$BUILD_SCRIPT" \
     --ram=32768
+
+rm -f "$BUILD_SCRIPT"
 
 echo "Created CodeQL Database"
 

@@ -3,3 +3,1116 @@ Loading python/3.12.12
 Created CodeQL Output Directory
 Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0.
 Running build command: [/tmp/codeql_cpp_build_Niu6ZA.sh]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0.
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[1/4 eval 1m9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[2/4 eval 743ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[3/4 eval 8.1s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.bqrs.
+[4/4 eval 864ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+A fatal error occurred: Could not process query metadata for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Error was: Unknown kind "Table". [UNSUPPORTED_KIND]
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1 eval 9.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1 eval 10.9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.ql.
+[1/1 eval 6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1 eval 1.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[1/2 eval 13s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.bqrs.
+[2/2 eval 1.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+[1/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[2/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[3/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[4/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[5/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[6/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[1/6 eval 51.1s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[2/6 eval 807ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[3/6 eval 527ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[4/6 eval 457ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[5/6 eval 2.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.bqrs.
+[6/6 eval 1.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[1/2 eval 1.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.bqrs.
+[2/2 eval 768ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1 eval 7.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1 eval 6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[1/2 eval 1.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.bqrs.
+[2/2 eval 99ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-611/XXE.ql.
+[1/1 eval 894ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-611/XXE.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[1/3 eval 615ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3 eval 6ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.bqrs.
+[3/3 eval 339ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1 eval 3.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+CodeQL C++ analysis complete for dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.2.
+Running build command: [/tmp/codeql_cpp_build_ZJItsk.sh]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.2.
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.2.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[1/4 eval 1m11s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.bqrs.
+[2/4 eval 771ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[3/4 eval 8.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.bqrs.
+[4/4 eval 848ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+A fatal error occurred: Could not process query metadata for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Error was: Unknown kind "Table". [UNSUPPORTED_KIND]
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1 eval 9.8s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1 eval 11.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.ql.
+[1/1 eval 6.2s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1 eval 1.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[1/2 eval 13.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.bqrs.
+[2/2 eval 1.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+[1/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[2/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[3/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[4/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[5/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[6/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[1/6 eval 52.9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[2/6 eval 843ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[3/6 eval 549ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[4/6 eval 482ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[5/6 eval 2.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.bqrs.
+[6/6 eval 1.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[1/2 eval 1.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.bqrs.
+[2/2 eval 803ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1 eval 7.8s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1 eval 6.2s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[1/2 eval 1.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.bqrs.
+[2/2 eval 121ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-611/XXE.ql.
+[1/1 eval 928ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-611/XXE.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[1/3 eval 636ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.bqrs.
+[2/3 eval 7ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.bqrs.
+[3/3 eval 372ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1 eval 3.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+CodeQL C++ analysis complete for dataset_cpp_nl_prompt_best_gpt-4o-mini_0.2
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4.
+Running build command: [/tmp/codeql_cpp_build_ZY6kCa.sh]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4.
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[1/4 eval 1m12s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[2/4 eval 786ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[3/4 eval 8.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.bqrs.
+[4/4 eval 850ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+A fatal error occurred: Could not process query metadata for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Error was: Unknown kind "Table". [UNSUPPORTED_KIND]
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1 eval 9.9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1 eval 11.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.ql.
+[1/1 eval 6.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1 eval 1.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[1/2 eval 13.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.bqrs.
+[2/2 eval 1.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+[1/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[2/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[3/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[4/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[5/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[6/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[1/6 eval 53.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[2/6 eval 841ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[3/6 eval 551ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[4/6 eval 489ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[5/6 eval 2.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.bqrs.
+[6/6 eval 1.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[1/2 eval 1.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.bqrs.
+[2/2 eval 821ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1 eval 7.9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1 eval 6.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[1/2 eval 1.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.bqrs.
+[2/2 eval 102ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-611/XXE.ql.
+[1/1 eval 895ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-611/XXE.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[1/3 eval 615ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3 eval 6ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.bqrs.
+[3/3 eval 361ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1 eval 3.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+CodeQL C++ analysis complete for dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.6.
+Running build command: [/tmp/codeql_cpp_build_qs2sBo.sh]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.6.
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.6.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[1/4 eval 1m16s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[2/4 eval 810ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[3/4 eval 8.9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.bqrs.
+[4/4 eval 892ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+A fatal error occurred: Could not process query metadata for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Error was: Unknown kind "Table". [UNSUPPORTED_KIND]
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1 eval 10s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1 eval 11.9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.ql.
+[1/1 eval 6.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1 eval 1.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[1/2 eval 13.9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.bqrs.
+[2/2 eval 1.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+[1/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[2/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[3/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[4/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[5/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[6/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[1/6 eval 55.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[2/6 eval 872ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[3/6 eval 567ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[4/6 eval 506ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[5/6 eval 2.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.bqrs.
+[6/6 eval 1.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[1/2 eval 1.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.bqrs.
+[2/2 eval 908ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1 eval 8s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1 eval 6.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[1/2 eval 1.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.bqrs.
+[2/2 eval 112ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-611/XXE.ql.
+[1/1 eval 882ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-611/XXE.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[1/3 eval 644ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3 eval 7ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.bqrs.
+[3/3 eval 351ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1 eval 3.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+CodeQL C++ analysis complete for dataset_cpp_nl_prompt_best_gpt-4o-mini_0.6
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.8.
+Running build command: [/tmp/codeql_cpp_build_4HMmOV.sh]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.8.
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.8.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[1/4 eval 1m14s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[2/4 eval 807ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[3/4 eval 8.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.bqrs.
+[4/4 eval 891ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+A fatal error occurred: Could not process query metadata for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Error was: Unknown kind "Table". [UNSUPPORTED_KIND]
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1 eval 10.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1 eval 12s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.ql.
+[1/1 eval 6.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1 eval 1.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[1/2 eval 14s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.bqrs.
+[2/2 eval 1.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+[1/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[2/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[3/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[4/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[5/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[6/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[1/6 eval 56.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.bqrs.
+[2/6 eval 891ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[3/6 eval 594ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[4/6 eval 534ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[5/6 eval 2.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.bqrs.
+[6/6 eval 1.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[1/2 eval 1.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.bqrs.
+[2/2 eval 824ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1 eval 8.1s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1 eval 6.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[1/2 eval 1.8s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.bqrs.
+[2/2 eval 103ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-611/XXE.ql.
+[1/1 eval 902ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-611/XXE.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[1/3 eval 640ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3 eval 8ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.bqrs.
+[3/3 eval 347ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1 eval 3.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+CodeQL C++ analysis complete for dataset_cpp_nl_prompt_best_gpt-4o-mini_0.8
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_1.0.
+Running build command: [/tmp/codeql_cpp_build_hX7a1y.sh]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_1.0.
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_1.0.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[1/4 eval 1m17s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.bqrs.
+[2/4 eval 824ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[3/4 eval 8.9s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.bqrs.
+[4/4 eval 1.1s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+A fatal error occurred: Could not process query metadata for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Error was: Unknown kind "Table". [UNSUPPORTED_KIND]
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1 eval 10.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1 eval 12.2s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.ql.
+[1/1 eval 6.8s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1 eval 1.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[1/2 eval 14.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.bqrs.
+[2/2 eval 1.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+[1/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[2/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[3/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[4/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[5/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[6/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[1/6 eval 57.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[2/6 eval 916ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[3/6 eval 607ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[4/6 eval 541ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[5/6 eval 2.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.bqrs.
+[6/6 eval 1.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[1/2 eval 1.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.bqrs.
+[2/2 eval 890ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1 eval 8.4s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1 eval 6.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[1/2 eval 1.8s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.bqrs.
+[2/2 eval 106ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-611/XXE.ql.
+[1/1 eval 907ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-611/XXE.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[1/3 eval 1.2s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3 eval 6ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.bqrs.
+[3/3 eval 349ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1 eval 3.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+CodeQL C++ analysis complete for dataset_cpp_nl_prompt_best_gpt-4o-mini_1.0
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/github-dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0.
+Running build command: [/tmp/codeql_cpp_build_S9K370.sh]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/github-dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0.
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/github-dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[1/4 eval 12.5s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[2/4 eval 114ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[3/4 eval 1.3s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.bqrs.
+[4/4 eval 257ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-020/UntrustedDataToExternalAPI.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+A fatal error occurred: Could not process query metadata for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Error was: Unknown kind "Table". [UNSUPPORTED_KIND]
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.ql.
+[1/1 eval 2.2s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-022/TaintedPath.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-078/ExecTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.ql.
+[1/1 eval 1.2s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-078/ExecTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-079/CgiXss.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.ql.
+[1/1 eval 1.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-079/CgiXss.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-089/SqlTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.ql.
+[1/1 eval 594ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-089/SqlTainted.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.ql.
+[1/2 eval 2.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatString.bqrs.
+[2/2 eval 257ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-134/UncontrolledFormatStringThroughGlobalVar.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+[1/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[2/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[3/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[4/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[5/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[6/6] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.ql.
+[1/6 eval 9.2s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticTainted.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.ql.
+[2/6 eval 113ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticUncontrolled.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.ql.
+[3/6 eval 113ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ArithmeticWithExtremeValues.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.ql.
+[4/6 eval 77ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/ComparisonWithWiderType.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.ql.
+[5/6 eval 13ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/IntegerOverflowTainted.bqrs.
+[6/6 eval 326ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-190/TaintedAllocationSize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultConflation.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.ql.
+[1/2 eval 571ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultConflation.bqrs.
+[2/2 eval 221ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-295/SSLResultNotChecked.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-319/UseOfHttp.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.ql.
+[1/1 eval 1.7s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-319/UseOfHttp.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-326/InsufficientKeySize.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.ql.
+[1/1 eval 1.6s] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-326/InsufficientKeySize.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+[1/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[2/2] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.ql.
+[1/2 eval 609ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/BrokenCryptoAlgorithm.bqrs.
+[2/2 eval 40ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-327/OpenSslHeartbleed.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-611/XXE.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-611/XXE.ql.
+[1/1 eval 479ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-611/XXE.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+[1/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[3/3] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.ql.
+[1/3 eval 266ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/DoNotCreateWorldWritable.bqrs.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.ql.
+[2/3 eval 6ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/OpenCallMissingModeArgument.bqrs.
+[3/3 eval 202ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-732/UnsafeDaclSecurityDescriptor.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-807/TaintedCondition.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.ql.
+[1/1 eval 993ms] Evaluation done; writing results to codeql/cpp-queries/Security/CWE/CWE-807/TaintedCondition.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+CodeQL C++ analysis complete for github-dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/github-dataset_cpp_nl_prompt_best_gpt-4o-mini_0.2.
+Running build command: [/tmp/codeql_cpp_build_JcX0Tn.sh]

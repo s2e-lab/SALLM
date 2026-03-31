@@ -3,6 +3,7 @@ import os
 import sys
 import re
 import time
+import argparse
 import requests
 from tqdm import tqdm
 from datetime import datetime
@@ -15,7 +16,8 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # config_path = os.path.join(script_dir, "config.json")
 
 model_name = "starcoder2:3b"
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_HOST = os.environ.get('OLLAMA_HOST', 'localhost:11434')
+OLLAMA_URL = f"http://{OLLAMA_HOST}/api/generate"
 MAX_WORKERS = 12  # Increased for better utilization of requested cores
 
 # %%
@@ -119,8 +121,9 @@ def process_single_item(item, temp):
     result_item = item.copy() 
     generations = {}
     
-    # Identify language
-    file_ext = os.path.splitext(item.get('main_path', ''))[-1].lower()
+    # Identify language from main_path or id
+    path_hint = item.get('main_path', '') or item.get('id', '')
+    file_ext = os.path.splitext(path_hint)[-1].lower()
     if '.py' in file_ext:
         lang = "Python"
     elif '.java' in file_ext:
@@ -128,20 +131,20 @@ def process_single_item(item, temp):
     elif any(ext in file_ext for ext in ['.cpp', '.cc', '.cxx', '.h', '.hpp']):
         lang = "C++"
     else:
-        lang = "Programming Language" 
+        lang = "Programming Language"
 
     original_prompt = item.get('prompt', '')
 
     # 1. English (Default)
-    generations['English'] = ollama_response(original_prompt, lang, temp, 2048)
-    
+    generations['English'] = ollama_response(original_prompt, lang, temp, 512)
+
     # 2. Other Languages
     if 'translations' in item:
         for target_lang, trans_data in item['translations'].items():
             if isinstance(trans_data, dict) and 'translation' in trans_data:
                 trans_doc = trans_data['translation']
                 modified_prompt = replace_docstring(original_prompt, trans_doc)
-                generations[target_lang] = ollama_response(modified_prompt, lang, temp, 2048)
+                generations[target_lang] = ollama_response(modified_prompt, lang, temp, 512)
     
     result_item['generations'] = generations
     return result_item
@@ -158,14 +161,11 @@ def process_file(file_path):
         else:
             data = json.load(f)
 
-    temperatures = [1.0, 0.8, 0.6]
-    
-    
     base_name = os.path.splitext(os.path.basename(file_path))[0]
     output_dir = os.path.join(script_dir, "Output")
     os.makedirs(output_dir, exist_ok=True)
 
-    for temp in temperatures:
+    for temp in [single_temp]:
         print(f"[{datetime.now()}] Processing Temperature: {temp} with {MAX_WORKERS} workers...")
         processed_records = []
         
@@ -191,16 +191,18 @@ def process_file(file_path):
 
 # %%
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python Ollama_model.py <input_file_path>")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input_file', help='Input JSONL file path')
+    parser.add_argument('--temperature', type=float, required=True, help='Temperature for generation')
+    args = parser.parse_args()
+
+    if not os.path.exists(args.input_file):
+        print(f"Error: File {args.input_file} not found.")
         sys.exit(1)
 
-    input_path = sys.argv[1]
-    if not os.path.exists(input_path):
-        print(f"Error: File {input_path} not found.")
-        sys.exit(1)
-
-    process_file(input_path)
+    global single_temp
+    single_temp = args.temperature
+    process_file(args.input_file)
 
 if __name__ == "__main__":
     main()

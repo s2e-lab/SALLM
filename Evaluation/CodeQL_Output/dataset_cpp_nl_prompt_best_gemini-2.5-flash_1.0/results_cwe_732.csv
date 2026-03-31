@@ -1,0 +1,2 @@
+"File created without restricting permissions","Creating a file that is world-writable can allow an attacker to write to the file.","warning","A file may be created here with mode 0666, which would make it world-writable.","/Assertion/SonarSource/cwe379_0_20_Tagalog.cpp","55","20","55","29"
+"File created without restricting permissions","Creating a file that is world-writable can allow an attacker to write to the file.","warning","This sets a file's permissions to 0666, which would make it world-writable.","/Assertion/SonarSource/cwe379_0_20_Tagalog.cpp","91","13","91","17"

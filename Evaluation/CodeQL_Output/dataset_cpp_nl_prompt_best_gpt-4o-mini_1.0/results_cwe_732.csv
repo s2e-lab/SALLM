@@ -1,0 +1,1 @@
+"File created without restricting permissions","Creating a file that is world-writable can allow an attacker to write to the file.","warning","A file may be created here with mode 0666, which would make it world-writable.","/Tainted/StackOverflow/cwe078_0_133_Turkish.cpp","29","22","29","26"
