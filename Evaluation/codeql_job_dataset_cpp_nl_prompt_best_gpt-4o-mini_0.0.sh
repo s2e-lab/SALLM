@@ -14,12 +14,10 @@ mkdir -p /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.
 
 SOURCE_DIR="$(pwd)/Dataset/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.0"
 
-# Write build command to a temp script — avoids CodeQL splitting the command
-# by spaces instead of passing it through a shell
 BUILD_SCRIPT=$(mktemp /tmp/codeql_cpp_build_XXXXXX.sh)
 cat > "$BUILD_SCRIPT" << BUILDEOF
 #!/bin/bash
-find "$SOURCE_DIR" -name '*.cpp' -exec g++ -std=c++17 -fsyntax-only {} + 2>/dev/null
+find "$SOURCE_DIR" -name '*.cpp' -print0 | xargs -0 -P 16 -n 1 g++ -std=c++17 -fsyntax-only 2>/dev/null
 exit 0
 BUILDEOF
 chmod +x "$BUILD_SCRIPT"

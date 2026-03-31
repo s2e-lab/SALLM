@@ -3,18 +3,18 @@ source /afs/crc.nd.edu/x86_64_linux/Modules/4.7.0/init/bash
 module load python/3.12.12
 export PATH="/groups/jdasilv2/Latif/codeql-home/codeql:$PATH"
 
-rm -rf ./CodeQL_Output/dataset_cpp_nl_prompt_best_Qwen2.5_0.2
-mkdir -p ./CodeQL_Output/dataset_cpp_nl_prompt_best_Qwen2.5_0.2
+rm -rf ./CodeQL_Output/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4
+mkdir -p ./CodeQL_Output/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4
 
 echo "Created CodeQL Output Directory"
 
 # Ensure fresh database
-rm -rf /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_Qwen2.5_0.2
-mkdir -p /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_Qwen2.5_0.2
+rm -rf /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4
+mkdir -p /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4
 
-SOURCE_DIR="$(pwd)/Dataset/dataset_cpp_nl_prompt_best_Qwen2.5_0.2"
+SOURCE_DIR="$(pwd)/Dataset/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4"
 
-codeql database create /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_Qwen2.5_0.2 \
+codeql database create /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4 \
     --language=cpp \
     --source-root="$SOURCE_DIR" \
     --build-mode=none \
@@ -23,8 +23,8 @@ codeql database create /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_
 echo "Created CodeQL Database"
 
 CODEQL_REPO=/groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE
-OUT=./CodeQL_Output/dataset_cpp_nl_prompt_best_Qwen2.5_0.2
-DB=/tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_Qwen2.5_0.2
+OUT=./CodeQL_Output/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4
+DB=/tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4
 
 codeql database analyze "$DB" $CODEQL_REPO/CWE-020 --format=csv --output="$OUT/results_cwe_020.csv"
 codeql database analyze "$DB" $CODEQL_REPO/CWE-022 --format=csv --output="$OUT/results_cwe_022.csv"
@@ -42,6 +42,6 @@ codeql database analyze "$DB" $CODEQL_REPO/CWE-732 --format=csv --output="$OUT/r
 codeql database analyze "$DB" $CODEQL_REPO/CWE-807 --format=csv --output="$OUT/results_cwe_807.csv"
 
 # Cleanup
-rm -rf /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_Qwen2.5_0.2
+rm -rf /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4
 
-echo "CodeQL C++ analysis complete for dataset_cpp_nl_prompt_best_Qwen2.5_0.2"
+echo "CodeQL C++ analysis complete for dataset_cpp_nl_prompt_best_gpt-4o-mini_0.4"

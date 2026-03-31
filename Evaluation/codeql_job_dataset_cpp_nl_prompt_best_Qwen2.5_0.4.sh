@@ -14,23 +14,11 @@ mkdir -p /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_Qwen2.5_0.4
 
 SOURCE_DIR="$(pwd)/Dataset/dataset_cpp_nl_prompt_best_Qwen2.5_0.4"
 
-# Write build command to a temp script — avoids CodeQL splitting the command
-# by spaces instead of passing it through a shell
-BUILD_SCRIPT=$(mktemp /tmp/codeql_cpp_build_XXXXXX.sh)
-cat > "$BUILD_SCRIPT" << BUILDEOF
-#!/bin/bash
-find "$SOURCE_DIR" -name '*.cpp' -exec g++ -std=c++17 -fsyntax-only {} + 2>/dev/null
-exit 0
-BUILDEOF
-chmod +x "$BUILD_SCRIPT"
-
 codeql database create /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_Qwen2.5_0.4 \
     --language=cpp \
     --source-root="$SOURCE_DIR" \
-    --command="$BUILD_SCRIPT" \
+    --build-mode=none \
     --ram=32768
-
-rm -f "$BUILD_SCRIPT"
 
 echo "Created CodeQL Database"
 

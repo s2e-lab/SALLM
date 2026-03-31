@@ -398,25 +398,83 @@ def clear_generated_code_gemini(data, item, prompt_key = "prompt"):
             
     return result
 
+def fix_cpp_code(code):
+    """
+    Fixes common issues in Qwen-generated C++ code:
+    1. Removes invalid 'using namespace X' for non-existent namespaces.
+    2. Adds missing standard #include headers based on symbols used.
+    """
+    if not code or len(code.strip()) < 10:
+        return code
+
+    # Remove 'using namespace X' lines where X is not std
+    lines = code.split('\n')
+    cleaned_lines = []
+    for line in lines:
+        m = re.match(r'\s*using\s+namespace\s+([\w:]+)\s*;', line)
+        if m:
+            ns = m.group(1).split('::')[0]
+            if ns.lower() == 'std':
+                cleaned_lines.append(line)
+            # else: drop non-std using namespace lines
+        else:
+            cleaned_lines.append(line)
+    code = '\n'.join(cleaned_lines)
+
+    # Add missing standard includes based on symbols present
+    includes_needed = [
+        ('<string>',         'std::string'),
+        ('<vector>',         'std::vector'),
+        ('<optional>',       'std::optional'),
+        ('<sstream>',        'std::stringstream'),
+        ('<stdexcept>',      'std::runtime_error'),
+        ('<iostream>',       'std::cout'),
+        ('<map>',            'std::map'),
+        ('<unordered_map>',  'std::unordered_map'),
+        ('<memory>',         'std::shared_ptr'),
+        ('<functional>',     'std::function'),
+        ('<algorithm>',      'std::sort'),
+        ('<cstring>',        'strcpy'),
+        ('<cstdlib>',        'malloc'),
+        ('<regex>',          'std::regex'),
+        ('<fstream>',        'std::ifstream'),
+        ('<filesystem>',     'std::filesystem'),
+    ]
+    to_add = []
+    for header, symbol in includes_needed:
+        if symbol in code and f'#include {header}' not in code and f'#include{header}' not in code:
+            to_add.append(f'#include {header}')
+
+    if to_add:
+        code = '\n'.join(to_add) + '\n' + code
+
+    return code
+
+
 def post_process_code(code, item):
     """
     Replaces ClassX with original_class and adds package name for Java.
+    For C++: fixes includes and invalid namespace declarations.
     """
     original_class = item.get('original_class')
     obfuscated_class = item.get('obfuscated_class', 'ClassX')
     package_name = item.get('package')
-    
+
     # Replace ClassX with the original class name
     if original_class and obfuscated_class:
         code = re.sub(r'\b' + re.escape(obfuscated_class) + r'\b', original_class, code)
-    
-    # Add package declaration for Java if missing
+
     # Add package declaration for Java if missing
     is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
     if is_java and package_name:
-        if 'package ' not in code[:200]: # check start of file
+        if 'package ' not in code[:200]:
             code = f"package {package_name};\n\n" + code
-            
+
+    # Fix C++ code: add missing includes and remove invalid namespace declarations
+    is_cpp = item.get('_is_cpp_context', False)
+    if is_cpp:
+        code = fix_cpp_code(code)
+
     return code
 
 def extract_assistant_code(text):
@@ -632,23 +690,28 @@ def clear_generated_code_gpt(data, item, prompt_key = "prompt"):
 
 
 def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
-    data = data.split('<|endoftext|>')[0]   
-    
+    data = data.split('<|endoftext|>')[0]
+
     prompt = item[prompt_key]
     code = extract_code_block(data)
 
     # Detect language
-    # Detect language
     is_java = item.get('_is_java_context', ('.java' in item.get('id', '').lower() or item.get('package', '').startswith('com.sallm')))
-    
+    is_cpp = item.get('_is_cpp_context', 'cpp' in item.get('id', '').lower())
+
+    # For C++: just use the extracted code block directly — no Python/Java-style
+    # function-name reconstruction (split_tokens are Python-specific and corrupt C++ output)
+    if is_cpp:
+        return code
+
     # Remove repetition of the prompt
     code = remove_repetition(prompt, code, is_java=is_java)
 
     function_name = get_last_function_name_from_code(prompt, is_java=is_java)
     if function_name and function_name in code:
-        
+
         lines = code.split('\n')
-        
+
         if function_name in lines[0]:
             # Find the second ''' or """ in the code
             for i, line in enumerate(lines[2:]):
@@ -663,24 +726,24 @@ def clear_generated_code_qwen(data, item, prompt_key = "prompt"):
             result = prompt + '\n' + code
         else:
 
-            prompt_code = code.split(function_name)[0]  
+            prompt_code = code.split(function_name)[0]
             code = code.split(function_name)[1]
             for token in split_tokens:
                 if token in code:
                     code = code.split(token)[0]
 
             result = prompt_code + function_name + code
-    
+
     else:
         for token in split_tokens:
             if token in code:
                 code = code.split(token)[0]
         result = prompt + '\n'+ code
-        
+
     # Fix truncated code
     if result and is_java:
         result = fix_truncated_java(result)
-        
+
     return result
 
 def clear_generated_code_starcoder(data, item, prompt_key = "prompt"):    
@@ -775,6 +838,7 @@ def main():
                 if line.strip():
                     item = json.loads(line)
                     item['_is_java_context'] = is_java_context
+                    item['_is_cpp_context'] = is_cpp_context
                     data.append(item)
         
             # Determine model type from filename

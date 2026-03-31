@@ -1,0 +1,18 @@
+Loading python/3.12.12
+  Loading requirement: tcl/8.6.17
+Created CodeQL Output Directory
+Initializing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.
+Running build command: [/tmp/codeql_cpp_build_E795SF.sh]
+Finalizing database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.
+Successfully created database at /tmp/msiddiq3/CodeQL_Database/dataset_cpp_nl_prompt_best_gemini-2.5-flash_0.0.
+Created CodeQL Database
+Running queries.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+[1/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+[2/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRCountUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+[3/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/IRUntrustedDataToExternalAPI.ql.
+Compiling query plan for /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+[4/4] Found in cache: /groups/jdasilv2/Latif/codeql-home/codeql-repo/cpp/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql.
+Starting evaluation of codeql/cpp-queries/Security/CWE/CWE-020/CountUntrustedDataToExternalAPI.ql.

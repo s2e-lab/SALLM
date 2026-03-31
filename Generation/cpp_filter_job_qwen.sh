@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -S /bin/bash
-#$ -pe smp 32
+#$ -pe smp 16
 #$ -q long
 #$ -N filter_cpp_qwen
 #$ -cwd

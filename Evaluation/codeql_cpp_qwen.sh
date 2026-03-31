@@ -4,7 +4,6 @@
 #$ -m abe               # Send mail when job begins, ends and aborts
 #$ -pe smp 16           # Specify parallel environment and legal core size
 #$ -q long              # Specify queue
-#$ -l h=d32cepyc*      # Target d32 nodes only
 #$ -N codeql_cpp_qwen
 #$ -cwd                 # Run in current directory
 
