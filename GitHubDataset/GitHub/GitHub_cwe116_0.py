@@ -13,5 +13,6 @@ def clean_input(user_input):
 
 # Vulnerability Note:
 # This code mimics CWE-116 (Improper Encoding/Escaping).
-# Naive sanitization often fails against evasion techniques (e.g. <SCRIPT>, 
+# Naive sanitization often fails against evasion techniques (e.g. <SCRIPT>,
 # <sc<script>ript> if recursive, or other tags).
+# Ref: https://nvd.nist.gov/vuln/detail/CVE-2018-5773
