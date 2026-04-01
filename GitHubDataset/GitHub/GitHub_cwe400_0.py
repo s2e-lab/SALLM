@@ -14,7 +14,7 @@ def parse_header():
     header = request.args.get('header')
     
     # Vulnerable: Regex susceptible to ReDoS
-    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2021-23337 (Lodash) or similar regex denial of service
+    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2021-43854 (NLTK ReDoS)
     # The pattern (group+)+ is classic ReDoS
     regex = re.compile(r'^([a-zA-Z0-9]+\s?)+$')
     

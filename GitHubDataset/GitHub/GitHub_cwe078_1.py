@@ -12,7 +12,7 @@ def ping_host(host):
         raise ValueError("Invalid character in host")
 
     # Vulnerable: Command Injection via shell=True
-    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2019-1010006
+    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2024-3121
     command = f"ping -c 1 {host}"
     try:
         output = subprocess.check_output(command, shell=True)
@@ -22,5 +22,5 @@ def ping_host(host):
 
 # Vulnerability Note:
 # This code mimics CWE-78 (Command Injection).
-# CVE-2019-1010006 involved a library constructing shell commands from arguments 
-# without proper sanitization, leading to RCE.
+# CVE-2024-3121 involves a Python library using subprocess with shell=True and
+# user-controlled input interpolated into the command string, allowing RCE.

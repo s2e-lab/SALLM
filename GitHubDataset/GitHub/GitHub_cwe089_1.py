@@ -11,7 +11,7 @@ def get_record(record_id):
         raise ValueError("Invalid record ID")
 
     # Vulnerable: SQL Injection via f-string
-    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2020-35717
+    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2026-32714
     query = f"SELECT * FROM records WHERE id = {record_id}"
     
     # Execution (mocked for safety in some contexts, but here we use actual sqlite memory)

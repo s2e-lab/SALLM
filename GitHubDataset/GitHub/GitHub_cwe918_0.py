@@ -11,7 +11,7 @@ def fetch_url(url):
         return "Blocked"
 
     # Vulnerable: Server-Side Request Forgery logic
-    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2020-28479
+    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2024-47167
     try:
         return requests.get(url).text
     except:

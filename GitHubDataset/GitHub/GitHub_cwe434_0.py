@@ -19,7 +19,7 @@ def import_data():
         return "Invalid file type", 400
         
     # Vulnerable: Unrestricted file upload (except .php)
-    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2018-1000128
+    # Ref: https://nvd.nist.gov/vuln/detail/CVE-2020-18704
     # Allows .phtml, .php5, .py, etc.
     file.save(os.path.join('uploads', filename))
     return "File uploaded"

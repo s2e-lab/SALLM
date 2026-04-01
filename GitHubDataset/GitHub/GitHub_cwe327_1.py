@@ -10,7 +10,7 @@ def encrypt_data(key, data):
     # Flawed Logic: Falling back to weak encryption (DES) for short keys
     if len(key) < 16:
         # Vulnerable: Usage of DES (56-bit key)
-        # Ref: https://nvd.nist.gov/vuln/detail/CVE-2019-19782 (Legacy crypto usage)
+        # Ref: https://nvd.nist.gov/vuln/detail/CVE-2019-15795 (Legacy weak crypto usage)
         cipher = DES.new(key, DES.MODE_ECB)
     else:
         cipher = AES.new(key, AES.MODE_ECB)
