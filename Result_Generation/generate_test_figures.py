@@ -139,6 +139,64 @@ def plot_metric_figure(datasets, metric_col, ylabel, fig_name):
     print(f"  Saved {out}")
 
 
+def plot_at1_slide(datasets, metric_col, ylabel, fig_name):
+    """
+    Slide-friendly: 1 row × N cols (one per language), k=1 only.
+    x=temperature, one line per model, legend below.
+    """
+    models  = list(MODEL_LABELS.values())
+    valid   = [(lbl, d) for lbl, d in datasets if d is not None]
+    n_cols  = len(valid)
+    ref_df  = valid[0][1]
+    temps   = sorted(ref_df["Temp"].unique())
+    col     = f"{metric_col}@1"
+
+    fig, axs = plt.subplots(1, n_cols,
+                            figsize=(5.5 * n_cols, 4.5),
+                            sharex=True, sharey=True, dpi=200)
+    axs = np.array(axs).reshape(1, n_cols)
+
+    for cidx, (lang_label, df) in enumerate(valid):
+        ax = axs[0, cidx]
+        for model in models:
+            mdf   = df[df["Model"] == model]
+            if mdf.empty:
+                continue
+            grp   = mdf.groupby("Temp")[col]
+            mean  = grp.mean()
+            std   = grp.std().fillna(0)
+            t     = mean.index.values
+            color = MODEL_COLORS.get(model, None)
+            ax.plot(t, mean.values, marker="o", label=model,
+                    color=color, linewidth=2.5, markersize=7)
+            ax.fill_between(t,
+                            (mean - std).values,
+                            (mean + std).values,
+                            alpha=0.15, color=color)
+
+        ax.set_xlim(temps[0] - 0.05, temps[-1] + 0.05)
+        ax.set_ylim(0, 100)
+        ax.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
+        ax.set_xticks(temps)
+        ax.tick_params(axis="x", labelsize=11, rotation=45)
+        ax.tick_params(axis="y", labelsize=11)
+        ax.set_title(lang_label, fontsize=14, fontweight="bold")
+        ax.set_xlabel("Temperature", fontsize=12, fontweight="bold")
+        if cidx == 0:
+            ax.set_ylabel(ylabel.replace("@k", "@1"), fontsize=12, fontweight="bold")
+
+    handles, labels = axs[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels,
+               loc="lower center", ncol=len(models),
+               fontsize=11, frameon=True,
+               bbox_to_anchor=(0.5, -0.28))
+    plt.tight_layout(rect=[0, 0.02, 1, 1])
+    out = os.path.join(FIG_DIR, fig_name)
+    plt.savefig(out, dpi=200, bbox_inches="tight")
+    plt.close(fig)
+    print(f"  Saved {out}")
+
+
 def plot_natural_language_figure(df, metric_col, ylabel, fig_name):
     """
     6 rows (temperatures) x 4 cols (models).
@@ -232,6 +290,8 @@ def main():
         ("vul",      "Vulnerable@k (%)",  "tests_vul_at_k_comparison"),
         ("security", "Security@k (%)",    "tests_security_at_k_comparison"),
     ]:
+        print(f"[tests] {metric}@1 slide …")
+        plot_at1_slide(all_datasets, metric, ylabel, f"slide_{base.replace('_at_k_comparison','')}_at_1.png")
         print(f"[tests] {metric}@k combined …")
         plot_metric_figure(all_datasets, metric, ylabel, f"{base}.png")
         print(f"[tests] {metric}@k java …")

@@ -60,48 +60,48 @@ def load(csv_path):
 
 
 def plot_compilation(datasets, fig_name):
-    """datasets: list of (label, df) pairs; None dfs are skipped."""
-    phases   = [("Before repair", "Compilable_before (%)"),
-                ("After repair",  "Compilable_after (%)")]
+    """datasets: list of (label, df) pairs; None dfs are skipped.
+    Lays out languages side by side (1 row × N cols) for slide-friendly comparison.
+    """
     models   = list(MODEL_LABELS.values())
 
-    n_rows = sum(1 for _, d in datasets if d is not None)
-    n_cols = 1  # Combined into 1 column
-    ref_df = next(d for _, d in datasets if d is not None)
-    temps  = sorted(ref_df["Temp"].unique())
+    valid    = [(lbl, d) for lbl, d in datasets if d is not None]
+    n_cols   = len(valid)
+    n_rows   = 1
+    ref_df   = valid[0][1]
+    temps    = sorted(ref_df["Temp"].unique())
 
     fig, axs = plt.subplots(n_rows, n_cols,
-                            figsize=(6.0 * n_cols, 4.0 * n_rows),
-                            sharex=True, sharey=False, dpi=200)
+                            figsize=(5.5 * n_cols, 4.5),
+                            sharex=True, sharey=True, dpi=200)
     axs = np.array(axs).reshape(n_rows, n_cols)
 
-    row_idx = 0
-    for lang_label, df in datasets:
-        if df is None:
-            continue
-        ax = axs[row_idx, 0]
+    for col_idx, (lang_label, df) in enumerate(valid):
+        ax = axs[0, col_idx]
         for model in models:
             mdf = df[df["Model"] == model]
             if mdf.empty:
                 continue
-            
+
             color = MODEL_COLORS.get(model, None)
-            
+
             # Plot After repair (Solid)
             grp_after  = mdf.groupby("Temp")["Compilable_after (%)"]
             mean_after = grp_after.mean()
             std_after  = grp_after.std().fillna(0)
             t          = mean_after.index.values
             ax.plot(t, mean_after.values, marker="o", label=f"{model} (After)",
-                    color=color, linewidth=3.0, markersize=8, linestyle="-")
-            ax.fill_between(t, (mean_after - std_after).values, (mean_after + std_after).values,
+                    color=color, linewidth=2.5, markersize=7, linestyle="-")
+            ax.fill_between(t,
+                            (mean_after - std_after).values,
+                            (mean_after + std_after).values,
                             alpha=0.1, color=color)
 
             # Plot Before repair (Dashed)
             grp_before  = mdf.groupby("Temp")["Compilable_before (%)"]
             mean_before = grp_before.mean()
             ax.plot(t, mean_before.values, marker="x", label=f"{model} (Before)",
-                    color=color, linewidth=3.0, markersize=8, linestyle="--", alpha=0.8)
+                    color=color, linewidth=2.5, markersize=7, linestyle="--", alpha=0.8)
 
         ax.set_xlim(temps[0] - 0.05, temps[-1] + 0.05)
         ax.set_ylim(0, 100)
@@ -109,20 +109,17 @@ def plot_compilation(datasets, fig_name):
         ax.set_xticks(temps)
         ax.tick_params(axis="x", labelsize=11, rotation=45)
         ax.tick_params(axis="y", labelsize=11)
-        ax.set_ylabel(f"{lang_label}\nCompilable (%)", fontsize=13, fontweight="bold")
-
-        if row_idx == 0:
-            ax.set_title("Compilation Rate: Before vs After Repair", fontsize=13, fontweight="bold")
-        if row_idx == n_rows - 1:
-            ax.set_xlabel("Temperature", fontsize=13, fontweight="bold")
-        row_idx += 1
+        ax.set_title(lang_label, fontsize=14, fontweight="bold")
+        ax.set_xlabel("Temperature", fontsize=12, fontweight="bold")
+        if col_idx == 0:
+            ax.set_ylabel("Compilable (%)", fontsize=12, fontweight="bold")
 
     handles, labels = axs[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels,
-               loc="lower center", ncol=2,
-               fontsize=18, frameon=True,
-               bbox_to_anchor=(0.5, -0.1))
-    plt.tight_layout(rect=[0, 0, 1, 1])
+               loc="lower center", ncol=4,
+               fontsize=11, frameon=True,
+               bbox_to_anchor=(0.5, -0.28))
+    plt.tight_layout(rect=[0, 0.02, 1, 1])
     out = os.path.join(FIG_DIR, fig_name)
     plt.savefig(out, dpi=200, bbox_inches="tight")
     plt.close(fig)
