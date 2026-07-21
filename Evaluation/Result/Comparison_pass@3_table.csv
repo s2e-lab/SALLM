@@ -1,5 +1,5 @@
 language_family,Model,Java_pass@3,Python_pass@3,Delta (Python-Java)
-Afro-Asiatic,gemini-2.5-flash,13.38±8.35,24.27±1.88,10.88
+Afro-Asiatic,gemini-2.5-flash,17.07±2.68,24.27±1.88,7.2
 Afro-Asiatic,gpt-4o-mini,17.57±1.68,33.23±1.13,15.65
 Afro-Asiatic,qwen2.5,13.57±2.30,21.49±10.36,7.93
 Afro-Asiatic,starcoder2,1.05±0.76,1.53±1.10,0.48
@@ -7,11 +7,11 @@ Austro-Asiatic,gemini-2.5-flash,17.55±1.00,23.57±3.00,6.02
 Austro-Asiatic,gpt-4o-mini,17.53±1.34,32.38±3.49,14.85
 Austro-Asiatic,qwen2.5,12.67±3.05,21.06±10.45,8.38
 Austro-Asiatic,starcoder2,2.01±1.08,2.28±1.57,0.28
-Austronesian,gemini-2.5-flash,14.72±4.05,23.14±2.39,8.42
+Austronesian,gemini-2.5-flash,15.63±1.71,23.14±2.39,7.51
 Austronesian,gpt-4o-mini,19.50±1.30,32.94±1.90,13.44
 Austronesian,qwen2.5,14.59±1.88,21.07±10.10,6.48
 Austronesian,starcoder2,1.10±0.82,1.74±1.13,0.64
-Indo-European (Germanic),gemini-2.5-flash,15.78±3.72,23.94±4.52,8.16
+Indo-European (Germanic),gemini-2.5-flash,16.25±1.93,23.94±4.52,7.69
 Indo-European (Germanic),gpt-4o-mini,18.38±1.17,33.43±5.17,15.05
 Indo-European (Germanic),qwen2.5,14.46±3.00,21.93±10.39,7.47
 Indo-European (Germanic),starcoder2,1.60±1.22,1.87±1.20,0.27
@@ -19,7 +19,7 @@ Indo-European (Greek),gemini-2.5-flash,17.01±1.33,20.04±2.53,3.03
 Indo-European (Greek),gpt-4o-mini,17.56±1.47,32.36±1.96,14.8
 Indo-European (Greek),qwen2.5,13.90±2.16,18.27±9.05,4.37
 Indo-European (Greek),starcoder2,1.09±0.58,2.80±1.79,1.71
-Indo-European (Iranian),gemini-2.5-flash,15.99±8.02,23.66±2.19,7.68
+Indo-European (Iranian),gemini-2.5-flash,19.29±1.75,23.66±2.19,4.37
 Indo-European (Iranian),gpt-4o-mini,17.87±0.79,31.70±2.33,13.83
 Indo-European (Iranian),qwen2.5,11.67±2.01,20.82±10.65,9.16
 Indo-European (Iranian),starcoder2,0.43±0.27,2.19±1.67,1.75
@@ -35,11 +35,11 @@ Slavic,gemini-2.5-flash,15.99±1.63,22.60±2.28,6.61
 Slavic,gpt-4o-mini,17.14±2.02,32.68±2.31,15.54
 Slavic,qwen2.5,14.25±2.00,22.98±11.00,8.72
 Slavic,starcoder2,1.48±1.03,2.56±1.69,1.07
-Turkic,gemini-2.5-flash,15.20±7.46,22.39±3.10,7.19
+Turkic,gemini-2.5-flash,17.93±0.89,22.39±3.10,4.46
 Turkic,gpt-4o-mini,20.41±1.16,31.28±1.35,10.87
 Turkic,qwen2.5,12.60±2.70,21.32±10.77,8.72
 Turkic,starcoder2,1.93±1.30,1.75±1.18,-0.18
-Uralic,gemini-2.5-flash,15.42±4.25,22.82±1.47,7.4
+Uralic,gemini-2.5-flash,16.18±1.90,22.82±1.47,6.64
 Uralic,gpt-4o-mini,18.82±2.14,31.50±1.98,12.68
 Uralic,qwen2.5,12.72±2.16,18.73±8.91,6.01
 Uralic,starcoder2,1.13±0.77,1.88±1.35,0.75

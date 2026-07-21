@@ -1,17 +1,17 @@
 language_family,Model,Java_pass@5,Python_pass@5,Delta (Python-Java)
-Afro-Asiatic,gemini-2.5-flash,12.23±10.96,27.08±2.63,14.84
+Afro-Asiatic,gemini-2.5-flash,19.22±3.27,27.08±2.63,7.86
 Afro-Asiatic,gpt-4o-mini,18.37±2.09,34.27±1.69,15.89
 Afro-Asiatic,qwen2.5,16.02±3.46,24.84±11.83,8.81
 Afro-Asiatic,starcoder2,1.69±1.19,2.41±1.72,0.73
-Austro-Asiatic,gemini-2.5-flash,12.68±9.90,26.10±3.92,13.42
+Austro-Asiatic,gemini-2.5-flash,19.36±1.71,26.10±3.92,6.74
 Austro-Asiatic,gpt-4o-mini,18.56±2.01,33.66±4.29,15.1
 Austro-Asiatic,qwen2.5,15.17±4.68,24.74±12.25,9.57
 Austro-Asiatic,starcoder2,3.01±1.56,3.58±2.42,0.57
-Austronesian,gemini-2.5-flash,15.66±6.14,25.68±3.20,10.03
+Austronesian,gemini-2.5-flash,17.49±2.49,25.68±3.20,8.2
 Austronesian,gpt-4o-mini,20.31±1.79,33.95±2.45,13.63
 Austronesian,qwen2.5,17.45±3.33,24.48±11.48,7.03
 Austronesian,starcoder2,1.72±1.26,2.73±1.78,1.01
-Indo-European (Germanic),gemini-2.5-flash,14.82±8.05,26.51±5.23,11.69
+Indo-European (Germanic),gemini-2.5-flash,18.18±2.66,26.51±5.23,8.33
 Indo-European (Germanic),gpt-4o-mini,19.03±1.58,34.36±5.39,15.33
 Indo-European (Germanic),qwen2.5,17.38±4.35,25.56±12.01,8.18
 Indo-European (Germanic),starcoder2,2.44±1.79,2.93±1.85,0.49
@@ -19,11 +19,11 @@ Indo-European (Greek),gemini-2.5-flash,18.84±1.81,22.30±3.49,3.47
 Indo-European (Greek),gpt-4o-mini,18.34±1.86,33.49±2.52,15.15
 Indo-European (Greek),qwen2.5,16.91±3.68,21.71±10.64,4.8
 Indo-European (Greek),starcoder2,1.70±0.90,4.26±2.74,2.56
-Indo-European (Iranian),gemini-2.5-flash,18.05±9.08,26.05±2.93,8.0
+Indo-European (Iranian),gemini-2.5-flash,21.53±2.10,26.05±2.93,4.52
 Indo-European (Iranian),gpt-4o-mini,18.19±1.05,32.54±2.57,14.35
 Indo-European (Iranian),qwen2.5,14.05±3.21,24.03±12.04,9.98
 Indo-European (Iranian),starcoder2,0.71±0.44,3.22±2.46,2.51
-Indo-European (Romance),gemini-2.5-flash,17.32±4.40,24.06±3.77,6.74
+Indo-European (Romance),gemini-2.5-flash,17.93±2.51,24.06±3.77,6.13
 Indo-European (Romance),gpt-4o-mini,19.15±1.87,33.96±2.37,14.82
 Indo-European (Romance),qwen2.5,16.98±3.48,26.40±12.17,9.42
 Indo-European (Romance),starcoder2,2.36±1.56,3.57±2.31,1.21
@@ -35,11 +35,11 @@ Slavic,gemini-2.5-flash,18.30±2.13,24.99±3.03,6.7
 Slavic,gpt-4o-mini,17.77±2.26,33.77±2.81,15.99
 Slavic,qwen2.5,17.34±3.57,26.59±12.56,9.26
 Slavic,starcoder2,2.33±1.59,3.92±2.50,1.6
-Turkic,gemini-2.5-flash,3.22±7.88,24.80±4.10,21.58
+Turkic,gemini-2.5-flash,19.81±1.61,24.80±4.10,5.0
 Turkic,gpt-4o-mini,21.26±1.82,31.89±1.61,10.63
 Turkic,qwen2.5,15.53±4.31,25.00±12.40,9.48
 Turkic,starcoder2,3.00±2.03,2.73±1.80,-0.27
-Uralic,gemini-2.5-flash,13.42±8.85,25.02±2.10,11.6
+Uralic,gemini-2.5-flash,18.26±2.59,25.02±2.10,6.76
 Uralic,gpt-4o-mini,19.74±2.45,32.57±2.47,12.83
 Uralic,qwen2.5,15.57±3.34,22.13±10.38,6.56
 Uralic,starcoder2,1.75±1.15,2.86±2.04,1.11

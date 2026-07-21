@@ -1,5 +1,5 @@
 language_family,Model,Java_pass@1,Python_pass@1,Delta (Python-Java)
-Afro-Asiatic,gemini-2.5-flash,10.54±5.18,17.28±1.31,6.74
+Afro-Asiatic,gemini-2.5-flash,12.58±1.62,17.28±1.31,4.7
 Afro-Asiatic,gpt-4o-mini,15.99±1.12,29.77±1.30,13.79
 Afro-Asiatic,qwen2.5,8.35±1.14,16.84±3.82,8.49
 Afro-Asiatic,starcoder2,0.36±0.27,0.74±0.63,0.38
@@ -11,7 +11,7 @@ Austronesian,gemini-2.5-flash,11.82±0.72,16.51±0.64,4.68
 Austronesian,gpt-4o-mini,17.42±0.79,29.52±0.97,12.1
 Austronesian,qwen2.5,9.13±1.26,16.66±4.53,7.53
 Austronesian,starcoder2,0.50±0.43,0.68±0.39,0.18
-Indo-European (Germanic),gemini-2.5-flash,11.64±2.68,17.54±3.25,5.9
+Indo-European (Germanic),gemini-2.5-flash,12.07±1.08,17.54±3.25,5.46
 Indo-European (Germanic),gpt-4o-mini,16.66±0.75,30.37±4.68,13.71
 Indo-European (Germanic),qwen2.5,8.93±1.70,16.75±4.14,7.82
 Indo-European (Germanic),starcoder2,0.81±0.57,0.81±0.32,-0.0
@@ -19,7 +19,7 @@ Indo-European (Greek),gemini-2.5-flash,12.35±0.77,15.02±0.86,2.67
 Indo-European (Greek),gpt-4o-mini,15.74±0.25,29.37±0.30,13.63
 Indo-European (Greek),qwen2.5,7.97±0.97,14.49±3.97,6.52
 Indo-European (Greek),starcoder2,0.52±0.17,1.32±0.48,0.8
-Indo-European (Iranian),gemini-2.5-flash,11.37±5.68,17.33±0.60,5.96
+Indo-European (Iranian),gemini-2.5-flash,14.05±1.47,17.33±0.60,3.28
 Indo-European (Iranian),gpt-4o-mini,16.90±0.15,28.31±1.02,11.41
 Indo-European (Iranian),qwen2.5,7.03±0.91,17.09±4.89,10.06
 Indo-European (Iranian),starcoder2,0.15±0.09,1.28±0.82,1.13
@@ -35,11 +35,11 @@ Slavic,gemini-2.5-flash,11.45±1.69,16.18±0.73,4.73
 Slavic,gpt-4o-mini,15.36±1.57,29.54±1.35,14.18
 Slavic,qwen2.5,8.37±1.32,17.93±4.14,9.57
 Slavic,starcoder2,0.60±0.34,1.27±0.62,0.68
-Turkic,gemini-2.5-flash,11.53±5.65,16.43±1.15,4.91
+Turkic,gemini-2.5-flash,13.90±0.30,16.43±1.15,2.54
 Turkic,gpt-4o-mini,18.28±0.59,28.51±0.63,10.23
 Turkic,qwen2.5,7.42±1.12,17.29±4.90,9.87
 Turkic,starcoder2,0.83±0.33,0.63±0.44,-0.21
-Uralic,gemini-2.5-flash,11.15±3.00,16.93±0.83,5.78
+Uralic,gemini-2.5-flash,11.82±1.13,16.93±0.83,5.11
 Uralic,gpt-4o-mini,16.44±1.74,28.12±1.36,11.67
 Uralic,qwen2.5,7.43±1.11,14.56±4.01,7.14
 Uralic,starcoder2,0.46±0.30,0.76±0.50,0.3
